@@ -1,4 +1,4 @@
-package com.example.talkbacktutorial
+package com.github.talkbacktutorial
 
 import org.junit.Test
 
