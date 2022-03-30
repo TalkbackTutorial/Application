@@ -4,22 +4,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-
+        <variable
+            name="lessons_model"
+            type="com.github.talkbacktutorial.LessonsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background_fill"
         tools:context=".MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="12dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lessons"
+                    android:textSize="38sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"
+                    android:textColor="?android:attr/textColorPrimary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <include android:id="@+id/lesson1_card"
+                        layout="@layout/lesson_card"
+                        app:title="@{@string/lesson1_title}"
+                        app:subtitle="@{@string/lesson1_subtitle}"
+                        app:locked="@{lessons_model.lesson1Locked}" />
+
+                    <include android:id="@+id/lesson2_card"
+                        layout="@layout/lesson_card"
+                        app:title="@{@string/lesson2_title}"
+                        app:subtitle="@{@string/lesson2_subtitle}"
+                        app:locked="@{lessons_model.lesson2Locked}" />
+
+                    <include android:id="@+id/lesson3_card"
+                        layout="@layout/lesson_card"
+                        app:title="@{@string/lesson3_title}"
+                        app:subtitle="@{@string/lesson3_subtitle}"
+                        app:locked="@{lessons_model.lesson3Locked}" />
+
+                    <include android:id="@+id/lesson4_card"
+                        layout="@layout/lesson_card"
+                        app:title="@{@string/lesson4_title}"
+                        app:subtitle="@{@string/lesson4_subtitle}"
+                        app:locked="@{lessons_model.lesson4Locked}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
