@@ -1,13 +1,13 @@
-package com.github.talkbacktutorial
+package com.github.talkbacktutorial.activities.lesson0
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.github.talkbacktutorial.databinding.ActivityLesson0Part2Binding
+import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.R
+import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.ActivityLesson0Part3Binding
 import com.github.talkbacktutorial.databinding.BasicCardBinding
 
@@ -19,12 +19,15 @@ class Lesson0Part3Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
 
-        val binding: ActivityLesson0Part3Binding = DataBindingUtil.setContentView(this, R.layout.activity_lesson0_part3)
+        val binding: ActivityLesson0Part3Binding = DataBindingUtil.setContentView(this,
+            R.layout.activity_lesson0_part3
+        )
 
         this.ttsEngine = TextToSpeechEngine(this)
             .onFinishedSpeaking(triggerOnce = true) {
                 for (menuItemNum in 1..6) {
-                    val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(layoutInflater, R.layout.basic_card, binding.linearLayout, false)
+                    val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(layoutInflater,
+                        R.layout.basic_card, binding.linearLayout, false)
                     basicCardBinding.text = "Menu Item $menuItemNum"
                     basicCardBinding.card.setOnClickListener {
                         ttsEngine.speak("You have interacted with a menu item. Find the button, then double tap to finish the lesson.")

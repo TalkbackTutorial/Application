@@ -1,7 +1,9 @@
-package com.github.talkbacktutorial
+package com.github.talkbacktutorial.lessons
 
 import android.content.Context
 import android.content.Intent
+import com.github.talkbacktutorial.activities.LessonActivity
+import com.github.talkbacktutorial.lessons.modules.Module
 import java.util.*
 
 /*

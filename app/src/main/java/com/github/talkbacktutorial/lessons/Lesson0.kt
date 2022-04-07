@@ -1,7 +1,9 @@
-package com.github.talkbacktutorial
+package com.github.talkbacktutorial.lessons
 
 import android.content.Context
 import android.content.Intent
+import com.github.talkbacktutorial.activities.lesson0.Lesson0Part1Activity
+import com.github.talkbacktutorial.lessons.modules.Module
 
 /*
     Lesson0 is a special case because it will be what runs when the application first opens.

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_fill"
-        tools:context=".Lesson0Part1Activity">
+        tools:context=".activities.lesson0.Lesson0Part1Activity">
 
         <Button
             android:id="@+id/continue_button"

@@ -1,7 +1,8 @@
-package com.github.talkbacktutorial
+package com.github.talkbacktutorial.lessons.modules
 
 import android.content.Context
 import android.content.Intent
+import com.github.talkbacktutorial.activities.modules.TodoModuleYModuleActivity
 
 class TodoModuleY : Module() { // E.g. PausingAndPlayingMediaModule
 

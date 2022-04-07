@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial
+package com.github.talkbacktutorial.activities.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

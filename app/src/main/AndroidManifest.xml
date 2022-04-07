@@ -10,25 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
-            android:name=".TodoModuleYModuleActivity"
+            android:name=".activities.modules.TodoModuleYModuleActivity"
             android:exported="false" />
         <activity
-            android:name=".TodoModuleXModuleActivity"
+            android:name=".activities.modules.TodoModuleXModuleActivity"
             android:exported="false" />
         <activity
-            android:name=".LessonActivity"
+            android:name=".activities.LessonActivity"
             android:exported="false" />
         <activity
-            android:name=".Lesson0Part3Activity"
+            android:name=".activities.lesson0.Lesson0Part3Activity"
             android:exported="false" />
         <activity
-            android:name=".Lesson0Part2Activity"
+            android:name=".activities.lesson0.Lesson0Part2Activity"
             android:exported="false" />
         <activity
-            android:name=".Lesson0Part1Activity"
+            android:name=".activities.lesson0.Lesson0Part1Activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

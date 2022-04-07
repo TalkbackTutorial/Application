@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial
+package com.github.talkbacktutorial.lessons.modules
 
 import android.content.Context
 import java.util.*

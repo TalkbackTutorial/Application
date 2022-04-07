@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial
+package com.github.talkbacktutorial.lessons
 
 /*
     LessonContainer contains all the lessons. This means any Activity can access any and all
@@ -14,11 +14,11 @@ object LessonContainer {
     ))
 
     fun getAllLessons(): ArrayList<Lesson> {
-        return ArrayList(this.lessons)
+        return ArrayList(lessons)
     }
 
     fun getLesson(id: String): Lesson {
-        return this.lessons.first { lesson ->
+        return lessons.first { lesson ->
             lesson.id.toString() == id
         }
     }

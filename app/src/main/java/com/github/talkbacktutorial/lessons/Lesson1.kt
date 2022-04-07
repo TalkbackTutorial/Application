@@ -1,4 +1,8 @@
-package com.github.talkbacktutorial
+package com.github.talkbacktutorial.lessons
+
+import com.github.talkbacktutorial.lessons.modules.Module
+import com.github.talkbacktutorial.lessons.modules.TodoModuleX
+import com.github.talkbacktutorial.lessons.modules.TodoModuleY
 
 
 class Lesson1 : Lesson() {
