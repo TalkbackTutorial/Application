@@ -14,15 +14,16 @@
         android:background="@color/background_fill"
         tools:context=".activities.lesson0.Lesson0Part1Activity">
 
-        <Button
+        <include
             android:id="@+id/continue_button"
+            layout="@layout/pill_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Continue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="@{`Continue`}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

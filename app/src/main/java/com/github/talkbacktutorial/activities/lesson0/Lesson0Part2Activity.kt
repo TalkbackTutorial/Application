@@ -3,6 +3,7 @@ package com.github.talkbacktutorial.activities.lesson0
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
@@ -31,6 +32,7 @@ class Lesson0Part2Activity : AppCompatActivity() {
                         startActivity(Intent(this, Lesson0Part3Activity::class.java))
                     }
                     binding.cardLinearLayout.addView(basicCardBinding.card)
+                    if (menuItemNum == 1) basicCardBinding.card.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
                 }
             }
 

@@ -20,14 +20,14 @@ class Lesson0Part1Activity : AppCompatActivity() {
         val binding: ActivityLesson0Part1Binding = DataBindingUtil.setContentView(this,
             R.layout.activity_lesson0_part1
         )
-        binding.continueButton.visibility = View.GONE
+        binding.continueButton.button.visibility = View.GONE
 
         this.ttsEngine = TextToSpeechEngine(this)
             .onFinishedSpeaking(triggerOnce = true) {
-                binding.continueButton.visibility = View.VISIBLE
+                binding.continueButton.button.visibility = View.VISIBLE
             }
 
-        binding.continueButton.setOnClickListener {
+        binding.continueButton.button.setOnClickListener {
             startActivity(Intent(this, Lesson0Part2Activity::class.java))
         }
 
