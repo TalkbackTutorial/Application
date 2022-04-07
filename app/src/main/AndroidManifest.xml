@@ -10,7 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
-            android:name="com.github.talkbacktutorial.MainActivity"
+            android:name=".TodoModuleYModuleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TodoModuleXModuleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LessonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Lesson0Part3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Lesson0Part2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Lesson0Part1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

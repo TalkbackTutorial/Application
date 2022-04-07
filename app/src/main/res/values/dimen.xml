@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="horizontal_spacing">12dp</dimen>
+    <dimen name="vertical_card_spacing">6dp</dimen>
+    <dimen name="horizontal_card_spacing">12dp</dimen>
+    <dimen name="header_top_spacing">64dp</dimen>
+    <dimen name="header_bottom_spacing">12dp</dimen>
+    <dimen name="header_size">38sp</dimen>
+</resources>

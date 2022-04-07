@@ -17,7 +17,7 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/lesson_card"
+        android:id="@+id/module_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -32,7 +32,7 @@
             android:padding="@dimen/horizontal_card_spacing" >
 
             <TextView
-                android:id="@+id/lesson_subtitle"
+                android:id="@+id/module_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locked ? subtitle + ` (LOCKED)` : subtitle}"
@@ -40,7 +40,7 @@
                 android:textColor="?android:attr/textColorSecondary"/>
 
             <TextView
-                android:id="@+id/lesson_title"
+                android:id="@+id/module_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{title}"

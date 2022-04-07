@@ -1,0 +1,47 @@
+package com.github.talkbacktutorial
+
+import android.content.Context
+import android.content.Intent
+import java.util.*
+
+/*
+    Lessons are a sequence of tasks and explanations for the user to complete in order to learn a
+    component of Talkback, or related. For example, a lesson could educate the user on the swipe
+    left and swipe right gestures, give them an opportunity to try the gestures out, then provide a
+    task to demonstrate practical applications of the gestures they have learnt.
+
+    Lessons are made up of modules, which is essentially what the lesson teaches, broken down.
+    For example, if you had a "Basic Navigation" lesson, you would include "Next Element",
+    "Previous Element" and "Interact with Element" modules that make up the lesson.
+
+    All lessons share the same Activity, LessonActivity (with the exception of Lesson0). This
+    Activity generates cards for every module the lesson contains.
+ */
+abstract class Lesson {
+
+    companion object { // Static
+        const val INTENT_KEY = "C57D2EB9-C8D0-4315-916D-C05159E8EE23"
+    }
+
+    abstract val title: String
+    abstract val sequenceNumeral: Int
+    val id: UUID = UUID.randomUUID()
+    abstract val modules: ArrayList<Module>
+
+    var isLocked: Boolean = false
+        private set
+
+    val sequenceName: String
+        get() = "Lesson " + this.sequenceNumeral
+
+    open fun startActivity(context: Context) {
+        val intent = Intent(context, LessonActivity::class.java)
+        intent.putExtra(INTENT_KEY, this.id.toString())
+        context.startActivity(intent)
+    }
+
+    fun getModuleSequenceNumeral(module: Module): Int {
+        return this.modules.indexOfFirst { it.id == module.id } + 1
+    }
+
+}
