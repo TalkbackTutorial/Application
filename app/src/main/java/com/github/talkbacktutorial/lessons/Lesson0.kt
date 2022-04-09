@@ -2,7 +2,7 @@ package com.github.talkbacktutorial.lessons
 
 import android.content.Context
 import android.content.Intent
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part1Activity
+import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
 import com.github.talkbacktutorial.lessons.modules.Module
 
 /*
@@ -16,7 +16,7 @@ class Lesson0 : Lesson() {
     override val modules: ArrayList<Module> = ArrayList()
 
     override fun startActivity(context: Context) {
-        context.startActivity(Intent(context, Lesson0Part1Activity::class.java))
+        context.startActivity(Intent(context, Lesson0Activity::class.java))
     }
 
 }

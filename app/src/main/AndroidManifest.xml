@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
+            android:name=".activities.lesson0.Lesson0Activity"
+            android:exported="false" />
+        <activity
             android:name=".activities.modules.TodoModuleYModuleActivity"
             android:exported="false" />
         <activity
@@ -17,15 +20,6 @@
             android:exported="false" />
         <activity
             android:name=".activities.LessonActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.lesson0.Lesson0Part3Activity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.lesson0.Lesson0Part2Activity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.lesson0.Lesson0Part1Activity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"

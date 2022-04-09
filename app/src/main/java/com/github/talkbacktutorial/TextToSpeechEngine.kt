@@ -76,7 +76,7 @@ class TextToSpeechEngine(context: AppCompatActivity) {
         }
     }
 
-    fun speakOnActivityOpen(text: String) {
+    fun speakOnInitialisation(text: String) {
         Handler(Looper.getMainLooper()).postDelayed({
             this.speak(text)
         }, 1000)
