@@ -21,12 +21,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
 
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this,
-            R.layout.activity_main
-        )
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lessonsModel = this.lessonsModel
         this.ttsEngine = TextToSpeechEngine(this)
 
+        // Show all lessons in LessonContainer
         for (lesson in LessonContainer.getAllLessons()) {
             val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(layoutInflater,
                 R.layout.lesson_card, binding.lessonLinearLayout, false)

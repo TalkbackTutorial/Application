@@ -18,6 +18,7 @@ class LessonActivity : AppCompatActivity() {
             R.layout.activity_lesson
         )
 
+        // Show all modules in the lesson
         this.intent.getStringExtra(Lesson.INTENT_KEY)?.let { id ->
             val lesson: Lesson = LessonContainer.getLesson(id)
             binding.lesson = lesson
