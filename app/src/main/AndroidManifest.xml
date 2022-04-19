@@ -9,27 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
-        <activity
-            android:name=".activities.lesson2.Lesson2Module1P2Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".activities.lesson2.Lesson2Module1P1Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.ExploreMenuByTouchActivity"
-            android:exported="false" />
-        <activity
-            android:name=".lessons.modules.ExploreMenuByTouchModule"
-            android:exported="false" />
-        <activity
-            android:name=".activities.lesson0.Lesson0Activity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.TodoModuleYModuleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.TodoModuleXModuleActivity"
-            android:exported="false" />
+        <!-- main stuff -->
         <activity
             android:name=".activities.LessonActivity"
             android:exported="false" />
@@ -42,6 +22,51 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Lesson 0 -->
+        <activity
+            android:name=".activities.lesson0.Lesson0Activity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.TodoModuleYModuleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.TodoModuleXModuleActivity"
+            android:exported="false" />
+
+        <!-- Lesson 1 -->
+
+        <!-- Lesson 2 -->
+        <!-- UC1 -->
+        <activity
+            android:name=".activities.lesson2.Lesson2Module1P2Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".activities.lesson2.Lesson2Module1P2Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.ExploreMenuByTouchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".lessons.modules.ExploreMenuByTouchModule"
+            android:exported="false" />
+        <activity
+            android:name=".activities.lesson2.Lesson2Module1P2Fragment"
+            android:exported="false" />
+
+        <!-- UC4 -->
+        <activity
+            android:name=".activities.lesson2.selectsettingmodule.SelectSettingPart1Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.SelectSettingModuleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".lessons.modules.lesson2.SelectSettingModule"
+            android:exported="false" />
+
+        <!-- Lesson 3 -->
+
     </application>
 
 </manifest>

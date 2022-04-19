@@ -1,6 +1,7 @@
 package com.github.talkbacktutorial.lessons
 
 import com.github.talkbacktutorial.lessons.modules.ExploreMenuByTouchModule
+import com.github.talkbacktutorial.lessons.modules.lesson2.SelectSettingModule
 import com.github.talkbacktutorial.lessons.modules.Module
 
 /**
@@ -12,7 +13,8 @@ class Lesson2 : Lesson() {
     override val sequenceNumeral: Int = 2
     override val modules: ArrayList<Module> = ArrayList(listOf(
         // Add more ...
-        ExploreMenuByTouchModule()
+        ExploreMenuByTouchModule(),
+        SelectSettingModule()
     ))
 
 }
