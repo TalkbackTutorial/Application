@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
+            android:name=".activities.lesson2.Lesson2Module1P2Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".activities.lesson2.Lesson2Module1P1Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.ExploreMenuByTouchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".lessons.modules.ExploreMenuByTouchModule"
+            android:exported="false" />
+        <activity
             android:name=".activities.lesson0.Lesson0Activity"
             android:exported="false" />
         <activity
