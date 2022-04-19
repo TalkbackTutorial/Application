@@ -18,9 +18,9 @@ class SelectSettingModuleActivity : AppCompatActivity(){
         val binding: ActivitySelectSettingModuleBinding = DataBindingUtil.setContentView(this,
             R.layout.activity_select_setting_module
         )
-//        supportFragmentManager.commit {
-//            replace(R.id.frame, SelectSettingPart1Fragment.newInstance())
-//            addToBackStack("SelectSettingPart1Fragment")
-//        }
+        supportFragmentManager.commit {
+            replace(R.id.frame, SelectSettingPart1Fragment.newInstance())
+            addToBackStack("lesson2module2selectsetting")
+        }
     }
 }

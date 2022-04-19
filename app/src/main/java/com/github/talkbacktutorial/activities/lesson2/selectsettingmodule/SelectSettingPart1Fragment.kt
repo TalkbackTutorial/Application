@@ -47,19 +47,6 @@ class SelectSettingPart1Fragment : Fragment() {
             .onFinishedSpeaking(triggerOnce = true) {
 
             }
-        this.speakIntro()
-    }
-
-
-    /**
-     * Speaks an intro for the fragment.
-     * @author Antony Loose + Jade Davis
-     */
-    private fun speakIntro() {
-        val intro = """
-            Test
-        """.trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
     }
 
     override fun onDestroyView() {
