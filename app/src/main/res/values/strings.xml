@@ -1,12 +1,4 @@
 <resources>
     <string name="app_name">Talkback Tutorial</string>
-    <string name="lesson1_title">Lesson 1</string>
-    <string name="lesson1_subtitle">Single Motion Gestures</string>
-    <string name="lesson2_title">Lesson 2</string>
-    <string name="lesson2_subtitle">Multi-Finger Gestures</string>
-    <string name="lesson3_title">Lesson 3</string>
-    <string name="lesson3_subtitle">Dual Motion Gestures</string>
-    <string name="lesson4_title">Lesson 4</string>
-    <string name="lesson4_subtitle">Typing</string>
     <string name="lessons">Lessons</string>
 </resources>
