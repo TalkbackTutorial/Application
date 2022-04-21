@@ -13,22 +13,24 @@
         android:layout_height="match_parent"
         android:background="@color/background_fill">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:id="@+id/card_linear_layout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="@dimen/header_top_spacing"
-                android:paddingBottom="@dimen/header_bottom_spacing"
-                android:padding="@dimen/horizontal_card_spacing" >
+                android:orientation="horizontal"
+                android:padding="@dimen/horizontal_card_spacing">
 
             </LinearLayout>
 
-        </ScrollView>
+        </HorizontalScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
