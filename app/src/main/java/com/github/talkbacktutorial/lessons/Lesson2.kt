@@ -1,9 +1,9 @@
 package com.github.talkbacktutorial.lessons
 
 import com.github.talkbacktutorial.lessons.modules.ExploreMenuByTouchModule
-import com.github.talkbacktutorial.lessons.modules.lesson2.SelectSettingModule
+import com.github.talkbacktutorial.lessons.modules.SelectSettingModule
 import com.github.talkbacktutorial.lessons.modules.Module
-import com.github.talkbacktutorial.lessons.modules.lesson2.ScrollingModule
+import com.github.talkbacktutorial.lessons.modules.ScrollingModule
 
 /**
  * Presents simulated menus and has the user learn the aspects of simple menu navigation, apart

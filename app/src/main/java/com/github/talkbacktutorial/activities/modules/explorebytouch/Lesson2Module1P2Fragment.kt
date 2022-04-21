@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.lesson2
+package com.github.talkbacktutorial.activities.modules.explorebytouch
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.modules.ExploreMenuByTouchActivity
 import com.github.talkbacktutorial.databinding.ActivityLesson2Module1P2FragmentBinding
 import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding

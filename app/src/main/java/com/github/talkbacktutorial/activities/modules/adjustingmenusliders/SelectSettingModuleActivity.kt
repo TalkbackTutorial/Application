@@ -1,12 +1,10 @@
-package com.github.talkbacktutorial.activities.modules
+package com.github.talkbacktutorial.activities.modules.adjustingmenusliders
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.lesson2.Lesson2Module1P2Fragment
-import com.github.talkbacktutorial.activities.lesson2.selectsettingmodule.SelectSettingPart1Fragment
 import com.github.talkbacktutorial.databinding.ActivitySelectSettingModuleBinding
 
 class SelectSettingModuleActivity : AppCompatActivity(){

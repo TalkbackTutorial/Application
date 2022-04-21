@@ -1,28 +1,30 @@
-package com.github.talkbacktutorial.activities.modules
+package com.github.talkbacktutorial.activities.modules.explorebytouch
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.lesson2.Lesson2Module1P2Fragment
-import com.github.talkbacktutorial.activities.lesson2.scrollingmodule.ScrollingModulePart1Fragment
-import com.github.talkbacktutorial.databinding.ActivityScrollingModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityExploreMenuByTouchBinding
 
-class ScrollingModuleActivity : AppCompatActivity() {
+/**
+ * Explore menu by touch activity
+ * @author Jason Wu
+ */
+class ExploreMenuByTouchActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityScrollingModuleBinding
+    lateinit var binding: ActivityExploreMenuByTouchBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_scrolling_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_explore_menu_by_touch)
         supportFragmentManager.commit {
-            replace(R.id.frame, ScrollingModulePart1Fragment.newInstance())
-            addToBackStack("scrollingModulePart1")
+            replace(R.id.frame, Lesson2Module1P2Fragment.newInstance())
+            addToBackStack("lesson2module1p1")
         }
     }
 
@@ -35,5 +37,4 @@ class ScrollingModuleActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }

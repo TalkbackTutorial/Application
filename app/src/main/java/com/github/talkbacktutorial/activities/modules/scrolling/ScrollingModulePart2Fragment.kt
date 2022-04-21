@@ -1,6 +1,5 @@
-package com.github.talkbacktutorial.activities.lesson2.scrollingmodule
+package com.github.talkbacktutorial.activities.modules.scrolling
 
-import android.app.ActionBar
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,17 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
-import android.widget.CheckBox
 import androidx.core.view.allViews
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part2Fragment
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part3Fragment
-import com.github.talkbacktutorial.activities.modules.ScrollingModuleActivity
 import com.github.talkbacktutorial.databinding.*
 
 class ScrollingModulePart2Fragment : Fragment() {

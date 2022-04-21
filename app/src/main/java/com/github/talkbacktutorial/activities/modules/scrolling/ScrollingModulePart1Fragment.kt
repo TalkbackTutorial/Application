@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.lesson2.scrollingmodule
+package com.github.talkbacktutorial.activities.modules.scrolling
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,12 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part2Fragment
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part3Fragment
-import com.github.talkbacktutorial.activities.modules.ScrollingModuleActivity
 import com.github.talkbacktutorial.databinding.BasicCardBinding
-import com.github.talkbacktutorial.databinding.FragmentLesson0Part1Binding
 import com.github.talkbacktutorial.databinding.FragmentScrollingModulePart1Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 
@@ -76,7 +71,9 @@ class ScrollingModulePart1Fragment : Fragment() {
         primaryButtonBinding.text = "Continue"
         primaryButtonBinding.button.setOnClickListener {
             parentFragmentManager.commit {
-                replace(this@ScrollingModulePart1Fragment.id, ScrollingModulePart2Fragment.newInstance())
+                replace(this@ScrollingModulePart1Fragment.id,
+                    ScrollingModulePart2Fragment.newInstance()
+                )
                 addToBackStack("scrollingModulePart2")
             }
         }

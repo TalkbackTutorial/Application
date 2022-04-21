@@ -1,27 +1,14 @@
-package com.github.talkbacktutorial.activities.lesson2.selectsettingmodule
+package com.github.talkbacktutorial.activities.modules.adjustingmenusliders
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part1Fragment
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part2Fragment
-import com.github.talkbacktutorial.activities.lesson2.Lesson2Module1P2Fragment
-import com.github.talkbacktutorial.activities.modules.ExploreMenuByTouchActivity
-import com.github.talkbacktutorial.activities.modules.SelectSettingModuleActivity
-import com.github.talkbacktutorial.databinding.ActivityLesson2Module1P2FragmentBinding
-import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentLesson2SelectsettingP1FragmentBinding
-import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 
 class SelectSettingPart1Fragment : Fragment() {
 
