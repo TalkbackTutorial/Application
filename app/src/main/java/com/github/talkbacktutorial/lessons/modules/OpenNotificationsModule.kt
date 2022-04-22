@@ -9,7 +9,7 @@ import com.github.talkbacktutorial.activities.modules.TodoModuleXModuleActivity
  */
 class OpenNotificationsModule : Module() { // E.g. PausingAndPlayingMediaModule
 
-    override val title: String = "TODO MODULE X" // E.g. "Pause and Play Media"
+    override val title: String = "Open Notifications" // E.g. "Pause and Play Media"
 
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, TodoModuleXModuleActivity::class.java))
