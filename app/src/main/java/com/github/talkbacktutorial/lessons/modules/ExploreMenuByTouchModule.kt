@@ -10,7 +10,7 @@ import com.github.talkbacktutorial.activities.modules.explorebytouch.ExploreMenu
  */
 class ExploreMenuByTouchModule : Module() {
 
-    override val title: String = "Explore Menu by Touch" // E.g. "Pause and Play Media"
+    override val title: String = "Explore Menu by Touch"
 
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, ExploreMenuByTouchActivity::class.java))

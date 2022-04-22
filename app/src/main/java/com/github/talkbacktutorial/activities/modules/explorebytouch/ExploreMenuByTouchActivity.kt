@@ -2,7 +2,10 @@ package com.github.talkbacktutorial.activities.modules.explorebytouch
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MotionEventCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
@@ -23,8 +26,8 @@ class ExploreMenuByTouchActivity : AppCompatActivity() {
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_explore_menu_by_touch)
         supportFragmentManager.commit {
-            replace(R.id.frame, Lesson2Module1P2Fragment.newInstance())
-            addToBackStack("lesson2module1p1")
+            replace(R.id.frame, ExploreMenuByTouchPart1Fragment.newInstance())
+            addToBackStack("exploreMenuModulePart1")
         }
     }
 

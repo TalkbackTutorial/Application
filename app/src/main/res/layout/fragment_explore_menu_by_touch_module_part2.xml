@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_fill"
-        tools:context=".activities.modules.Lesson2Module1P2FragmentBinding"
         tools:ignore="ExtraText">
 
         <LinearLayout android:orientation="horizontal"

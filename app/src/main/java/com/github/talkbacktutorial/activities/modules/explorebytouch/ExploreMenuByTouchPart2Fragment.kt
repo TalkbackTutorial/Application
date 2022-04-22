@@ -11,28 +11,29 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.ActivityLesson2Module1P2FragmentBinding
 import com.github.talkbacktutorial.databinding.BasicCardBinding
+import com.github.talkbacktutorial.databinding.FragmentExploreMenuByTouchModulePart2Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 
 /**
- * Lesson2 Module1 P1 Fragment
+ * Part2 Fragment of explore menu by touch module
  * @author Jason Wu
+ * @todo disable the swipe
  */
-class Lesson2Module1P2Fragment : Fragment() {
+class ExploreMenuByTouchPart2Fragment : Fragment() {
     companion object {
         @JvmStatic
-        fun newInstance() = Lesson2Module1P2Fragment()
+        fun newInstance() = ExploreMenuByTouchPart2Fragment()
     }
 
-    private lateinit var binding: ActivityLesson2Module1P2FragmentBinding
+    private lateinit var binding: FragmentExploreMenuByTouchModulePart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        this.binding = DataBindingUtil.inflate(inflater, R.layout.activity_lesson2_module1_p2_fragment, container, false)
+        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_explore_menu_by_touch_module_part2, container, false)
         return binding.root
     }
 
@@ -66,7 +67,7 @@ class Lesson2Module1P2Fragment : Fragment() {
             val basicCardBinding2: BasicCardBinding = DataBindingUtil.inflate(layoutInflater,
                 R.layout.basic_card, binding.layout2, false)
             basicCardBinding2.text = "Row $menuItemNum Column2"
-            basicCardBinding.card.setOnClickListener {
+            basicCardBinding2.card.setOnClickListener {
                 ttsEngine.speak("You have interacted with a menu item. Find the button, then double tap to finish the lesson.")
             }
             binding.layout2.addView(basicCardBinding2.card)
@@ -75,7 +76,7 @@ class Lesson2Module1P2Fragment : Fragment() {
             val basicCardBinding3: BasicCardBinding = DataBindingUtil.inflate(layoutInflater,
                 R.layout.basic_card, binding.layout3, false)
             basicCardBinding3.text = "Row $menuItemNum Column3"
-            basicCardBinding.card.setOnClickListener {
+            basicCardBinding3.card.setOnClickListener {
                 ttsEngine.speak("You have interacted with a menu item. Find the button, then double tap to finish the lesson.")
             }
             binding.layout3.addView(basicCardBinding3.card)
@@ -116,8 +117,7 @@ class Lesson2Module1P2Fragment : Fragment() {
     private fun speakIntro() {
         val intro = """
             To finish this module, you will need to find the finish button in the menu items.
-            Notice: you need to apply what you have learnt previously.
-            Swipe right or left is not allowed and you will spend more time if you are using them.
+            Notice, swipe left and right is disabled in this module.
             Once you find the button, double tap to finish the module.
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)

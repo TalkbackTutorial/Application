@@ -34,10 +34,10 @@
             android:name=".activities.modules.TodoModuleXModuleActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.modules.explorebytouch.Lesson2Module1P2Fragment"
+            android:name=".activities.modules.explorebytouch.ExploreMenuByTouchPart2Fragment"
             android:exported="false" />
         <activity
-            android:name=".activities.modules.explorebytouch.Lesson2Module1P2Fragment"
+            android:name=".activities.modules.explorebytouch.ExploreMenuByTouchPart2Fragment"
             android:exported="false" />
         <activity
             android:name=".activities.modules.explorebytouch.ExploreMenuByTouchActivity"
@@ -46,7 +46,7 @@
             android:name=".lessons.modules.ExploreMenuByTouchModule"
             android:exported="false" />
         <activity
-            android:name=".activities.modules.explorebytouch.Lesson2Module1P2Fragment"
+            android:name=".activities.modules.explorebytouch.ExploreMenuByTouchPart2Fragment"
             android:exported="false" />
         <activity
             android:name=".activities.modules.adjustingmenusliders.SelectSettingPart1Fragment"
