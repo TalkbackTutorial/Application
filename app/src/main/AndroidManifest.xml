@@ -30,6 +30,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.modules.startstopmedia.StartStopMediaModuleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.mediavolumecontrol.MediaVolumeControlModuleActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
