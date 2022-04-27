@@ -9,4 +9,10 @@
     <string name="lesson4_title">Lesson 4</string>
     <string name="lesson4_subtitle">Typing</string>
     <string name="lessons">Lessons</string>
+    <string name="adjust_reading_controls_part1_intro">We\'ll be learning how to adjust TalkBack\'s reading controls, which lets us make TalkBack read and navigate in different ways. TalkBack has reading modes, such as word-by-word, and navigation modes, such as jumping from header to header. When you change modes, TalkBack will speak the mode you switched to.</string>
+    <string name="adjust_reading_controls_part1_prompt">To change your mode, swipe up and down in one motion. Take your time to cycle through all the choices.</string>
+    <string name="adjust_reading_controls_part1_backwards_prompt">You can go backwards through the list. Swipe down then up in one motion to go through the list in the opposite direction.</string>
+    <string name="adjust_reading_controls_part1_multi_finger">Modes can also be switched by swiping with three fingers horizontally to the left or to the right.</string>
+    <string name="adjust_reading_controls_part1_finished_text">That\'s all there is to changing modes. The rest of this lesson covers how to use these modes. Activate the button below to finish this module.</string>
+    <string name="finish_module_button">Finish module</string>
 </resources>
