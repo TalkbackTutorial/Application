@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
-            android:name=".activities.Lesson3.Lesson3Activity"
-            android:exported="false" />
-        <activity
             android:name=".activities.lesson0.Lesson0Activity"
             android:exported="false" />
         <activity
