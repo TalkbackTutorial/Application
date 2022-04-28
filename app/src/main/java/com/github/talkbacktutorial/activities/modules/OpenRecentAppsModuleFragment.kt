@@ -1,9 +1,7 @@
-package com.github.talkbacktutorial.lessons
+package com.github.talkbacktutorial.activities.modules
 
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part1Fragment
-import com.github.talkbacktutorial.databinding.FragmentLesson0Part1Binding
 
 class OpenRecentAppsModuleFragment : Fragment() {
 
@@ -12,6 +10,6 @@ class OpenRecentAppsModuleFragment : Fragment() {
         fun newInstance() = OpenRecentAppsModuleFragment()
     }
 
-    private lateinit var binding: FragmentL
+    private lateinit var binding: Fragment
     private lateinit var ttsEngine: TextToSpeechEngine
 }
