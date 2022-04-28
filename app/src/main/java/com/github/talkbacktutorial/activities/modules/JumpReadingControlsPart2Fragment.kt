@@ -1,6 +1,5 @@
 package com.github.talkbacktutorial.activities.modules
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.databinding.FragmentAdjustReadingControlsPart1Binding
-import com.github.talkbacktutorial.databinding.FragmentAdjustReadingControlsPart3Binding
+import com.github.talkbacktutorial.databinding.FragmentJumpReadingControlsPart2Binding
 
 /**
  * Instantiates a UI for user to interact with controls mode
@@ -18,8 +16,8 @@ import com.github.talkbacktutorial.databinding.FragmentAdjustReadingControlsPart
  * @author Joel Yang
  * @see AdjustReadingControlsActivity
  */
-class AdjustReadingControlsPart3Fragment : Fragment() {
-    private lateinit var binding: FragmentAdjustReadingControlsPart3Binding
+class JumpReadingControlsPart2Fragment : Fragment() {
+    private lateinit var binding: FragmentJumpReadingControlsPart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
     // callback run after this fragment is created for AdjustReadingControlsActivity
@@ -30,7 +28,7 @@ class AdjustReadingControlsPart3Fragment : Fragment() {
             Here, we inflate our layout file (basically, turning the XML into a UI) through
             DataBindingUtil, which will provide our layout binding during the inflate process.
          */
-        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_adjust_reading_controls_part3, container, false)
+        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_jump_reading_controls_part2, container, false)
         return binding.root
     }
 
