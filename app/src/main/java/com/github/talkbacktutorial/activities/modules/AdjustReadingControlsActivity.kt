@@ -40,5 +40,6 @@ class AdjustReadingControlsActivity : AppCompatActivity() {
         }
     }
 
+    //to be implemented: replacing different fragments on gesture interactions (Joel)
 
 }
