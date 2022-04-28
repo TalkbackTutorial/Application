@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
+            android:name=".activities.modules.selectsettings.SelectSettingsModuleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.selectsettings.SelectSettingModuleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.selectingsettings.SelectingSettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.modules.scrolling.ScrollingModuleActivity"
             android:exported="false" />
         <activity
@@ -49,10 +58,7 @@
             android:name=".activities.modules.explorebytouch.ExploreMenuByTouchPart2Fragment"
             android:exported="false" />
         <activity
-            android:name=".activities.modules.adjustingmenusliders.SelectSettingPart1Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.adjustingmenusliders.SelectSettingModuleActivity"
+            android:name=".activities.modules.selectsettings.SelectSettingPart1Fragment"
             android:exported="false" />
         <activity
             android:name=".lessons.modules.SelectSettingModule"
