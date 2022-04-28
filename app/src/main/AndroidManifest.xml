@@ -57,6 +57,9 @@
         <activity
             android:name=".lessons.modules.SelectSettingModule"
             android:exported="false" />
+        <activity
+            android:name=".activities.modules.goback.GoBackModuleActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

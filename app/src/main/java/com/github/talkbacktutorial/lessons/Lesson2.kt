@@ -1,9 +1,6 @@
 package com.github.talkbacktutorial.lessons
 
-import com.github.talkbacktutorial.lessons.modules.ExploreMenuByTouchModule
-import com.github.talkbacktutorial.lessons.modules.SelectSettingModule
-import com.github.talkbacktutorial.lessons.modules.Module
-import com.github.talkbacktutorial.lessons.modules.ScrollingModule
+import com.github.talkbacktutorial.lessons.modules.*
 
 /**
  * Presents simulated menus and has the user learn the aspects of simple menu navigation, apart
@@ -19,6 +16,7 @@ class Lesson2 : Lesson() {
     override val modules: ArrayList<Module> = ArrayList(listOf(
         ExploreMenuByTouchModule(),
         ScrollingModule(),
+        GoBackModule(),
         SelectSettingModule()
     ))
 
