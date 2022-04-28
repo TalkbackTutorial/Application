@@ -12,7 +12,7 @@ class OpenVoiceCommandModule : Module() { // E.g. PausingAndPlayingMediaModule
     override val title: String = "Open Voice Command" // E.g. "Pause and Play Media"
 
     override fun startActivity(context: Context) {
-        context.startActivity(Intent(context, TodoModuleXModuleActivity::class.java))
+        context.startActivity(Intent(context, OpenVoiceCommandModuleActivity::class.java))
     }
 
 }
