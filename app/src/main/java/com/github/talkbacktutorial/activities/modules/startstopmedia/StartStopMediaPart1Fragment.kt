@@ -1,6 +1,9 @@
 package com.github.talkbacktutorial.activities.modules.startstopmedia
 
+import android.app.Activity
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +45,31 @@ class StartStopMediaPart1Fragment: Fragment() {
         // Get videoView by id
         this.videoView = this.binding.videoView
         videoView.setVideoPath("android.resource://" + requireActivity().packageName + "/" + R.raw.video_test)
+        mediaController = object: MediaController(context){
+            //for not hiding
+            override fun hide() {
+                mediaController?.show(0)
+            }
+
+            //for 'back' key action
+            override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+                if (event.keyCode == KeyEvent.KEYCODE_BACK) {
+                    val a = context as Activity
+                    a.finish()
+                }
+                return true
+            }
+        }
+        mediaController?.setAnchorView(videoView);
+        mediaController?.setMediaPlayer(videoView);
+        mediaController?.requestFocus();
         mediaController = MediaController(context)
+        videoView.setOnPreparedListener(object: MediaPlayer.OnPreparedListener{
+            override fun onPrepared(mp: MediaPlayer) {
+                videoView.start()
+                mediaController?.show(0)
+            }
+        })
         mediaController?.setEnabled(true)
         mediaController?.setAnchorView(videoView)
         videoView.setMediaController(mediaController)
