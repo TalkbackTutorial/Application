@@ -3,11 +3,11 @@ package com.github.talkbacktutorial.activities.modules
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.TextToSpeechEngine
 
-class OpenRecentAppsModuleFragment : Fragment() {
+class OpenRecentAppsPart1Fragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = OpenRecentAppsModuleFragment()
+        fun newInstance() = OpenRecentAppsPart1Fragment()
     }
 
     private lateinit var binding: Fragment

@@ -21,18 +21,8 @@ class OpenRecentAppsModuleActivity : AppCompatActivity() {
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_module_open_recent_apps)
         supportFragmentManager.commit {
-            replace(R.id.frame, OpenRecentAppsModuleFragment.newInstance())
-            addToBackStack("openrecentappsmodulepart1")
+            replace(R.id.frame, OpenRecentAppsPart1Fragment())
         }
     }
 
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount != 1) {
-            super.onBackPressed()
-        } else {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-        }
-    }
 }
