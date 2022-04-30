@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.ActivityTodoModuleXModuleBinding
 
-class OpenVoiceCommandModuleActivity : AppCompatActivity() { // E.g. PausingAndPlayingMediaModuleActivity
+class OpenVoiceCommandActivity : AppCompatActivity() { // E.g. PausingAndPlayingMediaModuleActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
 import com.github.talkbacktutorial.activities.lesson0.Lesson0Part2Fragment
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart1Binding
@@ -42,8 +44,9 @@ class OpenRecentAppsPart1Fragment : Fragment() {
         // The button transitions to the next fragment when clicked
         binding.continueButton.button.setOnClickListener {
             parentFragmentManager.commit {
-                replace(this@OpenRecentAppsPart1Fragment.id, OpenRecentAppsPart2Fragment())
-                addToBackStack("lesson0part2")
+                val intent = Intent((activity as OpenRecentAppsActivity), MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
             }
         }
     }
