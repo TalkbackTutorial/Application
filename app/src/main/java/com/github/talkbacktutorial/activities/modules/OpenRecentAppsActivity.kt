@@ -7,7 +7,7 @@ import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.ActivityModuleOpenRecentAppsBinding
 
-class OpenRecentAppsModuleActivity : AppCompatActivity() {
+class OpenRecentAppsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityModuleOpenRecentAppsBinding
         private set
