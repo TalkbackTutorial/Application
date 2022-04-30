@@ -13,7 +13,7 @@ import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
 import com.github.talkbacktutorial.activities.lesson0.Lesson0Part2Fragment
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart1Binding
 
-class OpenRecentAppsPart1Fragment : Fragment() {
+class OpenRecentAppsPart2Fragment : Fragment() {
 
     private lateinit var binding: FragmentOpenRecentAppsPart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
@@ -33,7 +33,7 @@ class OpenRecentAppsPart1Fragment : Fragment() {
                 binding.continueButton.button.visibility = View.VISIBLE
             }
         this.setupContinueButton()
-        this.speakIntro()
+        //this.speakIntro()
     }
 
     private fun setupContinueButton() {
@@ -42,17 +42,9 @@ class OpenRecentAppsPart1Fragment : Fragment() {
         // The button transitions to the next fragment when clicked
         binding.continueButton.button.setOnClickListener {
             parentFragmentManager.commit {
-                replace(this@OpenRecentAppsPart1Fragment.id, OpenRecentAppsPart2Fragment())
+                replace(this@OpenRecentAppsPart2Fragment.id, Lesson0Part2Fragment.newInstance())
                 addToBackStack("lesson0part2")
             }
         }
-    }
-
-    private fun speakIntro() {
-        val intro = """
-            In this module, you'll learn how to open recent apps. This action requires a swipe left, then a swipe up gesture.
-            Double tap to continue.
-        """.trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
     }
 }
