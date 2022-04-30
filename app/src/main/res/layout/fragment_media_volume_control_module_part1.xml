@@ -8,11 +8,13 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mediaVolumeControlConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbarSize="10dp"
         tools:layout_editor_absoluteX="4dp"
         tools:layout_editor_absoluteY="128dp">
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_stop"
