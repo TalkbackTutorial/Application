@@ -5,13 +5,11 @@ import android.content.Intent
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SeekBar
-import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,14 +17,13 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentMediaVolumeControlModulePart1Binding
-import kotlinx.coroutines.currentCoroutineContext
 
 
-class MediaVolumeControlPart1Fragment: Fragment() {
+class MediaVolumeControlPart2Fragment: Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = MediaVolumeControlPart1Fragment()
+        fun newInstance() = MediaVolumeControlPart2Fragment()
     }
 
     private lateinit var binding: FragmentMediaVolumeControlModulePart1Binding
@@ -65,7 +62,7 @@ class MediaVolumeControlPart1Fragment: Fragment() {
     }
 
     private fun mediaControls(){
-        this.binding.fabPlay.setOnClickListener{
+        this.binding.playButton.setOnClickListener{
             // when users click on the fab button
             if(mediaPlayer == null){
                 mediaPlayer = MediaPlayer.create(context, R.raw.media_sound)
@@ -79,10 +76,11 @@ class MediaVolumeControlPart1Fragment: Fragment() {
 
         }
 
-        this.binding.fabStop.setOnClickListener{
+        this.binding.stopButton.setOnClickListener{
             stopMedia()
         }
 
+        //TODO test this with Talkback
         this.seekbarVolume?.setOnClickListener{
             val info = "Media Volume Slider. Swipe up or down to increase or decrease the volume".trimIndent()
             this.ttsEngine.speak(info)
@@ -103,7 +101,8 @@ class MediaVolumeControlPart1Fragment: Fragment() {
 
                 if(currentVolume >= 75){
                     val info = """
-                        Now that you learned how to increase the volume, we'll try decreasing the volume to 25 or below.
+                        current Volume is set above 75.
+                        Now that you learned how to increase the volume, we will try decreasing the volume below 25.
                         To decrease the volume, swipe down.
                     """.trimIndent()
 
@@ -112,9 +111,14 @@ class MediaVolumeControlPart1Fragment: Fragment() {
                 }
 
                 if(currentVolume <= 25 && swipeUp){
-                    //TODO activate finish lesson button
-                        // insert finish/continue button
-                    ttsEngine.speak("Volume below 25")
+                    val info = """
+                        current volume is set below 25.
+                        Congratulations on completing this lesson.
+                        In this lesson you have successfully learn how to control the media volume of your phone.
+                        To exit this lesson, select the finish button on the screen.
+                    """.trimIndent()
+
+                    ttsEngine.speak(info)
                     insertFinishButton()
                 }
 
@@ -136,6 +140,7 @@ class MediaVolumeControlPart1Fragment: Fragment() {
          val finishButton = Button(requireContext())
          finishButton.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
          finishButton.text = "Finish"
+         finishButton.setBackgroundResource(R.color.green_A400)
          finishButton.setOnClickListener(View.OnClickListener {
              endLesson()
          })
@@ -148,7 +153,7 @@ class MediaVolumeControlPart1Fragment: Fragment() {
             In this tutorial, you will be learning how to control the media volume sliders, increasing or decreasing your phone's media volume. 
             To start, explore your screen by touch and you find the play button. 
             Play the music.
-            Then, increase the volume to 75 or above by swiping up.
+            Then, increasing the volume above 75 by swiping up.
             """.trimIndent()
 
         this.ttsEngine.speakOnInitialisation(intro)

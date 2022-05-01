@@ -16,51 +16,11 @@
         tools:layout_editor_absoluteY="128dp">
 
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:clickable="true"
-            app:backgroundTint="@color/green_A400"
-            app:layout_constraintEnd_toEndOf="@+id/volumeControlSeekBar"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/fab_play"
-            app:layout_constraintTop_toBottomOf="@+id/volumeControlSeekBar"
-            app:srcCompat="@drawable/ic_baseline_stop" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:clickable="true"
-            app:backgroundTint="@color/green_A400"
-            app:layout_constraintBottom_toTopOf="@+id/songCredit"
-            app:layout_constraintEnd_toStartOf="@+id/fab_stop"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toStartOf="@+id/volumeControlSeekBar"
-            app:layout_constraintTop_toBottomOf="@+id/volumeControlSeekBar"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_baseline_play_arrow" />
-
-        <SeekBar
-            android:id="@+id/volumeControlSeekBar"
-            android:layout_width="236dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/songCredit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.75" />
-
         <TextView
             android:id="@+id/songCredit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="16dp"
             android:text="Music: « Ofelia's dream » from Bensound.com"
             android:textColor="#000000"
             android:textColorHint="#FFFFFF"
@@ -68,6 +28,55 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/media_music_image"
+            android:layout_width="315dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/media_music_bg" />
+
+        <SeekBar
+            android:id="@+id/volumeControlSeekBar"
+            android:layout_width="236dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="media volume control slider"
+            app:layout_constraintBottom_toTopOf="@+id/songCredit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.75" />
+
+        <ImageButton
+            android:id="@+id/playButton"
+            android:layout_width="72dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@color/green_A400"
+            android:contentDescription="play button"
+            app:layout_constraintEnd_toStartOf="@+id/stopButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="@+id/volumeControlSeekBar"
+            app:layout_constraintTop_toBottomOf="@+id/volumeControlSeekBar"
+            app:srcCompat="@drawable/ic_baseline_play_arrow" />
+
+        <ImageButton
+            android:id="@+id/stopButton"
+            android:layout_width="72dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@color/green_A400"
+            android:contentDescription="stop button"
+            app:layout_constraintEnd_toEndOf="@+id/volumeControlSeekBar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/playButton"
+            app:layout_constraintTop_toBottomOf="@+id/volumeControlSeekBar"
+            app:srcCompat="@drawable/ic_baseline_stop" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
