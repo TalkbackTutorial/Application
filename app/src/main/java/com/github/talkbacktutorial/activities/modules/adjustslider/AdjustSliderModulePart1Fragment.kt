@@ -100,7 +100,7 @@ class AdjustSliderModulePart1Fragment : Fragment() {
     }
 
     /**
-     *
+     * Tells user to go to max slider value
      * @author Antony Loose
      */
     private fun speakGoToMax() {
@@ -111,7 +111,7 @@ class AdjustSliderModulePart1Fragment : Fragment() {
     }
 
     /**
-     *
+     * Tells user to go to min slider value
      * @author Antony Loose
      */
     private fun speakGoToMin() {

@@ -12,8 +12,6 @@ import com.github.talkbacktutorial.databinding.ActivityAdjustSliderModuleBinding
 
 class AdjustSliderModuleActivity : AppCompatActivity() {
 
-
-
     lateinit var binding: ActivityAdjustSliderModuleBinding
         private set
 
