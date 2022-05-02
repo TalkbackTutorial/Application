@@ -17,7 +17,7 @@ class Lesson2 : Lesson() {
         ExploreMenuByTouchModule(),
         ScrollingModule(),
         GoBackModule(),
-        SelectSettingModule()
+        AdjustSliderModule()
     ))
 
 }
