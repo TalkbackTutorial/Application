@@ -3,6 +3,7 @@ package com.github.talkbacktutorial.activities.modules.adjustslider
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
@@ -10,6 +11,8 @@ import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.ActivityAdjustSliderModuleBinding
 
 class AdjustSliderModuleActivity : AppCompatActivity() {
+
+
 
     lateinit var binding: ActivityAdjustSliderModuleBinding
         private set

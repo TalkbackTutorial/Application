@@ -1,10 +1,13 @@
 package com.github.talkbacktutorial.activities.modules.adjustslider
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.core.view.allViews
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -24,20 +27,26 @@ class AdjustSliderModulePart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentAdjustSliderModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private val menuSize = 50
+    lateinit var menuSlider: SeekBar
+//    lateinit var menuSliderText: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_adjust_slider_module_part1, container, false)
+        this.menuSlider = this.binding.menuSlider
+//        this.menuSliderText = this.binding.seekBarValueTV
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as AdjustSliderModuleActivity))
-            .onFinishedSpeaking(triggerOnce = true) {}
+            .onFinishedSpeaking(triggerOnce = true) {
+                this.menuSlider.visibility = View.VISIBLE
+                setSliderHandler()
+            }
         this.speakIntro()
     }
 
@@ -55,5 +64,21 @@ class AdjustSliderModulePart1Fragment : Fragment() {
     override fun onDestroyView() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
+    }
+
+    fun setSliderHandler() {
+        this.menuSlider.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+
+            override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
+                binding.seekBarValueTV.setText(i.toString())
+            }
+
+            override fun onStartTrackingTouch(seek: SeekBar) {
+            }
+
+            override fun onStopTrackingTouch(seek: SeekBar) {
+                // write custom code for progress is stopped
+            }
+        })
     }
 }
