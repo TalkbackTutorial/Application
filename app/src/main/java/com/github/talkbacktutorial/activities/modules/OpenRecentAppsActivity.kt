@@ -20,7 +20,7 @@ class OpenRecentAppsActivity : AppCompatActivity() {
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_module_open_recent_apps)
         supportFragmentManager.commit {
             replace(R.id.frame, OpenRecentAppsPart1Fragment())
-            addToBackStack("openRecentAppsModulePart1")
+            addToBackStack("openrecentappspart1")
         }
     }
 

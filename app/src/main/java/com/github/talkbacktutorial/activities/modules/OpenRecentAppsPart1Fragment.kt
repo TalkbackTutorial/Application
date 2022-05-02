@@ -1,18 +1,12 @@
 package com.github.talkbacktutorial.activities.modules
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part2Fragment
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart1Binding
 
 class OpenRecentAppsPart1Fragment : Fragment() {
@@ -32,30 +26,21 @@ class OpenRecentAppsPart1Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as OpenRecentAppsActivity))
             .onFinishedSpeaking(triggerOnce = true) {
-                binding.continueButton.button.visibility = View.VISIBLE
             }
-        this.setupContinueButton()
         this.speakIntro()
-    }
-
-    private fun setupContinueButton() {
-        // The button starts off invisible
-        binding.continueButton.button.visibility = View.GONE
-        // The button transitions to the next fragment when clicked
-        binding.continueButton.button.setOnClickListener {
-            parentFragmentManager.commit {
-                val intent = Intent((activity as OpenRecentAppsActivity), MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-            }
-        }
     }
 
     private fun speakIntro() {
         val intro = """
-            In this module, you'll learn how to open recent apps. This action requires a swipe left, then a swipe up gesture.
-            Double tap to continue.
+            Welcome.
+            In this module, you'll learn how to open recent apps. This action requires a swipe left
+            and then, a swipe up gesture. Please try to perform these gestures one after another.
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
+    }
+
+    override fun onDestroyView() {
+        this.ttsEngine.shutDown()
+        super.onDestroyView()
     }
 }
