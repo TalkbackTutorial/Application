@@ -13,11 +13,6 @@ class OpenRecentAppsPart1Fragment : Fragment() {
     private lateinit var binding: FragmentOpenRecentAppsPart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        this.speakIntro()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +29,10 @@ class OpenRecentAppsPart1Fragment : Fragment() {
         this.speakIntro()
     }
 
+    /**
+     * Speaks an intro for the fragment.
+     * @author Jai Clapp
+     */
     private fun speakIntro() {
         val intro = """
             Welcome.

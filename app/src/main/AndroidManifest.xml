@@ -19,6 +19,9 @@
             android:name=".activities.modules.TodoModuleXModuleActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.modules.OpenRecentAppsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.LessonActivity"
             android:exported="false" />
         <activity
