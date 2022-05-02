@@ -6,13 +6,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart1Binding
 
 class OpenRecentAppsPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentOpenRecentAppsPart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        this.speakIntro()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

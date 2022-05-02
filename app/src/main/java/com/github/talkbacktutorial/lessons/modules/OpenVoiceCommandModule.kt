@@ -2,7 +2,7 @@ package com.github.talkbacktutorial.lessons.modules
 
 import android.content.Context
 import android.content.Intent
-import com.github.talkbacktutorial.activities.modules.OpenVoiceCommandModuleActivity
+import com.github.talkbacktutorial.activities.modules.OpenVoiceCommandActivity
 import com.github.talkbacktutorial.activities.modules.TodoModuleXModuleActivity
 
 /**
@@ -13,7 +13,7 @@ class OpenVoiceCommandModule : Module() { // E.g. PausingAndPlayingMediaModule
     override val title: String = "Open Voice Command" // E.g. "Pause and Play Media"
 
     override fun startActivity(context: Context) {
-        context.startActivity(Intent(context, OpenVoiceCommandModuleActivity::class.java))
+        context.startActivity(Intent(context, OpenVoiceCommandActivity::class.java))
     }
 
 }
