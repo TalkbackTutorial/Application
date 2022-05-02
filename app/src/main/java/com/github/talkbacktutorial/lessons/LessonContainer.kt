@@ -12,7 +12,7 @@ object LessonContainer {
         Lesson0(),
         Lesson1(),
         Lesson2(),
-        LessonTemp6()
+//        LessonTemp6()
     ))
 
     /**
