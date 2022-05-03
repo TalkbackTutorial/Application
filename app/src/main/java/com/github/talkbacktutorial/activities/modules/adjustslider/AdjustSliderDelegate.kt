@@ -1,14 +1,10 @@
 package com.github.talkbacktutorial.activities.modules.adjustslider
 
-import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import android.widget.SeekBar
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.modules.scrolling.ScrollingModuleActivity
 
 /**
  * This delegate allows us to execute code before talkback reads screen. This is needed because in some cases talkback will interrupt tts and therefore,
@@ -52,9 +48,14 @@ class AdjustSliderDelegate(activity: AdjustSliderModuleActivity) : View.Accessib
                 }
 
                 // disable talkback from reading out progress as this can interrupt our instructions
-                if (event.eventType == typeWindowContentChanged){
-                    return false
+                if (event.eventType == typeViewAccessibilityFocused) {
+                    val text = """
+                        slider: swipe up to increase or down to decrease
+                        or double tap and hold, then move finger to adjust
+                    """.trimIndent()
+                    speakText(text, true)
                 }
+                return false
             }
         }
 
