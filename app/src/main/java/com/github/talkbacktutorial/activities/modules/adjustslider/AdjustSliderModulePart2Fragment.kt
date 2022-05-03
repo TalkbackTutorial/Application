@@ -24,7 +24,7 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     }
 
     private lateinit var binding: FragmentAdjustSliderModulePart2Binding
-    private lateinit var ttsEngine: TextToSpeechEngine
+    lateinit var ttsEngine: TextToSpeechEngine
 
     lateinit var mainView: ConstraintLayout
     lateinit var menuSlider: SeekBar
@@ -33,11 +33,17 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     lateinit var sliderRightTV: TextView
     lateinit var sliderLeftTV: TextView
 
+    // TTS text to speak
+    val goToMin = """move finger left to go to min""".trimIndent()
+    val outro = """
+        Well done! now you know how to adjust sliders by dragging
+        This gesture can be used for any sliders but will be most useful for adjusting video and song times.
+    """.trimIndent()
+
+    // Slider vars
     var currentSliderValue: Int = 0
     var maxValue: Int = 100
     var minValue: Int = 0
-    var hasReachedMax = false
-    var hasReachedMin = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -61,9 +67,9 @@ class AdjustSliderModulePart2Fragment : Fragment() {
                 this.sliderRightTV.visibility = View.VISIBLE
                 this.sliderLeftTV.visibility = View.VISIBLE
                 // this is used to execute code before talkback executes on a slider
-                this.mainView.accessibilityDelegate = AdjustSliderDelegate(maxValue, minValue)
 
-                setSliderHandler()
+                this.mainView.accessibilityDelegate = AdjustSliderDelegate(maxValue, minValue, goToMin, outro, activity as AdjustSliderModuleActivity)
+
             }
         this.speakIntro()
     }
@@ -71,28 +77,6 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     override fun onDestroyView() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
-    }
-
-    /**
-     * Sets the onChange event handler for the seekBar. Updates the class attribute which stores
-     * the current progress of the menu bar and handles the logic for knowing when the max and min
-     * have been reached, and when to allow the next portion of the module to continue.
-     * @author Jade Davis
-     */
-    private fun setSliderHandler() {
-        this.menuSlider.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-
-            override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
-                currentSliderValue = i
-            }
-
-            override fun onStartTrackingTouch(seek: SeekBar) {
-            }
-
-            override fun onStopTrackingTouch(seek: SeekBar) {
-
-            }
-        })
     }
 
     /**
@@ -113,26 +97,10 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     private fun speakIntro() {
 
         val intro = """
-            Another way of adjusting sliders is to double tap then drag left to decrease and right to increase.
+            Another way of adjusting sliders is to double tap then drag left to decrease and drag right to increase.
             Use explore by touch to find the slider then double tap and hold for 1 second to select
-            finally move finger right until slider is 100% then lift finger.
+            finally move finger right until slider is 100%.
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
-    }
-
-    /**
-     * Speaks an outro for the fragment.
-     * @author Antony Loose
-     */
-    private fun speakOutro() {
-        val outro = """
-            Well done! now you know how to adjust sliders by dragging
-            This gesture can be used for any sliders but will be most useful for adjusting video and song times.
-        """.trimIndent()
-        this.ttsEngine.speakOnInitialisation(outro)
-    }
-
-    private fun finishedLesson(){
-        // TODO
     }
 }
