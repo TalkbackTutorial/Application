@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.adjustslider
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.activities.modules.scrolling.ScrollingModuleActivity
 import com.github.talkbacktutorial.databinding.FragmentAdjustSliderModulePart2Binding
 
 /**
@@ -41,9 +44,10 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     """.trimIndent()
 
     // Slider vars
-    var currentSliderValue: Int = 0
     var maxValue: Int = 100
     var minValue: Int = 0
+    var hasReachedMax = false
+    var hasReachedMin = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -66,9 +70,9 @@ class AdjustSliderModulePart2Fragment : Fragment() {
                 this.sliderAboveTV.visibility = View.VISIBLE
                 this.sliderRightTV.visibility = View.VISIBLE
                 this.sliderLeftTV.visibility = View.VISIBLE
+                setSliderHandler()
                 // this is used to execute code before talkback executes on a slider
-
-                this.mainView.accessibilityDelegate = AdjustSliderDelegate(maxValue, minValue, goToMin, outro, activity as AdjustSliderModuleActivity)
+                this.mainView.accessibilityDelegate = AdjustSliderDelegate(activity as AdjustSliderModuleActivity)
 
             }
         this.speakIntro()
@@ -80,14 +84,30 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     }
 
     /**
-     * Tells user to go to min slider value
-     * @author Antony Loose
+     * Sets the onChange event handler for the seekBar. Updates the class attribute which stores
+     * the current progress of the menu bar and handles the logic for knowing when the max and min
+     * have been reached, and when to allow the next portion of the module to continue.
+     * @author Jade Davis
      */
-    private fun speakGoToMin() {
-        val goToMin = """
-            double tap and hold slider then move finger left to go to min
-        """.trimIndent()
-        this.ttsEngine.speakOnInitialisation(goToMin)
+    private fun setSliderHandler() {
+        this.menuSlider.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+
+            override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
+                if (i == maxValue) {
+                    hasReachedMax = true
+                    speakText(goToMin, true)
+                } else if (i == minValue && hasReachedMax) {
+                    hasReachedMin = true
+                    finishLesson()
+                }
+            }
+
+            override fun onStartTrackingTouch(seek: SeekBar) {
+            }
+
+            override fun onStopTrackingTouch(seek: SeekBar) {
+            }
+        })
     }
 
     /**
@@ -102,5 +122,26 @@ class AdjustSliderModulePart2Fragment : Fragment() {
             finally move finger right until slider is 100%.
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
+    }
+
+    /**
+     * Tts reads out input text
+     * @author Antony Loose
+     */
+    private fun speakText(text: String, override: Boolean){
+        this.ttsEngine.speak(text, override)
+    }
+
+    /**
+     * Announced the lesson's completion then returns the user back to the lessons Activity.
+     * @author Antony Loose
+     */
+    private fun finishLesson() {
+        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+            val intent = Intent((activity as AdjustSliderModuleActivity), MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        }
+        this.ttsEngine.speak(outro, override = true)
     }
 }
