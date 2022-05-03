@@ -29,8 +29,8 @@ class AdjustSliderDelegate(maxVal: Int, minVal: Int, msg1: String, msg2: String,
     private val msg2 = msg2
     private var hasReachedMax = false
     private var hasReachedMin = false
-    private var ttsEngine = TextToSpeechEngine((activity))
-        .onFinishedSpeaking(triggerOnce = true) {}
+    // initialise tts
+    private var ttsEngine = TextToSpeechEngine((activity)).onFinishedSpeaking(triggerOnce = true) {}
 
     /**
      * This method runs when an accessibility event occurs.
@@ -42,7 +42,6 @@ class AdjustSliderDelegate(maxVal: Int, minVal: Int, msg1: String, msg2: String,
     override fun onRequestSendAccessibilityEvent(host: ViewGroup?, child: View?, event: AccessibilityEvent?
     ): Boolean {
 
-        Log.d("adjustSliderDelegate", event.toString())
         if (child is SeekBar){
             /*
                 only execute on the events we want, when a slider is selected there are multiple accessibility events
@@ -50,7 +49,10 @@ class AdjustSliderDelegate(maxVal: Int, minVal: Int, msg1: String, msg2: String,
                 the slider is highlighted.
             */
             if (event?.eventType == TYPE_WINDOW_CONTENT_CHANGED || event?.eventType == TYPE_VIEW_ACCESSIBILITY_FOCUSED) {
+
                 val progress = child.progress
+                // use our tts to read progress
+                speakText("$progress%")
                 if (progress == maxValue) {
                     hasReachedMax = true
                     speakText(this.msg1)
@@ -58,6 +60,11 @@ class AdjustSliderDelegate(maxVal: Int, minVal: Int, msg1: String, msg2: String,
                     hasReachedMin = true
                     speakText(this.msg2)
                     // TODO: finish fragment
+                }
+
+                // disable talkback from reading out progress as this can interrupt our instructions
+                if (event.eventType == TYPE_WINDOW_CONTENT_CHANGED){
+                    return false
                 }
             }
         }
@@ -70,7 +77,7 @@ class AdjustSliderDelegate(maxVal: Int, minVal: Int, msg1: String, msg2: String,
      * @author Antony Loose
      */
     private fun speakText(text: String){
-        this.ttsEngine.speakOnInitialisation(text)
+        this.ttsEngine.speak(text, true)
         hasReachedMax = true
     }
 
@@ -80,5 +87,6 @@ class AdjustSliderDelegate(maxVal: Int, minVal: Int, msg1: String, msg2: String,
     private fun finishFragment(){
         // TODO: shut off tts and end lesson (Antony)
         // TODO: go to next fragment (Jade)
+        // TODO: shut of tts
     }
 }
