@@ -48,14 +48,10 @@ class AdjustSliderDelegate(activity: AdjustSliderModuleActivity) : View.Accessib
                 }
 
                 // disable talkback from reading out progress as this can interrupt our instructions
-                if (event.eventType == typeViewAccessibilityFocused) {
-                    val text = """
-                        slider: swipe up to increase or down to decrease
-                        or double tap and hold, then move finger to adjust
-                    """.trimIndent()
-                    speakText(text, true)
+                if (event.eventType == typeWindowContentChanged) {
+                    return false
                 }
-                return false
+                return true
             }
         }
 
