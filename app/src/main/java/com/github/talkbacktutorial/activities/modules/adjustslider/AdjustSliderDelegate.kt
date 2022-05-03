@@ -1,11 +1,9 @@
 package com.github.talkbacktutorial.activities.modules.adjustslider
 
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import android.widget.SeekBar
-import androidx.fragment.app.FragmentActivity
 import com.github.talkbacktutorial.TextToSpeechEngine
 
 /**
@@ -16,17 +14,16 @@ import com.github.talkbacktutorial.TextToSpeechEngine
  * @param minVal the value at which you want to trigger the end of the fragment
  * @author Antony Loose
  */
-class AdjustSliderDelegate(maxVal: Int, minVal: Int, msg1: String, msg2: String, activity: AdjustSliderModuleActivity) : View.AccessibilityDelegate() {
+class AdjustSliderDelegate(maxVal: Int, minVal: Int,
+                           private val msg1: String, private val msg2: String, activity: AdjustSliderModuleActivity) : View.AccessibilityDelegate() {
 
     // accessibility constants
     // these values are the constant values of the accessibility event types that we need to detect
-    private val TYPE_VIEW_ACCESSIBILITY_FOCUSED = 32768
-    private val TYPE_WINDOW_CONTENT_CHANGED = 2048
+    private val typeViewAccessibilityFocused = 32768
+    private val typeWindowContentChanged = 2048
     // slider vars
     private val maxValue = maxVal
     private val minValue = minVal
-    private val msg1 = msg1
-    private val msg2 = msg2
     private var hasReachedMax = false
     private var hasReachedMin = false
     // initialise tts
@@ -48,22 +45,24 @@ class AdjustSliderDelegate(maxVal: Int, minVal: Int, msg1: String, msg2: String,
                 we only want to read our instruction on specific events, when the slider value reaches 0/100 and when
                 the slider is highlighted.
             */
-            if (event?.eventType == TYPE_WINDOW_CONTENT_CHANGED || event?.eventType == TYPE_VIEW_ACCESSIBILITY_FOCUSED) {
+            if (event?.eventType == typeWindowContentChanged || event?.eventType == typeViewAccessibilityFocused) {
 
                 val progress = child.progress
                 // use our tts to read progress
-                speakText("$progress%")
+                if (progress%10 == 0) {
+                    speakText("$progress%", false)
+                }
                 if (progress == maxValue) {
                     hasReachedMax = true
-                    speakText(this.msg1)
+                    speakText(this.msg1, true)
                 } else if (progress == minValue && hasReachedMax) {
                     hasReachedMin = true
-                    speakText(this.msg2)
+                    speakText(this.msg2, true)
                     // TODO: finish fragment
                 }
 
                 // disable talkback from reading out progress as this can interrupt our instructions
-                if (event.eventType == TYPE_WINDOW_CONTENT_CHANGED){
+                if (event.eventType == typeWindowContentChanged){
                     return false
                 }
             }
@@ -76,8 +75,8 @@ class AdjustSliderDelegate(maxVal: Int, minVal: Int, msg1: String, msg2: String,
      * Tts reads out input text
      * @author Antony Loose
      */
-    private fun speakText(text: String){
-        this.ttsEngine.speak(text, true)
+    private fun speakText(text: String, override: Boolean){
+        this.ttsEngine.speak(text, override)
         hasReachedMax = true
     }
 
