@@ -1,7 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.adjustslider
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +26,7 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     private lateinit var binding: FragmentAdjustSliderModulePart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
+    lateinit var mainView: ConstraintLayout
     lateinit var menuSlider: SeekBar
     lateinit var sliderBelowTV: TextView
     lateinit var sliderAboveTV: TextView
@@ -47,6 +47,7 @@ class AdjustSliderModulePart2Fragment : Fragment() {
         this.sliderAboveTV = this.binding.sliderAboveTV
         this.sliderRightTV = this.binding.sliderRightTV
         this.sliderLeftTV = this.binding.sliderLeftTV
+        this.mainView = this.binding.adjustSliderModule2Layout
         return binding.root
     }
 
@@ -59,8 +60,8 @@ class AdjustSliderModulePart2Fragment : Fragment() {
                 this.sliderAboveTV.visibility = View.VISIBLE
                 this.sliderRightTV.visibility = View.VISIBLE
                 this.sliderLeftTV.visibility = View.VISIBLE
-
-                menuSlider.accessibilityDelegate =
+                // this is used to execute code before talkback executes on a slider
+                this.mainView.accessibilityDelegate = AdjustSliderDelegate(maxValue, minValue)
 
                 setSliderHandler()
             }
@@ -89,13 +90,7 @@ class AdjustSliderModulePart2Fragment : Fragment() {
             }
 
             override fun onStopTrackingTouch(seek: SeekBar) {
-                if (currentSliderValue == maxValue && !hasReachedMax) {
-                    hasReachedMax = true
-                    speakGoToMin()
-                } else if (currentSliderValue == minValue && hasReachedMax) {
-                    hasReachedMin = true
-                    speakOutro()    // TODO: Replace with ending lesson
-                }
+
             }
         })
     }
