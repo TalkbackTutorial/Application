@@ -49,6 +49,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/menuSlider" />
 
+        <TextView
+            android:id="@+id/sliderRightTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="22dp"
+            android:text="the slider is right"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/sliderAboveTV"
+            app:layout_constraintEnd_toStartOf="@+id/menuSlider"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sliderBelowTV" />
+
+        <TextView
+            android:id="@+id/sliderLeftTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="23dp"
+            android:text="the slider is left"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/sliderAboveTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/menuSlider"
+            app:layout_constraintTop_toBottomOf="@+id/sliderBelowTV" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

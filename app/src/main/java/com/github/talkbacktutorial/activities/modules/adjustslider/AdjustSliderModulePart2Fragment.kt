@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
@@ -29,6 +30,8 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     lateinit var menuSlider: SeekBar
     lateinit var sliderBelowTV: TextView
     lateinit var sliderAboveTV: TextView
+    lateinit var sliderRightTV: TextView
+    lateinit var sliderLeftTV: TextView
 
     var currentSliderValue: Int = 0
     var maxValue: Int = 100
@@ -42,6 +45,8 @@ class AdjustSliderModulePart2Fragment : Fragment() {
         this.menuSlider = this.binding.menuSlider
         this.sliderBelowTV = this.binding.sliderBelowTV
         this.sliderAboveTV = this.binding.sliderAboveTV
+        this.sliderRightTV = this.binding.sliderRightTV
+        this.sliderLeftTV = this.binding.sliderLeftTV
         return binding.root
     }
 
@@ -52,6 +57,11 @@ class AdjustSliderModulePart2Fragment : Fragment() {
                 this.menuSlider.visibility = View.VISIBLE
                 this.sliderBelowTV.visibility = View.VISIBLE
                 this.sliderAboveTV.visibility = View.VISIBLE
+                this.sliderRightTV.visibility = View.VISIBLE
+                this.sliderLeftTV.visibility = View.VISIBLE
+
+                menuSlider.accessibilityDelegate =
+
                 setSliderHandler()
             }
         this.speakIntro()
