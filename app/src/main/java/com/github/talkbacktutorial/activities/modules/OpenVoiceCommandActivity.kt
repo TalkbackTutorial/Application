@@ -11,7 +11,7 @@ import com.github.talkbacktutorial.databinding.ActivityModuleOpenVoiceCommandBin
 
 class OpenVoiceCommandActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityModuleOpenRecentAppsBinding
+    lateinit var binding: ActivityModuleOpenVoiceCOmmandBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
