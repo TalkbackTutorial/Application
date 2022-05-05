@@ -19,7 +19,7 @@ class GoToHomeScreenModule : AppCompatActivity() {
         val intro = """
             Welcome.
             In this module, you'll learn how to return to the home screen from inside an application,
-            to perform this task, swipe left then up. Try it now.
+            to perform this task, swipe up then left. Try it now.
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
