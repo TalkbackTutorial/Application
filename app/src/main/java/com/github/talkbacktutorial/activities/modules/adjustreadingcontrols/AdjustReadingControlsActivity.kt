@@ -28,7 +28,8 @@ class AdjustReadingControlsActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         // bind activity to layout - this makes our binding work
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_adjust_reading_controls_module)
+        this.binding =
+            DataBindingUtil.setContentView(this, R.layout.activity_adjust_reading_controls_module)
 
         // ask the fragment manager to add our fragment, replacing the existing frame in the layout
         supportFragmentManager.commit {

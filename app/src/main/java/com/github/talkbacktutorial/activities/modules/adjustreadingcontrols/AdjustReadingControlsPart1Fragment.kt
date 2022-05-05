@@ -30,7 +30,12 @@ class AdjustReadingControlsPart1Fragment : Fragment() {
             Here, we inflate our layout file (basically, turning the XML into a UI) through
             DataBindingUtil, which will provide our layout binding during the inflate process.
          */
-        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_adjust_reading_controls_part1, container, false)
+        this.binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_adjust_reading_controls_part1,
+            container,
+            false
+        )
         return binding.root
     }
 
