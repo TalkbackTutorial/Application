@@ -16,12 +16,13 @@ class AdjustSliderDelegate(activity: AdjustSliderModuleActivity) : View.Accessib
 
     // accessibility constants
     // these values are the constant values of the accessibility event types that we need to detect
-    private val typeViewAccessibilityFocused = 32768
-    private val typeWindowContentChanged = 2048
-    // slider vars
+    companion object {
+        private const val TYPE_VIEW_ACCESSIBILITY_FOCUSED = 32768
+        private const val TYPE_WINDOW_CONTENT_CHANGED = 2048
+    }
 
     // initialise tts
-    private var ttsEngine = TextToSpeechEngine((activity)).onFinishedSpeaking(triggerOnce = true) {}
+    private val ttsEngine = TextToSpeechEngine(activity)
 
     /**
      * This method runs when an accessibility event occurs.
@@ -30,7 +31,8 @@ class AdjustSliderDelegate(activity: AdjustSliderModuleActivity) : View.Accessib
      * this is so that talkback doesn't interrupt our tts when reading out instructions
      * @author Antony Loose
      */
-    override fun onRequestSendAccessibilityEvent(host: ViewGroup?, child: View?, event: AccessibilityEvent?
+    override fun onRequestSendAccessibilityEvent(
+        host: ViewGroup?, child: View?, event: AccessibilityEvent?
     ): Boolean {
 
         if (child is SeekBar){
@@ -39,31 +41,18 @@ class AdjustSliderDelegate(activity: AdjustSliderModuleActivity) : View.Accessib
                 we only want to read our instruction on specific events, when the slider value changes and when
                 the slider is highlighted.
             */
-            if (event?.eventType == typeWindowContentChanged || event?.eventType == typeViewAccessibilityFocused) {
-
+            if (event?.eventType == TYPE_WINDOW_CONTENT_CHANGED || event?.eventType == TYPE_VIEW_ACCESSIBILITY_FOCUSED) {
                 val progress = child.progress
                 // use our tts to read progress
-                if (progress%5 == 0) {
-                    speakText("$progress%", true)
+                if (progress % 5 == 0) {
+                    this.ttsEngine.speak("$progress%", true)
                 }
-
                 // disable talkback from reading out progress as this can interrupt our instructions
-                if (event.eventType == typeWindowContentChanged) {
-                    return false
-                }
-                return true
+                return event.eventType != TYPE_WINDOW_CONTENT_CHANGED
             }
         }
 
         return super.onRequestSendAccessibilityEvent(host, child, event)
-    }
-
-    /**
-     * Tts reads out input text
-     * @author Antony Loose
-     */
-    private fun speakText(text: String, override: Boolean){
-        this.ttsEngine.speak(text, override)
     }
 
 }

@@ -31,10 +31,6 @@ class AdjustSliderModulePart2Fragment : Fragment() {
 
     lateinit var mainView: ConstraintLayout
     lateinit var menuSlider: SeekBar
-    lateinit var sliderBelowTV: TextView
-    lateinit var sliderAboveTV: TextView
-    lateinit var sliderRightTV: TextView
-    lateinit var sliderLeftTV: TextView
 
     // TTS text to speak
     val goToMin = """move your finger left to adjust slider value to 0%""".trimIndent()
@@ -49,8 +45,8 @@ class AdjustSliderModulePart2Fragment : Fragment() {
         """.trimIndent()
 
     // Slider vars
-    var maxValue: Int = 100
-    var minValue: Int = 0
+    val maxValue: Int = 100
+    val minValue: Int = 0
     var hasReachedMax = false
     var hasReachedMin = false
 
@@ -58,10 +54,6 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_adjust_slider_module_part2, container, false)
         this.menuSlider = this.binding.menuSlider
-        this.sliderBelowTV = this.binding.sliderBelowTV
-        this.sliderAboveTV = this.binding.sliderAboveTV
-        this.sliderRightTV = this.binding.sliderRightTV
-        this.sliderLeftTV = this.binding.sliderLeftTV
         this.mainView = this.binding.adjustSliderModule2Layout
         return binding.root
     }
@@ -70,15 +62,10 @@ class AdjustSliderModulePart2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as AdjustSliderModuleActivity))
             .onFinishedSpeaking(triggerOnce = true) {
-                this.menuSlider.visibility = View.VISIBLE
-                this.sliderBelowTV.visibility = View.VISIBLE
-                this.sliderAboveTV.visibility = View.VISIBLE
-                this.sliderRightTV.visibility = View.VISIBLE
-                this.sliderLeftTV.visibility = View.VISIBLE
+                this.mainView.visibility = View.VISIBLE
                 setSliderHandler()
                 // this is used to execute code before talkback executes on a slider
                 this.mainView.accessibilityDelegate = AdjustSliderDelegate(activity as AdjustSliderModuleActivity)
-
             }
         this.ttsEngine.speakOnInitialisation(intro)
     }
@@ -100,7 +87,7 @@ class AdjustSliderModulePart2Fragment : Fragment() {
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
                 if (i == maxValue) {
                     hasReachedMax = true
-                    speakText(goToMin, true)
+                    this@AdjustSliderModulePart2Fragment.ttsEngine.speak(goToMin, true)
                 } else if (i == minValue && hasReachedMax) {
                     hasReachedMin = true
                     finishLesson()
@@ -113,14 +100,6 @@ class AdjustSliderModulePart2Fragment : Fragment() {
             override fun onStopTrackingTouch(seek: SeekBar) {
             }
         })
-    }
-
-    /**
-     * Tts reads out input text
-     * @author Antony Loose
-     */
-    private fun speakText(text: String, override: Boolean){
-        this.ttsEngine.speak(text, override)
     }
 
     /**

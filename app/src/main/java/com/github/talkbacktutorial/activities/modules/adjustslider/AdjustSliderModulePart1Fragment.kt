@@ -26,9 +26,8 @@ class AdjustSliderModulePart1Fragment : Fragment() {
 
     lateinit var mainView: ConstraintLayout
     lateinit var menuSlider: SeekBar
-    var currentSliderValue: Int = 0
-    var maxValue: Int = 100
-    var minValue: Int = 50
+    val maxValue: Int = 100
+    val minValue: Int = 50
     var hasReachedMax = false
     var hasReachedMin = false
 
@@ -36,7 +35,6 @@ class AdjustSliderModulePart1Fragment : Fragment() {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_adjust_slider_module_part1, container, false)
         this.menuSlider = this.binding.menuSlider
         this.mainView = this.binding.adjustSliderModule1Layout
-        currentSliderValue = getSliderValue()
         return binding.root
     }
 
@@ -55,14 +53,6 @@ class AdjustSliderModulePart1Fragment : Fragment() {
     override fun onDestroyView() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
-    }
-
-    /**
-     * Retrieves the current value of the slider
-     * @author Jade Davis
-     */
-    private fun getSliderValue(): Int {
-        return this.menuSlider.progress
     }
 
     /**
@@ -98,7 +88,6 @@ class AdjustSliderModulePart1Fragment : Fragment() {
      * @author Jade Davis
      */
     private fun speakIntro() {
-        // TODO: better intro
         val intro = """
             Welcome to the slider lesson. You can increase the slider value by swiping up
             Practice by using swipe ups to increase the slider to 100%
@@ -116,7 +105,7 @@ class AdjustSliderModulePart1Fragment : Fragment() {
             You can decrease slider values by swiping down.
             Practice by swiping down until the slider value is 50%
         """.trimIndent()
-        this.ttsEngine.speakOnInitialisation(goToMin)
+        this.ttsEngine.speak(goToMin)
     }
 
     /**
@@ -124,12 +113,11 @@ class AdjustSliderModulePart1Fragment : Fragment() {
      * @author Jade Davis
      */
     private fun speakOutro() {
-        // TODO: better outro
         val outro = """
             Well done you now know how to adjust a slider by swiping up or down.
             You will now be taken to the next part of this lesson
         """.trimIndent()
-        this.ttsEngine.speakOnInitialisation(outro)
+        this.ttsEngine.speak(outro)
     }
 
     private fun finishFragment(){
