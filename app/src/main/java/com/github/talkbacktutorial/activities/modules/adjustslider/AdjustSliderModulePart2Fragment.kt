@@ -32,18 +32,6 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     lateinit var mainView: ConstraintLayout
     lateinit var menuSlider: SeekBar
 
-    // TTS text to speak
-    val goToMin = """move your finger left to adjust slider value to 0%""".trimIndent()
-    val outro = """
-        Well done! now you know how to adjust sliders by dragging
-        This gesture can be used for any sliders but will be most useful for adjusting video and song times.
-    """.trimIndent()
-    val intro = """
-            Another way of adjusting sliders is to double tap then drag left to decrease and drag right to increase.
-            Use explore by touch to find the slider then double tap and hold for 1 second to select
-            finally move your finger right until slider value is 100%.
-        """.trimIndent()
-
     // Slider vars
     val maxValue: Int = 100
     val minValue: Int = 0
@@ -67,7 +55,7 @@ class AdjustSliderModulePart2Fragment : Fragment() {
                 // this is used to execute code before talkback executes on a slider
                 this.mainView.accessibilityDelegate = AdjustSliderDelegate(activity as AdjustSliderModuleActivity)
             }
-        this.ttsEngine.speakOnInitialisation(intro)
+        speakIntro()
     }
 
     override fun onDestroyView() {
@@ -87,7 +75,7 @@ class AdjustSliderModulePart2Fragment : Fragment() {
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
                 if (i == maxValue) {
                     hasReachedMax = true
-                    this@AdjustSliderModulePart2Fragment.ttsEngine.speak(goToMin, true)
+                    speakGoToMin()
                 } else if (i == minValue && hasReachedMax) {
                     hasReachedMin = true
                     finishLesson()
@@ -103,6 +91,47 @@ class AdjustSliderModulePart2Fragment : Fragment() {
     }
 
     /**
+     * Speaks an intro for the fragment.
+     * @author Antony Loose
+     */
+    private fun speakIntro() {
+        val intro = """
+            Welcome to the next part of the module.
+            Another way of adjusting sliders is to double tap then drag.
+            To start you will try increasing the sliders value.
+            To increase a slider double tap and hold the slider then drag right.
+            To continue increase the slider value to 100%.
+            Note that you will have to use explore by touch to find the slider.
+        """.trimIndent()
+        this.ttsEngine.speakOnInitialisation(intro)
+    }
+
+    /**
+     * Tells user to go to min slider value
+     * @author Antony Loose
+     */
+    private fun speakGoToMin() {
+        val goToMin = """
+            Now you will try decreasing the sliders value.
+            To decrease a slider double tap and hold then drag left.
+            To continue decrease the slider value to 0%.
+        """.trimIndent()
+        this.ttsEngine.speak(goToMin)
+    }
+
+    /**
+     * Speaks an outro for the fragment.
+     * @author Antony Loose
+     */
+    private fun speakOutro() {
+        val outro = """
+            Well done! now you know how to adjust sliders by dragging.
+            This gesture can be used for any sliders, but will be most useful for adjusting video and song times.
+        """.trimIndent()
+        this.ttsEngine.speak(outro)
+    }
+
+    /**
      * Announced the lesson's completion then returns the user back to the lessons Activity.
      * @author Antony Loose
      */
@@ -112,6 +141,6 @@ class AdjustSliderModulePart2Fragment : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-        this.ttsEngine.speak(outro, override = true)
+        speakOutro()
     }
 }
