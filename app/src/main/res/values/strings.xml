@@ -15,4 +15,9 @@
     <string name="adjust_reading_controls_part1_multi_finger">Modes can also be switched by swiping with three fingers horizontally to the left or to the right.</string>
     <string name="adjust_reading_controls_part1_finished_text">That\'s all there is to changing modes. The rest of this lesson covers how to use these modes. Activate the button below to finish this module.</string>
     <string name="finish_module_button">Finish module</string>
+    <string name="jump_controls_intro_initial_text">The \"Controls\" reading mode allows jumping between buttons, sliders, switches, and other interactive things.</string>
+    <string name="jump_controls_intro_first_prompt">Switch to the Controls reading mode and swipe down to jump to the control at the end of the page.</string>
+    <string name="jump_controls_intro_next_button">Success: activate to continue</string>
+    <string name="wrong_gesture_trap_message">You performed the wrong action. Please try again.</string>
+    <string name="trap_text_view">This element will push you back</string>
 </resources>
