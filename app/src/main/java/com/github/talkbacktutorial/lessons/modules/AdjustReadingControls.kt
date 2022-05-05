@@ -2,8 +2,7 @@ package com.github.talkbacktutorial.lessons.modules
 
 import android.content.Context
 import android.content.Intent
-import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.modules.AdjustReadingControlsActivity
+import com.github.talkbacktutorial.activities.modules.adjustreadingcontrols.AdjustReadingControlsActivity
 
 /**
  * Defines and sets up the module for learning about reading controls.

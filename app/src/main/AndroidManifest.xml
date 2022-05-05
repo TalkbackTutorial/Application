@@ -22,7 +22,7 @@
             android:name=".activities.LessonActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.modules.AdjustReadingControlsActivity"
+            android:name=".activities.modules.adjustreadingcontrols.AdjustReadingControlsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"

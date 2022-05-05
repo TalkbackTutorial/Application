@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules
+package com.github.talkbacktutorial.activities.modules.adjustreadingcontrols
 
 import android.os.Build
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentAdjustReadingControlsPart1Binding
@@ -62,7 +61,7 @@ class AdjustReadingControlsPart1Fragment : Fragment() {
             
             You can go  backwards through the list. Swipe down then up in one motion to go through the list in opposite direction.
             
-            Modes can also bee switched by swiping with three fingers horizontally to the left or to the right.
+            Modes can also by switched by swiping with three fingers horizontally to the left or to the right.
             
             That's all there is to changing modes. The rest of this lesson covers how to use these modes. Activate the button below to finish this module.
         """.trimIndent()
