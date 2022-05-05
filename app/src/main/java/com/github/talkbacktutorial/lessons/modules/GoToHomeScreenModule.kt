@@ -12,7 +12,7 @@ class GoToHomeScreenModule : Module() { // E.g. PausingAndPlayingMediaModule
     override val title: String = "Go To Home Screen" // E.g. "Pause and Play Media"
 
     override fun startActivity(context: Context) {
-        context.startActivity(Intent(context, TodoModuleXModuleActivity::class.java))
+        context.startActivity(Intent(context, GoToHomeScreenModule::class.java))
     }
 
 }
