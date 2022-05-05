@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
+            android:name=".activities.modules.GoToHomeScreenModule"
+            android:exported="false" />
+        <activity
             android:name=".activities.lesson0.Lesson0Activity"
             android:exported="false" />
         <activity
