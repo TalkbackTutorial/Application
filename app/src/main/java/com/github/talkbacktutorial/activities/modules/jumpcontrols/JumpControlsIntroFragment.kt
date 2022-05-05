@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
@@ -24,7 +26,7 @@ class JumpControlsIntroFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         this.binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_jump_controls_intro,
@@ -35,7 +37,26 @@ class JumpControlsIntroFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // set accessibility delegate/interceptor
+        view.accessibilityDelegate = InterceptorDelegate()
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private class InterceptorDelegate : View.AccessibilityDelegate() {
+        override fun onRequestSendAccessibilityEvent(
+            host: ViewGroup?,
+            child: View?,
+            event: AccessibilityEvent?
+        ): Boolean {
+            if (event?.eventType == AccessibilityEvent.TYPE_VIEW_FOCUSED) {
+                if (child?.id == R.id.trap_text) {
+                    val wrongActionText = host?.findViewById<TextView>(R.id.wrong_action_message)
+                    wrongActionText?.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+                }
+            }
+
+            return super.onRequestSendAccessibilityEvent(host, child, event)
+        }
     }
 
 }
