@@ -12,6 +12,25 @@ class OpenRecentAppsPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentOpenRecentAppsPart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
+    private lateinit var gestureListener: GestureListener
+
+    private class GestureListener: GestureDetector.SimpleOnGestureListener() {
+        @Override
+        override fun onFling(
+            e1: MotionEvent?,
+            e2: MotionEvent?,
+            velocityX: Float,
+            velocityY: Float
+        ): Boolean {
+            return if (velocityX < 0) {
+                System.out.println("Swipe left")
+                super.onFling(e1, e2, velocityX, velocityY)
+            } else {
+                System.out.println("Not swipe left")
+                super.onFling(e1, e2, velocityX, velocityY)
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +45,11 @@ class OpenRecentAppsPart1Fragment : Fragment() {
         this.ttsEngine = TextToSpeechEngine((activity as OpenRecentAppsActivity))
             .onFinishedSpeaking(triggerOnce = true) {
             }
+
         this.speakIntro()
     }
+
+
 
     /**
      * Speaks an intro for the fragment.
@@ -46,4 +68,5 @@ class OpenRecentAppsPart1Fragment : Fragment() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }
+
 }
