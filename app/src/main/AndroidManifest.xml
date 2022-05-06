@@ -25,6 +25,9 @@
             android:name=".activities.modules.adjustreadingcontrols.AdjustReadingControlsActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.modules.jumpreadingcontrols.JumpReadingControlsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.modules.jumpcontrols.JumpControlsActivity"
             android:exported="false" />
         <activity

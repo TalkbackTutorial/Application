@@ -8,10 +8,32 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/continue_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_marginVertical="@dimen/vertical_card_spacing"
+        app:cardBackgroundColor="@color/foreground_fill"
+        app:cardElevation="0dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/horizontal_card_spacing" >
+
+            <TextView
+                android:id="@+id/continue_jump_reading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="If you have changed reading mode to Paragraph mode, Please double tap to continue"
+                android:textColor="?android:attr/textColorPrimary" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>

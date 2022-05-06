@@ -7,6 +7,12 @@ import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.ActivityJumpReadingControlsModuleBinding
 
+/**
+ * Activity for learning how to jump items on the screen with reading modes.
+ *
+ * @author Joel Yang
+ * @see com.github.talkbacktutorial.lessons.modules.JumpReadingControls
+ */
 class JumpReadingControlsActivity : AppCompatActivity() {
     /**
      * Data binding used to make manipulating the interface easier. Every element on the layout will

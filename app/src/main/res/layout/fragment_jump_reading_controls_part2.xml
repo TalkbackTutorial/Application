@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_fill">
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="292dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="8dp"
+            android:text="Can you can a canned can into an un-canned can like a canner can can a canned can into an un-canned can?"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="292dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="8dp"
+            android:text="She sells seashells on the seashore. The shells she sells are seashells, I’m sure. And if she sells seashells on the seashore, Then I’m sure she sells seashore shells."
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="292dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="48dp"
+            android:text="Peter Piper picked a peck of pickled peppers; A peck of pickled peppers Peter Piper picked; If Peter Piper picked a peck of pickled peppers, Where’s the peck of pickled peppers Peter Piper picked"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="56dp"
+            android:text="Finish Lesson"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
