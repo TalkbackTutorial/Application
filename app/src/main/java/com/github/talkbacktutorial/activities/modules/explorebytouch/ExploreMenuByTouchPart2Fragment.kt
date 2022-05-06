@@ -18,7 +18,6 @@ import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 /**
  * Part2 Fragment of explore menu by touch module
  * @author Jason Wu
- * @todo disable the swipe
  */
 class ExploreMenuByTouchPart2Fragment : Fragment() {
     companion object {
@@ -117,7 +116,6 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
     private fun speakIntro() {
         val intro = """
             To finish this module, you will need to find the finish button in the menu items.
-            Notice, swipe left and right is disabled in this module.
             Once you find the button, double tap to finish the module.
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
