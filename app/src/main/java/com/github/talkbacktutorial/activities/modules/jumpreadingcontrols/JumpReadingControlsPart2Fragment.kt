@@ -54,7 +54,7 @@ class JumpReadingControlsPart2Fragment : Fragment() {
             }
         this.speakIntro()
         binding.finish.setOnClickListener {
-            activity?.onBackPressed()
+            this.onClickFinishLesson()
         }
 
     }
@@ -77,13 +77,11 @@ class JumpReadingControlsPart2Fragment : Fragment() {
      */
     private fun onClickFinishLesson(){
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as JumpReadingControlsActivity), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            activity?.onBackPressed()
         }
         this.ttsEngine.speak("You have completed the lesson..." +
                 "To summarize, in this lesson you have learnt to use the Paragraph reading mode to navigate through the page..." +
-                "You can also use what you have learnt on other reading modes next time!" +
+                "You can also use what you have learnt on other reading modes such as characters, headings, words, lines and more!" +
                 "Sending you back to the Lesson modules.", override = true)
     }
 
