@@ -46,6 +46,11 @@ class GoBackModulePart2Fragment : Fragment() {
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        GoBackModulePart1Fragment.returning = true
+    }
+
 
 
 
