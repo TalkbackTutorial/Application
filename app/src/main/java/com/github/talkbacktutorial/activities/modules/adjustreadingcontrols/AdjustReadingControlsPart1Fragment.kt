@@ -19,7 +19,6 @@ import com.github.talkbacktutorial.databinding.FragmentAdjustReadingControlsPart
  */
 class AdjustReadingControlsPart1Fragment : Fragment() {
     private lateinit var binding: FragmentAdjustReadingControlsPart1Binding
-    private lateinit var ttsEngine: TextToSpeechEngine
 
     // callback run after this fragment is created for AdjustReadingControlsActivity
     override fun onCreateView(
@@ -52,29 +51,5 @@ class AdjustReadingControlsPart1Fragment : Fragment() {
         binding.finishModule.setOnClickListener {
             activity?.onBackPressed()
         }
-
-        this.speakIntro()
-    }
-
-    private fun speakIntro() {
-        val intro = """
-            We'll be learning how to adjust Talkback's reading controls, which lets us make TalkBack read and navigate
-            in different ways. Talkback has reading modes, such as word-by-word, and navigation modes, such as jumping 
-            from header to header. When you change modes, Talkback will speak the mode you switched to.
-            
-            To change your mode, swipe up and down in one motion. Take your time to cycle through all the choices.
-            
-            You can go  backwards through the list. Swipe down then up in one motion to go through the list in opposite direction.
-            
-            Modes can also by switched by swiping with three fingers horizontally to the left or to the right.
-            
-            That's all there is to changing modes. The rest of this lesson covers how to use these modes. Activate the button below to finish this module.
-        """.trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
-    }
-
-    override fun onDestroyView() {
-        this.ttsEngine.shutDown()
-        super.onDestroyView()
     }
 }
