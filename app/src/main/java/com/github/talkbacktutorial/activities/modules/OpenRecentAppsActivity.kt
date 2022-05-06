@@ -17,7 +17,8 @@ class OpenRecentAppsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_module_open_recent_apps)
+        this.binding =
+            DataBindingUtil.setContentView(this, R.layout.activity_module_open_recent_apps)
         supportFragmentManager.commit {
             replace(R.id.frame, OpenRecentAppsPart1Fragment())
             addToBackStack("openRecentAppsPart1")

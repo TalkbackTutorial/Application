@@ -17,10 +17,11 @@ class OpenNotificationModuleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_open_notification_module)
+        this.binding =
+            DataBindingUtil.setContentView(this, R.layout.activity_open_notification_module)
         supportFragmentManager.commit {
-            replace(R.id.frame, (OpenNotificationFragment()))
-            addToBackStack("openRecentAppsPart1")
+            replace(R.id.frame, (OpenNotificationModuleFragment()))
+            addToBackStack("openNotification")
         }
     }
 
@@ -33,5 +34,4 @@ class OpenNotificationModuleActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }

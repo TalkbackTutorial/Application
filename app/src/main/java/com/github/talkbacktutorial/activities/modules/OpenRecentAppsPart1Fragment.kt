@@ -14,7 +14,7 @@ class OpenRecentAppsPart1Fragment : Fragment() {
     private lateinit var ttsEngine: TextToSpeechEngine
     private lateinit var gestureListener: GestureListener
 
-    private class GestureListener: GestureDetector.SimpleOnGestureListener() {
+    private class GestureListener : GestureDetector.SimpleOnGestureListener() {
         @Override
         override fun onFling(
             e1: MotionEvent?,
@@ -36,7 +36,12 @@ class OpenRecentAppsPart1Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_open_recent_apps_part1, container, false)
+        this.binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_open_recent_apps_part1,
+            container,
+            false
+        )
         return binding.root
     }
 
@@ -48,8 +53,6 @@ class OpenRecentAppsPart1Fragment : Fragment() {
 
         this.speakIntro()
     }
-
-
 
     /**
      * Speaks an intro for the fragment.
