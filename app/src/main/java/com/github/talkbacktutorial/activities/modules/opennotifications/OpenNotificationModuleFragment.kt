@@ -1,12 +1,14 @@
 package com.github.talkbacktutorial.activities.modules.opennotifications;
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentOpenNotificationBinding
 
 
@@ -20,6 +22,8 @@ class OpenNotificationModuleFragment : Fragment() {
     private lateinit var binding: FragmentOpenNotificationBinding
     private lateinit var ttsEngine: TextToSpeechEngine
 
+    var viewChangeCounter = 0
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,6 +35,7 @@ class OpenNotificationModuleFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        view.accessibilityDelegate = InterceptorDelegate()
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine =
             TextToSpeechEngine((activity as OpenNotificationModuleActivity)).onFinishedSpeaking(
@@ -48,7 +53,6 @@ class OpenNotificationModuleFragment : Fragment() {
      * @author Vinh Tuan Huynh
      */
     private fun observeUser() {
-        var viewChangeCounter = 0
         addOnWindowFocusChangeListener {
             speakFeedback(viewChangeCounter)
             viewChangeCounter++;
@@ -64,20 +68,22 @@ class OpenNotificationModuleFragment : Fragment() {
         if (counter == 0) {
             //Once the user open it. Teach them how to close it
             ttsEngine.speak(
-                "Good job. You have opened the notification drawer. Now try to close by doing the same gesture but" +
+                "Good job. You have opened the notification drawer. Now try to close it by doing the same gesture but" +
                         " this time start from the bottom to top"
             )
         } else if (counter == 1) {
             //Once the user close it. Teach them how to do it by swiping right then down
             ttsEngine.speak(
-                "Well done. The notification drawer has been closed. Let's try to open it one more time." +
-                        "But this time, open it by swiping right then down immediately."
+                "Well done. The notification drawer has been closed. Let's try to open it one more time" +
+                        "but this time, open it by swiping right, then down immediately."
             )
         } else if (counter == 2) {
             //Tell the user to close it again
             ttsEngine.speak("Excellent. Now close it to move on to new lesson")
         } else if (counter == 3) {
             //move the user to the next lesson/module
+            viewChangeCounter = 0
+            finishLesson()
         }
     }
 
@@ -103,10 +109,7 @@ class OpenNotificationModuleFragment : Fragment() {
      */
     private fun speakIntro() {
         val intro = """
-            Welcome. In this module, you'll learn how to open your notifications. 
-            Notifications are a way to let you know that something new has happened so you don't miss
-            anything that might be worth your attention and appears whether you are using the application or not
-            There are two way to do this. First, let's open the notification drawer by putting 2 finger on top of the screen then swipe down.
+            Welcome. 
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
@@ -119,12 +122,22 @@ class OpenNotificationModuleFragment : Fragment() {
         val outro = """
             Well done! You now know how to open and check and close your notification drawer. 
             Notification drawer can also be used to perform many kind of shortcut. For example, connect or disconnect wifi or bluetooth.
+            You have completed the lesson. We will send you back.
         """.trimIndent()
         this.ttsEngine.speak(outro)
     }
 
-    private fun finishFragment() {
-        this.ttsEngine.onFinishedSpeaking {
+    /**
+     * To do when finish the lesson
+     * @author Vinh Tuan Huynh
+     */
+    private fun finishLesson() {
+        removeOnWindowFocusChangeListener {}
+        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+            val intent =
+                Intent((activity as OpenNotificationModuleActivity), MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
         }
         this.speakOutro()
     }
@@ -133,4 +146,19 @@ class OpenNotificationModuleFragment : Fragment() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }
+
+    private class InterceptorDelegate : View.AccessibilityDelegate() {
+        private lateinit var ttsEngine: TextToSpeechEngine
+
+        override fun onRequestSendAccessibilityEvent(
+            host: ViewGroup?,
+            child: View?,
+            event: AccessibilityEvent?
+        ): Boolean {
+            if (event?.eventType == AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED) {
+            }
+            return super.onRequestSendAccessibilityEvent(host, child, event)
+        }
+    }
+
 }
