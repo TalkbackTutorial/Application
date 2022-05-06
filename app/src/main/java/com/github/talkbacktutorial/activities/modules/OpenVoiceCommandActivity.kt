@@ -7,17 +7,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.ActivityModuleOpenVoiceCommandBinding
+import com.github.talkbacktutorial.databinding.ActivityModuleOpenVoiceCommandsBinding
 
 class OpenVoiceCommandActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityModuleOpenVoiceCOmmandBinding
+    lateinit var binding: ActivityModuleOpenVoiceCommandsBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_module_open_voice_command)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_module_open_voice_commands)
         supportFragmentManager.commit {
             replace(R.id.frame, OpenVoiceCommandFragment())
             addToBackStack("openVoiceCommands")
