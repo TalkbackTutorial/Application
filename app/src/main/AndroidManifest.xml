@@ -25,6 +25,9 @@
             android:name=".activities.modules.OpenRecentAppsActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.modules.opennotifications.OpenNotificationModuleActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.LessonActivity"
             android:exported="false" />
         <activity
