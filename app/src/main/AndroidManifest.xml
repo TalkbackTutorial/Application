@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
+            android:name=".activities.modules.GoToHomeScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.lesson0.Lesson0Activity"
             android:exported="false" />
         <activity
@@ -17,6 +20,12 @@
             android:exported="false" />
         <activity
             android:name=".activities.modules.TodoModuleXModuleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.OpenRecentAppsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.opennotifications.OpenNotificationModuleActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LessonActivity"
