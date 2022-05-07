@@ -53,6 +53,7 @@ class StartStopMediaPart1Fragment: Fragment() {
         // Get videoView by id
         this.videoView = this.binding.customVideoview
         videoView.setVideoPath("android.resource://" + requireActivity().packageName + "/" + R.raw.video_test)
+        /*
         mediaController = object: MediaController(context){
             //for not hiding
             override fun hide() {
@@ -68,15 +69,16 @@ class StartStopMediaPart1Fragment: Fragment() {
                 return true
             }
         }
+        */
         mediaController?.setAnchorView(videoView);
         mediaController?.setMediaPlayer(videoView);
         mediaController?.requestFocus();
         mediaController = MediaController(context)
-        videoView.setOnPreparedListener(object: MediaPlayer.OnPreparedListener{
+        /*videoView.setOnPreparedListener(object: MediaPlayer.OnPreparedListener{
             override fun onPrepared(mp: MediaPlayer) {
                 mediaController?.show(0)
             }
-        })
+        })*/
 
         // Set play pause listener
         videoView.setPlayPauseListener(object: CustomVideoView.PlayPauseListener{
@@ -121,8 +123,9 @@ class StartStopMediaPart1Fragment: Fragment() {
     private fun speakIntro(){
         val intro = """
             In this tutorial, you will be learning how to start and stop a video. 
-            To start, explore your screen by touch to find the play button. 
-            Double tap on the play button to start playing the video.
+            To start, double tap your screen by touch to bring up the media controller. 
+            Next swipe right until you find the play button. Double tap to start playing the video.
+            If nothing happens when you swipe, double tap again to bring up the media controller.
             """.trimIndent()
 
         this.ttsEngine.speakOnInitialisation(intro)
