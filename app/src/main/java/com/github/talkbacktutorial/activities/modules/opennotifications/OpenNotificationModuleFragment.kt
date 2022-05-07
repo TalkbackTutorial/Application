@@ -73,25 +73,23 @@ class OpenNotificationModuleFragment : Fragment() {
             // once the user open noti panel. Teach them how to close it. Since Talkback will be talking a lot here and there is no way to stop it,
             // extend the timer so tts engine can talk after Talkback is done talking.
             // ***Note that the delay time does not have to be exact it can be anything as long as it is after Talkback start ranting :)
-            Timer().schedule(3000) {
+            Timer().schedule(5000) {
                 ttsEngine.speak(
                     "Good job. You have opened the notification panel. Now try to close it by doing the same gesture but" +
                             " this time start from the bottom to top"
                 )
             }
         } else if (counter == 1) {
-            // once the user close the panel. Teach them how to do it by swiping right then down
+            //once the user close the panel . Teach them how to do it by swiping right then down
             ttsEngine.speak(
                 "Well done. The notification panel has been closed. Let's try to open it one more time" +
                         "but this time, open it by swiping right, then down immediately."
             )
-
         } else if (counter == 2) {
             // tell the user to close the panel after it is opened again
-            Timer().schedule(3000) {
+            Timer().schedule(5000) {
                 ttsEngine.speak("Excellent. Now close it again by swiping from the bottom with 2 finger")
             }
-
         } else if (counter == 3) {
             // move the user to the next lesson/module
             viewChangeCounter = 0
@@ -123,7 +121,9 @@ class OpenNotificationModuleFragment : Fragment() {
         val intro = """
             Welcome. In this module, you'll learn how to open your notification panel. 
             Notifications are a way to let you know that something new has happened so you don't miss anything that might be worth your attention and appears whether you are using the application or not
-            There are two way to do this. First, let's open the notification drawer by putting 2 finger on top of the screen then swipe down.
+            There are two way to do this. First, let's open the notification panel by putting 2 finger on top of the screen then swipe down.
+            Once you opened the notification panel, Talkback will start taking over for a few second. 
+            Please wait until Talkback is done then follow the next instruction. Good luck.
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
