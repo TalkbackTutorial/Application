@@ -17,7 +17,7 @@
     <string name="finish_module_button">Finish module</string>
     <string name="jump_controls_intro_initial_text">The \"Controls\" reading mode allows jumping between buttons, sliders, switches, and other interactive things.</string>
     <string name="jump_controls_intro_first_prompt">Switch to the Controls reading mode and swipe down to jump to the control at the end of the page.</string>
-    <string name="jump_controls_intro_next_button">Success: activate to continue</string>
+    <string name="jump_controls_intro_next_button">Success: activate to finish module</string>
     <string name="wrong_gesture_trap_message">You performed the wrong action. Please try again.</string>
     <string name="trap_text_view">This element will push you back</string>
 </resources>

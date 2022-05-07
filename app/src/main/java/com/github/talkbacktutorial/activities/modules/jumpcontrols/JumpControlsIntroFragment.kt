@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
@@ -38,21 +37,29 @@ class JumpControlsIntroFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // set accessibility delegate/interceptor
-        view.accessibilityDelegate = InterceptorDelegate()
+        view.accessibilityDelegate = InterceptorDelegate(this.binding)
+
+        // set button action to finish activity
+        binding.successButton.setOnClickListener {
+            activity?.finish()
+        }
+
+        binding.pushback.accessibilityClassName
+
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private class InterceptorDelegate : View.AccessibilityDelegate() {
+    private class InterceptorDelegate(val binding: FragmentJumpControlsIntroBinding) :
+        View.AccessibilityDelegate() {
+
         override fun onRequestSendAccessibilityEvent(
             host: ViewGroup?,
             child: View?,
             event: AccessibilityEvent?
         ): Boolean {
-            if (event?.eventType == AccessibilityEvent.TYPE_VIEW_FOCUSED) {
-                if (child?.id == R.id.trap_text) {
-                    val wrongActionText = host?.findViewById<TextView>(R.id.wrong_action_message)
-                    wrongActionText?.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
-                }
+            if (event?.eventType == AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED) {
+                if (binding.pushback.isAccessibilityFocused)
+                    binding.wrongActionMessage.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
             }
 
             return super.onRequestSendAccessibilityEvent(host, child, event)
