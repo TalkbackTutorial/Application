@@ -109,7 +109,10 @@ class OpenNotificationModuleFragment : Fragment() {
      */
     private fun speakIntro() {
         val intro = """
-            Welcome. 
+            Welcome. In this module, you'll learn how to open your notifications. 
+            Notifications are a way to let you know that something new has happened so you don't miss
+            anything that might be worth your attention and appears whether you are using the application or not
+            There are two way to do this. First, let's open the notification drawer by putting 2 finger on top of the screen then swipe down.
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
