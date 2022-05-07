@@ -84,29 +84,33 @@ class StartStopMediaPart1Fragment: Fragment() {
         videoView.setPlayPauseListener(object: CustomVideoView.PlayPauseListener{
             override fun onPause() {
                 Log.i(TAG, "PAUSE = " + videoView.isPlaying)
-                binding.startStopMediaControlConstraintLayout.visibility = View.GONE
-                ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                    binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
-                }
-                mediaController?.hide()
-                val info = """
+                if (!firstPlay) {
+                    binding.startStopMediaControlConstraintLayout.visibility = View.GONE
+                    ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                        binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
+                    }
+                    mediaController?.hide()
+                    val info = """
                         Great job! You've paused the video.
                         Congratulations on completing this lesson.
                         In this lesson you have successfully learn how to play and pause a video.
                         To exit this lesson, select the finish button on the screen.
                     """.trimIndent()
 
-                ttsEngine.speak(info)
-                firstPause = false
-                insertFinishButton()
+                    ttsEngine.speak(info)
+                    firstPause = false
+                    insertFinishButton()
+                }
+
             }
 
             override fun onPlay() {
                 Log.i(TAG, "PLAY = " + videoView.isPlaying)
-                binding.startStopMediaControlConstraintLayout.visibility = View.GONE
-                ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+
+                /*ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                     binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
-                }
+                    firstPlay = false
+                }*/
                 mediaController?.hide()
                 if (firstPlay){
                     val info = """
@@ -115,9 +119,15 @@ class StartStopMediaPart1Fragment: Fragment() {
                         To pause the video, explore by touch to find the pause button and double tap
                         on the button to pause the video.
                     """.trimIndent()
-
+                    videoView.pause()
                     ttsEngine.speak(info)
-                    firstPlay = false
+                    binding.startStopMediaControlConstraintLayout.visibility = View.GONE
+                    ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                        binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
+                        firstPlay = false
+                        videoView.start()
+                    }
+                    //firstPlay = false
                 }
 
 
