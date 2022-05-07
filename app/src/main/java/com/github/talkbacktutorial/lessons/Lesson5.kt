@@ -11,7 +11,6 @@ class Lesson5 : Lesson() {
         GoToHomeScreenModule(),
         OpenNotificationsModule(),
         OpenRecentAppsModule(),
-        OpenTalkbackMenuModule(),
         OpenVoiceCommandModule()
     ))
 

@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules
+package com.github.talkbacktutorial.activities.modules.openrecentapps
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.activities.modules.OpenRecentAppsPart1Fragment
 import com.github.talkbacktutorial.databinding.ActivityModuleOpenRecentAppsBinding
 
 class OpenRecentAppsActivity : AppCompatActivity() {

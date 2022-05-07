@@ -10,8 +10,6 @@ object LessonContainer {
 
     private val lessons = ArrayList<Lesson>(listOf(
         Lesson0(),
-        Lesson1(),
-        Lesson2(),
         Lesson5()
     ))
 

@@ -6,31 +6,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.modules.openrecentapps.OpenRecentAppsActivity
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart1Binding
 
 class OpenRecentAppsPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentOpenRecentAppsPart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private lateinit var gestureListener: GestureListener
-
-    private class GestureListener : GestureDetector.SimpleOnGestureListener() {
-        @Override
-        override fun onFling(
-            e1: MotionEvent?,
-            e2: MotionEvent?,
-            velocityX: Float,
-            velocityY: Float
-        ): Boolean {
-            return if (velocityX < 0) {
-                System.out.println("Swipe left")
-                super.onFling(e1, e2, velocityX, velocityY)
-            } else {
-                System.out.println("Not swipe left")
-                super.onFling(e1, e2, velocityX, velocityY)
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
