@@ -18,7 +18,7 @@ class MediaVolumeControlModuleActivity: AppCompatActivity() {
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_media_volume_control_module)
         supportFragmentManager.commit {
-            replace(R.id.frame1, MediaVolumeControlPart2Fragment.newInstance())
+            replace(R.id.frame1, MediaVolumeControlPart1Fragment.newInstance())
             addToBackStack("mediaVolumeControlPart1")
         }
     }
