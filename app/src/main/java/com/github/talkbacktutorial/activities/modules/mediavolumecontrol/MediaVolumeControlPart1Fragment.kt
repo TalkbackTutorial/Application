@@ -1,16 +1,22 @@
 package com.github.talkbacktutorial.activities.modules.mediavolumecontrol
 
 import android.content.Context
+import android.content.Context.*
 import android.content.Intent
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityManager
 import android.widget.Button
 import android.widget.SeekBar
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.constraintlayout.widget.ConstraintSet.*
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
@@ -35,6 +41,7 @@ class MediaVolumeControlPart1Fragment: Fragment() {
     private var seekbarVolume:SeekBar? = null
     private var currentVolume: Int = 50
     private var swipeUp:Boolean = false
+    private lateinit var accessibilityManager:AccessibilityManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +61,7 @@ class MediaVolumeControlPart1Fragment: Fragment() {
 
         // media setup
         audioManager = requireActivity().getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        accessibilityManager = requireActivity().getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
 
         this.seekbarVolume = this.binding.volumeControlSeekBar
         mediaControls()
@@ -87,43 +95,48 @@ class MediaVolumeControlPart1Fragment: Fragment() {
                     currentVolume = p1
                     var volumeNum = p1/100.0f
                     mediaPlayer?.setVolume(volumeNum, volumeNum)
-
-                    if(currentVolume >= 75){
-                        binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
-                        ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                            binding.mediaVolumeControlConstraintLayout.visibility = View.VISIBLE
-                        }
-                        val info = """
-                        current Volume is set above 75.
-                        Now that you learned how to increase the volume, we will try decreasing the volume below 25.
-                        To decrease the volume, swipe down.
-                        """.trimIndent()
-                        ttsEngine.speak(info)
-                        swipeUp = true
-                    } else if (currentVolume <= 25 && swipeUp){
-                        binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
-                        ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                            binding.mediaVolumeControlConstraintLayout.visibility = View.VISIBLE
-                            insertFinishButton()
-                        }
-                        stopMedia()
-                        val info = """
-                        current volume is set below 25.
-                        Congratulations on completing this lesson.
-                        In this lesson you have successfully learn how to control the media volume of your phone.
-                        To exit this lesson, select the finish button on the screen.
-                        """.trimIndent()
-                        ttsEngine.speak(info)
-                    }
                 }
+
+                if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled) lessonLogic()
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
             }
 
             override fun onStopTrackingTouch(p0: SeekBar?) {
+                lessonLogic()
             }
         })
+    }
+
+    private fun lessonLogic(){
+        if(currentVolume >= 75){
+            binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
+            ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                binding.mediaVolumeControlConstraintLayout.visibility = View.VISIBLE
+            }
+            val info = """
+                        current Volume is set above 75.
+                        Now that you learned how to increase the volume, we will try decreasing the volume below 25.
+                        To decrease the volume, swipe down.
+                        """.trimIndent()
+            ttsEngine.speak(info)
+            swipeUp = true
+        } else if (currentVolume <= 25 && swipeUp){
+            binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
+            ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                binding.mediaVolumeControlConstraintLayout.visibility = View.VISIBLE
+                insertFinishButton()
+            }
+            stopMedia()
+            val info = """
+                        current volume is set below 25.
+                        Congratulations on completing this lesson.
+                        In this lesson you have successfully learn how to control the media volume of your phone.
+                        To exit this lesson, select the finish button on the screen.
+                        """.trimIndent()
+            ttsEngine.speak(info)
+        }
     }
 
     private fun stopMedia(){
@@ -137,14 +150,23 @@ class MediaVolumeControlPart1Fragment: Fragment() {
 
      private fun insertFinishButton(){
          val constraintLayout = this.binding.mediaVolumeControlConstraintLayout
+         val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
+         layoutParams.horizontalBias = 0.95f
+         layoutParams.endToEnd = constraintLayout.id
+         layoutParams.startToStart = constraintLayout.id
+         layoutParams.topToTop = constraintLayout.id
+         layoutParams.topMargin = 10.dpToPixels(requireContext())
          val finishButton = Button(requireContext())
-         finishButton.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
-         finishButton.text = "Finish"
+         val text = "Finish"
+         finishButton.contentDescription = text
+         finishButton.text = text
+         finishButton.layoutParams = layoutParams
          finishButton.setBackgroundResource(R.color.green_A400)
          finishButton.setOnClickListener(View.OnClickListener {
              endLesson()
          })
-         constraintLayout.addView(finishButton);
+
+         constraintLayout.addView(finishButton)
      }
 
     private fun speakIntro(){
@@ -172,4 +194,8 @@ class MediaVolumeControlPart1Fragment: Fragment() {
         stopMedia()
         super.onDestroyView()
     }
+
+    private fun Int.dpToPixels(context: Context):Int = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,this.toFloat(),context.resources.displayMetrics
+    ).toInt()
 }
