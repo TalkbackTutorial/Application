@@ -34,6 +34,14 @@
                     android:text="@string/adjust_reading_controls_part1_intro" />
 
                 <TextView
+                    android:id="@+id/intro2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/adjust_reading_controls_part1_justification" />
+
+                <TextView
                     android:id="@+id/up_down_prompt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

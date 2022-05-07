@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
+import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
@@ -39,16 +40,27 @@ class JumpControlsIntroFragment : Fragment() {
         // set accessibility delegate/interceptor
         view.accessibilityDelegate = InterceptorDelegate(this.binding)
 
-        // set button action to finish activity
-        binding.successButton.setOnClickListener {
-            activity?.finish()
-        }
+        // set up last button click action
+        binding.lastButton.setOnClickListener {
+            // turn first button into finish module button
+            binding.firstButton.setText(R.string.jump_controls_intro_first_alt_button)
+            binding.firstButton.setOnClickListener {
+                activity?.finish()
+            }
 
-        binding.pushback.accessibilityClassName
+            // change last button text & remove listener
+            if (it is Button) {
+                it.setText(R.string.jump_controls_intro_last_alt_button)
+                it.setOnClickListener(null)
+            }
+        }
 
         super.onViewCreated(view, savedInstanceState)
     }
 
+    /**
+     * Intercepts focus events to move your position if you're on a pushback element
+     */
     private class InterceptorDelegate(val binding: FragmentJumpControlsIntroBinding) :
         View.AccessibilityDelegate() {
 
@@ -58,8 +70,11 @@ class JumpControlsIntroFragment : Fragment() {
             event: AccessibilityEvent?
         ): Boolean {
             if (event?.eventType == AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED) {
+                // make pushbacks move you to text view with a message
                 if (binding.pushback.isAccessibilityFocused)
                     binding.wrongActionMessage.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+                if (binding.pushback2.isAccessibilityFocused)
+                    binding.wrongActionMessage2.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
             }
 
             return super.onRequestSendAccessibilityEvent(host, child, event)
