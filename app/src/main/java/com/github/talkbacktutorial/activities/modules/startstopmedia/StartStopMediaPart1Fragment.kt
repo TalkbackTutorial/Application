@@ -66,14 +66,24 @@ class StartStopMediaPart1Fragment: Fragment() {
         mediaController = MediaController(context)
         videoView.setOnPreparedListener(object: MediaPlayer.OnPreparedListener{
             override fun onPrepared(mp: MediaPlayer) {
-                videoView.start()
+                //videoView.start()
                 mediaController?.show(0)
             }
         })
         mediaController?.setEnabled(true)
         mediaController?.setAnchorView(videoView)
         videoView.setMediaController(mediaController)
-        this.videoView.start()
+        //this.videoView.start()
+        this.speakIntro()
+    }
+
+    private fun speakIntro(){
+        val intro = """
+            Welcome. In this tutorial, you will be learning how to play and pause a video using the media controller. 
+            To start, explore your screen by touch and you find the play button.
+            """.trimIndent()
+
+        this.ttsEngine.speakOnInitialisation(intro)
     }
 
 
