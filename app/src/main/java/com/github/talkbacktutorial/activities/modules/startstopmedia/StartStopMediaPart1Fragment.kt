@@ -84,6 +84,11 @@ class StartStopMediaPart1Fragment: Fragment() {
         videoView.setPlayPauseListener(object: CustomVideoView.PlayPauseListener{
             override fun onPause() {
                 Log.i(TAG, "PAUSE = " + videoView.isPlaying)
+                binding.startStopMediaControlConstraintLayout.visibility = View.GONE
+                ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                    binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
+                }
+                mediaController?.hide()
                 val info = """
                         Great job! You've paused the video.
                         Congratulations on completing this lesson.
@@ -98,7 +103,11 @@ class StartStopMediaPart1Fragment: Fragment() {
 
             override fun onPlay() {
                 Log.i(TAG, "PLAY = " + videoView.isPlaying)
-
+                binding.startStopMediaControlConstraintLayout.visibility = View.GONE
+                ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                    binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
+                }
+                mediaController?.hide()
                 if (firstPlay){
                     val info = """
                         Great job! You've played the video.
