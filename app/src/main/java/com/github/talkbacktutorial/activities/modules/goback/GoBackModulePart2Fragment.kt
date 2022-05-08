@@ -1,6 +1,7 @@
 package com.github.talkbacktutorial.activities.modules.goback
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,7 @@ class GoBackModulePart2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as GoBackModuleActivity))
+        GoBackModulePart1Fragment.returning = true
         this.speakIntro()
     }
 
@@ -47,8 +49,10 @@ class GoBackModulePart2Fragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        Log.v("onDestroyView", "func called")
+        this.ttsEngine.shutDown()
         super.onDestroyView()
-        GoBackModulePart1Fragment.returning = true
+
     }
 
 

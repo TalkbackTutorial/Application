@@ -3,6 +3,7 @@ package com.github.talkbacktutorial.activities.modules.goback
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,7 @@ class GoBackModulePart1Fragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.v("returning: ", returning.toString())
         super.onViewCreated(view, savedInstanceState)
         binding.finishLessonButton.button.visibility = View.GONE
         binding.continueButton.button.visibility = View.GONE
