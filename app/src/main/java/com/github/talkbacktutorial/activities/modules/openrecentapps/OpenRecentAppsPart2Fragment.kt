@@ -7,18 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import androidx.lifecycle.*
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part2Fragment
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart1Binding
+import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
 
-
-class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
-
-    private lateinit var binding: FragmentOpenRecentAppsPart1Binding
+class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
+    private lateinit var binding: FragmentOpenRecentAppsPart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
     private var count = 0
 
@@ -28,7 +26,7 @@ class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
     ): View {
         this.binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_open_recent_apps_part1,
+            R.layout.fragment_open_recent_apps_part2,
             container,
             false
         )
@@ -68,12 +66,9 @@ class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
      */
     private fun speakIntro() {
         val intro = """
-            Welcome.
-            In this module, you'll learn how to open recent apps. Recent apps are a handy way to
-            quickly switch between frequently used apps. This can be done in two different ways. 
-            Firstly, perform a swipe left and then, a swipe up gesture. 
-            Please try to perform these gestures one after another and enter a different app. 
-            Once completed, return to the tutorial.
+            Try to open the recent apps menu by tapping the button in the bottom right corner
+            of your phone. You should feel a vibration once you have tapped the button. Once again,
+            open a different app from the recent apps menu and then return to the tutorial.
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
@@ -89,14 +84,12 @@ class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            parentFragmentManager.commit {
-                replace(this@OpenRecentAppsPart1Fragment.id, OpenRecentAppsPart2Fragment())
-                addToBackStack("openrecentappspart1")
-            }
+            val intent = Intent((activity as OpenRecentAppsActivity), MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
         }
-        this.ttsEngine.speak("Great job. You have correctly opened the recent app menu and" +
-                "returned to the tutorial." + "Now to try with a different method.", override = true)
+        this.ttsEngine.speak("You have completed the open recent apps module. " +
+                "Sending you to the main menu.", override = true)
     }
 
 }
-
