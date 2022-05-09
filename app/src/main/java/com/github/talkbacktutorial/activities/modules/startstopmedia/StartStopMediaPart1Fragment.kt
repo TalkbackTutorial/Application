@@ -1,23 +1,18 @@
 package com.github.talkbacktutorial.activities.modules.startstopmedia
 
-import android.app.Activity
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
 import android.view.*
 import android.widget.Button
 import android.widget.MediaController
-import android.widget.VideoView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.modules.mediavolumecontrol.MediaVolumeControlModuleActivity
 import com.github.talkbacktutorial.databinding.FragmentStartStopMediaModulePart1Binding
-import com.github.talkbacktutorial.activities.modules.startstopmedia.CustomVideoView
 
 class StartStopMediaPart1Fragment: Fragment() {
 
@@ -25,7 +20,7 @@ class StartStopMediaPart1Fragment: Fragment() {
         @JvmStatic
         fun newInstance() = StartStopMediaPart1Fragment()
     }
-    private var TAG = "VideoPlayer"
+
     private lateinit var binding: FragmentStartStopMediaModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
     private lateinit var videoView: CustomVideoView
@@ -49,41 +44,29 @@ class StartStopMediaPart1Fragment: Fragment() {
         this.ttsEngine = TextToSpeechEngine((activity as StartStopMediaModuleActivity)).onFinishedSpeaking(triggerOnce = true) {
             this.binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
         }
+        setUpVideo()
+        this.speakIntro()
+    }
 
+    private fun setUpVideo(){
         // Get videoView by id
         this.videoView = this.binding.customVideoview
         videoView.setVideoPath("android.resource://" + requireActivity().packageName + "/" + R.raw.video_test)
-        /*
-        mediaController = object: MediaController(context){
-            //for not hiding
-            override fun hide() {
-                mediaController?.show(0)
-            }
-
-            //for 'back' key action
-            override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-                if (event.keyCode == KeyEvent.KEYCODE_BACK) {
-                    val a = context as Activity
-                    a.finish()
-                }
-                return true
-            }
-        }
-        */
+        mediaController = MediaController(context)
         mediaController?.setAnchorView(videoView);
         mediaController?.setMediaPlayer(videoView);
         mediaController?.requestFocus();
-        mediaController = MediaController(context)
-        /*videoView.setOnPreparedListener(object: MediaPlayer.OnPreparedListener{
-            override fun onPrepared(mp: MediaPlayer) {
-                mediaController?.show(0)
-            }
-        })*/
 
         // Set play pause listener
+        setUpPlayPauseListener()
+        mediaController?.setEnabled(true)
+        mediaController?.setAnchorView(videoView)
+        videoView.setMediaController(mediaController)
+    }
+
+    private fun setUpPlayPauseListener(){
         videoView.setPlayPauseListener(object: CustomVideoView.PlayPauseListener{
             override fun onPause() {
-                Log.i(TAG, "PAUSE = " + videoView.isPlaying)
                 if (!firstPlay) {
                     binding.startStopMediaControlConstraintLayout.visibility = View.GONE
                     ttsEngine.onFinishedSpeaking(triggerOnce = true) {
@@ -101,16 +84,8 @@ class StartStopMediaPart1Fragment: Fragment() {
                     firstPause = false
                     insertFinishButton()
                 }
-
             }
-
             override fun onPlay() {
-                Log.i(TAG, "PLAY = " + videoView.isPlaying)
-
-                /*ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                    binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
-                    firstPlay = false
-                }*/
                 mediaController?.hide()
                 if (firstPlay){
                     val info = """
@@ -119,26 +94,22 @@ class StartStopMediaPart1Fragment: Fragment() {
                         To pause the video, explore by touch to find the pause button and double tap
                         on the button to pause the video.
                     """.trimIndent()
-                    videoView.pause()
-                    ttsEngine.speak(info)
-                    binding.startStopMediaControlConstraintLayout.visibility = View.GONE
-                    ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                        binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
-                        firstPlay = false
-                        videoView.start()
-                    }
-                    //firstPlay = false
+
+                    Handler().postDelayed(Runnable{
+                        videoView.pause()
+                        ttsEngine.speak(info)
+                        binding.startStopMediaControlConstraintLayout.visibility = View.GONE
+                        ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                            binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
+                            firstPlay = false
+                            videoView.start()
+                        }
+                    },1000)
+
                 }
-
-
             }
         })
-        mediaController?.setEnabled(true)
-        mediaController?.setAnchorView(videoView)
-        videoView.setMediaController(mediaController)
-        this.speakIntro()
     }
-
     private fun speakIntro(){
         val intro = """
             In this tutorial, you will be learning how to start and stop a video. 
