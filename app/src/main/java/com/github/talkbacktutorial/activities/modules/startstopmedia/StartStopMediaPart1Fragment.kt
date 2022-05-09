@@ -3,7 +3,9 @@ package com.github.talkbacktutorial.activities.modules.startstopmedia
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.MediaController
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,6 +15,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentStartStopMediaModulePart1Binding
+
 
 class StartStopMediaPart1Fragment: Fragment() {
 
@@ -52,6 +55,7 @@ class StartStopMediaPart1Fragment: Fragment() {
         // Get videoView by id
         this.videoView = this.binding.customVideoview
         videoView.setVideoPath("android.resource://" + requireActivity().packageName + "/" + R.raw.video_test)
+        videoView.setOnPreparedListener { mp -> mp.isLooping = true }
         mediaController = MediaController(context)
         mediaController?.setAnchorView(videoView);
         mediaController?.setMediaPlayer(videoView);
