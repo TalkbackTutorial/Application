@@ -85,7 +85,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
         val outro = ("Good, you are back, this gesture is useful as it allows you to return to the " +
                 "home screen at anytime no matter where you are. Now do it again, " +
                 "remember the gesture is swipe up then left").trimIndent()
-        this.ttsEngine.speak(outro)
+        this.ttsEngine.speakOnInitialisation(outro)
     }
 
     /**
@@ -95,6 +95,6 @@ class GoToHomeScreenActivity : AppCompatActivity() {
     private fun speakOutro() {
         val outro = "Nice, you have navigated back to this screen, you have now learnt how to use the go to home screen gesture. " +
                 "Returning you to the lesson screen now.".trimIndent()
-        this.ttsEngine.speak(outro)
+        this.ttsEngine.speakOnInitialisation(outro)
     }
 }
