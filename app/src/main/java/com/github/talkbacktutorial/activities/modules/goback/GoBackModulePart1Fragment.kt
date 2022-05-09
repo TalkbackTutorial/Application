@@ -61,15 +61,6 @@ class GoBackModulePart1Fragment : Fragment() {
 
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//            this.ttsEngine = TextToSpeechEngine((activity as GoBackModuleActivity))
-//                .onFinishedSpeaking(triggerOnce = true) {
-//                    binding.finishLessonButton.button.visibility = View.VISIBLE
-//                }
-//            this.setupFinishLessonButton()
-//            this.speakConclusion()
-//    }
 
     /**
      * Sets up the continue button's visibility and listener.
@@ -128,7 +119,7 @@ class GoBackModulePart1Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as Lesson0Activity), MainActivity::class.java)
+            val intent = Intent((activity as GoBackModuleActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
