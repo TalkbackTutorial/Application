@@ -56,7 +56,8 @@ class JumpTextPart2Fragment : Fragment() {
     private fun speakIntro() {
         val intro = """
             You will now learn to transition between paragraphs. A single swipe up or down will transition between different paragraphs that are on the screen. Please try it
-            until you reach a button that says finish lesson, then double tap to finish the lesson.
+            until you reach a button that says finish lesson, then double tap to finish the lesson. For your information, this will be a very long practice text so it would be easier to complete it using the Paragraph reading mode.
+            However, you can still try out different reading modes such as Characters, Words and lines reading modes
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
@@ -71,7 +72,7 @@ class JumpTextPart2Fragment : Fragment() {
         }
         this.ttsEngine.speak("You have completed the lesson..." +
                 "To summarize, in this lesson you have learnt to use the Paragraph reading mode to navigate through the page..." +
-                "You can also use what you have learnt on other reading modes such as characters, headings, words, lines and more!" +
+                "In the future, you can utilize these different reading modes such as Headers, Controls, Links and more, to navigate through your phone." +
                 "Sending you back to the Lesson modules.", override = true)
     }
 

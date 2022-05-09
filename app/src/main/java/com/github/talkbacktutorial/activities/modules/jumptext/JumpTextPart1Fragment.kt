@@ -54,7 +54,7 @@ class JumpTextPart1Fragment : Fragment() {
      */
     private fun speakIntro() {
         val intro = """
-            We will now learn to use each reading modes. As you have learned previously, please navigate to the reading mode that says "Paragraph"...
+            We will now learn to use each reading modes. As you have learned previously, please navigate to the reading mode that says "Paragraph"
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
