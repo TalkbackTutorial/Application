@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
+import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationIntroFragment
+import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationIntroFragment.NavigationMode.CONTROLS
 import com.github.talkbacktutorial.databinding.ActivityJumpControlsModuleBinding
 
 /**
@@ -22,7 +24,7 @@ class JumpControlsActivity : AppCompatActivity() {
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_jump_controls_module)
 
         supportFragmentManager.commit {
-            replace(R.id.frame, JumpControlsIntroFragment())
+            replace(R.id.frame, JumpNavigationIntroFragment(CONTROLS))
         }
     }
 }
