@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -14,48 +13,62 @@
         android:background="@color/background_fill">
 
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="292dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="8dp"
-            android:text="Can you can a canned can into an un-canned can like a canner can can a canned can into an un-canned can?"
-            android:visibility="visible"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="292dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="8dp"
-            android:text="She sells seashells on the seashore. The shells she sells are seashells, I’m sure. And if she sells seashells on the seashore, Then I’m sure she sells seashore shells."
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="292dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="48dp"
-            android:text="Peter Piper picked a peck of pickled peppers; A peck of pickled peppers Peter Piper picked; If Peter Piper picked a peck of pickled peppers, Where’s the peck of pickled peppers Peter Piper picked"
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="288dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/peter_piper_picked_a_peck_of_pickled_peppers_a_peck_of_pickled_peppers_peter_piper_picked_if_peter_piper_picked_a_peck_of_pickled_peppers_where_s_the_peck_of_pickled_peppers_peter_piper_picked"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/finish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
-            android:layout_marginTop="56dp"
-            android:text="Finish Lesson"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="287dp"
+                    android:layout_height="68dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/she_sells_seashells_on_the_seashore_the_shells_she_sells_are_seashells_i_m_sure_and_if_she_sells_seashells_on_the_seashore_then_i_m_sure_she_sells_seashore_shells"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="289dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/can_you_can_a_canned_can_into_an_un_canned_can_like_a_canner_can_can_a_canned_can_into_an_un_canned_can"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                <TextView
+                    android:id="@+id/finish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/finish_module" />
+            </LinearLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
