@@ -31,33 +31,31 @@
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="288dp"
-                    android:layout_height="90dp"
-                    android:layout_marginStart="60dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/peter_piper_picked_a_peck_of_pickled_peppers_a_peck_of_pickled_peppers_peter_piper_picked_if_peter_piper_picked_a_peck_of_pickled_peppers_where_s_the_peck_of_pickled_peppers_peter_piper_picked"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/jump_text_paragraph_piper"
                     android:visibility="visible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_width="287dp"
-                    android:layout_height="68dp"
-                    android:layout_marginStart="60dp"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/she_sells_seashells_on_the_seashore_the_shells_she_sells_are_seashells_i_m_sure_and_if_she_sells_seashells_on_the_seashore_then_i_m_sure_she_sells_seashore_shells"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:text="@string/jump_text_paragraph_seashells"
                     android:visibility="visible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="289dp"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="60dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
                     android:layout_marginTop="12dp"
-                    android:text="@string/can_you_can_a_canned_can_into_an_un_canned_can_like_a_canner_can_can_a_canned_can_into_an_un_canned_can"
+                    android:text="@string/jump_text_paragraph_can"
                     android:visibility="visible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -66,6 +64,7 @@
                     android:id="@+id/finish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="@string/finish_module" />
             </LinearLayout>
         </ScrollView>
