@@ -89,7 +89,7 @@ class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
             startActivity(intent)
         }
         this.ttsEngine.speak("You have completed the open recent apps module. " +
-                "Sending you to the main menu.", override = true)
+                "Sending you to the lesson screen.", override = true)
     }
 
 }
