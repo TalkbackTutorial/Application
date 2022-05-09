@@ -9,8 +9,10 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 
 class GoToHomeScreenActivity : AppCompatActivity() {
     private lateinit var ttsEngine: TextToSpeechEngine
-    private var wasPaused: Boolean = false
+    private var stoppedCount: Int = 0
     private lateinit var repeatBtn : Button
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_go_to_home_screen_module)
@@ -18,27 +20,27 @@ class GoToHomeScreenActivity : AppCompatActivity() {
         repeatBtn = findViewById(R.id.repeatBtn)
         repeatBtn.visibility = View.GONE
 
-
-
         if (savedInstanceState != null) {
-            wasPaused = savedInstanceState.getBoolean("wasPaused")
+            stoppedCount = savedInstanceState.getInt("stopedCount")
         }
-        if (!wasPaused) {
-            ttsEngine.onFinishedSpeaking {
-                repeatBtn.visibility = View.VISIBLE
-                repeatBtn.setOnClickListener(object : View.OnClickListener {
-                    override fun onClick(view: View?) {
-                        speakIntro()
-                    }
-                })
-            }
-            this.speakIntro()
-        }
+
     }
 
     override fun onStart() {
-        if (wasPaused) { // This currently just checks if the activity was paused
-            repeatBtn.visibility = View.GONE
+        if (stoppedCount == 0) { // This currently just checks for how many times the activity stopped
+            ttsEngine.onFinishedSpeaking {
+                repeatBtn.visibility = View.VISIBLE
+                repeatBtn.setOnClickListener { speakIntro() }
+            }
+            this.speakIntro()
+        } else if (stoppedCount == 1) {
+            ttsEngine.onFinishedSpeaking {
+                repeatBtn.visibility = View.VISIBLE
+                repeatBtn.setOnClickListener { speakMid() }
+            }
+            this.speakMid()
+        } else if (stoppedCount == 2) {
+            repeatBtn.visibility = View.GONE // disable button before speaking outro
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 finish()
             }
@@ -49,14 +51,12 @@ class GoToHomeScreenActivity : AppCompatActivity() {
 
     override fun onStop() {
         repeatBtn.visibility = View.GONE
-        wasPaused = true
+        stoppedCount += 1
         super.onStop()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.run {
-            putBoolean("wasPaused", wasPaused)
-        }
+        outState.putInt("stopedCount", stoppedCount)
         super.onSaveInstanceState(outState)
     }
 
@@ -68,11 +68,19 @@ class GoToHomeScreenActivity : AppCompatActivity() {
         val intro = """
             Welcome.
             In this module, you'll learn how to return to the home screen from inside an application,
-            to perform this task, swipe up then left. Try it now. But return to the tutorial after you've reached the home screen.
+            to perform this task, swipe up then left. Try it now. 
+            But return to the tutorial after you've reached the home screen.
         """.trimIndent()
         // This is a very basic implementation that just asks the user to return
         // to the application by themselves
         this.ttsEngine.speakOnInitialisation(intro)
+    }
+
+    private fun speakMid() {
+        val outro = ("Good, you are back, this gesture is useful as it allows you to return to the " +
+                "home screen at anytime no matter where you are. Now do it again, " +
+                "remember the gesture is swipe up then left").trimIndent()
+        this.ttsEngine.speakOnInitialisation(outro)
     }
 
     /**

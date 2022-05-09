@@ -5,11 +5,12 @@ import android.content.Intent
 import com.github.talkbacktutorial.activities.modules.GoToHomeScreenActivity
 
 /**
- * TODO
+ * Teach the user how to use gestures to return to the home screen
+ * @author: Mingxuan Fu
  */
-class GoToHomeScreenModule : Module() { // E.g. PausingAndPlayingMediaModule
+class GoToHomeScreenModule : Module() {
 
-    override val title: String = "Go To Home Screen" // E.g. "Pause and Play Media"
+    override val title: String = "Go To Home Screen"
 
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, GoToHomeScreenActivity::class.java))
