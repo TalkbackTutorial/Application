@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
-            android:text="@string/wrong_action_text_message"
+            android:text="@string/wrong_action_message"
             android:textStyle="italic" />
 
         <TextView
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
-            android:text="@string/wrong_action_text_message"
+            android:text="@string/wrong_action_message"
             android:textStyle="italic" />
 
         <TextView
