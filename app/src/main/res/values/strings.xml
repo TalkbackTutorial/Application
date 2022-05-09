@@ -36,4 +36,6 @@
     <string name="jump_links_entity_plural">links</string>
     <string name="final_button_mid_module_prompt">continue</string>
     <string name="final_button_end_module_prompt">finish module</string>
+    <string name="jump_headers_intro_1">The \"Headers\" reading mode allows you to jump between headers, such those found before blocks of text or groups of form fields.</string>
+    <string name="jump_links_intro_1">The \"Links\" navigation mode lets you jump between clickable links on a page, such as a URL.</string>
 </resources>

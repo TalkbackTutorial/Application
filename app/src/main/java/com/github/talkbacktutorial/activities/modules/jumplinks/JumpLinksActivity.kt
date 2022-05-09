@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules.jumpcontrols
+package com.github.talkbacktutorial.activities.modules.jumplinks
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,12 +9,7 @@ import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigat
 import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationIntroFragment.NavigationMode
 import com.github.talkbacktutorial.databinding.ActivityJumpNavigationGenericIntroBinding
 
-/**
- * Implements Jumping Controls - learning how to jump from control to control.
- *
- * @author Matthew Crossman
- */
-class JumpControlsActivity : AppCompatActivity() {
+class JumpLinksActivity : AppCompatActivity() {
     lateinit var binding: ActivityJumpNavigationGenericIntroBinding
         private set
 
@@ -25,7 +20,7 @@ class JumpControlsActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_jump_navigation_generic_intro)
 
         supportFragmentManager.commit {
-            replace(R.id.frame, JumpNavigationIntroFragment(NavigationMode.CONTROLS))
+            replace(R.id.frame, JumpNavigationIntroFragment(NavigationMode.LINKS))
         }
     }
 }

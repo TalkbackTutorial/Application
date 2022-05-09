@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.modules.jumpcontrols.JumpControlsIntroFragment
+import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersIntroFragment
+import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksIntroFragment
 import com.github.talkbacktutorial.databinding.FragmentJumpNavigationIntroBinding
 
 /**
@@ -22,6 +24,7 @@ import com.github.talkbacktutorial.databinding.FragmentJumpNavigationIntroBindin
  */
 class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment() {
     private lateinit var binding: FragmentJumpNavigationIntroBinding
+    private val isLastFragment = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,63 +44,73 @@ class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment()
         // set accessibility delegate/interceptor
         view.accessibilityDelegate = InterceptorDelegate(this.binding)
 
-        // attach appropriate intro fragment
-        childFragmentManager.commit {
-            replace(R.id.intro_text, JumpControlsIntroFragment())
-        }
+        // interactive targets
+        val firstTarget: View
+        val lastTarget: View
 
-        val firstTarget : View
-        val lastTarget : View
+        // strings and labels
+        val entityLabel: String
+        val entityLabelPlural: String
+        val promptString: String
 
+        // intro fragment
+        val introFragment: Fragment
+
+        // switch strings & layout targets according to mode
         when (mode) {
             NavigationMode.HEADERS -> {
-                firstTarget = binding.challenge.targetControl
-                lastTarget = binding.challenge.target2Control
+                firstTarget = binding.challenge.targetHeader
+                lastTarget = binding.challenge.target2Header
+
+                entityLabel = getString(R.string.jump_headers_entity)
+                entityLabelPlural = getString(R.string.jump_headers_entity_plural)
+                promptString = getString(R.string.jump_controls_intro_first_prompt)
+
+                introFragment = JumpControlsIntroFragment()
             }
             NavigationMode.LINKS -> {
                 firstTarget = binding.challenge.targetLink
                 lastTarget = binding.challenge.target2Link
+
+                entityLabel = getString(R.string.jump_links_entity)
+                entityLabelPlural = getString(R.string.jump_links_entity_plural)
+                promptString = getString(R.string.jump_controls_intro_first_prompt)
+
+                introFragment = JumpLinksIntroFragment()
             }
             NavigationMode.CONTROLS -> {
                 firstTarget = binding.challenge.targetControl
                 lastTarget = binding.challenge.target2Control
+
+                entityLabel = getString(R.string.jump_controls_entity)
+                entityLabelPlural = getString(R.string.jump_controls_entity_plural)
+                promptString = getString(R.string.jump_controls_intro_first_prompt)
+
+                introFragment = JumpHeadersIntroFragment()
             }
         }
 
-        val targets = ArrayList(listOf(
-            firstTarget, lastTarget
-        ))
+        // attach appropriate intro fragment
+        childFragmentManager.commit {
+            replace(R.id.intro_text, introFragment)
+        }
+
+        // set up targets
+        val targets = ArrayList(
+            listOf(
+                firstTarget, lastTarget
+            )
+        )
 
         targets.forEach {
             it.visibility = View.VISIBLE
 
-            // set header
+            // header must be explicitly enabled
             if (mode == NavigationMode.HEADERS)
                 ViewCompat.setAccessibilityHeading(it, true)
         }
 
-        // set up text fields
-        // for prompt
-        val promptString = when (mode) {
-            NavigationMode.HEADERS -> getString(R.string.jump_controls_intro_first_prompt)
-            NavigationMode.LINKS -> getString(R.string.jump_controls_intro_first_prompt)
-            NavigationMode.CONTROLS -> getString(R.string.jump_controls_intro_first_prompt)
-        }
-
         binding.challenge.prompt.text = promptString
-
-        // for buttons
-        val entityLabel = when (mode) {
-            NavigationMode.HEADERS -> getString(R.string.jump_headers_entity)
-            NavigationMode.LINKS -> getString(R.string.jump_links_entity)
-            NavigationMode.CONTROLS -> getString(R.string.jump_controls_entity)
-        }
-
-        val entitiesLabel = when (mode) {
-            NavigationMode.HEADERS -> getString(R.string.jump_headers_entity_plural)
-            NavigationMode.LINKS -> getString(R.string.jump_links_entity_plural)
-            NavigationMode.CONTROLS -> getString(R.string.jump_controls_entity_plural)
-        }
 
         // update cards
         val firstTargetText = when (mode) {
@@ -110,21 +123,34 @@ class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment()
             else -> lastTarget as TextView
         }
 
-        firstTargetText.text = String.format(getString(R.string.jump_navigation_easy_first_element), entityLabel)
-        lastTargetText.text = String.format(getString(R.string.jump_navigation_easy_last_element), entityLabel)
+        // set up button text
+        firstTargetText.text =
+            String.format(getString(R.string.jump_navigation_easy_first_element), entityLabel)
+        lastTargetText.text =
+            String.format(getString(R.string.jump_navigation_easy_last_element), entityLabel)
+
+        val firstTargetActiveActionText =
+            if (isLastFragment) getString(R.string.final_button_end_module_prompt) else getString(R.string.final_button_mid_module_prompt)
+        val firstTargetActiveText = String.format(
+            getString(R.string.jump_navigation_easy_first_element_active),
+            entityLabelPlural,
+            firstTargetActiveActionText
+        )
+
+        val lastTargetActiveText =
+            String.format(getString(R.string.jump_navigation_easy_last_element_active), entityLabel)
 
         // set up cards as buttons
         lastTarget.setOnClickListener {
             // turn first button into finish module button
-
-            firstTargetText.text = String.format(getString(R.string.jump_navigation_easy_first_element_active), entitiesLabel, getString(R.string.finish_module_button))
+            firstTargetText.text = firstTargetActiveText
 
             targets.first().setOnClickListener {
                 activity?.finish()
             }
 
             // change last button text & remove listener
-            lastTargetText.text = String.format(getString(R.string.jump_navigation_easy_last_element_active), entityLabel)
+            lastTargetText.text = lastTargetActiveText
             lastTarget.setOnClickListener(null)
         }
 

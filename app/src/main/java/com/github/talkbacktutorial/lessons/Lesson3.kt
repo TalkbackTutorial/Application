@@ -1,9 +1,6 @@
 package com.github.talkbacktutorial.lessons
 
-import com.github.talkbacktutorial.lessons.modules.AdjustReadingControls
-import com.github.talkbacktutorial.lessons.modules.JumpControls
-import com.github.talkbacktutorial.lessons.modules.JumpText
-import com.github.talkbacktutorial.lessons.modules.Module
+import com.github.talkbacktutorial.lessons.modules.*
 import java.util.ArrayList
 
 /**
@@ -19,6 +16,8 @@ class Lesson3 : Lesson() {
     override val modules = ArrayList(listOf(
         AdjustReadingControls(),
         JumpText(),
-        JumpControls()
+        JumpControls(),
+        JumpHeaders(),
+        JumpLinks()
     ))
 }

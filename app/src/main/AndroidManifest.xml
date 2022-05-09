@@ -37,6 +37,12 @@
             android:name=".activities.modules.jumpcontrols.JumpControlsActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.modules.jumpheaders.JumpHeadersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.jumplinks.JumpLinksActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>

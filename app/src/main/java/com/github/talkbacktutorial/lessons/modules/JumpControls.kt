@@ -5,7 +5,7 @@ import android.content.Intent
 import com.github.talkbacktutorial.activities.modules.jumpcontrols.JumpControlsActivity
 
 /**
- * Module on jumping between controls using the appropriate reading control
+ * Module on jumping between controls using the appropriate reading mode
  *
  * @author Matthew Crossman
  */
