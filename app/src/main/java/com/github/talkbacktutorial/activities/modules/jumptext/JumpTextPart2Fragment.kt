@@ -1,24 +1,14 @@
-package com.github.talkbacktutorial.activities.modules.jumpreadingcontrols
+package com.github.talkbacktutorial.activities.modules.jumptext
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.LessonActivity
-import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part1Fragment
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Part2Fragment
-import com.github.talkbacktutorial.databinding.FragmentJumpReadingControlsPart1Binding
-import com.github.talkbacktutorial.databinding.FragmentJumpReadingControlsPart2Binding
-import com.github.talkbacktutorial.lessons.Lesson3
+import com.github.talkbacktutorial.databinding.FragmentJumpTextPart2Binding
 
 /**
  * Instantiates a UI for user to interact with header mode
@@ -26,13 +16,13 @@ import com.github.talkbacktutorial.lessons.Lesson3
  * @author Joel Yang
  * @see AdjustReadingControlsActivity
  */
-class JumpReadingControlsPart2Fragment : Fragment() {
-    private lateinit var binding: FragmentJumpReadingControlsPart2Binding
+class JumpTextPart2Fragment : Fragment() {
+    private lateinit var binding: FragmentJumpTextPart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
     companion object {
         @JvmStatic
-        fun newInstance() = JumpReadingControlsPart2Fragment()
+        fun newInstance() = JumpTextPart2Fragment()
     }
 
     // callback run after this fragment is created for AdjustReadingControlsActivity
@@ -43,13 +33,13 @@ class JumpReadingControlsPart2Fragment : Fragment() {
             Here, we inflate our layout file (basically, turning the XML into a UI) through
             DataBindingUtil, which will provide our layout binding during the inflate process.
          */
-        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_jump_reading_controls_part2, container, false)
+        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_part2, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as JumpReadingControlsActivity))
+        this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
             .onFinishedSpeaking(triggerOnce = true) {
             }
         this.speakIntro()
