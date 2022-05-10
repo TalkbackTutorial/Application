@@ -19,6 +19,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentMediaVolumeControlModulePart1Binding
+import kotlin.math.roundToInt
 
 
 class MediaVolumeControlPart1Fragment: Fragment() {
@@ -35,7 +36,8 @@ class MediaVolumeControlPart1Fragment: Fragment() {
     private lateinit var audioManager:AudioManager
     private var totalSongDuration:Int = 0
     private var seekbarVolume:SeekBar? = null
-    private var currentVolume: Int = 50
+    private var currentVolume: Int = 0
+    private var maxStreamVolume: Int = 150
     private var swipeUp:Boolean = false
     private lateinit var accessibilityManager:AccessibilityManager
 
@@ -76,8 +78,15 @@ class MediaVolumeControlPart1Fragment: Fragment() {
 
             mediaPlayer?.start()
             mediaPlayer?.isLooping = true
-            mediaPlayer?.setVolume(0.5f, 0.5f)
+            val defaultStreamVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
+            //TODO add function
             totalSongDuration = mediaPlayer!!.duration
+            maxStreamVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+            val vol: Float = defaultStreamVolume.toFloat()/maxStreamVolume
+            mediaPlayer?.setVolume(vol, vol)
+            currentVolume = (vol*100).roundToInt()
+            seekbarVolume?.progress = currentVolume
+
         }
 
         this.binding.stopButton.setOnClickListener{
@@ -88,6 +97,8 @@ class MediaVolumeControlPart1Fragment: Fragment() {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 if(p2) {
                     currentVolume = p1
+                    val vol: Float = p1.toFloat()/maxStreamVolume
+                    mediaPlayer?.setVolume(vol, vol)
                     var volumeNum = p1/100.0f
                     mediaPlayer?.setVolume(volumeNum, volumeNum)
                     // If talkback is turned on
@@ -95,7 +106,6 @@ class MediaVolumeControlPart1Fragment: Fragment() {
                         if(mediaPlayer == null){
                             val info = """The song is not played. Please press the play button to play the music.""".trimIndent()
                             speakDuringLesson(info)
-                            seekbarVolume?.progress = 50
                         } else lessonLogic()
                     }else speakDuringLesson("Talkback is currently not turned on. Please turn Talkback on to continue this lesson")
                 }
@@ -146,26 +156,26 @@ class MediaVolumeControlPart1Fragment: Fragment() {
         }
     }
 
-     private fun insertFinishButton(){
-         val constraintLayout = this.binding.mediaVolumeControlConstraintLayout
-         val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
-         layoutParams.horizontalBias = 0.95f
-         layoutParams.endToEnd = constraintLayout.id
-         layoutParams.startToStart = constraintLayout.id
-         layoutParams.topToTop = constraintLayout.id
-         layoutParams.topMargin = 10.dpToPixels(requireContext())
-         val finishButton = Button(requireContext())
-         val text = "Finish"
-         finishButton.contentDescription = text
-         finishButton.text = text
-         finishButton.layoutParams = layoutParams
-         finishButton.setBackgroundResource(R.color.green_A400)
-         finishButton.setOnClickListener(View.OnClickListener {
-             endLesson()
-         })
+    private fun insertFinishButton(){
+        val constraintLayout = this.binding.mediaVolumeControlConstraintLayout
+        val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
+        layoutParams.horizontalBias = 0.95f
+        layoutParams.endToEnd = constraintLayout.id
+        layoutParams.startToStart = constraintLayout.id
+        layoutParams.topToTop = constraintLayout.id
+        layoutParams.topMargin = 10.dpToPixels(requireContext())
+        val finishButton = Button(requireContext())
+        val text = "Finish"
+        finishButton.contentDescription = text
+        finishButton.text = text
+        finishButton.layoutParams = layoutParams
+        finishButton.setBackgroundResource(R.color.green_A400)
+        finishButton.setOnClickListener(View.OnClickListener {
+            endLesson()
+        })
 
-         constraintLayout.addView(finishButton)
-     }
+        constraintLayout.addView(finishButton)
+    }
 
     private fun speakIntro(){
         val intro = """
@@ -204,4 +214,7 @@ class MediaVolumeControlPart1Fragment: Fragment() {
         }
         ttsEngine.speak(info)
     }
+
+
 }
+
