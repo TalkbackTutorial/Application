@@ -10,21 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
-            android:name=".activities.modules.GoToHomeScreenActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.lesson0.Lesson0Activity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.openrecentapps.OpenRecentAppsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.opennotifications.OpenNotificationModuleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.LessonActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
