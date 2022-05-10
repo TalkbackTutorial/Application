@@ -12,10 +12,10 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentJumpTextPart1Binding
 
 /**
- * Instantiates a UI for user to interact with header mode
+ * Requests the user to switch to a reading mode
  *
  * @author Joel Yang
- * @see AdjustReadingControlsActivity
+ * @see JumpTextActivity
  */
 class JumpTextPart1Fragment : Fragment() {
     private lateinit var binding: FragmentJumpTextPart1Binding
@@ -29,12 +29,14 @@ class JumpTextPart1Fragment : Fragment() {
     // callback run after this fragment is created for AdjustReadingControlsActivity
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
+        savedInstanceState: Bundle?
+    ): View {
         /*
             Here, we inflate our layout file (basically, turning the XML into a UI) through
             DataBindingUtil, which will provide our layout binding during the inflate process.
          */
-        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_part1, container, false)
+        this.binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_part1, container, false)
         return binding.root
     }
 
@@ -53,9 +55,7 @@ class JumpTextPart1Fragment : Fragment() {
      * @author Joel Yang
      */
     private fun speakIntro() {
-        val intro = """
-            We will now learn to use each reading modes. As you have learned previously, please navigate to the reading mode that says "Paragraph"
-        """.trimIndent()
+        val intro = getString(R.string.jump_text_request_paragraph_mode).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 

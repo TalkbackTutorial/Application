@@ -8,7 +8,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.ActivityJumpTextModuleBinding
 
 /**
- * Activity for learning how to jump items on the screen with reading modes.
+ * Activity for learning how to navigate text with reading modes.
  *
  * @author Joel Yang
  * @see com.github.talkbacktutorial.lessons.modules.JumpText
