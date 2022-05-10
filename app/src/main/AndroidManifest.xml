@@ -10,24 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
-            android:name=".activities.modules.adjustslider.AdjustSliderModuleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.selectsettings.SelectSettingsModuleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.selectsettings.SelectSettingModuleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.selectingsettings.SelectingSettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.scrolling.ScrollingModuleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.LessonActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -36,39 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.lesson0.Lesson0Activity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.TodoModuleYModuleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.TodoModuleXModuleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.explorebytouch.ExploreMenuByTouchPart2Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.explorebytouch.ExploreMenuByTouchPart2Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.explorebytouch.ExploreMenuByTouchActivity"
-            android:exported="false" />
-        <activity
-            android:name=".lessons.modules.ExploreMenuByTouchModule"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.explorebytouch.ExploreMenuByTouchPart2Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.selectsettings.SelectSettingPart1Fragment"
-            android:exported="false" />
-        <activity
-            android:name=".lessons.modules.SelectSettingModule"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.goback.GoBackModuleActivity"
-            android:exported="false" />
     </application>
 
 </manifest>
