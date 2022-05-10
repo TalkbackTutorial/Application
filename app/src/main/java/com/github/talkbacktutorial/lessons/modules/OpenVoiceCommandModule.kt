@@ -2,7 +2,7 @@ package com.github.talkbacktutorial.lessons.modules
 
 import android.content.Context
 import android.content.Intent
-import com.github.talkbacktutorial.activities.modules.OpenVoiceCommandActivity
+import com.github.talkbacktutorial.activities.modules.openingvoicecommand.OpenVoiceCommandActivity
 
 /**
  * TODO

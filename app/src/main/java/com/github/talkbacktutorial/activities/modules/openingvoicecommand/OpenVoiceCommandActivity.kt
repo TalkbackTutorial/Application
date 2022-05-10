@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules.openrecentapps
+package com.github.talkbacktutorial.activities.modules.openingvoicecommand
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,22 +7,21 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.LessonActivity
-import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.ActivityModuleOpenRecentAppsBinding
+import com.github.talkbacktutorial.activities.modules.OpenVoiceCommandFragment
+import com.github.talkbacktutorial.databinding.ActivityOpenVoiceCommandBinding
 
-class OpenRecentAppsActivity : AppCompatActivity() {
+class OpenVoiceCommandActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityModuleOpenRecentAppsBinding
+    lateinit var binding: ActivityOpenVoiceCommandBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //supportActionBar?.hide()
-        this.binding =
-            DataBindingUtil.setContentView(this, R.layout.activity_module_open_recent_apps)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_open_voice_command)
         supportFragmentManager.commit {
-            replace(R.id.frame, OpenRecentAppsPart1Fragment())
-            addToBackStack("openRecentAppsPart1")
+            replace(R.id.frame, OpenVoiceCommandFragment())
+            addToBackStack("openVoiceCommands")
         }
     }
 

@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules.openrecentapps
+package com.github.talkbacktutorial.activities.modules.opennotifications
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,21 +8,20 @@ import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.ActivityModuleOpenRecentAppsBinding
+import com.github.talkbacktutorial.databinding.ActivityOpenNotificationModuleBinding
 
-class OpenRecentAppsActivity : AppCompatActivity() {
+class OpenNotificationModuleActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityModuleOpenRecentAppsBinding
+    lateinit var binding: ActivityOpenNotificationModuleBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //supportActionBar?.hide()
-        this.binding =
-            DataBindingUtil.setContentView(this, R.layout.activity_module_open_recent_apps)
+        supportActionBar?.hide()
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_open_notification_module)
         supportFragmentManager.commit {
-            replace(R.id.frame, OpenRecentAppsPart1Fragment())
-            addToBackStack("openRecentAppsPart1")
+            replace(R.id.frame, OpenNotificationModuleFragment.newInstance())
+            addToBackStack("openNotificationModule")
         }
     }
 
@@ -35,5 +34,4 @@ class OpenRecentAppsActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }
