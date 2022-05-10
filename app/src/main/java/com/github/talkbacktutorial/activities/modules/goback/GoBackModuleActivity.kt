@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules
+package com.github.talkbacktutorial.activities.modules.goback
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,20 +8,25 @@ import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.ActivityModuleOpenVoiceCommandsBinding
+import com.github.talkbacktutorial.databinding.ActivityGobackModuleBinding
 
-class OpenVoiceCommandActivity : AppCompatActivity() {
+/**
+ * Go back to previous menu activity
+ * @author: Emmanuel Chu
+ */
 
-    lateinit var binding: ActivityModuleOpenVoiceCommandsBinding
+class GoBackModuleActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityGobackModuleBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_module_open_voice_commands)
+        supportActionBar?.hide()
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_goback_module)
         supportFragmentManager.commit {
-            replace(R.id.frame, OpenVoiceCommandFragment())
-            addToBackStack("openVoiceCommands")
+            replace(R.id.frame, GoBackModulePart1Fragment.newInstance())
+            addToBackStack("gobackModulePart1")
         }
     }
 
@@ -33,6 +38,8 @@ class OpenVoiceCommandActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
+
     }
+
 
 }

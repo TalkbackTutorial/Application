@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_fill"
+        android:id="@+id/adjustSliderModule2Layout"
+        android:visibility="invisible"
+        tools:ignore="ExtraText">
+
+        <SeekBar
+            android:id="@+id/menuSlider"
+            android:layout_width="243dp"
+            android:layout_height="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:progress="50"/>
+
+        <TextView
+            android:id="@+id/sliderBelowTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="the slider is below"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/menuSlider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/sliderAboveTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="the slider is above"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menuSlider" />
+
+        <TextView
+            android:id="@+id/sliderRightTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="22dp"
+            android:text="the slider is right"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/sliderAboveTV"
+            app:layout_constraintEnd_toStartOf="@+id/menuSlider"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sliderBelowTV" />
+
+        <TextView
+            android:id="@+id/sliderLeftTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="23dp"
+            android:text="the slider is left"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/sliderAboveTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/menuSlider"
+            app:layout_constraintTop_toBottomOf="@+id/sliderBelowTV" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

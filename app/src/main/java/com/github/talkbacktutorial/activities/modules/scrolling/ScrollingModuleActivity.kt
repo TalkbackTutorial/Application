@@ -1,32 +1,27 @@
-<<<<<<< HEAD:app/src/main/java/com/github/talkbacktutorial/activities/modules/adjustslider/AdjustSliderModuleActivity.kt
-package com.github.talkbacktutorial.activities.modules.adjustslider
-=======
-package com.github.talkbacktutorial.activities.modules.openrecentapps
->>>>>>> develop:app/src/main/java/com/github/talkbacktutorial/activities/modules/openrecentapps/OpenRecentAppsActivity.kt
+package com.github.talkbacktutorial.activities.modules.scrolling
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.ActivityAdjustSliderModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityScrollingModuleBinding
 
-class AdjustSliderModuleActivity : AppCompatActivity() {
+class ScrollingModuleActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityAdjustSliderModuleBinding
+    lateinit var binding: ActivityScrollingModuleBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_adjust_slider_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_scrolling_module)
         supportFragmentManager.commit {
-            replace(R.id.frame, AdjustSliderModulePart1Fragment.newInstance())
-            addToBackStack("adjustSliderModulePart1")
+            replace(R.id.frame, ScrollingModulePart1Fragment.newInstance())
+            addToBackStack("scrollingModulePart1")
         }
     }
 
@@ -39,4 +34,5 @@ class AdjustSliderModuleActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }

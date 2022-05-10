@@ -1,27 +1,33 @@
-package com.github.talkbacktutorial.activities.modules.opennotifications
+package com.github.talkbacktutorial.activities.modules.explorebytouch
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MotionEventCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.ActivityOpenNotificationModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityExploreMenuByTouchBinding
 
-class OpenNotificationModuleActivity : AppCompatActivity() {
+/**
+ * Explore menu by touch activity
+ * @author Jason Wu
+ */
+class ExploreMenuByTouchActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityOpenNotificationModuleBinding
+    lateinit var binding: ActivityExploreMenuByTouchBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_open_notification_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_explore_menu_by_touch)
         supportFragmentManager.commit {
-            replace(R.id.frame, OpenNotificationModuleFragment.newInstance())
-            addToBackStack("openNotificationModule")
+            replace(R.id.frame, ExploreMenuByTouchPart1Fragment.newInstance())
+            addToBackStack("exploreMenuModulePart1")
         }
     }
 
@@ -29,7 +35,7 @@ class OpenNotificationModuleActivity : AppCompatActivity() {
         if (supportFragmentManager.backStackEntryCount != 1) {
             super.onBackPressed()
         } else {
-            val intent = Intent(this, LessonActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
