@@ -19,6 +19,6 @@ class Lesson3 : Lesson() {
         JumpControls(),
         JumpHeaders(),
         // Disabled:
-        JumpLinks()
+//        JumpLinks()
     ))
 }
