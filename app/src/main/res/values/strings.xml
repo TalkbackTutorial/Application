@@ -16,7 +16,7 @@
     <string name="adjust_reading_controls_part1_finished_text">That\'s all there is to changing modes. The rest of this lesson covers how to use these modes. Activate the button below to finish this module.</string>
     <string name="finish_module_button">Finish module</string>
     <string name="jump_controls_intro_initial_text">The \"Controls\" reading mode allows jumping between buttons, sliders, switches, and other interactive things.</string>
-    <string name="jump_controls_intro_first_prompt">Switch to the Controls reading mode and swipe down to jump to the next button.</string>
+    <string name="jump_navigation_easy_prompt">Switch to the %s reading mode and swipe down to jump to the next %s.</string>
     <string name="wrong_action_message">You performed the wrong action. Please try again.</string>
     <string name="pushback_text">This element will push you back</string>
     <string name="adjust_reading_controls_part1_justification">There are reading and navigation modes. Reading modes help you read in a granular way, such as by words, paragraphs, or characters. Navigation modes help you move around more efficiently, such as by jumping from button to button.</string>

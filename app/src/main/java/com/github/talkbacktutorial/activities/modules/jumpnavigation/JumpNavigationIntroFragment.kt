@@ -18,7 +18,7 @@ import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksIntroFr
 import com.github.talkbacktutorial.databinding.FragmentJumpNavigationIntroBinding
 
 /**
- * Creates a generic introduction fragment for all jump modules.
+ * Creates a generic introduction fragment for all navigation mode modules.
  *
  * @author Matthew Crossman
  */
@@ -51,7 +51,7 @@ class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment()
         // strings and labels
         val entityLabel: String
         val entityLabelPlural: String
-        val promptString: String
+        val promptTemplate = getString(R.string.jump_navigation_easy_prompt)
 
         // intro fragment
         val introFragment: Fragment
@@ -64,9 +64,8 @@ class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment()
 
                 entityLabel = getString(R.string.jump_headers_entity)
                 entityLabelPlural = getString(R.string.jump_headers_entity_plural)
-                promptString = getString(R.string.jump_controls_intro_first_prompt)
 
-                introFragment = JumpControlsIntroFragment()
+                introFragment = JumpHeadersIntroFragment()
             }
             NavigationMode.LINKS -> {
                 firstTarget = binding.challenge.targetLink
@@ -74,7 +73,6 @@ class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment()
 
                 entityLabel = getString(R.string.jump_links_entity)
                 entityLabelPlural = getString(R.string.jump_links_entity_plural)
-                promptString = getString(R.string.jump_controls_intro_first_prompt)
 
                 introFragment = JumpLinksIntroFragment()
             }
@@ -84,9 +82,8 @@ class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment()
 
                 entityLabel = getString(R.string.jump_controls_entity)
                 entityLabelPlural = getString(R.string.jump_controls_entity_plural)
-                promptString = getString(R.string.jump_controls_intro_first_prompt)
 
-                introFragment = JumpHeadersIntroFragment()
+                introFragment = JumpControlsIntroFragment()
             }
         }
 
@@ -110,7 +107,7 @@ class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment()
                 ViewCompat.setAccessibilityHeading(it, true)
         }
 
-        binding.challenge.prompt.text = promptString
+        binding.challenge.prompt.text = String.format(promptTemplate, entityLabelPlural, entityLabel)
 
         // update cards
         val firstTargetText = when (mode) {
