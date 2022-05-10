@@ -122,6 +122,7 @@ class GoBackModulePart1Fragment : Fragment() {
             val intent = Intent((activity as GoBackModuleActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            returning = false
         }
         this.ttsEngine.speak("You have completed the lesson. Sending you to the main menu.", override = true)
     }
