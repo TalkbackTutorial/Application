@@ -1,8 +1,10 @@
 package com.github.talkbacktutorial.activities.modules.startstopmedia
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -127,13 +129,22 @@ class StartStopMediaPart1Fragment: Fragment() {
 
     private fun insertFinishButton(){
         val constraintLayout = this.binding.startStopMediaControlConstraintLayout
+        val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
+        layoutParams.horizontalBias = 0.95f
+        layoutParams.endToEnd = constraintLayout.id
+        layoutParams.startToStart = constraintLayout.id
+        layoutParams.topToTop = constraintLayout.id
+        layoutParams.topMargin = 10.dpToPixels(requireContext())
         val finishButton = Button(requireContext())
-        finishButton.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
-        finishButton.text = "Finish"
+        val text = "Finish"
+        finishButton.contentDescription = text
+        finishButton.text = text
+        finishButton.layoutParams = layoutParams
         finishButton.setBackgroundResource(R.color.green_A400)
         finishButton.setOnClickListener(View.OnClickListener {
             endLesson()
         })
+
         constraintLayout.addView(finishButton)
     }
 
@@ -152,4 +163,8 @@ class StartStopMediaPart1Fragment: Fragment() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }
+
+    private fun Int.dpToPixels(context: Context):Int = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,this.toFloat(),context.resources.displayMetrics
+    ).toInt()
 }
