@@ -5,13 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="text"
-            type="String" />
+
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card"
+        android:id="@+id/continue_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -19,24 +17,22 @@
         app:cardBackgroundColor="@color/foreground_fill"
         app:cardElevation="0dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/horizontal_card_spacing" >
 
             <TextView
-                android:id="@+id/card_text"
+                android:id="@+id/continue_jump_reading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{text}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:textSize="16sp"
-                android:textColor="?android:attr/textColorPrimary"
-                android:padding="16dp" />
+                android:textStyle="bold"
+                android:text="@string/jump_text_continue_fragment_message"
+                android:textColor="?android:attr/textColorPrimary" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
