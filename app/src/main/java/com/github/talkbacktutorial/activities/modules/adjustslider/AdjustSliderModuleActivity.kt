@@ -1,8 +1,4 @@
-<<<<<<< HEAD:app/src/main/java/com/github/talkbacktutorial/activities/modules/adjustslider/AdjustSliderModuleActivity.kt
 package com.github.talkbacktutorial.activities.modules.adjustslider
-=======
-package com.github.talkbacktutorial.activities.modules.openrecentapps
->>>>>>> develop:app/src/main/java/com/github/talkbacktutorial/activities/modules/openrecentapps/OpenRecentAppsActivity.kt
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +9,7 @@ import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.activities.modules.adjustslider.AdjustSliderModulePart1Fragment
 import com.github.talkbacktutorial.databinding.ActivityAdjustSliderModuleBinding
 
 class AdjustSliderModuleActivity : AppCompatActivity() {
