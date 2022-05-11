@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationIntroFragment
-import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationIntroFragment.NavigationMode
+import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationPart1Fragment
+import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationPart1Fragment.NavigationMode
 import com.github.talkbacktutorial.databinding.ActivityJumpNavigationGenericIntroBinding
 
 /**
@@ -25,7 +25,7 @@ class JumpLinksActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_jump_navigation_generic_intro)
 
         supportFragmentManager.commit {
-            replace(R.id.frame, JumpNavigationIntroFragment(NavigationMode.LINKS))
+            replace(R.id.frame, JumpNavigationPart1Fragment(NavigationMode.LINKS))
         }
     }
 }

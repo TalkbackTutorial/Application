@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules
+package com.github.talkbacktutorial.activities.modules.gotohomescreen
 
 import android.os.Bundle
 import android.view.View

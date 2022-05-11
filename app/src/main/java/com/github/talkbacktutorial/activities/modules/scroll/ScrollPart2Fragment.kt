@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules.scrolling
+package com.github.talkbacktutorial.activities.modules.scroll
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,11 +16,11 @@ import com.github.talkbacktutorial.databinding.BasicHorizontalCardBinding
 import com.github.talkbacktutorial.databinding.FragmentScrollingModulePart2Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 
-class ScrollingModulePart2Fragment : Fragment() {
+class ScrollPart2Fragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = ScrollingModulePart2Fragment()
+        fun newInstance() = ScrollPart2Fragment()
     }
 
     private lateinit var binding: FragmentScrollingModulePart2Binding
@@ -37,7 +37,7 @@ class ScrollingModulePart2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as ScrollingModuleActivity))
+        this.ttsEngine = TextToSpeechEngine((activity as ScrollActivity))
             .onFinishedSpeaking(triggerOnce = true) {
                 binding.cardLinearLayout.visibility = View.VISIBLE
                 binding.cardLinearLayout.allViews.first().sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
@@ -100,7 +100,7 @@ class ScrollingModulePart2Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as ScrollingModuleActivity), MainActivity::class.java)
+            val intent = Intent((activity as ScrollActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

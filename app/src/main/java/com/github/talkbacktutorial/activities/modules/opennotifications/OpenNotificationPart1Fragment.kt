@@ -15,11 +15,11 @@ import java.util.*
 import kotlin.concurrent.schedule
 
 
-class OpenNotificationModuleFragment : Fragment() {
+class OpenNotificationPart1Fragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = OpenNotificationModuleFragment()
+        fun newInstance() = OpenNotificationPart1Fragment()
     }
 
     private lateinit var binding: FragmentOpenNotificationBinding
@@ -40,7 +40,7 @@ class OpenNotificationModuleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine =
-            TextToSpeechEngine((activity as OpenNotificationModuleActivity)).onFinishedSpeaking(
+            TextToSpeechEngine((activity as OpenNotificationActivity)).onFinishedSpeaking(
                 triggerOnce = true
             ) {
                 //Trigger this function once the intro is done speaking
@@ -149,7 +149,7 @@ class OpenNotificationModuleFragment : Fragment() {
         removeOnWindowFocusChangeListener {}
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent =
-                Intent((activity as OpenNotificationModuleActivity), MainActivity::class.java)
+                Intent((activity as OpenNotificationActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

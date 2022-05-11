@@ -53,7 +53,7 @@ class MediaVolumeControlPart1Fragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as MediaVolumeControlModuleActivity)).onFinishedSpeaking(triggerOnce = true){
+        this.ttsEngine = TextToSpeechEngine((activity as MediaVolumeControlActivity)).onFinishedSpeaking(triggerOnce = true){
             this.binding.mediaVolumeControlConstraintLayout.visibility = View.VISIBLE
         }
 
@@ -190,7 +190,7 @@ class MediaVolumeControlPart1Fragment: Fragment() {
 
     private fun endLesson(){
         /* Lesson's complete go back to Main Activity */
-        val intent = Intent((activity as MediaVolumeControlModuleActivity), MainActivity::class.java)
+        val intent = Intent((activity as MediaVolumeControlActivity), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
         stopMedia()

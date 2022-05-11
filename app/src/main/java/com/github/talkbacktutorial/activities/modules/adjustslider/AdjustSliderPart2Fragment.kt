@@ -18,10 +18,10 @@ import com.github.talkbacktutorial.databinding.FragmentAdjustSliderModulePart2Bi
  * This fragment teaches how to adjust a slider by double tapping then dragging
  * @author Antony Loose
  */
-class AdjustSliderModulePart2Fragment : Fragment() {
+class AdjustSliderPart2Fragment : Fragment() {
     companion object {
         @JvmStatic
-        fun newInstance() = AdjustSliderModulePart2Fragment()
+        fun newInstance() = AdjustSliderPart2Fragment()
     }
 
     private lateinit var binding: FragmentAdjustSliderModulePart2Binding
@@ -46,12 +46,12 @@ class AdjustSliderModulePart2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as AdjustSliderModuleActivity))
+        this.ttsEngine = TextToSpeechEngine((activity as AdjustSliderActivity))
             .onFinishedSpeaking(triggerOnce = true) {
                 this.mainView.visibility = View.VISIBLE
                 setSliderHandler()
                 // this is used to execute code before talkback executes on a slider
-                this.mainView.accessibilityDelegate = AdjustSliderDelegate(activity as AdjustSliderModuleActivity)
+                this.mainView.accessibilityDelegate = AdjustSliderDelegate(activity as AdjustSliderActivity)
             }
         speakIntro()
     }
@@ -135,7 +135,7 @@ class AdjustSliderModulePart2Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as AdjustSliderModuleActivity), MainActivity::class.java)
+            val intent = Intent((activity as AdjustSliderActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

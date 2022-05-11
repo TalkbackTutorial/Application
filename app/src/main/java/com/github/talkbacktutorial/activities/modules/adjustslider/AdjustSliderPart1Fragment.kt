@@ -13,11 +13,11 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentAdjustSliderModulePart1Binding
 
-class AdjustSliderModulePart1Fragment : Fragment() {
+class AdjustSliderPart1Fragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = AdjustSliderModulePart1Fragment()
+        fun newInstance() = AdjustSliderPart1Fragment()
     }
 
     private lateinit var binding: FragmentAdjustSliderModulePart1Binding
@@ -39,11 +39,11 @@ class AdjustSliderModulePart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as AdjustSliderModuleActivity))
+        this.ttsEngine = TextToSpeechEngine((activity as AdjustSliderActivity))
             .onFinishedSpeaking(triggerOnce = true) {
                 this.menuSlider.visibility = View.VISIBLE
                 // this is used to execute code before talkback executes on a slider
-                this.mainView.accessibilityDelegate = AdjustSliderDelegate(activity as AdjustSliderModuleActivity)
+                this.mainView.accessibilityDelegate = AdjustSliderDelegate(activity as AdjustSliderActivity)
                 setSliderHandler()
             }
         this.speakIntro()
@@ -130,8 +130,8 @@ class AdjustSliderModulePart1Fragment : Fragment() {
     private fun finishFragment(){
         this.ttsEngine.onFinishedSpeaking {
             parentFragmentManager.commit {
-                replace(this@AdjustSliderModulePart1Fragment.id,
-                    AdjustSliderModulePart2Fragment.newInstance()
+                replace(this@AdjustSliderPart1Fragment.id,
+                    AdjustSliderPart2Fragment.newInstance()
                 )
                 addToBackStack("adjustSliderModulePart2")
             }

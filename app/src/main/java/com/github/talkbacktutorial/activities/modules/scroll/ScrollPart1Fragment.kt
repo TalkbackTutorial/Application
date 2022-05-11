@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules.scrolling
+package com.github.talkbacktutorial.activities.modules.scroll
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,11 +15,11 @@ import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentScrollingModulePart1Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 
-class ScrollingModulePart1Fragment : Fragment() {
+class ScrollPart1Fragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = ScrollingModulePart1Fragment()
+        fun newInstance() = ScrollPart1Fragment()
     }
 
     private lateinit var binding: FragmentScrollingModulePart1Binding
@@ -36,7 +36,7 @@ class ScrollingModulePart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as ScrollingModuleActivity))
+        this.ttsEngine = TextToSpeechEngine((activity as ScrollActivity))
             .onFinishedSpeaking(triggerOnce = true) {
                 binding.cardLinearLayout.visibility = View.VISIBLE
                 binding.cardLinearLayout.allViews.first().sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
@@ -71,8 +71,8 @@ class ScrollingModulePart1Fragment : Fragment() {
         primaryButtonBinding.text = "Continue"
         primaryButtonBinding.button.setOnClickListener {
             parentFragmentManager.commit {
-                replace(this@ScrollingModulePart1Fragment.id,
-                    ScrollingModulePart2Fragment.newInstance()
+                replace(this@ScrollPart1Fragment.id,
+                    ScrollPart2Fragment.newInstance()
                 )
                 addToBackStack("scrollingModulePart2")
             }

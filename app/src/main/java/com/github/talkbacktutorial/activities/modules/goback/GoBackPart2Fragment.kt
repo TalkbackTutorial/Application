@@ -11,11 +11,11 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentGobackModulePart2Binding
 
-class GoBackModulePart2Fragment : Fragment() {
+class GoBackPart2Fragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = GoBackModulePart2Fragment()
+        fun newInstance() = GoBackPart2Fragment()
     }
 
     private lateinit var binding: FragmentGobackModulePart2Binding
@@ -31,8 +31,8 @@ class GoBackModulePart2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as GoBackModuleActivity))
-        GoBackModulePart1Fragment.returning = true
+        this.ttsEngine = TextToSpeechEngine((activity as GoBackActivity))
+        GoBackPart1Fragment.returning = true
         this.speakIntro()
     }
 

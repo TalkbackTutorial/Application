@@ -12,9 +12,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.modules.jumpcontrols.JumpControlsIntroFragment
-import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersIntroFragment
-import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksIntroFragment
+import com.github.talkbacktutorial.activities.modules.jumpcontrols.JumpControlsPart1Fragment
+import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersPart1Fragment
+import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksPart1Fragment
 import com.github.talkbacktutorial.databinding.FragmentJumpNavigationIntroBinding
 
 /**
@@ -22,7 +22,7 @@ import com.github.talkbacktutorial.databinding.FragmentJumpNavigationIntroBindin
  *
  * @author Matthew Crossman
  */
-class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment() {
+class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment() {
     private lateinit var binding: FragmentJumpNavigationIntroBinding
     private val isLastFragment = true
 
@@ -65,7 +65,7 @@ class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment()
                 entityLabel = getString(R.string.jump_headers_entity)
                 entityLabelPlural = getString(R.string.jump_headers_entity_plural)
 
-                introFragment = JumpHeadersIntroFragment()
+                introFragment = JumpHeadersPart1Fragment()
             }
             NavigationMode.LINKS -> {
                 firstTarget = binding.challenge.targetLink
@@ -74,7 +74,7 @@ class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment()
                 entityLabel = getString(R.string.jump_links_entity)
                 entityLabelPlural = getString(R.string.jump_links_entity_plural)
 
-                introFragment = JumpLinksIntroFragment()
+                introFragment = JumpLinksPart1Fragment()
             }
             NavigationMode.CONTROLS -> {
                 firstTarget = binding.challenge.targetControl
@@ -83,7 +83,7 @@ class JumpNavigationIntroFragment(private val mode: NavigationMode) : Fragment()
                 entityLabel = getString(R.string.jump_controls_entity)
                 entityLabelPlural = getString(R.string.jump_controls_entity_plural)
 
-                introFragment = JumpControlsIntroFragment()
+                introFragment = JumpControlsPart1Fragment()
             }
         }
 

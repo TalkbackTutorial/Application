@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules.scrolling
+package com.github.talkbacktutorial.activities.modules.goback
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,20 +7,25 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.LessonActivity
-import com.github.talkbacktutorial.databinding.ActivityScrollingModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityGobackModuleBinding
 
-class ScrollingModuleActivity : AppCompatActivity() {
+/**
+ * Go back to previous menu activity
+ * @author: Emmanuel Chu
+ */
 
-    lateinit var binding: ActivityScrollingModuleBinding
+class GoBackActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityGobackModuleBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_scrolling_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_goback_module)
         supportFragmentManager.commit {
-            replace(R.id.frame, ScrollingModulePart1Fragment.newInstance())
-            addToBackStack("scrollingModulePart1")
+            replace(R.id.frame, GoBackPart1Fragment.newInstance())
+            addToBackStack("gobackModulePart1")
         }
     }
 
@@ -32,6 +37,8 @@ class ScrollingModuleActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
+
     }
+
 
 }

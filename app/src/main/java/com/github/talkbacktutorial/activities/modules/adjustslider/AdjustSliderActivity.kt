@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules.goback
+package com.github.talkbacktutorial.activities.modules.adjustslider
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,25 +7,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.LessonActivity
-import com.github.talkbacktutorial.databinding.ActivityGobackModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityAdjustSliderModuleBinding
 
-/**
- * Go back to previous menu activity
- * @author: Emmanuel Chu
- */
+class AdjustSliderActivity : AppCompatActivity() {
 
-class GoBackModuleActivity : AppCompatActivity() {
-
-    lateinit var binding: ActivityGobackModuleBinding
+    lateinit var binding: ActivityAdjustSliderModuleBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_goback_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_adjust_slider_module)
         supportFragmentManager.commit {
-            replace(R.id.frame, GoBackModulePart1Fragment.newInstance())
-            addToBackStack("gobackModulePart1")
+            replace(R.id.frame, AdjustSliderPart1Fragment.newInstance())
+            addToBackStack("adjustSliderModulePart1")
         }
     }
 
@@ -37,8 +32,5 @@ class GoBackModuleActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-
     }
-
-
 }

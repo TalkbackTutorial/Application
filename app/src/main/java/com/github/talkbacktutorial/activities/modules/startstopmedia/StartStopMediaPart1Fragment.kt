@@ -46,7 +46,7 @@ class StartStopMediaPart1Fragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as StartStopMediaModuleActivity)).onFinishedSpeaking(triggerOnce = true) {
+        this.ttsEngine = TextToSpeechEngine((activity as StartStopMediaActivity)).onFinishedSpeaking(triggerOnce = true) {
             this.binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
         }
         setUpVideo()
@@ -154,7 +154,7 @@ class StartStopMediaPart1Fragment: Fragment() {
         }
 
         /* Lesson's complete go back to Main Activity */
-        val intent = Intent((activity as StartStopMediaModuleActivity), MainActivity::class.java)
+        val intent = Intent((activity as StartStopMediaActivity), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

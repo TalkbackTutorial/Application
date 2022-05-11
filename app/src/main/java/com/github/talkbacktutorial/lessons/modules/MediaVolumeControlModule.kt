@@ -2,7 +2,7 @@ package com.github.talkbacktutorial.lessons.modules
 
 import android.content.Context
 import android.content.Intent
-import com.github.talkbacktutorial.activities.modules.mediavolumecontrol.MediaVolumeControlModuleActivity
+import com.github.talkbacktutorial.activities.modules.mediavolumecontrol.MediaVolumeControlActivity
 
 /**
  * A module that teaches the user how to increase or decrease their media volume.
@@ -14,6 +14,6 @@ class MediaVolumeControlModule: Module() {
     override val title: String = "Media Volume Control"
 
     override fun startActivity(context: Context) {
-        context.startActivity(Intent(context, MediaVolumeControlModuleActivity::class.java))
+        context.startActivity(Intent(context, MediaVolumeControlActivity::class.java))
     }
 }

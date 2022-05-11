@@ -2,7 +2,7 @@ package com.github.talkbacktutorial.lessons.modules
 
 import android.content.Context
 import android.content.Intent
-import com.github.talkbacktutorial.activities.modules.GoToHomeScreenActivity
+import com.github.talkbacktutorial.activities.modules.gotohomescreen.GoToHomeScreenActivity
 
 /**
  * Teach the user how to use gestures to return to the home screen

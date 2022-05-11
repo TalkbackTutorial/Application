@@ -15,12 +15,12 @@ import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentGobackModulePart1Binding
 import com.github.talkbacktutorial.databinding.PillButtonBinding
 
-class GoBackModulePart1Fragment : Fragment() {
+class GoBackPart1Fragment : Fragment() {
     companion object {
         var returning: Boolean = false
 
         @JvmStatic
-        fun newInstance() = GoBackModulePart1Fragment()
+        fun newInstance() = GoBackPart1Fragment()
     }
 
     private lateinit var binding: FragmentGobackModulePart1Binding
@@ -40,7 +40,7 @@ class GoBackModulePart1Fragment : Fragment() {
         binding.finishLessonButton.button.visibility = View.GONE
         binding.continueButton.button.visibility = View.GONE
         if (!returning) {
-            this.ttsEngine = TextToSpeechEngine((activity as GoBackModuleActivity))
+            this.ttsEngine = TextToSpeechEngine((activity as GoBackActivity))
                 .onFinishedSpeaking(triggerOnce = true) {
                     binding.continueButton.button.visibility = View.VISIBLE
                 }
@@ -48,7 +48,7 @@ class GoBackModulePart1Fragment : Fragment() {
             this.speakIntro()
         }
         else if (returning) {
-            this.ttsEngine = TextToSpeechEngine((activity as GoBackModuleActivity))
+            this.ttsEngine = TextToSpeechEngine((activity as GoBackActivity))
                 .onFinishedSpeaking(triggerOnce = true) {
                     binding.finishLessonButton.button.visibility = View.VISIBLE
                 }
@@ -67,7 +67,7 @@ class GoBackModulePart1Fragment : Fragment() {
         // The button transitions to the next fragment when clicked
         binding.continueButton.button.setOnClickListener {
             parentFragmentManager.commit {
-                replace(this@GoBackModulePart1Fragment.id, GoBackModulePart2Fragment.newInstance())
+                replace(this@GoBackPart1Fragment.id, GoBackPart2Fragment.newInstance())
                 addToBackStack("gobackModulePart2")
             }
         }
@@ -116,7 +116,7 @@ class GoBackModulePart1Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as GoBackModuleActivity), MainActivity::class.java)
+            val intent = Intent((activity as GoBackActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             returning = false

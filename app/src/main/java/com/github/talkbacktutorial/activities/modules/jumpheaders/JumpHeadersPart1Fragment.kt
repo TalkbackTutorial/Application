@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules.jumpcontrols
+package com.github.talkbacktutorial.activities.modules.jumpheaders
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,15 +7,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.FragmentJumpControlsIntroTextBinding
+import com.github.talkbacktutorial.databinding.FragmentJumpHeadersIntroTextBinding
 
 /**
- * Introduction fragment teaching user how to jump around a few controls.
+ * Fragment to show the introduction to the jumping headers module.
  *
  * @author Matthew Crossman
  */
-class JumpControlsIntroFragment : Fragment() {
-    private lateinit var binding: FragmentJumpControlsIntroTextBinding
+class JumpHeadersPart1Fragment : Fragment() {
+    lateinit var binding: FragmentJumpHeadersIntroTextBinding
+        private set
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,11 +25,10 @@ class JumpControlsIntroFragment : Fragment() {
     ): View {
         this.binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_jump_controls_intro_text,
+            R.layout.fragment_jump_headers_intro_text,
             container,
             false
         )
         return binding.root
     }
-
 }

@@ -12,7 +12,7 @@ import com.github.talkbacktutorial.TextToSpeechEngine
  * @param activity the activity for tts
  * @author Antony Loose
  */
-class AdjustSliderDelegate(activity: AdjustSliderModuleActivity) : View.AccessibilityDelegate() {
+class AdjustSliderDelegate(activity: AdjustSliderActivity) : View.AccessibilityDelegate() {
 
     // accessibility constants
     // these values are the constant values of the accessibility event types that we need to detect
