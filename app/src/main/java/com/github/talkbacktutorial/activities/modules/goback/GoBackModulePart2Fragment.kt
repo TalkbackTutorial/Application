@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.databinding.FragmentGobackModulePart1Binding
 import com.github.talkbacktutorial.databinding.FragmentGobackModulePart2Binding
 
 class GoBackModulePart2Fragment : Fragment() {

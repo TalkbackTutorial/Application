@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.modules.scrolling.ScrollingModulePart2Fragment
 import com.github.talkbacktutorial.databinding.FragmentAdjustSliderModulePart1Binding
 
 class AdjustSliderModulePart1Fragment : Fragment() {

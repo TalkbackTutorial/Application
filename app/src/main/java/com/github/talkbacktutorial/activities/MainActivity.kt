@@ -1,8 +1,8 @@
 package com.github.talkbacktutorial.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine

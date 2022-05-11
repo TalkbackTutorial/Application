@@ -1,8 +1,5 @@
 package com.github.talkbacktutorial.lessons
 
-import android.content.Context
-import android.content.Intent
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
 import com.github.talkbacktutorial.lessons.modules.MediaVolumeControlModule
 import com.github.talkbacktutorial.lessons.modules.Module
 import com.github.talkbacktutorial.lessons.modules.StartStopMediaModule

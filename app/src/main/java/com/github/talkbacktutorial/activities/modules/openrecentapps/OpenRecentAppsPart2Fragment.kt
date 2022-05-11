@@ -12,7 +12,6 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart1Binding
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
 
 class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {

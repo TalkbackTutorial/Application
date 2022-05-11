@@ -2,10 +2,7 @@ package com.github.talkbacktutorial.activities.modules.explorebytouch
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MotionEventCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R

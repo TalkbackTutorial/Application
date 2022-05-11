@@ -1,7 +1,6 @@
 package com.github.talkbacktutorial.lessons
 
 import com.github.talkbacktutorial.lessons.modules.*
-import java.util.ArrayList
 
 class Lesson5 : Lesson() {
 

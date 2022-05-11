@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.LessonActivity
-import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.ActivityGobackModuleBinding
 
 /**

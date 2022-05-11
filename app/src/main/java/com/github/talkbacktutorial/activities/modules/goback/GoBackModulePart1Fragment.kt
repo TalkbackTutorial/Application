@@ -1,20 +1,17 @@
 package com.github.talkbacktutorial.activities.modules.goback
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.lesson0.Lesson0Activity
 import com.github.talkbacktutorial.databinding.FragmentGobackModulePart1Binding
 import com.github.talkbacktutorial.databinding.PillButtonBinding
 

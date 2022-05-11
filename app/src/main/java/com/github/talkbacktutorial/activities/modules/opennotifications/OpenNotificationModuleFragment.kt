@@ -11,7 +11,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentOpenNotificationBinding
-import java.util.Timer
+import java.util.*
 import kotlin.concurrent.schedule
 
 
