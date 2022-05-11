@@ -28,7 +28,8 @@ class ScrollPart2Fragment : Fragment() {
     private val menuSize = 50
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_scrolling_module_part2, container, false)
@@ -54,8 +55,10 @@ class ScrollPart2Fragment : Fragment() {
     private fun setupHorizontalScrollMenu(amount: Int) {
         binding.cardLinearLayout.visibility = View.GONE
         for (menuItemNum in 1..amount) {
-            val basicCardBinding: BasicHorizontalCardBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.basic_horizontal_card, binding.cardLinearLayout, false)
+            val basicCardBinding: BasicHorizontalCardBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.basic_horizontal_card, binding.cardLinearLayout, false
+            )
             basicCardBinding.text = "Menu Item $menuItemNum"
             basicCardBinding.card.setOnClickListener {
                 val info = """
@@ -111,5 +114,4 @@ class ScrollPart2Fragment : Fragment() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }
-
 }

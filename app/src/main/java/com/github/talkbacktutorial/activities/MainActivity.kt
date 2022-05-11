@@ -14,7 +14,6 @@ import com.github.talkbacktutorial.lessons.LessonContainer
 class MainActivity : AppCompatActivity() {
 
     private lateinit var ttsEngine: TextToSpeechEngine
-
     private val lessonsModel: LessonsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +26,10 @@ class MainActivity : AppCompatActivity() {
 
         // Show all lessons in LessonContainer
         for (lesson in LessonContainer.getAllLessons()) {
-            val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.lesson_card, binding.lessonLinearLayout, false)
+            val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.lesson_card, binding.lessonLinearLayout, false
+            )
             lessonCardBinding.title = lesson.title
             lessonCardBinding.subtitle = lesson.sequenceName
             lessonCardBinding.locked = lesson.isLocked
@@ -38,5 +39,4 @@ class MainActivity : AppCompatActivity() {
             binding.lessonLinearLayout.addView(lessonCardBinding.lessonCard)
         }
     }
-
 }

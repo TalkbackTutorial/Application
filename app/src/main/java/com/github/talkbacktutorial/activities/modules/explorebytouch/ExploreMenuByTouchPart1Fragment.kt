@@ -13,7 +13,6 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentExploreMenuByTouchModulePart1Binding
 
-
 /**
  * Part1 Fragment of explore menu by touch module
  * @author Jason Wu
@@ -27,7 +26,8 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_explore_menu_by_touch_module_part1, container, false)
@@ -49,8 +49,10 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
      */
     private fun showMenuItems(amount: Int) {
         for (menuItemNum in 1..amount) {
-            val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.basic_card, binding.layout1, false)
+            val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.basic_card, binding.layout1, false
+            )
             basicCardBinding.text = "Row $menuItemNum Column 1"
             basicCardBinding.card.setOnClickListener {
                 val info = """
@@ -63,20 +65,23 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
             }
             binding.layout1.addView(basicCardBinding.card)
             if (menuItemNum == 1) basicCardBinding.card.sendAccessibilityEvent(
-                AccessibilityEvent.TYPE_VIEW_FOCUSED)
+                AccessibilityEvent.TYPE_VIEW_FOCUSED
+            )
 
             // Create the second column
-            val basicCardBinding2: BasicCardBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.basic_card, binding.layout2, false)
-            if (menuItemNum == 5){
+            val basicCardBinding2: BasicCardBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.basic_card, binding.layout2, false
+            )
+            if (menuItemNum == 5) {
                 basicCardBinding2.text = "Continue Button"
                 basicCardBinding2.card.setOnClickListener {
-                parentFragmentManager.commit {
-                    replace(this@ExploreMenuByTouchPart1Fragment.id, ExploreMenuByTouchPart2Fragment.newInstance())
-                    addToBackStack("exploreMenuModulePart2") }
-                 }
-            }
-            else{
+                    parentFragmentManager.commit {
+                        replace(this@ExploreMenuByTouchPart1Fragment.id, ExploreMenuByTouchPart2Fragment.newInstance())
+                        addToBackStack("exploreMenuModulePart2")
+                    }
+                }
+            } else {
                 basicCardBinding2.text = "Row $menuItemNum Column 2"
                 basicCardBinding2.card.setOnClickListener {
                     val info = """
@@ -84,7 +89,7 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
                     Touch the screen with your finger, then drag it slowly around the screen.
                     You can drag your finger in any direction and don't leave the screen.
                     Find the continue button and double tap it.
-                """.trimIndent()
+                    """.trimIndent()
                     this.ttsEngine.speak(info)
                 }
             }

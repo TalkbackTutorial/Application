@@ -11,5 +11,4 @@ class GoBackModule : Module() {
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, GoBackActivity::class.java))
     }
-
 }

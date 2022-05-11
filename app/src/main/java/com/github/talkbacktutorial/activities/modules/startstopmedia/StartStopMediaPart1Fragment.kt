@@ -18,8 +18,7 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentStartStopMediaModulePart1Binding
 
-
-class StartStopMediaPart1Fragment: Fragment() {
+class StartStopMediaPart1Fragment : Fragment() {
 
     companion object {
         @JvmStatic
@@ -43,7 +42,6 @@ class StartStopMediaPart1Fragment: Fragment() {
         return this.binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as StartStopMediaActivity)).onFinishedSpeaking(triggerOnce = true) {
@@ -53,15 +51,15 @@ class StartStopMediaPart1Fragment: Fragment() {
         this.speakIntro()
     }
 
-    private fun setUpVideo(){
+    private fun setUpVideo() {
         // Get videoView by id
         this.videoView = this.binding.customVideoview
         videoView.setVideoPath("android.resource://" + requireActivity().packageName + "/" + R.raw.video_test)
         videoView.setOnPreparedListener { mp -> mp.isLooping = true }
         mediaController = MediaController(context)
-        mediaController?.setAnchorView(videoView);
-        mediaController?.setMediaPlayer(videoView);
-        mediaController?.requestFocus();
+        mediaController?.setAnchorView(videoView)
+        mediaController?.setMediaPlayer(videoView)
+        mediaController?.requestFocus()
 
         // Set play pause listener
         setUpPlayPauseListener()
@@ -70,8 +68,8 @@ class StartStopMediaPart1Fragment: Fragment() {
         videoView.setMediaController(mediaController)
     }
 
-    private fun setUpPlayPauseListener(){
-        videoView.setPlayPauseListener(object: CustomVideoView.PlayPauseListener{
+    private fun setUpPlayPauseListener() {
+        videoView.setPlayPauseListener(object : CustomVideoView.PlayPauseListener {
             override fun onPause() {
                 if (!firstPlay) {
                     binding.startStopMediaControlConstraintLayout.visibility = View.GONE
@@ -93,7 +91,7 @@ class StartStopMediaPart1Fragment: Fragment() {
             }
             override fun onPlay() {
                 mediaController?.hide()
-                if (firstPlay){
+                if (firstPlay) {
                     val info = """
                         Great job! You've played the video.
                         Now that you learned how to play the video, we will try pause the video.
@@ -101,33 +99,35 @@ class StartStopMediaPart1Fragment: Fragment() {
                         on the button to pause the video.
                     """.trimIndent()
 
-                    Handler().postDelayed(Runnable{
-                        videoView.pause()
-                        ttsEngine.speak(info)
-                        binding.startStopMediaControlConstraintLayout.visibility = View.GONE
-                        ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                            binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
-                            firstPlay = false
-                            videoView.start()
-                        }
-                    },1000)
-
+                    Handler().postDelayed(
+                        Runnable {
+                            videoView.pause()
+                            ttsEngine.speak(info)
+                            binding.startStopMediaControlConstraintLayout.visibility = View.GONE
+                            ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                                binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
+                                firstPlay = false
+                                videoView.start()
+                            }
+                        },
+                        1000
+                    )
                 }
             }
         })
     }
-    private fun speakIntro(){
+    private fun speakIntro() {
         val intro = """
             In this tutorial, you will be learning how to start and stop a video. 
             To start, double tap your screen by touch to bring up the media controller. 
             Next swipe right until you find the play button. Double tap to start playing the video.
             If nothing happens when you swipe, double tap again to bring up the media controller.
-            """.trimIndent()
+        """.trimIndent()
 
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
-    private fun insertFinishButton(){
+    private fun insertFinishButton() {
         val constraintLayout = this.binding.startStopMediaControlConstraintLayout
         val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
         layoutParams.horizontalBias = 0.95f
@@ -141,15 +141,15 @@ class StartStopMediaPart1Fragment: Fragment() {
         finishButton.text = text
         finishButton.layoutParams = layoutParams
         finishButton.setBackgroundResource(R.color.green_A400)
-        finishButton.setOnClickListener(View.OnClickListener {
+        finishButton.setOnClickListener {
             endLesson()
-        })
+        }
 
         constraintLayout.addView(finishButton)
     }
 
-    private fun endLesson(){
-        if(mediaController!=null && mediaController!!.isShowing()){
+    private fun endLesson() {
+        if (mediaController != null && mediaController!!.isShowing()) {
             mediaController!!.hide()
         }
 
@@ -164,7 +164,7 @@ class StartStopMediaPart1Fragment: Fragment() {
         super.onDestroyView()
     }
 
-    private fun Int.dpToPixels(context: Context):Int = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,this.toFloat(),context.resources.displayMetrics
+    private fun Int.dpToPixels(context: Context): Int = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
     ).toInt()
 }

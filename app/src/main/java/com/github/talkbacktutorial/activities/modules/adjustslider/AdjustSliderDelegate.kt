@@ -32,10 +32,12 @@ class AdjustSliderDelegate(activity: AdjustSliderActivity) : View.AccessibilityD
      * @author Antony Loose
      */
     override fun onRequestSendAccessibilityEvent(
-        host: ViewGroup?, child: View?, event: AccessibilityEvent?
+        host: ViewGroup?,
+        child: View?,
+        event: AccessibilityEvent?
     ): Boolean {
 
-        if (child is SeekBar){
+        if (child is SeekBar) {
             /*
                 only execute on the events we want, when a slider is selected there are multiple accessibility events
                 we only want to read our instruction on specific events, when the slider value changes and when
@@ -54,5 +56,4 @@ class AdjustSliderDelegate(activity: AdjustSliderActivity) : View.AccessibilityD
 
         return super.onRequestSendAccessibilityEvent(host, child, event)
     }
-
 }

@@ -29,7 +29,8 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_explore_menu_by_touch_module_part2, container, false)
@@ -52,19 +53,24 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
      */
     private fun showMenuItems(amount: Int) {
         for (menuItemNum in 1..amount) {
-            val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.basic_card, binding.layout1, false)
+            val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.basic_card, binding.layout1, false
+            )
             basicCardBinding.text = "Row $menuItemNum Column1"
             basicCardBinding.card.setOnClickListener {
                 ttsEngine.speak("You have interacted with a menu item. Find the button, then double tap to finish the lesson.")
             }
             binding.layout1.addView(basicCardBinding.card)
             if (menuItemNum == 1) basicCardBinding.card.sendAccessibilityEvent(
-                AccessibilityEvent.TYPE_VIEW_FOCUSED)
+                AccessibilityEvent.TYPE_VIEW_FOCUSED
+            )
 
             // Create the second column
-            val basicCardBinding2: BasicCardBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.basic_card, binding.layout2, false)
+            val basicCardBinding2: BasicCardBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.basic_card, binding.layout2, false
+            )
             basicCardBinding2.text = "Row $menuItemNum Column2"
             basicCardBinding2.card.setOnClickListener {
                 ttsEngine.speak("You have interacted with a menu item. Find the button, then double tap to finish the lesson.")
@@ -72,8 +78,10 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
             binding.layout2.addView(basicCardBinding2.card)
 
             // Create the third column
-            val basicCardBinding3: BasicCardBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.basic_card, binding.layout3, false)
+            val basicCardBinding3: BasicCardBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.basic_card, binding.layout3, false
+            )
             basicCardBinding3.text = "Row $menuItemNum Column3"
             basicCardBinding3.card.setOnClickListener {
                 ttsEngine.speak("You have interacted with a menu item. Find the button, then double tap to finish the lesson.")
@@ -125,5 +133,4 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }
-
 }

@@ -13,11 +13,12 @@ class Lesson2 : Lesson() {
     override val title: String = "Basic Menu Navigation"
     override val sequenceNumeral: Int = 2
 
-    override val modules: ArrayList<Module> = ArrayList(listOf(
-        ExploreMenuByTouchModule(),
-        ScrollingModule(),
-        GoBackModule(),
-        AdjustSliderModule()
-    ))
-
+    override val modules: ArrayList<Module> = ArrayList(
+        listOf(
+            ExploreMenuByTouchModule(),
+            ScrollingModule(),
+            GoBackModule(),
+            AdjustSliderModule()
+        )
+    )
 }

@@ -13,7 +13,6 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart1Binding
 
-
 class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
 
     private lateinit var binding: FragmentOpenRecentAppsPart1Binding
@@ -21,7 +20,8 @@ class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
     private var count = 0
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(
@@ -92,9 +92,10 @@ class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
                 addToBackStack("openrecentappspart1")
             }
         }
-        this.ttsEngine.speak("Great job. You have correctly opened the recent app menu and" +
-                "returned to the tutorial." + "Now to try with a different method.", override = true)
+        this.ttsEngine.speak(
+            "Great job. You have correctly opened the recent app menu and" +
+                "returned to the tutorial." + "Now to try with a different method.",
+            override = true
+        )
     }
-
 }
-

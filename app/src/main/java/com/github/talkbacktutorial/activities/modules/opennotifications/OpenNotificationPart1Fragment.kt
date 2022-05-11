@@ -14,7 +14,6 @@ import com.github.talkbacktutorial.databinding.FragmentOpenNotificationBinding
 import java.util.*
 import kotlin.concurrent.schedule
 
-
 class OpenNotificationPart1Fragment : Fragment() {
 
     companion object {
@@ -43,7 +42,7 @@ class OpenNotificationPart1Fragment : Fragment() {
             TextToSpeechEngine((activity as OpenNotificationActivity)).onFinishedSpeaking(
                 triggerOnce = true
             ) {
-                //Trigger this function once the intro is done speaking
+                // Trigger this function once the intro is done speaking
                 this.observeUser()
             }
         this.speakIntro()
@@ -76,14 +75,14 @@ class OpenNotificationPart1Fragment : Fragment() {
             Timer().schedule(5000) {
                 ttsEngine.speak(
                     "Good job. You have opened the notification panel. Now try to close it by doing the same gesture but" +
-                            " this time start from the bottom to top"
+                        " this time start from the bottom to top"
                 )
             }
         } else if (counter == 1) {
-            //once the user close the panel . Teach them how to do it by swiping right then down
+            // once the user close the panel . Teach them how to do it by swiping right then down
             ttsEngine.speak(
                 "Well done. The notification panel has been closed. Let's try to open it one more time" +
-                        "but this time, open it by swiping right, then down immediately."
+                    "but this time, open it by swiping right, then down immediately."
             )
         } else if (counter == 2) {
             // tell the user to close the panel after it is opened again
@@ -111,7 +110,6 @@ class OpenNotificationPart1Fragment : Fragment() {
      */
     private fun Fragment.removeOnWindowFocusChangeListener(callback: (hasFocus: Boolean) -> Unit) =
         view?.viewTreeObserver?.removeOnWindowFocusChangeListener(callback)
-
 
     /**
      * Speaks an intro for the fragment.

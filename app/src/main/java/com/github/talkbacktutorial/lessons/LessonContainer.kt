@@ -8,14 +8,16 @@ package com.github.talkbacktutorial.lessons
  */
 object LessonContainer {
 
-    private val lessons = ArrayList<Lesson>(listOf(
-        Lesson0(),
-        Lesson1(),
-        Lesson2(),
-        Lesson3(),
-        Lesson4(),
-        Lesson5()
-    ))
+    private val lessons = ArrayList<Lesson>(
+        listOf(
+            Lesson0(),
+            Lesson1(),
+            Lesson2(),
+            Lesson3(),
+            Lesson4(),
+            Lesson5()
+        )
+    )
 
     /**
      * Retrieves all lessons in a new ArrayList.
@@ -34,5 +36,4 @@ object LessonContainer {
             lesson.id.toString() == id
         }
     }
-
 }

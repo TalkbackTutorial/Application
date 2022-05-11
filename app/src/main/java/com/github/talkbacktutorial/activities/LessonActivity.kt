@@ -14,7 +14,8 @@ class LessonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        val binding: ActivityLessonBinding = DataBindingUtil.setContentView(this,
+        val binding: ActivityLessonBinding = DataBindingUtil.setContentView(
+            this,
             R.layout.activity_lesson
         )
 
@@ -23,8 +24,10 @@ class LessonActivity : AppCompatActivity() {
             val lesson: Lesson = LessonContainer.getLesson(id)
             binding.lesson = lesson
             for (module in lesson.modules) {
-                val moduleCardBinding: ModuleCardBinding = DataBindingUtil.inflate(layoutInflater,
-                    R.layout.module_card, binding.modulesLinearLayout, false)
+                val moduleCardBinding: ModuleCardBinding = DataBindingUtil.inflate(
+                    layoutInflater,
+                    R.layout.module_card, binding.modulesLinearLayout, false
+                )
                 moduleCardBinding.title = module.title
                 moduleCardBinding.subtitle = "Module ${lesson.getModuleSequenceNumeral(module)}"
                 moduleCardBinding.moduleCard.setOnClickListener {
@@ -34,5 +37,4 @@ class LessonActivity : AppCompatActivity() {
             }
         }
     }
-
 }

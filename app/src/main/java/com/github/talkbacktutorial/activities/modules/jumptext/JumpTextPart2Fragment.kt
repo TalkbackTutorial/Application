@@ -27,7 +27,8 @@ class JumpTextPart2Fragment : Fragment() {
 
     // callback run after this fragment is created for AdjustReadingControlsActivity
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         /*
@@ -48,7 +49,6 @@ class JumpTextPart2Fragment : Fragment() {
         binding.finish.setOnClickListener {
             this.onClickFinishLesson()
         }
-
     }
 
     /**

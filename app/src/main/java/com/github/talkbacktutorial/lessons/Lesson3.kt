@@ -15,12 +15,14 @@ import com.github.talkbacktutorial.lessons.modules.JumpText
 class Lesson3 : Lesson() {
     override val title = "Controlling Reading"
     override val sequenceNumeral = 3
-    override val modules = ArrayList(listOf(
-        AdjustReadingControls(),
-        JumpText(),
-        JumpControls(),
-        JumpHeaders(),
-        // Disabled:
+    override val modules = ArrayList(
+        listOf(
+            AdjustReadingControls(),
+            JumpText(),
+            JumpControls(),
+            JumpHeaders(),
+            // Disabled:
 //        JumpLinks()
-    ))
+        )
+    )
 }

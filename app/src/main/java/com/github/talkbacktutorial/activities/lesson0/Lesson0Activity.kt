@@ -33,5 +33,4 @@ class Lesson0Activity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }

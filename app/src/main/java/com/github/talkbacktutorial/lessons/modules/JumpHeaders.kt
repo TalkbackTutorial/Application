@@ -10,6 +10,7 @@ import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersAct
  * @author Matthew Crossman
  */
 class JumpHeaders : Module() {
+
     override val title = "Jump between headers"
 
     override fun startActivity(context: Context) {

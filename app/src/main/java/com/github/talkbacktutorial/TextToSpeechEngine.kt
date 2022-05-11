@@ -43,8 +43,8 @@ class TextToSpeechEngine(context: AppCompatActivity) {
             // Attempt to copy user's setting's TTS pitch and rate settings
             val systemPitch = Settings.Secure.getInt(context.contentResolver, Settings.Secure.TTS_DEFAULT_PITCH)
             val systemRate = Settings.Secure.getInt(context.contentResolver, Settings.Secure.TTS_DEFAULT_RATE)
-            ttsEngine.setPitch(systemPitch/100F)
-            ttsEngine.setSpeechRate(systemRate/100F)
+            ttsEngine.setPitch(systemPitch / 100F)
+            ttsEngine.setSpeechRate(systemRate / 100F)
         } catch (e: Settings.SettingNotFoundException) { /* Default values are set instead */ }
 
         this.ttsEngine.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
@@ -88,7 +88,7 @@ class TextToSpeechEngine(context: AppCompatActivity) {
     fun repeatLast(amount: Int = 1) {
         for (index in 1..amount) {
             if (TextToSpeechEngine.history.size < index) continue
-            this.ttsEngine.speak(TextToSpeechEngine.history[index-1], TextToSpeech.QUEUE_ADD, null, "tts1")
+            this.ttsEngine.speak(TextToSpeechEngine.history[index - 1], TextToSpeech.QUEUE_ADD, null, "tts1")
         }
     }
 
@@ -146,5 +146,4 @@ class TextToSpeechEngine(context: AppCompatActivity) {
         this.onFinishedSpeaking = call
         return this
     }
-
 }

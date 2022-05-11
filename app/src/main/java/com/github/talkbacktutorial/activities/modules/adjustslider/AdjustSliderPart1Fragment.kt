@@ -77,7 +77,6 @@ class AdjustSliderPart1Fragment : Fragment() {
             }
 
             override fun onStopTrackingTouch(seek: SeekBar) {
-
             }
         })
     }
@@ -127,10 +126,11 @@ class AdjustSliderPart1Fragment : Fragment() {
         this.ttsEngine.speak(outro)
     }
 
-    private fun finishFragment(){
+    private fun finishFragment() {
         this.ttsEngine.onFinishedSpeaking {
             parentFragmentManager.commit {
-                replace(this@AdjustSliderPart1Fragment.id,
+                replace(
+                    this@AdjustSliderPart1Fragment.id,
                     AdjustSliderPart2Fragment.newInstance()
                 )
                 addToBackStack("adjustSliderModulePart2")

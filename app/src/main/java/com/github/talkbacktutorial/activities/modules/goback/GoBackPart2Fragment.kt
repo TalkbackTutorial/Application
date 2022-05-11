@@ -22,7 +22,8 @@ class GoBackPart2Fragment : Fragment() {
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_goback_module_part2, container, false)
@@ -51,10 +52,5 @@ class GoBackPart2Fragment : Fragment() {
         Log.v("onDestroyView", "func called")
         this.ttsEngine.shutDown()
         super.onDestroyView()
-
     }
-
-
-
-
 }

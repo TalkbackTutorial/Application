@@ -25,5 +25,4 @@ abstract class Module {
      * @param context The context that starts this module's Activity.
      */
     abstract fun startActivity(context: Context)
-
 }

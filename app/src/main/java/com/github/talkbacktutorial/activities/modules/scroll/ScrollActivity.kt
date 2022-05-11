@@ -33,5 +33,4 @@ class ScrollActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }

@@ -26,5 +26,4 @@ class Lesson0 : Lesson() {
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, Lesson0Activity::class.java))
     }
-
 }

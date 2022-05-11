@@ -9,7 +9,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.ActivityStartStopMediaModuleBinding
 
-class StartStopMediaActivity: AppCompatActivity() {
+class StartStopMediaActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityStartStopMediaModuleBinding
         private set

@@ -14,5 +14,4 @@ class OpenNotificationsModule : Module() {
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, OpenNotificationActivity::class.java))
     }
-
 }

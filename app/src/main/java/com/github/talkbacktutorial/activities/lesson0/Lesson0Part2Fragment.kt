@@ -24,7 +24,8 @@ class Lesson0Part2Fragment : Fragment() {
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lesson0_part2, container, false)
@@ -47,8 +48,10 @@ class Lesson0Part2Fragment : Fragment() {
      */
     private fun showMenuItems(amount: Int) {
         for (menuItemNum in 1..amount) {
-            val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.basic_card, binding.cardLinearLayout, false)
+            val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.basic_card, binding.cardLinearLayout, false
+            )
             basicCardBinding.text = "Menu Item $menuItemNum"
             basicCardBinding.card.setOnClickListener {
                 parentFragmentManager.commit {
@@ -58,7 +61,8 @@ class Lesson0Part2Fragment : Fragment() {
             }
             binding.cardLinearLayout.addView(basicCardBinding.card)
             if (menuItemNum == 1) basicCardBinding.card.sendAccessibilityEvent(
-                AccessibilityEvent.TYPE_VIEW_FOCUSED)
+                AccessibilityEvent.TYPE_VIEW_FOCUSED
+            )
         }
     }
 
@@ -81,5 +85,4 @@ class Lesson0Part2Fragment : Fragment() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }
-
 }

@@ -10,8 +10,7 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 class GoToHomeScreenActivity : AppCompatActivity() {
     private lateinit var ttsEngine: TextToSpeechEngine
     private var stoppedCount: Int = 0
-    private lateinit var repeatBtn : Button
-
+    private lateinit var repeatBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +22,6 @@ class GoToHomeScreenActivity : AppCompatActivity() {
         if (savedInstanceState != null) {
             stoppedCount = savedInstanceState.getInt("stoppedCount")
         }
-
     }
 
     override fun onStart() {
@@ -82,9 +80,11 @@ class GoToHomeScreenActivity : AppCompatActivity() {
      * @author Mingxuan Fu
      */
     private fun speakMid() {
-        val outro = ("Good, you are back, this gesture is useful as it allows you to return to the " +
+        val outro = (
+            "Good, you are back, this gesture is useful as it allows you to return to the " +
                 "home screen at anytime no matter where you are. Now do it again, " +
-                "remember the gesture is swipe up then left").trimIndent()
+                "remember the gesture is swipe up then left"
+            ).trimIndent()
         this.ttsEngine.speakOnInitialisation(outro)
     }
 
@@ -94,7 +94,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
      */
     private fun speakOutro() {
         val outro = "Nice, you have navigated back to this screen, you have now learnt how to use the go to home screen gesture. " +
-                "Returning you to the lesson screen now.".trimIndent()
+            "Returning you to the lesson screen now.".trimIndent()
         this.ttsEngine.speakOnInitialisation(outro)
     }
 }

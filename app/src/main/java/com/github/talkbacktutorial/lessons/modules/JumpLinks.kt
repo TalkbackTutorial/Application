@@ -10,6 +10,7 @@ import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksActivit
  * @author Matthew Crossman
  */
 class JumpLinks : Module() {
+
     override val title = "Jump between links"
 
     override fun startActivity(context: Context) {

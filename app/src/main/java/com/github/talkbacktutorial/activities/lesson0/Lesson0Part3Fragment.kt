@@ -26,7 +26,8 @@ class Lesson0Part3Fragment : Fragment() {
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lesson0_part3, container, false)
@@ -105,5 +106,4 @@ class Lesson0Part3Fragment : Fragment() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }
-
 }

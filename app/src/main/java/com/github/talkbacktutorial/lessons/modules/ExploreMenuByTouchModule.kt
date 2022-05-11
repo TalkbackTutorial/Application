@@ -15,5 +15,4 @@ class ExploreMenuByTouchModule : Module() {
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, ExploreMenuByTouchActivity::class.java))
     }
-
 }

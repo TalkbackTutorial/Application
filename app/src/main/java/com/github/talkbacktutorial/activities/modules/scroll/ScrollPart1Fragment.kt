@@ -27,7 +27,8 @@ class ScrollPart1Fragment : Fragment() {
     private val menuSize = 50
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_scrolling_module_part1, container, false)
@@ -53,8 +54,10 @@ class ScrollPart1Fragment : Fragment() {
     private fun setupVerticalScrollMenu(amount: Int) {
         binding.cardLinearLayout.visibility = View.GONE
         for (menuItemNum in 1..amount) {
-            val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.basic_card, binding.cardLinearLayout, false)
+            val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.basic_card, binding.cardLinearLayout, false
+            )
             basicCardBinding.text = "Menu Item $menuItemNum"
             basicCardBinding.card.setOnClickListener {
                 val info = """
@@ -71,7 +74,8 @@ class ScrollPart1Fragment : Fragment() {
         primaryButtonBinding.text = "Continue"
         primaryButtonBinding.button.setOnClickListener {
             parentFragmentManager.commit {
-                replace(this@ScrollPart1Fragment.id,
+                replace(
+                    this@ScrollPart1Fragment.id,
                     ScrollPart2Fragment.newInstance()
                 )
                 addToBackStack("scrollingModulePart2")
@@ -103,5 +107,4 @@ class ScrollPart1Fragment : Fragment() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }
-
 }

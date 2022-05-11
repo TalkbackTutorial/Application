@@ -15,5 +15,4 @@ class ScrollingModule : Module() {
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, ScrollActivity::class.java))
     }
-
 }

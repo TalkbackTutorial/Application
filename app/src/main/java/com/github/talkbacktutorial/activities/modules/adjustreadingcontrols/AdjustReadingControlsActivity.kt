@@ -38,5 +38,4 @@ class AdjustReadingControlsActivity : AppCompatActivity() {
             // if we have multiple fragments, we'll add to the back stack
         }
     }
-
 }

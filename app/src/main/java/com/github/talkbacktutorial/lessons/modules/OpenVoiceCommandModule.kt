@@ -14,5 +14,4 @@ class OpenVoiceCommandModule : Module() { // E.g. PausingAndPlayingMediaModule
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, OpenVoiceCommandActivity::class.java))
     }
-
 }

@@ -21,8 +21,7 @@ import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentMediaVolumeControlModulePart1Binding
 import kotlin.math.roundToInt
 
-
-class MediaVolumeControlPart1Fragment: Fragment() {
+class MediaVolumeControlPart1Fragment : Fragment() {
 
     companion object {
         @JvmStatic
@@ -32,14 +31,14 @@ class MediaVolumeControlPart1Fragment: Fragment() {
     private lateinit var binding: FragmentMediaVolumeControlModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
-    private var mediaPlayer:MediaPlayer? = null
-    private lateinit var audioManager:AudioManager
-    private var totalSongDuration:Int = 0
-    private var seekbarVolume:SeekBar? = null
+    private var mediaPlayer: MediaPlayer? = null
+    private lateinit var audioManager: AudioManager
+    private var totalSongDuration: Int = 0
+    private var seekbarVolume: SeekBar? = null
     private var currentVolume: Int = 0
     private var maxStreamVolume: Int = 150
-    private var swipeUp:Boolean = false
-    private lateinit var accessibilityManager:AccessibilityManager
+    private var swipeUp: Boolean = false
+    private lateinit var accessibilityManager: AccessibilityManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,7 +52,7 @@ class MediaVolumeControlPart1Fragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as MediaVolumeControlActivity)).onFinishedSpeaking(triggerOnce = true){
+        this.ttsEngine = TextToSpeechEngine((activity as MediaVolumeControlActivity)).onFinishedSpeaking(triggerOnce = true) {
             this.binding.mediaVolumeControlConstraintLayout.visibility = View.VISIBLE
         }
 
@@ -69,45 +68,44 @@ class MediaVolumeControlPart1Fragment: Fragment() {
         this.speakIntro()
     }
 
-    private fun mediaControls(){
-        this.binding.playButton.setOnClickListener{
+    private fun mediaControls() {
+        this.binding.playButton.setOnClickListener {
             // when users click on the fab button
-            if(mediaPlayer == null){
+            if (mediaPlayer == null) {
                 mediaPlayer = MediaPlayer.create(context, R.raw.media_sound)
             }
 
             mediaPlayer?.start()
             mediaPlayer?.isLooping = true
             val defaultStreamVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
-            //TODO add function
+            // TODO add function
             totalSongDuration = mediaPlayer!!.duration
             maxStreamVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
-            val vol: Float = defaultStreamVolume.toFloat()/maxStreamVolume
+            val vol: Float = defaultStreamVolume.toFloat() / maxStreamVolume
             mediaPlayer?.setVolume(vol, vol)
-            currentVolume = (vol*100).roundToInt()
+            currentVolume = (vol * 100).roundToInt()
             seekbarVolume?.progress = currentVolume
-
         }
 
-        this.binding.stopButton.setOnClickListener{
+        this.binding.stopButton.setOnClickListener {
             stopMedia()
         }
 
-        this.seekbarVolume?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        this.seekbarVolume?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                if(p2) {
+                if (p2) {
                     currentVolume = p1
-                    val vol: Float = p1.toFloat()/maxStreamVolume
+                    val vol: Float = p1.toFloat() / maxStreamVolume
                     mediaPlayer?.setVolume(vol, vol)
-                    var volumeNum = p1/100.0f
+                    var volumeNum = p1 / 100.0f
                     mediaPlayer?.setVolume(volumeNum, volumeNum)
                     // If talkback is turned on
                     if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled) {
-                        if(mediaPlayer == null){
+                        if (mediaPlayer == null) {
                             val info = """The song is not played. Please press the play button to play the music.""".trimIndent()
                             speakDuringLesson(info)
                         } else lessonLogic()
-                    }else speakDuringLesson("Talkback is currently not turned on. Please turn Talkback on to continue this lesson")
+                    } else speakDuringLesson("Talkback is currently not turned on. Please turn Talkback on to continue this lesson")
                 }
             }
 
@@ -119,8 +117,8 @@ class MediaVolumeControlPart1Fragment: Fragment() {
         })
     }
 
-    private fun lessonLogic(){
-        if(currentVolume >= 75){
+    private fun lessonLogic() {
+        if (currentVolume >= 75) {
             if (mediaPlayer?.isPlaying == true) mediaPlayer?.pause()
             binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
@@ -131,24 +129,24 @@ class MediaVolumeControlPart1Fragment: Fragment() {
                         current Volume is set above 75.
                         Now that you learned how to increase the volume, we will try decreasing the volume below 25.
                         To decrease the volume, swipe down.
-                        """.trimIndent()
+            """.trimIndent()
             ttsEngine.speak(info)
             swipeUp = true
-        } else if (currentVolume <= 25 && swipeUp){
+        } else if (currentVolume <= 25 && swipeUp) {
             stopMedia()
             val info = """
                         current volume is set below 25.
                         Congratulations on completing this lesson.
                         In this lesson you have successfully learn how to control the media volume of your phone.
                         To exit this lesson, select the finish button on the top right corner of the screen.
-                        """.trimIndent()
+            """.trimIndent()
             speakDuringLesson(info)
             insertFinishButton()
         }
     }
 
-    private fun stopMedia(){
-        if(mediaPlayer !== null) {
+    private fun stopMedia() {
+        if (mediaPlayer !== null) {
             mediaPlayer?.stop()
             mediaPlayer?.reset()
             mediaPlayer?.release()
@@ -156,7 +154,7 @@ class MediaVolumeControlPart1Fragment: Fragment() {
         }
     }
 
-    private fun insertFinishButton(){
+    private fun insertFinishButton() {
         val constraintLayout = this.binding.mediaVolumeControlConstraintLayout
         val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
         layoutParams.horizontalBias = 0.95f
@@ -170,25 +168,27 @@ class MediaVolumeControlPart1Fragment: Fragment() {
         finishButton.text = text
         finishButton.layoutParams = layoutParams
         finishButton.setBackgroundResource(R.color.green_A400)
-        finishButton.setOnClickListener(View.OnClickListener {
-            endLesson()
-        })
+        finishButton.setOnClickListener(
+            View.OnClickListener {
+                endLesson()
+            }
+        )
 
         constraintLayout.addView(finishButton)
     }
 
-    private fun speakIntro(){
+    private fun speakIntro() {
         val intro = """
             In this tutorial, you will be learning how to control the media volume sliders, increasing or decreasing your phone's media volume. 
             To start, explore your screen by touch and find the play button. 
             Once found, double tap to play the music.
             Then, increase the volume of the media above 75 by swiping up.
-            """.trimIndent()
+        """.trimIndent()
 
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
-    private fun endLesson(){
+    private fun endLesson() {
         /* Lesson's complete go back to Main Activity */
         val intent = Intent((activity as MediaVolumeControlActivity), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -203,18 +203,15 @@ class MediaVolumeControlPart1Fragment: Fragment() {
         super.onDestroyView()
     }
 
-    private fun Int.dpToPixels(context: Context):Int = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,this.toFloat(),context.resources.displayMetrics
+    private fun Int.dpToPixels(context: Context): Int = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
     ).toInt()
 
-    private fun speakDuringLesson(info: String){
+    private fun speakDuringLesson(info: String) {
         binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
         ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             binding.mediaVolumeControlConstraintLayout.visibility = View.VISIBLE
         }
         ttsEngine.speak(info)
     }
-
-
 }
-

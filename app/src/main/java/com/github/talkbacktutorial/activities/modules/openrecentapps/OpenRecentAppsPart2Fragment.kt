@@ -20,7 +20,8 @@ class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
     private var count = 0
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(
@@ -87,8 +88,10 @@ class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-        this.ttsEngine.speak("You have completed the open recent apps module. " +
-                "Sending you to the lesson screen.", override = true)
+        this.ttsEngine.speak(
+            "You have completed the open recent apps module. " +
+                "Sending you to the lesson screen.",
+            override = true
+        )
     }
-
 }

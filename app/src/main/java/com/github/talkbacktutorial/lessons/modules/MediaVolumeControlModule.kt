@@ -9,7 +9,7 @@ import com.github.talkbacktutorial.activities.modules.mediavolumecontrol.MediaVo
  * @author Sandy Du & Natalie Law
  */
 
-class MediaVolumeControlModule: Module() {
+class MediaVolumeControlModule : Module() {
 
     override val title: String = "Media Volume Control"
 

@@ -21,7 +21,8 @@ class AdjustReadingControlsPart1Fragment : Fragment() {
 
     // callback run after this fragment is created for AdjustReadingControlsActivity
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         /*

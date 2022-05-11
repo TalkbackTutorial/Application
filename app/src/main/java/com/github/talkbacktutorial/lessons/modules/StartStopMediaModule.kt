@@ -9,7 +9,8 @@ import com.github.talkbacktutorial.activities.modules.startstopmedia.StartStopMe
  * @author Sandy Du & Natalie Law
  */
 
-class StartStopMediaModule: Module() {
+class StartStopMediaModule : Module() {
+
     override val title: String = "Start and Stop Media"
 
     override fun startActivity(context: Context) {

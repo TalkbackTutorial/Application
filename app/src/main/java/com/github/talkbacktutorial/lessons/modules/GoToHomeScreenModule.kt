@@ -15,5 +15,4 @@ class GoToHomeScreenModule : Module() {
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, GoToHomeScreenActivity::class.java))
     }
-
 }

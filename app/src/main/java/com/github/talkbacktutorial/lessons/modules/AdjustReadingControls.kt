@@ -11,6 +11,7 @@ import com.github.talkbacktutorial.activities.modules.adjustreadingcontrols.Adju
  * @see AdjustReadingControlsActivity
  */
 class AdjustReadingControls : Module() {
+
     override val title = "Adjust reading controls"
 
     override fun startActivity(context: Context) {

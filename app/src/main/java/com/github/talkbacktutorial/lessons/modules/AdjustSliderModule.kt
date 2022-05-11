@@ -13,7 +13,6 @@ class AdjustSliderModule : Module() {
     override val title = "Adjust Slider"
 
     override fun startActivity(context: Context) {
-         context.startActivity(Intent(context, AdjustSliderActivity::class.java))
+        context.startActivity(Intent(context, AdjustSliderActivity::class.java))
     }
-
 }

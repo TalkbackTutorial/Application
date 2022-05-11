@@ -30,5 +30,4 @@ class JumpControlsPart1Fragment : Fragment() {
         )
         return binding.root
     }
-
 }

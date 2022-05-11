@@ -59,5 +59,4 @@ abstract class Lesson {
     fun getModuleSequenceNumeral(module: Module): Int {
         return this.modules.indexOfFirst { it.id == module.id } + 1
     }
-
 }

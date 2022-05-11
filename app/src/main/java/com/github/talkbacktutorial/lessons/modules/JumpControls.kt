@@ -10,6 +10,7 @@ import com.github.talkbacktutorial.activities.modules.jumpcontrols.JumpControlsA
  * @author Matthew Crossman
  */
 class JumpControls : Module() {
+
     override val title = "Jump between controls"
 
     override fun startActivity(context: Context) {

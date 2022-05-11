@@ -27,7 +27,8 @@ class GoBackPart1Fragment : Fragment() {
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_goback_module_part1, container, false)
@@ -46,8 +47,7 @@ class GoBackPart1Fragment : Fragment() {
                 }
             this.setupContinueButton()
             this.speakIntro()
-        }
-        else if (returning) {
+        } else if (returning) {
             this.ttsEngine = TextToSpeechEngine((activity as GoBackActivity))
                 .onFinishedSpeaking(triggerOnce = true) {
                     binding.finishLessonButton.button.visibility = View.VISIBLE
@@ -55,9 +55,7 @@ class GoBackPart1Fragment : Fragment() {
             this.setupFinishLessonButton()
             this.speakConclusion()
         }
-
     }
-
 
     /**
      * Sets up the continue button's visibility and listener.
@@ -128,16 +126,4 @@ class GoBackPart1Fragment : Fragment() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

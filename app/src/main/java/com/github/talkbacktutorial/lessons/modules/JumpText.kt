@@ -12,6 +12,7 @@ import com.github.talkbacktutorial.activities.modules.jumptext.JumpTextActivity
  * @see AdjustReadingControlsActivity
  */
 class JumpText : Module() {
+
     override val title = "Jump through text"
 
     override fun startActivity(context: Context) {

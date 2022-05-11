@@ -36,7 +36,10 @@ class AdjustSliderPart2Fragment : Fragment() {
     var hasReachedMax = false
     var hasReachedMin = false
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_adjust_slider_module_part2, container, false)
         this.menuSlider = this.binding.menuSlider
