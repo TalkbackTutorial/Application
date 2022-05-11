@@ -5,7 +5,7 @@ import android.content.Intent
 import com.github.talkbacktutorial.activities.modules.explorebytouch.ExploreMenuByTouchActivity
 
 /**
- * Explore menu by touch module
+ * A module for learning 'explore by touch'.
  * @author Jason Wu
  */
 class ExploreMenuByTouchModule : Module() {

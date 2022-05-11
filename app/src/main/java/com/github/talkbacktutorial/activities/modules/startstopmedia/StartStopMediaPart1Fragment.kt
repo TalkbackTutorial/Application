@@ -153,7 +153,7 @@ class StartStopMediaPart1Fragment : Fragment() {
             mediaController!!.hide()
         }
 
-        /* Lesson's complete go back to Main Activity */
+        // Lesson's complete go back to Main Activity
         val intent = Intent((activity as StartStopMediaActivity), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)

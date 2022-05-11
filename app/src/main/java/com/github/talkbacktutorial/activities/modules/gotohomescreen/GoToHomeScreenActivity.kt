@@ -8,6 +8,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 
 class GoToHomeScreenActivity : AppCompatActivity() {
+
     private lateinit var ttsEngine: TextToSpeechEngine
     private var stoppedCount: Int = 0
     private lateinit var repeatBtn: Button

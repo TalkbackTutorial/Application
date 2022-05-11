@@ -9,12 +9,8 @@ import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigat
 import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationPart1Fragment.NavigationMode
 import com.github.talkbacktutorial.databinding.ActivityJumpNavigationGenericIntroBinding
 
-/**
- * Implements jumping headers - learning how to jump between headers on a page
- *
- * @author Matthew Crossman
- */
 class JumpHeadersActivity : AppCompatActivity() {
+
     lateinit var binding: ActivityJumpNavigationGenericIntroBinding
         private set
 

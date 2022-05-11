@@ -5,12 +5,10 @@ import android.content.Intent
 import com.github.talkbacktutorial.activities.modules.adjustreadingcontrols.AdjustReadingControlsActivity
 
 /**
- * Defines and sets up the module for learning about reading controls.
- *
+ * A module for learning about reading controls.
  * @author Matthew Crossman
- * @see AdjustReadingControlsActivity
  */
-class AdjustReadingControls : Module() {
+class AdjustReadingControlsModule : Module() {
 
     override val title = "Adjust reading controls"
 

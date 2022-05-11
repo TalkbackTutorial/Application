@@ -9,12 +9,8 @@ import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigat
 import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationPart1Fragment.NavigationMode
 import com.github.talkbacktutorial.databinding.ActivityJumpNavigationGenericIntroBinding
 
-/**
- * Implements Jumping Controls - learning how to jump from control to control.
- *
- * @author Matthew Crossman
- */
 class JumpControlsActivity : AppCompatActivity() {
+
     lateinit var binding: ActivityJumpNavigationGenericIntroBinding
         private set
 

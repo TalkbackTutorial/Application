@@ -38,8 +38,6 @@ class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as OpenRecentAppsActivity))
-            .onFinishedSpeaking(triggerOnce = true) {
-            }
 
         this.speakIntro()
     }

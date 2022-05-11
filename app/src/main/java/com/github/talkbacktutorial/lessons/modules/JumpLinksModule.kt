@@ -6,10 +6,9 @@ import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksActivit
 
 /**
  * Module on jumping between links using the appropriate reading mode
- *
  * @author Matthew Crossman
  */
-class JumpLinks : Module() {
+class JumpLinksModule : Module() {
 
     override val title = "Jump between links"
 

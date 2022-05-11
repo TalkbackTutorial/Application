@@ -17,12 +17,8 @@ import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersPar
 import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksPart1Fragment
 import com.github.talkbacktutorial.databinding.FragmentJumpNavigationIntroBinding
 
-/**
- * Creates a generic introduction fragment for all navigation mode modules.
- *
- * @author Matthew Crossman
- */
 class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment() {
+
     private lateinit var binding: FragmentJumpNavigationIntroBinding
     private val isLastFragment = true
 

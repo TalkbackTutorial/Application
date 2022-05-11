@@ -14,11 +14,8 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentAdjustSliderModulePart2Binding
 
-/**
- * This fragment teaches how to adjust a slider by double tapping then dragging
- * @author Antony Loose
- */
 class AdjustSliderPart2Fragment : Fragment() {
+
     companion object {
         @JvmStatic
         fun newInstance() = AdjustSliderPart2Fragment()

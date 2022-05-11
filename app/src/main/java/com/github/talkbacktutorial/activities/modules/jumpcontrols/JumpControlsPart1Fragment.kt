@@ -9,12 +9,8 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.FragmentJumpControlsIntroTextBinding
 
-/**
- * Introduction fragment teaching user how to jump around a few controls.
- *
- * @author Matthew Crossman
- */
 class JumpControlsPart1Fragment : Fragment() {
+
     private lateinit var binding: FragmentJumpControlsIntroTextBinding
 
     override fun onCreateView(

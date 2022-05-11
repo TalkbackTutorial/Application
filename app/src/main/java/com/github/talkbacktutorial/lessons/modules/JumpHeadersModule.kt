@@ -6,10 +6,9 @@ import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersAct
 
 /**
  * Module on jumping between headers using the appropriate reading mode
- *
  * @author Matthew Crossman
  */
-class JumpHeaders : Module() {
+class JumpHeadersModule : Module() {
 
     override val title = "Jump between headers"
 

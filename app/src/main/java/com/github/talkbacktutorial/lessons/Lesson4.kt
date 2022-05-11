@@ -5,10 +5,9 @@ import com.github.talkbacktutorial.lessons.modules.Module
 import com.github.talkbacktutorial.lessons.modules.StartStopMediaModule
 
 /**
- * Lesson4 will teach the user how to interact with media.
+ * Lesson4 teaches the user how to interact with media.
  * @author Sandy Du & Natalie Law
  */
-
 class Lesson4 : Lesson() {
 
     override val title: String = "Interacting with Media"

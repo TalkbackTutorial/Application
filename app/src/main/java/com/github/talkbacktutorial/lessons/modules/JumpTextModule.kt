@@ -6,12 +6,10 @@ import com.github.talkbacktutorial.activities.modules.adjustreadingcontrols.Adju
 import com.github.talkbacktutorial.activities.modules.jumptext.JumpTextActivity
 
 /**
- * Defines and sets up the module for learning about reading controls.
- *
+ * A module for learning about reading controls.
  * @author Joel Yang
- * @see AdjustReadingControlsActivity
  */
-class JumpText : Module() {
+class JumpTextModule : Module() {
 
     override val title = "Jump through text"
 

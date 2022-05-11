@@ -9,12 +9,8 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.FragmentJumpLinksIntroTextBinding
 
-/**
- * Introductory information for learning about how to jump between links.
- *
- * @author Matthew Crossman
- */
 class JumpLinksPart1Fragment : Fragment() {
+
     lateinit var binding: FragmentJumpLinksIntroTextBinding
         private set
 

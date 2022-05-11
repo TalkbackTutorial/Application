@@ -21,7 +21,6 @@ class AdjustSliderDelegate(activity: AdjustSliderActivity) : View.AccessibilityD
         private const val TYPE_WINDOW_CONTENT_CHANGED = 2048
     }
 
-    // initialise tts
     private val ttsEngine = TextToSpeechEngine(activity)
 
     /**
@@ -39,9 +38,9 @@ class AdjustSliderDelegate(activity: AdjustSliderActivity) : View.AccessibilityD
 
         if (child is SeekBar) {
             /*
-                only execute on the events we want, when a slider is selected there are multiple accessibility events
-                we only want to read our instruction on specific events, when the slider value changes and when
-                the slider is highlighted.
+            only execute on the events we want, when a slider is selected there are multiple accessibility events
+            we only want to read our instruction on specific events, when the slider value changes and when
+            the slider is highlighted.
             */
             if (event?.eventType == TYPE_WINDOW_CONTENT_CHANGED || event?.eventType == TYPE_VIEW_ACCESSIBILITY_FOCUSED) {
                 val progress = child.progress

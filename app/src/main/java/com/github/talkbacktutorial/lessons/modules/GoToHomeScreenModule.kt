@@ -5,7 +5,7 @@ import android.content.Intent
 import com.github.talkbacktutorial.activities.modules.gotohomescreen.GoToHomeScreenActivity
 
 /**
- * Teach the user how to use gestures to return to the home screen
+ * Teaches the user how to use gestures to return to the home screen.
  * @author: Mingxuan Fu
  */
 class GoToHomeScreenModule : Module() {

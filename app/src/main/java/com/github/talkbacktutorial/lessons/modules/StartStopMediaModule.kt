@@ -8,7 +8,6 @@ import com.github.talkbacktutorial.activities.modules.startstopmedia.StartStopMe
  * A module that teaches the user how to start and stop media.
  * @author Sandy Du & Natalie Law
  */
-
 class StartStopMediaModule : Module() {
 
     override val title: String = "Start and Stop Media"

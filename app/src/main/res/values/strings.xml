@@ -34,6 +34,4 @@
     <string name="jump_text_paragraphs_intro">You will now learn to transition between paragraphs. A single swipe up or down will transition between different paragraphs that are on the screen. Please try it until you reach a button that says finish lesson, then double tap to finish the lesson. For your information, this will be a very long practice text so it would be easier to complete it using the Paragraph reading mode. However, you can still try out different reading modes such as Characters, Words and lines reading modes.</string>
     <string name="jump_text_paragraphs_conclusion">You have completed the lesson. To summarise, in this lesson you have learnt to use the Paragraph reading mode to navigate through the page. In the future, you can utilise these different reading modes such as Headers, Controls, Links and more, to navigate through your phone. Sending you back to the Lesson modules.</string>
     <string name="jump_text_continue_fragment_message">If you have changed reading mode to Paragraph mode, Please double tap to continue</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

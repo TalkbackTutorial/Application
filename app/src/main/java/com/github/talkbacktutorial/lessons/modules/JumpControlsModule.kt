@@ -6,10 +6,9 @@ import com.github.talkbacktutorial.activities.modules.jumpcontrols.JumpControlsA
 
 /**
  * Module on jumping between controls using the appropriate reading mode
- *
  * @author Matthew Crossman
  */
-class JumpControls : Module() {
+class JumpControlsModule : Module() {
 
     override val title = "Jump between controls"
 

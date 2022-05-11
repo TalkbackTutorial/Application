@@ -16,6 +16,7 @@ import com.github.talkbacktutorial.databinding.FragmentGobackModulePart1Binding
 import com.github.talkbacktutorial.databinding.PillButtonBinding
 
 class GoBackPart1Fragment : Fragment() {
+
     companion object {
         var returning: Boolean = false
 

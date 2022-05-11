@@ -17,7 +17,7 @@ class OpenVoiceCommandActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // supportActionBar?.hide()
+        supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_open_voice_command)
         supportFragmentManager.commit {
             replace(R.id.frame, OpenVoiceCommandPart1Fragment())

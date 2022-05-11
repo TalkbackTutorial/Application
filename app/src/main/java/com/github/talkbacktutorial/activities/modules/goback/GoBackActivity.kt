@@ -9,11 +9,6 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.databinding.ActivityGobackModuleBinding
 
-/**
- * Go back to previous menu activity
- * @author: Emmanuel Chu
- */
-
 class GoBackActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityGobackModuleBinding

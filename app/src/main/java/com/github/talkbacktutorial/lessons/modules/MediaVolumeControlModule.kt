@@ -8,7 +8,6 @@ import com.github.talkbacktutorial.activities.modules.mediavolumecontrol.MediaVo
  * A module that teaches the user how to increase or decrease their media volume.
  * @author Sandy Du & Natalie Law
  */
-
 class MediaVolumeControlModule : Module() {
 
     override val title: String = "Media Volume Control"

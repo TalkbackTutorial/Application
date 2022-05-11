@@ -7,9 +7,9 @@ import com.github.talkbacktutorial.activities.modules.openingvoicecommand.OpenVo
 /**
  * TODO
  */
-class OpenVoiceCommandModule : Module() { // E.g. PausingAndPlayingMediaModule
+class OpenVoiceCommandModule : Module() {
 
-    override val title: String = "Open Voice Command" // E.g. "Pause and Play Media"
+    override val title: String = "Open Voice Command"
 
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, OpenVoiceCommandActivity::class.java))

@@ -9,10 +9,6 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.ActivityExploreMenuByTouchBinding
 
-/**
- * Explore menu by touch activity
- * @author Jason Wu
- */
 class ExploreMenuByTouchActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityExploreMenuByTouchBinding

@@ -9,12 +9,8 @@ import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigat
 import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationPart1Fragment.NavigationMode
 import com.github.talkbacktutorial.databinding.ActivityJumpNavigationGenericIntroBinding
 
-/**
- * Teaches user how to jump between links.
- *
- * @author Matthew Crossman
- */
 class JumpLinksActivity : AppCompatActivity() {
+
     lateinit var binding: ActivityJumpNavigationGenericIntroBinding
         private set
 

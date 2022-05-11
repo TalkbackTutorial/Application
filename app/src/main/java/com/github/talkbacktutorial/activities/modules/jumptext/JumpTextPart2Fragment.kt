@@ -10,13 +10,8 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentJumpTextPart2Binding
 
-/**
- * Lets user work with text-based reading modes.
- *
- * @author Joel Yang
- * @see JumpTextActivity
- */
 class JumpTextPart2Fragment : Fragment() {
+
     private lateinit var binding: FragmentJumpTextPart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
@@ -31,10 +26,6 @@ class JumpTextPart2Fragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        /*
-            Here, we inflate our layout file (basically, turning the XML into a UI) through
-            DataBindingUtil, which will provide our layout binding during the inflate process.
-         */
         this.binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_part2, container, false)
         return binding.root
@@ -43,8 +34,6 @@ class JumpTextPart2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
-            .onFinishedSpeaking(triggerOnce = true) {
-            }
         this.speakIntro()
         binding.finish.setOnClickListener {
             this.onClickFinishLesson()

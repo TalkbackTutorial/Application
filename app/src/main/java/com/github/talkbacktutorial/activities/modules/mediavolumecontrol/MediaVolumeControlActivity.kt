@@ -10,6 +10,7 @@ import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.ActivityMediaVolumeControlModuleBinding
 
 class MediaVolumeControlActivity : AppCompatActivity() {
+
     lateinit var binding: ActivityMediaVolumeControlModuleBinding
         private set
 

@@ -15,11 +15,8 @@ import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentExploreMenuByTouchModulePart2Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 
-/**
- * Part2 Fragment of explore menu by touch module
- * @author Jason Wu
- */
 class ExploreMenuByTouchPart2Fragment : Fragment() {
+
     companion object {
         @JvmStatic
         fun newInstance() = ExploreMenuByTouchPart2Fragment()

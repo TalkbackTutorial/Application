@@ -9,12 +9,8 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.FragmentJumpHeadersIntroTextBinding
 
-/**
- * Fragment to show the introduction to the jumping headers module.
- *
- * @author Matthew Crossman
- */
 class JumpHeadersPart1Fragment : Fragment() {
+
     lateinit var binding: FragmentJumpHeadersIntroTextBinding
         private set
 

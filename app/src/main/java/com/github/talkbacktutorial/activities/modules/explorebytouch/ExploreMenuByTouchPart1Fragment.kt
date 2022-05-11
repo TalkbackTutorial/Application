@@ -13,10 +13,6 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentExploreMenuByTouchModulePart1Binding
 
-/**
- * Part1 Fragment of explore menu by touch module
- * @author Jason Wu
- */
 class ExploreMenuByTouchPart1Fragment : Fragment() {
     companion object {
         @JvmStatic
