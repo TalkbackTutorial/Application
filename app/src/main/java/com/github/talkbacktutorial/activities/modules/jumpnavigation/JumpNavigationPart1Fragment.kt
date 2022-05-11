@@ -15,11 +15,11 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.modules.jumpcontrols.JumpControlsPart1Fragment
 import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersPart1Fragment
 import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksPart1Fragment
-import com.github.talkbacktutorial.databinding.FragmentJumpNavigationIntroBinding
+import com.github.talkbacktutorial.databinding.FragmentJumpNavigationModulePart1Binding
 
 class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment() {
 
-    private lateinit var binding: FragmentJumpNavigationIntroBinding
+    private lateinit var binding: FragmentJumpNavigationModulePart1Binding
     private val isLastFragment = true
 
     override fun onCreateView(
@@ -29,7 +29,7 @@ class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment()
     ): View {
         this.binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_jump_navigation_intro,
+            R.layout.fragment_jump_navigation_module_part1,
             container,
             false
         )
@@ -153,7 +153,7 @@ class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment()
     /**
      * Intercepts focus events to move your position if you're on a pushback element
      */
-    private class InterceptorDelegate(val binding: FragmentJumpNavigationIntroBinding) :
+    private class InterceptorDelegate(val binding: FragmentJumpNavigationModulePart1Binding) :
         View.AccessibilityDelegate() {
 
         override fun onRequestSendAccessibilityEvent(

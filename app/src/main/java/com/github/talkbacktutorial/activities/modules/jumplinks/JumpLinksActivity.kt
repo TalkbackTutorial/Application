@@ -7,18 +7,18 @@ import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationPart1Fragment
 import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationPart1Fragment.NavigationMode
-import com.github.talkbacktutorial.databinding.ActivityJumpNavigationGenericIntroBinding
+import com.github.talkbacktutorial.databinding.ActivityJumpNavigationGenericIntroModuleBinding
 
 class JumpLinksActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityJumpNavigationGenericIntroBinding
+    lateinit var binding: ActivityJumpNavigationGenericIntroModuleBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         this.binding =
-            DataBindingUtil.setContentView(this, R.layout.activity_jump_navigation_generic_intro)
+            DataBindingUtil.setContentView(this, R.layout.activity_jump_navigation_generic_intro_module)
 
         supportFragmentManager.commit {
             replace(R.id.frame, JumpNavigationPart1Fragment(NavigationMode.LINKS))

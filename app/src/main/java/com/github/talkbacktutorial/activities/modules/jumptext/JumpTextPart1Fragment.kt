@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.databinding.FragmentJumpTextPart1Binding
+import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart1Binding
 
 class JumpTextPart1Fragment : Fragment() {
-    private lateinit var binding: FragmentJumpTextPart1Binding
+    private lateinit var binding: FragmentJumpTextModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
     companion object {
@@ -27,7 +27,7 @@ class JumpTextPart1Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_part1, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part1, container, false)
         return binding.root
     }
 

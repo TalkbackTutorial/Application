@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.FragmentAdjustReadingControlsPart1Binding
+import com.github.talkbacktutorial.databinding.FragmentAdjustReadingControlsModulePart1Binding
 
 class AdjustReadingControlsPart1Fragment : Fragment() {
 
-    private lateinit var binding: FragmentAdjustReadingControlsPart1Binding
+    private lateinit var binding: FragmentAdjustReadingControlsModulePart1Binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,7 +21,7 @@ class AdjustReadingControlsPart1Fragment : Fragment() {
     ): View {
         this.binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_adjust_reading_controls_part1,
+            R.layout.fragment_adjust_reading_controls_module_part1,
             container,
             false
         )

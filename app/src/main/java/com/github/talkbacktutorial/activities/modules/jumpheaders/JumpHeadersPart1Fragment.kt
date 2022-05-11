@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.FragmentJumpHeadersIntroTextBinding
+import com.github.talkbacktutorial.databinding.FragmentJumpHeadersModulePart1Binding
 
 class JumpHeadersPart1Fragment : Fragment() {
 
-    lateinit var binding: FragmentJumpHeadersIntroTextBinding
+    lateinit var binding: FragmentJumpHeadersModulePart1Binding
         private set
 
     override fun onCreateView(
@@ -21,7 +21,7 @@ class JumpHeadersPart1Fragment : Fragment() {
     ): View {
         this.binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_jump_headers_intro_text,
+            R.layout.fragment_jump_headers_module_part1,
             container,
             false
         )

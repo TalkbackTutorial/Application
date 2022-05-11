@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.FragmentOpenNotificationBinding
+import com.github.talkbacktutorial.databinding.FragmentOpenNotificationModulePart1Binding
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -21,7 +21,7 @@ class OpenNotificationPart1Fragment : Fragment() {
         fun newInstance() = OpenNotificationPart1Fragment()
     }
 
-    private lateinit var binding: FragmentOpenNotificationBinding
+    private lateinit var binding: FragmentOpenNotificationModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
     private var viewChangeCounter = 0
@@ -32,7 +32,7 @@ class OpenNotificationPart1Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_open_notification, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_open_notification_module_part1, container, false)
         return binding.root
     }
 

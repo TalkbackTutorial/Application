@@ -33,6 +33,13 @@ android {
     buildFeatures {
         dataBinding true
     }
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res\\layout\\modules', 'src\\main\\res\\layout\\lessons', 'src\\main\\res\\layout\\components', 'src\\main\\res\\layout\\lesson1'
+            }
+        }
+    }
 }
 
 task wrapper(type: Wrapper){
