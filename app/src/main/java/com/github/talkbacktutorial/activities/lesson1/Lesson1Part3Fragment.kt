@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.lesson0
+package com.github.talkbacktutorial.activities.lesson1
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,17 +12,17 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.BasicCardBinding
-import com.github.talkbacktutorial.databinding.FragmentLesson0Part3Binding
+import com.github.talkbacktutorial.databinding.FragmentLesson1Part3Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 
-class Lesson0Part3Fragment : Fragment() {
+class Lesson1Part3Fragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = Lesson0Part3Fragment()
+        fun newInstance() = Lesson1Part3Fragment()
     }
 
-    private lateinit var binding: FragmentLesson0Part3Binding
+    private lateinit var binding: FragmentLesson1Part3Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
@@ -30,13 +30,13 @@ class Lesson0Part3Fragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lesson0_part3, container, false)
+        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lesson1_part3, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as Lesson0Activity))
+        this.ttsEngine = TextToSpeechEngine((activity as Lesson1Activity))
             .onFinishedSpeaking(triggerOnce = true) {
                 this.showMenuItems(6)
                 this.insertFinishLessonButton(4)
@@ -81,7 +81,7 @@ class Lesson0Part3Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as Lesson0Activity), MainActivity::class.java)
+            val intent = Intent((activity as Lesson1Activity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

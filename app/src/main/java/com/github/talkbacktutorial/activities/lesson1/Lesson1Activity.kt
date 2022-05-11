@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.lesson0
+package com.github.talkbacktutorial.activities.lesson1
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,19 +7,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.ActivityLesson0Binding
+import com.github.talkbacktutorial.databinding.ActivityLesson1Binding
 
-class Lesson0Activity : AppCompatActivity() {
+class Lesson1Activity : AppCompatActivity() {
 
-    lateinit var binding: ActivityLesson0Binding
+    lateinit var binding: ActivityLesson1Binding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_lesson0)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_lesson1)
         supportFragmentManager.commit {
-            replace(R.id.frame, Lesson0Part1Fragment.newInstance())
+            replace(R.id.frame, Lesson1Part1Fragment.newInstance())
             addToBackStack("lesson0part1")
         }
     }

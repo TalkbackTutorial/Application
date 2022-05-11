@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".activities.LessonActivity"
             android:exported="false" />
-        <activity android:name=".activities.lesson0.Lesson0Activity"
+        <activity android:name=".activities.lesson1.Lesson1Activity"
             android:exported="false" />
         <activity android:name=".activities.modules.adjustreadingcontrols.AdjustReadingControlsActivity"
             android:exported="false" />
