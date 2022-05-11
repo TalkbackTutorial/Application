@@ -21,7 +21,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
         repeatBtn.visibility = View.GONE
 
         if (savedInstanceState != null) {
-            stoppedCount = savedInstanceState.getInt("stopedCount")
+            stoppedCount = savedInstanceState.getInt("stoppedCount")
         }
 
     }
@@ -57,7 +57,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putInt("stopedCount", stoppedCount)
+        outState.putInt("stoppedCount", stoppedCount)
         super.onSaveInstanceState(outState)
     }
 
