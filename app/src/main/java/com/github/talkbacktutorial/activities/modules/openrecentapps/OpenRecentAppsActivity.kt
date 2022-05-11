@@ -21,17 +21,6 @@ class OpenRecentAppsActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_open_recent_apps_module)
         supportFragmentManager.commit {
             replace(R.id.frame, OpenRecentAppsPart1Fragment())
-            addToBackStack("openRecentAppsPart1")
-        }
-    }
-
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount != 1) {
-            super.onBackPressed()
-        } else {
-            val intent = Intent(this, LessonActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
         }
     }
 }

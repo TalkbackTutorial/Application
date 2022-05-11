@@ -20,17 +20,6 @@ class OpenNotificationActivity : AppCompatActivity() {
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_open_notification_module)
         supportFragmentManager.commit {
             replace(R.id.frame, OpenNotificationPart1Fragment.newInstance())
-            addToBackStack("openNotificationModule")
-        }
-    }
-
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount != 1) {
-            super.onBackPressed()
-        } else {
-            val intent = Intent(this, LessonActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
         }
     }
 }

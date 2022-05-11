@@ -20,17 +20,6 @@ class Lesson1Activity : AppCompatActivity() {
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_lesson1)
         supportFragmentManager.commit {
             replace(R.id.frame, Lesson1Part1Fragment.newInstance())
-            addToBackStack("lesson0part1")
-        }
-    }
-
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount != 1) {
-            super.onBackPressed()
-        } else {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
         }
     }
 }

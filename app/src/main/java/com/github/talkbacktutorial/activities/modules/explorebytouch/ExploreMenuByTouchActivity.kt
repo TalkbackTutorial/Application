@@ -20,17 +20,6 @@ class ExploreMenuByTouchActivity : AppCompatActivity() {
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_explore_menu_by_touch_module)
         supportFragmentManager.commit {
             replace(R.id.frame, ExploreMenuByTouchPart1Fragment.newInstance())
-            addToBackStack("exploreMenuModulePart1")
-        }
-    }
-
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount != 1) {
-            super.onBackPressed()
-        } else {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
         }
     }
 }

@@ -20,17 +20,6 @@ class StartStopMediaActivity : AppCompatActivity() {
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_start_stop_media_module)
         supportFragmentManager.commit {
             replace(R.id.frame1, StartStopMediaPart1Fragment.newInstance())
-            addToBackStack("startStopMediaPart1")
-        }
-    }
-
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount != 1) {
-            super.onBackPressed()
-        } else {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
         }
     }
 }

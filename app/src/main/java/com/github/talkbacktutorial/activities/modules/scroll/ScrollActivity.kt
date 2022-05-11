@@ -20,17 +20,6 @@ class ScrollActivity : AppCompatActivity() {
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_scrolling_module)
         supportFragmentManager.commit {
             replace(R.id.frame, ScrollPart1Fragment.newInstance())
-            addToBackStack("scrollingModulePart1")
-        }
-    }
-
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount != 1) {
-            super.onBackPressed()
-        } else {
-            val intent = Intent(this, LessonActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
         }
     }
 }
