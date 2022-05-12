@@ -8,9 +8,9 @@ class Lesson5 : Lesson() {
     override val sequenceNumeral: Int = 5
     override val modules: ArrayList<Module> = ArrayList(
         listOf(
+            OpenRecentAppsModule(),
             GoToHomeScreenModule(),
             OpenNotificationsModule(),
-            OpenRecentAppsModule(),
             OpenVoiceCommandModule()
         )
     )
