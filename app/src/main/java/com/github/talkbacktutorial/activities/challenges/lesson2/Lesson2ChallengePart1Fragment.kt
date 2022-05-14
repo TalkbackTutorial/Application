@@ -35,7 +35,7 @@ class Lesson2ChallengePart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as ScrollActivity))
+        this.ttsEngine = TextToSpeechEngine((activity as Lesson2ChallengeActivity))
         // Setup here
     }
 
