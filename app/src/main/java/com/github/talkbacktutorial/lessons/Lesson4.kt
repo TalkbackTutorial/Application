@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.lessons
 
+import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.modules.MediaVolumeControlModule
 import com.github.talkbacktutorial.lessons.modules.Module
 import com.github.talkbacktutorial.lessons.modules.StartStopMediaModule
@@ -18,4 +19,5 @@ class Lesson4 : Lesson() {
             MediaVolumeControlModule()
         )
     )
+    override val challenge: Challenge? = null
 }

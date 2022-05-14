@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.lessons
 
+import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.modules.AdjustReadingControlsModule
 import com.github.talkbacktutorial.lessons.modules.JumpControlsModule
 import com.github.talkbacktutorial.lessons.modules.JumpHeadersModule
@@ -23,4 +24,5 @@ class Lesson3 : Lesson() {
             JumpHeadersModule()
         )
     )
+    override val challenge: Challenge? = null
 }
