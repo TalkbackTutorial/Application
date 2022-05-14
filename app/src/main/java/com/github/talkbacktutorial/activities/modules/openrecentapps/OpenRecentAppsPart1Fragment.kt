@@ -1,5 +1,9 @@
 package com.github.talkbacktutorial.activities.modules.openrecentapps
 
+import android.accessibilityservice.AccessibilityService
+import android.app.Activity
+import android.app.ActivityManager
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +12,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart1Binding
 
-class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
+class OpenRecentAppsPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentOpenRecentAppsPart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
@@ -30,31 +35,20 @@ class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
             container,
             false
         )
-        // Adding the fragment as the view lifecycle observer
-        ProcessLifecycleOwner.get().lifecycle.addObserver(this)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as OpenRecentAppsActivity))
-
         this.speakIntro()
-    }
-
-    override fun onPause() {
-        super<Fragment>.onPause()
-        super<DefaultLifecycleObserver>.onPause(this)
-        // Increment the count when the application is paused
-        count++
-    }
-
-    override fun onResume() {
-        super<Fragment>.onResume()
-        super<DefaultLifecycleObserver>.onPause(this)
-        // Very simple check if the application has been paused previously
-        if (count > 0) {
-            finishLesson()
+        // Simple listener detecting a change in window focus
+        view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
+            count++
+            // If the count is greater than 2, the app must have lost focus and re-gained focus
+            if (count > 2) {
+                finishLesson()
+            }
         }
     }
 
@@ -68,7 +62,7 @@ class OpenRecentAppsPart1Fragment : Fragment(), DefaultLifecycleObserver {
             In this module, you'll learn how to open recent apps. Recent apps are a handy way to
             quickly switch between frequently used apps. This can be done in two different ways. 
             Firstly, perform a swipe left and then, a swipe up gesture. 
-            Please try to perform these gestures one after another and enter a different app. 
+            Please try to perform these gestures one after another, and enter the recent apps menu. 
             Once completed, return to the tutorial.
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
