@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.modules.adjustreadingcontrols.AdjustReadingControlsPart1Fragment
 import com.github.talkbacktutorial.databinding.ChallengeLayoutBinding
 
 class Lesson2ChallengeActivity : AppCompatActivity() {
@@ -19,7 +18,7 @@ class Lesson2ChallengeActivity : AppCompatActivity() {
         this.binding = DataBindingUtil.setContentView(this, R.layout.challenge_layout)
 
         supportFragmentManager.commit {
-            replace(R.id.frame, Lesson2ChallengePart1Fragment())
+            replace(R.id.frame, ToyShopFragment())
         }
     }
 }

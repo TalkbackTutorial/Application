@@ -1,7 +1,7 @@
 package com.github.talkbacktutorial.lessons
 
 import com.github.talkbacktutorial.lessons.challenges.Challenge
-import com.github.talkbacktutorial.lessons.challenges.Lesson2Challenge
+import com.github.talkbacktutorial.lessons.challenges.lesson2challenge.Lesson2Challenge
 import com.github.talkbacktutorial.lessons.modules.*
 
 /**

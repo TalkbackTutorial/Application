@@ -1,10 +1,9 @@
-package com.github.talkbacktutorial.lessons.challenges
+package com.github.talkbacktutorial.lessons.challenges.lesson2challenge
 
 import android.content.Context
 import android.content.Intent
 import com.github.talkbacktutorial.activities.challenges.lesson2.Lesson2ChallengeActivity
-import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
-import com.github.talkbacktutorial.lessons.modules.Module
+import com.github.talkbacktutorial.lessons.challenges.Challenge
 
 /**
  * A challenge that makes use of all the content taught in Lesson2 in a practical real-world example.
