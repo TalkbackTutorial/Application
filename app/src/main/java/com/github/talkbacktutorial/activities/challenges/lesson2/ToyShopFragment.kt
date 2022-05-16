@@ -24,7 +24,6 @@ import kotlin.collections.ArrayList
 class ToyShopFragment : Fragment() {
 
     private lateinit var binding: FragmentToyShopBinding
-    private lateinit var ttsEngine: TextToSpeechEngine
     private lateinit var context: Lesson2ChallengeActivity
 
     override fun onCreateView(
@@ -39,7 +38,6 @@ class ToyShopFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.context = activity as Lesson2ChallengeActivity
-        this.ttsEngine = TextToSpeechEngine(this.context)
         this.showToysInRange()
         binding.priceSlider.setLabelFormatter { value: Float ->
             val format = NumberFormat.getCurrencyInstance()
@@ -74,6 +72,7 @@ class ToyShopFragment : Fragment() {
             )
             toyCardBinding.setName(toy.name)
             toyCardBinding.setPrice(toy.price)
+            toyCardBinding.rating.contentDescription = getString(R.string.rating_content_description, toy.starRating)
             for (star in 1..toy.starRating) {
                 val starImage = ImageView(this.context)
                 starImage.setBackgroundResource(R.drawable.baseline_star_yellow_800_24dp)
@@ -81,16 +80,13 @@ class ToyShopFragment : Fragment() {
             }
             this.binding.toyLayout.addView(toyCardBinding.card)
             toyCardBinding.card.setOnClickListener {
-                parentFragmentManager.commit {
-                    replace(this@ToyShopFragment.id, InspectToyFragment.newInstance())
-                    addToBackStack("inspectToy")
-                }
+                parentFragmentManager.beginTransaction().setCustomAnimations(
+                    com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                    com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
+                    .replace(this@ToyShopFragment.id, InspectToyFragment.newInstance(toy))
+                    .addToBackStack("inspectToy")
+                    .commit()
             }
         }
-    }
-
-    override fun onDestroyView() {
-        this.ttsEngine.shutDown()
-        super.onDestroyView()
     }
 }

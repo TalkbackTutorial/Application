@@ -36,7 +36,7 @@
                     android:id="@+id/price_range_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/price_range"
+                    android:text="@string/price_range_label"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -48,6 +48,7 @@
                     android:stepSize="25.0"
                     android:valueFrom="0.0"
                     android:valueTo="200.0"
+                    android:contentDescription="@string/price_range"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/price_range_label"
                     app:layout_constraintTop_toTopOf="parent"

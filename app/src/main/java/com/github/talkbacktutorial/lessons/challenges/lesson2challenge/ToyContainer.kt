@@ -36,14 +36,14 @@ object ToyContainer {
         return ArrayList(filteredByPriceToys.sortedBy { it.price })
     }
 
-    fun getToy(id: UUID): Toy? {
-        return this.toys.firstOrNull { toy ->
+    fun getToy(id: UUID): Toy {
+        return this.toys.first { toy ->
             toy.id == id
         }
     }
 
-    fun getToy(name: String): Toy? {
-        return this.toys.firstOrNull { toy ->
+    fun getToy(name: String): Toy {
+        return this.toys.first { toy ->
             toy.name == name
         }
     }

@@ -37,7 +37,7 @@
     <string name="challenge_card_title">End of Lesson Challenge</string>
     <string name="module_subtitle">Module %1$d</string>
     <string name="shop_title">Billy\'s Toy Shop</string>
-    <string name="price_range">Price Range:</string>
+    <string name="price_range_label">Price Range:</string>
     <string name="tennis_racquet_description">An easy-to-handle racket, ideal for intermediate players or young players transitioning from junior to adult size. Made from graphite. Increases the ball contact with the racket by 25 percent, providing more control and comfort. Specifications: Head: 102 sq. in./660 m². Corded: Yes. Cover: Yes. Length: 27 in./685 mm. String Pattern: 16 x 19. Balance: 335 mm. Stiffness: 68 RA. Rim profile: 23mm/26mm/23mm. Weight: 280 grams.</string>
     <string name="tennis_ball_description">This extra duty tennis ball is ideal for longer play on hard court surfaces. An ideal ball for all levels of tournament and recreational play.</string>
     <string name="basket_ball_description">It\'s time to take your game to the next level with this basketball - perfect for beginners as well as professionals.</string>
@@ -68,4 +68,12 @@
     <string name="egg">Egg</string>
     <string name="rating_label">Rating: </string>
     <string name="price_label">Price: $</string>
+    <string name="purchase">Purchase</string>
+    <string name="add_to_watchlist">Add to Watchlist</string>
+    <string name="purchased_feedback">%1$s Purchased</string>
+    <string name="added_to_watchlist_feedback">%1$s Added to Watchlist</string>
+    <string name="lesson2_challenge_intro">Welcome to Lesson 2\'s challenge. In challenges, you\'ll be presented with practical scenarios to demonstrate your new learnt skills. In this challenge, you\'ll be presented with a store. To complete the lesson, add the tennis ball and the tennis racquet to your watchlist. The tennis ball has a price of $5, and the tennis racquet has a price of $180. You may now start.</string>
+    <string name="lesson2_challenge_outro">You have completed the challenge. Sending you to the main menu.</string>
+    <string name="price_range">Price Range</string>
+    <string name="rating_content_description">Rating: %1$d stars</string>
 </resources>
