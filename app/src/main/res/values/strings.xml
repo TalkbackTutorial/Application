@@ -76,4 +76,11 @@
     <string name="lesson2_challenge_outro">You have completed the challenge. Sending you to the main menu.</string>
     <string name="price_range">Price Range</string>
     <string name="rating_content_description">Rating: %1$d stars</string>
+    <string name="popup_text">Notice, this app requires you to open talkback. Tap go setting will send you to the setting page, Tap leave app to leave.</string>
+    <string name="popup_display_text">This app requires you to open talkback</string>
+    <string name="goodbye">Good Bye</string>
+    <string name="send_setting">Sending you to setting page, go back after you enabled talkback.</string>
+    <string name="notice">Notice</string>
+    <string name="go_setting">Go setting</string>
+    <string name="leave_app">Leave App</string>
 </resources>

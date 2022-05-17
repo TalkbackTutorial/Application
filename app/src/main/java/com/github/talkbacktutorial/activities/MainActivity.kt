@@ -1,8 +1,19 @@
 package com.github.talkbacktutorial.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.accessibility.AccessibilityManager
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.PopupWindow
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
@@ -11,18 +22,22 @@ import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.LessonContainer
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var ttsEngine: TextToSpeechEngine
     private val lessonsModel: LessonsViewModel by viewModels()
+    lateinit var mainView: ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
 
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lessonsModel = this.lessonsModel
         this.ttsEngine = TextToSpeechEngine(this)
+        this.mainView = binding.constraintLayout
 
         // Show all lessons in LessonContainer
         for (lesson in LessonContainer.getAllLessons()) {
@@ -38,5 +53,63 @@ class MainActivity : AppCompatActivity() {
             }
             binding.lessonLinearLayout.addView(lessonCardBinding.lessonCard)
         }
+    }
+
+    /**
+     * Check the status of talkback every time open the main page
+     * @author Jason Wu
+     */
+    override fun onStart() {
+        if (!isTalkBackActive()) {
+            this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
+            popup(mainView)
+        }
+        super.onStart()
+    }
+
+    /**
+     * Detect talkback status
+     * @author Jason Wu
+     */
+    private fun isTalkBackActive(): Boolean {
+        val am = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
+        val isAccessibilityEnabled = am.isEnabled
+        val isExploreByTouchEnabled = am.isTouchExplorationEnabled
+        return isAccessibilityEnabled && isExploreByTouchEnabled
+    }
+
+    /**
+     * Popup the window if talkback is inactivated
+     * @author Jason Wu
+     */
+    private fun popup(view: View) {
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView: View = inflater.inflate(R.layout.popup_window, null)
+        val width = LinearLayout.LayoutParams.MATCH_PARENT
+        val height = LinearLayout.LayoutParams.MATCH_PARENT
+        val focusable = false       // not allow taps outside the popup to dismiss it
+        val popupWindow = PopupWindow(popupView, width, height, focusable)
+
+        // fixed trying to show window too early
+        view.post { popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0); }
+
+        // allows click after finish speak popup notification
+        this.ttsEngine.onFinishedSpeaking {
+            // send to setting page
+            val settingButton = popupView.findViewById<Button>(R.id.go_setting)
+            settingButton.setOnClickListener {
+                this.ttsEngine.speakOnInitialisation(getString(R.string.send_setting))
+                popupWindow.dismiss()
+                startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+            }
+
+            // leave the app
+            val leaveButton = popupView.findViewById<Button>(R.id.leave_app)
+            leaveButton.setOnClickListener{
+                this.ttsEngine.speakOnInitialisation(getString(R.string.goodbye))
+                finishAndRemoveTask()
+            }
+        }
+
     }
 }
