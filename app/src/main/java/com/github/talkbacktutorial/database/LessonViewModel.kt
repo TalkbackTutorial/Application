@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LessonProgressionViewModel(application: Application): AndroidViewModel(application){
+class LessonViewModel(application: Application): AndroidViewModel(application){
 
     private val getAllLessonProgressions: LiveData<List<LessonProgression>>
     private val repository: LessonProgressionRepository

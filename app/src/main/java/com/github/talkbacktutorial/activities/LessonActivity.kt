@@ -35,6 +35,7 @@ class LessonActivity : AppCompatActivity() {
      * @author Andre Pham
      */
     private fun setupModules() {
+        // TODO: database integration, only display modules that have been completed and the next module
         for (module in this.lesson.modules) {
             val moduleCardBinding: ModuleCardBinding = DataBindingUtil.inflate(
                 layoutInflater,

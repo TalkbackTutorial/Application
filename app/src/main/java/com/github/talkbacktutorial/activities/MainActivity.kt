@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         this.mainView = binding.constraintLayout
 
         // Show all lessons in LessonContainer
+        // TODO: database integration, only display complete lessons and the next lesson
         for (lesson in LessonContainer.getAllLessons()) {
             val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(
                 layoutInflater,
