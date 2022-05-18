@@ -9,6 +9,12 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentVirtualKeyboardModulePart1Binding
+import android.graphics.Rect
+
+import android.view.ViewTreeObserver
+
+
+
 
 class VirtualKeyboardPart1Fragment : Fragment() {
 
@@ -46,5 +52,40 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         """.trimIndent()
 
         this.ttsEngine.speakOnInitialisation(intro)
+    }
+
+    private val keyboardLayoutListener: OnGlobalLayoutListener = object : OnGlobalLayoutListener {
+        override fun onGlobalLayout() {
+            // navigation bar height
+            var navigationBarHeight = 0
+            var resourceId: Int =
+                getResources().getIdentifier("navigation_bar_height", "dimen", "android")
+            if (resourceId > 0) {
+                navigationBarHeight = getResources().getDimensionPixelSize(resourceId)
+            }
+
+            // status bar height
+            var statusBarHeight = 0
+            resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android")
+            if (resourceId > 0) {
+                statusBarHeight = getResources().getDimensionPixelSize(resourceId)
+            }
+
+            // display window size for the app layout
+            val rect = Rect()
+            getWindow().getDecorView().getWindowVisibleDisplayFrame(rect)
+
+            // screen height - (user app height + status + nav) ..... if non-zero, then there is a soft keyboard
+            val keyboardHeight: Int = rootLayout.getRootView()
+                .getHeight() - (statusBarHeight + navigationBarHeight + rect.height())
+            if (keyboardHeight <= 0) {
+                //onHideKeyboard()
+            } else {
+                val info = """Great job! You opened up the on screen virtual keyboard.
+                    Explore by touch to type hello using the keyboard""".trimIndent()
+                ttsEngine.speak(info)
+
+            }
+        }
     }
 }
