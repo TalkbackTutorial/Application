@@ -140,7 +140,7 @@ class StartStopMediaPart1Fragment : Fragment() {
         finishButton.contentDescription = text
         finishButton.text = text
         finishButton.layoutParams = layoutParams
-        finishButton.setBackgroundResource(R.color.green_A400)
+        finishButton.setBackgroundResource(R.color.primary40)
         finishButton.setOnClickListener {
             endLesson()
         }
