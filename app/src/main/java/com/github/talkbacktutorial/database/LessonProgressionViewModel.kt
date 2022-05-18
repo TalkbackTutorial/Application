@@ -29,10 +29,8 @@ class LessonProgressionViewModel(application: Application): AndroidViewModel(app
      * @param lessonNum the number of the lesson you want to get
      * @author Antony Loose
      */
-    fun getLessonProgression(lessonNum: Int){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.getLessonProgression(lessonNum)
-        }
+    fun getLessonProgression(lessonNum: Int): LiveData<LessonProgression>{
+        return repository.getLessonProgression(lessonNum)
     }
 
     /**
