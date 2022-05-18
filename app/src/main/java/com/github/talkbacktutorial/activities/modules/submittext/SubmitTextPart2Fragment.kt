@@ -5,23 +5,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.*
+import com.github.talkbacktutorial.databinding.FragmentJumpNavigationModulePart1Binding
+import com.github.talkbacktutorial.databinding.FragmentSubmitTextPart2Binding
 import java.util.*
 import kotlin.concurrent.schedule
 
-class SubmitTextPart1Fragment : Fragment() {
+class SubmitTextPart2Fragment : Fragment(){
 
-    private lateinit var binding: FragmentSubmitTextPart1Binding
+    private lateinit var binding: FragmentSubmitTextPart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
     private lateinit var brailleBoolButtons : Array<Int>
     private lateinit var brailleButtons : Array<Button>
     private lateinit var brailleDict : Map<String, String>
+    private lateinit var letterContainer : Queue<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +33,7 @@ class SubmitTextPart1Fragment : Fragment() {
     ): View {
         this.binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_submit_text_part1,
+            R.layout.fragment_submit_text_part2,
             container,
             false
         )
@@ -44,6 +47,7 @@ class SubmitTextPart1Fragment : Fragment() {
         ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             this.setupBrailleButtons()
             this.setupBrailleDict()
+            letterContainer = LinkedList()
         }
 
     }
@@ -54,11 +58,11 @@ class SubmitTextPart1Fragment : Fragment() {
      */
     private fun setupBrailleDict() {
         brailleDict = mapOf("0100000" to "a", "0110000" to "b", "0100100" to "c", "0100110" to "d",
-        "0100010" to "e", "0110100" to "f", "0110110" to "g", "0110010" to "h", "0010100" to "i",
-        "0010110" to "j", "0101000" to "k", "0111000" to "l", "0101100" to "m", "0101110" to "n",
-        "0101010" to "o", "0111100" to "p", "0111110" to "q", "0111010" to "r", "0011100" to "s",
-        "0011110" to "t", "0101001" to "u", "0111001" to "v", "0010111" to "w", "0101101" to "x",
-        "0101111" to "y", "0101011" to "z")
+            "0100010" to "e", "0110100" to "f", "0110110" to "g", "0110010" to "h", "0010100" to "i",
+            "0010110" to "j", "0101000" to "k", "0111000" to "l", "0101100" to "m", "0101110" to "n",
+            "0101010" to "o", "0111100" to "p", "0111110" to "q", "0111010" to "r", "0011100" to "s",
+            "0011110" to "t", "0101001" to "u", "0111001" to "v", "0010111" to "w", "0101101" to "x",
+            "0101111" to "y", "0101011" to "z")
     }
 
     /**
@@ -82,13 +86,16 @@ class SubmitTextPart1Fragment : Fragment() {
         // when button is clicked, switch boolean
         for (i in 1..6) {
             brailleButtons[i].setOnClickListener {
-
                 brailleBoolButtons[i] = brailleBoolButtons[i].not()
-                val letter = brailleDict[arrayToBraille()]
-                brailleDict[arrayToBraille()]?.let { it1 -> ttsEngine.speak(it1) }
-                if (letter == "a") {
-                    finishLesson()
+                Timer().schedule(2000) {
+                    val letter = brailleDict[arrayToBraille()]
+                    brailleDict[arrayToBraille()]?.let { it1 -> ttsEngine.speak(it1) }
+                    letterContainer.add(letter)
+                    if (letter == "a") {
+                         finishLesson()
+                    }
                 }
+
 
                 // After 5 seconds, revert changes
                 Timer().schedule(1000) {
@@ -117,10 +124,8 @@ class SubmitTextPart1Fragment : Fragment() {
      * @author Jai Clapp
      */
     private fun speakIntro() {
-        val intro = "In this module, you will learn how to submit text using the braille keyboard." +
-                "The braille keyboard uses six digits numbered from 1 to 6. A combination of these" +
-                "numbers will give you letters." +
-                "To begin, type the letter A in braille.".trimIndent()
+        val intro = ("Now that you have correctly typed the letter A, try to write the word apple.")
+            .trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
