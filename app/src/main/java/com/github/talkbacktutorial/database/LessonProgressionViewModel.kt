@@ -4,12 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.github.talkbacktutorial.lessons.LessonContainer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LessonViewModel(application: Application): AndroidViewModel(application){
+class LessonProgressionViewModel(application: Application): AndroidViewModel(application){
 
-    private val getAllLessonProgressions: LiveData<List<LessonProgression>>
+    val getAllLessonProgressions: LiveData<List<LessonProgression>>
     private val repository: LessonProgressionRepository
 
     init {
@@ -35,4 +36,17 @@ class LessonViewModel(application: Application): AndroidViewModel(application){
             repository.addLessonProgression(lessonProgression)
         }
     }
+
+    fun initialiseDatabase(){
+        viewModelScope.launch(Dispatchers.IO){
+            // if there are no lessons in the database, create lessons, add them to the db and this activities list of lessons
+            val lps = ArrayList<LessonProgression>()
+            for (lesson in LessonContainer.getAllLessons()) {
+                val lp = LessonProgression(lesson.sequenceNumeral, false, 0)
+                lps.add(lp)
+                repository.addLessonProgression(lp)
+            }
+        }
+    }
+
 }
