@@ -52,6 +52,8 @@
             android:exported="false" />
         <activity android:name=".activities.modules.startstopmedia.StartStopMediaActivity"
             android:exported="false" />
+        <activity android:name=".activities.modules.virtualkeyboard.VirtualKeyboardActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

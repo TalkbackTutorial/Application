@@ -8,7 +8,7 @@ class Lesson6 : Lesson() {
     override val sequenceNumeral: Int = 6
     override val modules: ArrayList<Module> = ArrayList(
         listOf(
-            // TODO: add in modules
+            VirtualKeyboardModule()
         )
     )
 }
