@@ -3,6 +3,10 @@ package com.github.talkbacktutorial.database
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
+/**
+ * The data access object for accessing the progression of lessons
+ * @author Antony Loose
+ */
 @Dao
 interface LessonProgressionDao {
 
@@ -17,4 +21,7 @@ interface LessonProgressionDao {
 
     @Update
     suspend fun updateLessonProgression(lessonProgression: LessonProgression)
+
+    @Delete
+    suspend fun delete(lessonProgression: LessonProgression)
 }

@@ -5,6 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+/**
+ * The database for Teach Me Talkback, implemented as a singleton as we only want one instance of
+ * the database throughout the application
+ * @author Antony Loose
+ */
 @Database(entities = [LessonProgression::class], version = 1, exportSchema = false)
 abstract class LessonDatabase: RoomDatabase() {
 
