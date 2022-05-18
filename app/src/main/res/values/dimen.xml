@@ -3,7 +3,8 @@
     <dimen name="horizontal_spacing">12dp</dimen>
     <dimen name="vertical_card_spacing">6dp</dimen>
     <dimen name="horizontal_card_spacing">12dp</dimen>
-    <dimen name="header_top_spacing">64dp</dimen>
+    <dimen name="header_top_spacing">96px</dimen>
     <dimen name="header_bottom_spacing">12dp</dimen>
     <dimen name="header_size">38sp</dimen>
+    <dimen name="subheader_size">16sp</dimen>
 </resources>
