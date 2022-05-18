@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var lessonProgressionViewModel: LessonProgressionViewModel
-//    private var lessonProgressions: List<LessonProgression> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,7 +114,7 @@ class MainActivity : AppCompatActivity() {
         var lessonCount = 0
         val lessons = LessonContainer.getAllLessons()
 
-        while (lessonCount < lessons.size) {
+        while (lessonCount < lessons.size - 1) {
             if (!lessonProgressions[lessonCount].completed && !foundIncompleteLesson) {
                 foundIncompleteLesson = true
                 continue

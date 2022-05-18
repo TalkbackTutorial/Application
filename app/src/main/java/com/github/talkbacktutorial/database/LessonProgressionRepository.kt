@@ -11,7 +11,7 @@ class LessonProgressionRepository(private val lessonProgressionDao: LessonProgre
 
     val getAllLessonProgressions: LiveData<List<LessonProgression>> = lessonProgressionDao.getAllLessonProgressions()
 
-    fun getLessonProgression(lessonNum: Int): LiveData<LessonProgression>{
+    fun getLessonProgression(lessonNum: Int): LiveData<LessonProgression> {
         return lessonProgressionDao.getLessonProgression(lessonNum)
     }
 
