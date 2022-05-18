@@ -4,8 +4,31 @@
     <color name="green_A400">#00E676</color>
     <color name="green_A200">#69F0AE</color>
     <color name="green_A100">#B9F6CA</color>
-    <color name="background_fill">#EFF0F4</color>
+    <color name="background_fill">#FFFFFF</color>
     <color name="foreground_fill">#FFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- M3 Light Theme Colors -->
+    <color name="primary40">#6750A4</color>
+    <color name="primary90">#EADDFF</color>
+    <color name="primary10">#21005D</color>
+
+    <color name="secondary40">#625B71</color>
+    <color name="secondary90">#E8DEF8</color>
+    <color name="secondary10">#1D192B</color>
+
+    <color name="tertiary40">#7D5260</color>
+    <color name="tertiary90">#FFD8E4</color>
+    <color name="tertiary10">#31111D</color>
+
+    <color name="error40">#B3261E</color>
+    <color name="error90">#F9DEDC</color>
+    <color name="error10">#410E0B</color>
+
+    <color name="primary99">#FFFBFE</color>
+    <color name="on_surface">#1C1B1F</color>
+
+    <color name="neutral_variant30">#49454F</color>
+    <color name="neutral_variant50">#79747E</color>
 </resources>
