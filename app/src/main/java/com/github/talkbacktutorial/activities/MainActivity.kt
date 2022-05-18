@@ -3,7 +3,6 @@ package com.github.talkbacktutorial.activities
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +14,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
+import com.github.talkbacktutorial.database.LessonProgression
+import com.github.talkbacktutorial.database.LessonProgressionViewModel
 import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.LessonContainer
@@ -28,12 +30,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var ttsEngine: TextToSpeechEngine
     private val lessonsModel: LessonsViewModel by viewModels()
     lateinit var mainView: ConstraintLayout
+    private lateinit var binding: ActivityMainBinding
+
+    private lateinit var lessonProgressionViewModel: LessonProgressionViewModel
+//    private var lessonProgressions: List<LessonProgression> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
 
-        val binding: ActivityMainBinding =
+        binding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lessonsModel = this.lessonsModel
         this.ttsEngine = TextToSpeechEngine(this)
@@ -41,19 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         // Show all lessons in LessonContainer
         // TODO: database integration, only display complete lessons and the next lesson
-        for (lesson in LessonContainer.getAllLessons()) {
-            val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(
-                layoutInflater,
-                R.layout.lesson_card, binding.lessonLinearLayout, false
-            )
-            lessonCardBinding.title = lesson.title
-            lessonCardBinding.subtitle = lesson.sequenceName
-            lessonCardBinding.locked = lesson.isLocked
-            lessonCardBinding.lessonCard.setOnClickListener {
-                lesson.startActivity(this)
-            }
-            binding.lessonLinearLayout.addView(lessonCardBinding.lessonCard)
-        }
+        displayAvailableLessons()
     }
 
     /**
@@ -112,5 +106,49 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun displayAvailableLessons() {
+        lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
+        lessonProgressionViewModel.getAllLessonProgressions.observe(this) {lessons ->
+            if (lessons.isEmpty()) {
+                lessonProgressionViewModel.fillDatabase()
+            } else {
+                displayLessons(lessons)
+            }
+        }
+    }
+
+    private fun displayLessons(lessonProgressions: List<LessonProgression>) {
+        var foundIncompleteLesson = false
+        var lessonCount = 0
+        val lessons = LessonContainer.getAllLessons()
+
+        while (lessonCount < lessons.size) {
+            if (!lessonProgressions[lessonCount].completed && !foundIncompleteLesson) {
+                foundIncompleteLesson = true
+                continue
+            }
+
+            val lesson = lessons[lessonCount]
+
+            val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.lesson_card, binding.lessonLinearLayout, false
+            )
+            lessonCardBinding.title = lesson.title
+            lessonCardBinding.subtitle = lesson.sequenceName
+            lessonCardBinding.locked = lesson.isLocked
+            lessonCardBinding.lessonCard.setOnClickListener {
+                lesson.startActivity(this)
+            }
+            binding.lessonLinearLayout.addView(lessonCardBinding.lessonCard)
+
+            if (foundIncompleteLesson) {
+                break
+            }
+
+            lessonCount++
+        }
     }
 }

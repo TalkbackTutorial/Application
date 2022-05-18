@@ -42,7 +42,7 @@ class LessonProgressionViewModel(application: Application): AndroidViewModel(app
             // if there are no lessons in the database, create lessons, add them to the db and this activities list of lessons
             val lps = ArrayList<LessonProgression>()
             for (lesson in LessonContainer.getAllLessons()) {
-                val lp = LessonProgression(lesson.sequenceNumeral, false, 0)
+                val lp = LessonProgression(lesson.sequenceNumeral - 1, false, 0)
                 lps.add(lp)
                 repository.addLessonProgression(lp)
             }
