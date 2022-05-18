@@ -9,7 +9,7 @@ interface LessonProgressionDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addLessonProgression(lessonProgression: LessonProgression)
 
-    @Query("SELECT * FROM lesson_table WHERE id == :lessonNum")
+    @Query("SELECT * FROM lesson_table WHERE id-1 == :lessonNum")
     fun getLessonProgression(lessonNum: Int): LiveData<LessonProgression>
 
     @Query("SELECT * FROM lesson_table ORDER BY id ASC")

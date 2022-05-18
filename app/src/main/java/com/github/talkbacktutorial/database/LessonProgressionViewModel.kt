@@ -37,7 +37,7 @@ class LessonProgressionViewModel(application: Application): AndroidViewModel(app
         }
     }
 
-    fun initialiseDatabase(){
+    fun fillDatabase(){
         viewModelScope.launch(Dispatchers.IO){
             // if there are no lessons in the database, create lessons, add them to the db and this activities list of lessons
             val lps = ArrayList<LessonProgression>()
