@@ -18,41 +18,62 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LessonActivity"
+        <activity
+            android:name=".activities.LessonActivity"
             android:exported="false" />
-        <activity android:name=".activities.lesson1.Lesson1Activity"
+        <activity
+            android:name=".activities.lesson1.Lesson1Activity"
             android:exported="false" />
-        <activity android:name=".activities.modules.adjustreadingcontrols.AdjustReadingControlsActivity"
+        <activity
+            android:name=".activities.modules.adjustreadingcontrols.AdjustReadingControlsActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.adjustslider.AdjustSliderActivity"
+        <activity
+            android:name=".activities.modules.adjustslider.AdjustSliderActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.explorebytouch.ExploreMenuByTouchActivity"
+        <activity
+            android:name=".activities.modules.explorebytouch.ExploreMenuByTouchActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.gotohomescreen.GoToHomeScreenActivity"
+        <activity
+            android:name=".activities.modules.gotohomescreen.GoToHomeScreenActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.goback.GoBackActivity"
+        <activity
+            android:name=".activities.modules.goback.GoBackActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.jumpcontrols.JumpControlsActivity"
+        <activity
+            android:name=".activities.modules.jumpcontrols.JumpControlsActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.jumpheaders.JumpHeadersActivity"
+        <activity
+            android:name=".activities.modules.jumpheaders.JumpHeadersActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.jumplinks.JumpLinksActivity"
+        <activity
+            android:name=".activities.modules.jumplinks.JumpLinksActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.jumptext.JumpTextActivity"
+        <activity
+            android:name=".activities.modules.jumptext.JumpTextActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.mediavolumecontrol.MediaVolumeControlActivity"
+        <activity
+            android:name=".activities.modules.mediavolumecontrol.MediaVolumeControlActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.openingvoicecommand.OpenVoiceCommandActivity"
+        <activity
+            android:name=".activities.modules.openingvoicecommand.OpenVoiceCommandActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.opennotifications.OpenNotificationActivity"
+        <activity
+            android:name=".activities.modules.opennotifications.OpenNotificationActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.openrecentapps.OpenRecentAppsActivity"
+        <activity
+            android:name=".activities.modules.opentalkbackmenu.OpenTalkbackMenuActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.scroll.ScrollActivity"
+        <activity
+            android:name=".activities.modules.openrecentapps.OpenRecentAppsActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.startstopmedia.StartStopMediaActivity"
+        <activity
+            android:name=".activities.modules.scroll.ScrollActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.submittext.SubmitTextActivity"
+        <activity
+            android:name=".activities.modules.startstopmedia.StartStopMediaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.submittext.SubmitTextActivity"
             android:exported="false" />
     </application>
 
