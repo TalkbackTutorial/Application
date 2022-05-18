@@ -13,75 +13,83 @@
         android:background="#55000000"
         tools:ignore="ExtraText">
 
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:background="@color/background_fill"
+            android:clickable="false"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/notice"
-                    android:textAlignment="viewStart"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/talkback_disabled"
+                    android:textAlignment="center"
                     android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="32sp"
-                    android:textStyle="bold"
-                    android:layout_marginStart="10sp"
-                    android:layout_marginTop="10sp"/>
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="16dp"
+                    android:textAlignment="center"
                     android:text="@string/popup_display_text"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="16sp" />
-                <androidx.appcompat.widget.LinearLayoutCompat
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/go_setting"
-                        android:layout_weight="1"
-                        android:layout_marginStart="10sp"
-                        android:layout_marginBottom="10sp"
-                        android:id="@+id/go_setting">
-
-                    </androidx.appcompat.widget.AppCompatButton>
+                    android:layout_marginVertical="16dp">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="wrap_content"
+                        android:id="@+id/go_setting"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/leave_app"
+                        android:text="@string/open_settings"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/leave_app"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/leave_app"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/close_application"
                         android:textColor="#F30202"
-                        android:layout_marginEnd="10sp"
-                        android:layout_marginBottom="10sp"
-                        android:id="@+id/leave_app">
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/go_setting"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    </androidx.appcompat.widget.AppCompatButton>
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
-        </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

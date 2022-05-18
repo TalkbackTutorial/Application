@@ -88,24 +88,15 @@ class MainActivity : AppCompatActivity() {
         // fixed trying to show window too early
         view.post { popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0); }
 
-        // allows click after finish speak popup notification
-        this.ttsEngine.onFinishedSpeaking {
-            // send to setting page
-            val settingButton = popupView.findViewById<Button>(R.id.go_setting)
-            settingButton.setOnClickListener {
-                this.ttsEngine.speakOnInitialisation(getString(R.string.send_setting))
-                popupWindow.dismiss()
-                startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
-            }
-
-            // leave the app
-            val leaveButton = popupView.findViewById<Button>(R.id.leave_app)
-            leaveButton.setOnClickListener{
-                this.ttsEngine.speakOnInitialisation(getString(R.string.goodbye))
-                finishAndRemoveTask()
-            }
+        popupView.findViewById<Button>(R.id.go_setting).setOnClickListener {
+            this.ttsEngine.speak(getString(R.string.send_setting), override = true)
+            popupWindow.dismiss()
+            startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
         }
-
+        popupView.findViewById<Button>(R.id.leave_app).setOnClickListener{
+            this.ttsEngine.speak(getString(R.string.exit_application), override = true)
+            finishAndRemoveTask()
+        }
     }
 
     private fun displayAvailableLessons() {

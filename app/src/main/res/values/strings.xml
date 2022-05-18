@@ -76,11 +76,11 @@
     <string name="lesson2_challenge_outro">You have completed the challenge. Sending you to the main menu.</string>
     <string name="price_range">Price Range</string>
     <string name="rating_content_description">Rating: %1$d stars</string>
-    <string name="popup_text">Notice, this app requires you to open talkback. Tap go setting will send you to the setting page, Tap leave app to leave.</string>
-    <string name="popup_display_text">This app requires you to open talkback</string>
-    <string name="goodbye">Good Bye</string>
-    <string name="send_setting">Sending you to setting page, go back after you enabled talkback.</string>
-    <string name="notice">Notice</string>
-    <string name="go_setting">Go setting</string>
-    <string name="leave_app">Leave App</string>
+    <string name="popup_text">Talkback is disabled. This application requires you to first enable Talkback. Tap \'open settings\' to go to the accessibility settings page, or tap \'exit\' to exit the application.</string>
+    <string name="popup_display_text">Talkback is required for this application. You can enable it in the accessibility settings of your device.</string>
+    <string name="exit_application">Exiting the application.</string>
+    <string name="send_setting">Opening settings. Return once Talkback is enabled.</string>
+    <string name="talkback_disabled">Talkback Disabled</string>
+    <string name="open_settings">Open Settings</string>
+    <string name="close_application">Exit</string>
 </resources>
