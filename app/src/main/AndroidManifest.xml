@@ -52,6 +52,8 @@
             android:exported="false" />
         <activity android:name=".activities.modules.startstopmedia.StartStopMediaActivity"
             android:exported="false" />
+        <activity android:name=".activities.modules.calculatorapp.CalculatorAppActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
