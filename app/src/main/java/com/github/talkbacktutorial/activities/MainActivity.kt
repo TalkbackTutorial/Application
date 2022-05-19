@@ -45,9 +45,7 @@ class MainActivity : AppCompatActivity() {
         this.ttsEngine = TextToSpeechEngine(this)
         this.mainView = binding.constraintLayout
 
-        // Show all lessons in LessonContainer
-        // TODO: database integration, only display complete lessons and the next lesson
-        displayAvailableLessons()
+        displayLessons()
     }
 
     /**
@@ -99,7 +97,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun displayAvailableLessons() {
+    /**
+     * Pulls the lessonProgression items from the database to determine which lessons should be
+     * locked.
+     * @author Jade Davis
+     */
+    private fun displayLessons() {
         lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
         lessonProgressionViewModel.getAllLessonProgressions.observe(this) {lessons ->
             if (lessons.isEmpty()) {
@@ -110,21 +113,34 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Loads all lessons, and sets each as locked or unlocked depending on the
+     * user's progression.
+     * @param lessonProgressions All entries in the database, one for each lesson, specifies
+     * whether the lesson is completed or not
+     * @author Jade Davis
+     */
     private fun displayLessons(lessonProgressions: List<LessonProgression>) {
         var lessonCount = 0
         val lessons = LessonContainer.getAllLessons()
 
         do {
-            setUnlockedLesson(lessons[lessonCount])
+            loadLessonCard(lessons[lessonCount], locked = false)
             lessonCount++
         } while (lessonProgressions[lessonCount].completed)
 
         for (i in lessonCount until lessons.size) {
-            setLockedLesson(lessons[i])
+            loadLessonCard(lessons[i], locked = true)
         }
     }
 
-    private fun setUnlockedLesson(lesson: Lesson) {
+    /**
+     * Loads a card for each lesson, both unlocked and locked.
+     * @param lesson Lesson which is to be loaded into a new card
+     * @param locked Boolean which determines whether the lesson is locked or not
+     * @author Jade Davis
+     */
+    private fun loadLessonCard(lesson: Lesson, locked: Boolean) {
         val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(
             layoutInflater,
             R.layout.lesson_card, binding.lessonLinearLayout, false
@@ -132,23 +148,16 @@ class MainActivity : AppCompatActivity() {
         lessonCardBinding.title = lesson.title
         lessonCardBinding.subtitle = lesson.sequenceName
         lessonCardBinding.locked = lesson.isLocked
-        lessonCardBinding.lessonCard.setOnClickListener {
-            lesson.startActivity(this)
+
+        if (!locked) {
+            lessonCardBinding.lessonCard.setOnClickListener {
+                lesson.startActivity(this)
+            }
+        } else {
+            lessonCardBinding.title = "Locked - " + lesson.title
+            lessonCardBinding.lessonTitle.alpha = 0.5f
+            lessonCardBinding.lessonSubtitle.alpha = 0.5f
         }
-        binding.lessonLinearLayout.addView(lessonCardBinding.lessonCard)
-    }
-
-    private fun setLockedLesson(lesson: Lesson) {
-        val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(
-            layoutInflater,
-            R.layout.lesson_card, binding.lessonLinearLayout, false
-        )
-        lessonCardBinding.title = "Locked - " + lesson.title
-        lessonCardBinding.subtitle = lesson.sequenceName
-        lessonCardBinding.locked = lesson.isLocked
-
-        lessonCardBinding.lessonTitle.alpha = 0.5f
-        lessonCardBinding.lessonSubtitle.alpha = 0.5f
 
         binding.lessonLinearLayout.addView(lessonCardBinding.lessonCard)
     }
