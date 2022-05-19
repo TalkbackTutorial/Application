@@ -22,6 +22,7 @@ import com.github.talkbacktutorial.database.LessonProgression
 import com.github.talkbacktutorial.database.LessonProgressionViewModel
 import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
+import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.LessonContainer
 
 
@@ -110,35 +111,45 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayLessons(lessonProgressions: List<LessonProgression>) {
-        var foundIncompleteLesson = false
         var lessonCount = 0
         val lessons = LessonContainer.getAllLessons()
 
-        while (lessonCount < lessons.size - 1) {
-            if (!lessonProgressions[lessonCount].completed && !foundIncompleteLesson) {
-                foundIncompleteLesson = true
-                continue
-            }
-
-            val lesson = lessons[lessonCount]
-
-            val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(
-                layoutInflater,
-                R.layout.lesson_card, binding.lessonLinearLayout, false
-            )
-            lessonCardBinding.title = lesson.title
-            lessonCardBinding.subtitle = lesson.sequenceName
-            lessonCardBinding.locked = lesson.isLocked
-            lessonCardBinding.lessonCard.setOnClickListener {
-                lesson.startActivity(this)
-            }
-            binding.lessonLinearLayout.addView(lessonCardBinding.lessonCard)
-
-            if (foundIncompleteLesson) {
-                break
-            }
-
+        do {
+            setUnlockedLesson(lessons[lessonCount])
             lessonCount++
+        } while (lessonProgressions[lessonCount].completed)
+
+        for (i in lessonCount until lessons.size) {
+            setLockedLesson(lessons[i])
         }
+    }
+
+    private fun setUnlockedLesson(lesson: Lesson) {
+        val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(
+            layoutInflater,
+            R.layout.lesson_card, binding.lessonLinearLayout, false
+        )
+        lessonCardBinding.title = lesson.title
+        lessonCardBinding.subtitle = lesson.sequenceName
+        lessonCardBinding.locked = lesson.isLocked
+        lessonCardBinding.lessonCard.setOnClickListener {
+            lesson.startActivity(this)
+        }
+        binding.lessonLinearLayout.addView(lessonCardBinding.lessonCard)
+    }
+
+    private fun setLockedLesson(lesson: Lesson) {
+        val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(
+            layoutInflater,
+            R.layout.lesson_card, binding.lessonLinearLayout, false
+        )
+        lessonCardBinding.title = "Locked - " + lesson.title
+        lessonCardBinding.subtitle = lesson.sequenceName
+        lessonCardBinding.locked = lesson.isLocked
+
+        lessonCardBinding.lessonTitle.alpha = 0.5f
+        lessonCardBinding.lessonSubtitle.alpha = 0.5f
+
+        binding.lessonLinearLayout.addView(lessonCardBinding.lessonCard)
     }
 }
