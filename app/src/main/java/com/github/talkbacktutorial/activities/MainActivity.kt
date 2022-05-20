@@ -15,16 +15,20 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
 import com.github.talkbacktutorial.database.LessonProgression
+import com.github.talkbacktutorial.database.LessonProgressionRepository
 import com.github.talkbacktutorial.database.LessonProgressionViewModel
 import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
+import com.github.talkbacktutorial.lessons.Lesson1
 import com.github.talkbacktutorial.lessons.LessonContainer
 
 
@@ -47,6 +51,9 @@ class MainActivity : AppCompatActivity() {
         this.ttsEngine = TextToSpeechEngine(this)
         this.mainView = binding.constraintLayout
 
+        // if lesson0.getProgression == 0:
+        //    lesson0onStart()
+
         displayLessons()
     }
 
@@ -60,6 +67,15 @@ class MainActivity : AppCompatActivity() {
             popup(mainView)
         }
         super.onStart()
+    }
+
+    private fun lesson0onStart() {
+        lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
+
+        if (lessonProgressionViewModel.getLessonProgression(1).equals(0)) {
+            Lesson1 =
+        }
+
     }
 
     /**
