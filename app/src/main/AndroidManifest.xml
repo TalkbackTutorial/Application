@@ -54,6 +54,8 @@
             android:exported="false" />
         <activity android:name=".activities.modules.virtualkeyboard.VirtualKeyboardActivity"
             android:exported="false" />
+        <activity android:name=".activities.modules.braillekeyboard.BrailleKeyboardActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
