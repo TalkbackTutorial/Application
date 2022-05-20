@@ -36,5 +36,9 @@ class LessonActivity : AppCompatActivity() {
                 binding.modulesLinearLayout.addView(moduleCardBinding.moduleCard)
             }
         }
+
+        binding.backButton.setOnClickListener{
+            onBackPressed()
+        }
     }
 }

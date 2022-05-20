@@ -15,6 +15,7 @@ class Lesson3 : Lesson() {
 
     override val title = "Controlling Reading"
     override val sequenceNumeral = 3
+    override val description: String = "These cover the gestures and actions to perform to change the read settings of Talkback"
     override val modules = ArrayList(
         listOf(
             AdjustReadingControlsModule(),
