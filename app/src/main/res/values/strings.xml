@@ -58,4 +58,7 @@
     <string name="brailleSettingsIntro">Welcome to the open braille keyboard settings tutorial, you can access the braille keyboard settings page by swiping up with three fingers when the braille keyboard is active. Use all your knowledge, change the braille language to Arabic and enter any Arabic character in the following text box, then close the keyboard by using 2 fingers to swipe down, you would have to select arabic as one of the language options by entering the settings page from the braille keyboard options. After completing this, return to this text box.</string>
     <string name="brailleSettingsOutro">Congrats, you have managed to open the braille settings page and enter an Arabic character in the text box. Click the continue button when you are ready.</string>
     <string name="continueStr">Continue</string>
+    <string name="hideBrailleIntro">In this module you will learn how to close the braille keyboard when it is on the screen, this can be done by using 2 finger to swipe down while the braille keyboard is active, input the character \'a\' in the following text box and use the gesture to hide the keyboard. then return here.</string>
+    <string name="hideBraileOutro">Congrats, you have learnt to close the text box, use the continue button on this page to return to the lesson screen.</string>
+    <string name="hideBrailleFail">That was not the correct gesture, that was for submitting text, try it again using the correct gesture, which is two finger swipe down.</string>
 </resources>

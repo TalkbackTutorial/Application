@@ -10,11 +10,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.TextToSpeechEngine
 
 
 class OpenBrailleKeyboardSettingsActivity : AppCompatActivity() {
-    private lateinit var ttsEngine: TextToSpeechEngine
     private lateinit var textBox: EditText
     private lateinit var textDisplay: TextView
     private lateinit var contBtn: Button
@@ -23,7 +21,6 @@ class OpenBrailleKeyboardSettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_open_braille_keyboard_settings)
         supportActionBar?.hide()
-        this.ttsEngine = TextToSpeechEngine(this)
         this.textBox = findViewById(R.id.brailleSettingsEditText)
         this.textDisplay = findViewById(R.id.brailleSettingsTextView)
         this.contBtn = findViewById(R.id.brailleSettingsContinueBtn)

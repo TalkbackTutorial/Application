@@ -9,6 +9,7 @@ class Lesson7 : Lesson() {
     override val modules: ArrayList<Module> = ArrayList(
             listOf(
                 SubmitTextModule(),
+                HideBrailleKeyboardModule(),
                 OpenBrailleKeyboardSettingsModule()
             )
     )

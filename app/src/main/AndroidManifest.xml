@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
+            android:name=".activities.modules.hidebraillekeyboard.HideBrailleKeyboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.modules.openbraillekeyboardsettings.OpenBrailleKeyboardSettingsActivity"
             android:exported="false" />
         <activity
