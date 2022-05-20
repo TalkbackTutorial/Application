@@ -50,14 +50,7 @@ class OpenRecentAppsPart1Fragment : Fragment() {
      * @author Jai Clapp
      */
     private fun speakIntro() {
-        val intro = """
-            Welcome.
-            In this module, you'll learn how to open recent apps. Recent apps are a handy way to
-            quickly switch between frequently used apps. This can be done in two different ways. 
-            Firstly, perform a swipe left and then, a swipe up gesture. 
-            Please try to perform these gestures one after another, and enter the recent apps menu. 
-            Once completed, return to the tutorial.
-        """.trimIndent()
+        val intro = getString(R.string.open_recent_apps_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -71,11 +64,8 @@ class OpenRecentAppsPart1Fragment : Fragment() {
      * @author Jai Clapp
      */
     private fun finishLesson() {
-        System.out.println("\n\nTEST\n\n")
-        this.ttsEngine.speakOnInitialisation(
-            "Great job. You have correctly opened the recent app menu and returned to the tutorial. " +
-                    "Now to try with a different method."
-        )
+        val outro = getString(R.string.open_recent_apps_part1_outro).trimIndent()
+        this.ttsEngine.speakOnInitialisation(outro)
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             parentFragmentManager.commit {
                 replace(this@OpenRecentAppsPart1Fragment.id, OpenRecentAppsPart2Fragment())

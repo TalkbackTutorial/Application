@@ -59,7 +59,8 @@ class SubmitTextPart1Fragment : Fragment(){
                     this.finishLesson()
                 }
                 else {
-                    ttsEngine.speak("Incorrect letter submitted. Try again.")
+                    val error = getString(R.string.submit_text_part1_error).trimIndent()
+                    ttsEngine.speak(error)
                 }
                 return@OnEditorActionListener true
             }
@@ -72,11 +73,7 @@ class SubmitTextPart1Fragment : Fragment(){
      * @author Jai Clapp
      */
     private fun speakIntro() {
-        val intro = "In this module, you will learn how to submit text using the braille keyboard." +
-                "Ensure the braille keyboard is active and set to default. If you are unsure how to" +
-                "do this, refer to a previous module. To begin, type the letter a in braille and " +
-                "then submit the text. To submit, use a two finger swipe up gesture. Note, the braille" +
-                "keyboard must be in the correct orientation for this gesture to work correctly".trimIndent()
+        val intro = getString(R.string.submit_text_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -91,9 +88,8 @@ class SubmitTextPart1Fragment : Fragment(){
      */
     private fun finishLesson() {
         Timer().schedule(5000) {
-            ttsEngine.speak(
-                "Great job. You correctly typed in the letter A.".trimIndent()
-            )
+            val outro = getString(R.string.submit_text_part1_outro).trimIndent()
+            ttsEngine.speak(outro)
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 parentFragmentManager.commit {
                     replace(this@SubmitTextPart1Fragment.id, SubmitTextPart2Fragment())

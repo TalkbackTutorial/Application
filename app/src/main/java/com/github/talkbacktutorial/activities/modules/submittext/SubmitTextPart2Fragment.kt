@@ -54,12 +54,14 @@ class SubmitTextPart2Fragment : Fragment(){
             // When an editor action has been completed (submit), do something.
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val text = binding.editText.text.toString()
+                val hello = getString(R.string.hello)
                 // Checking for correct user input.
-                if (text.lowercase() == "hello") {
+                if (text.lowercase() == hello) {
                     this.finishLesson()
                 }
                 else {
-                    ttsEngine.speak("Incorrect word submitted. Try again.")
+                    val error = getString(R.string.submit_text_part2_error).trimIndent()
+                    ttsEngine.speak(error)
                 }
                 return@OnEditorActionListener true
             }
@@ -72,8 +74,7 @@ class SubmitTextPart2Fragment : Fragment(){
      * @author Jai Clapp
      */
     private fun speakIntro() {
-        val intro = "Now, try to type the word hello and submit using the same two " +
-                "finger swipe up gesture".trimIndent()
+        val intro = getString(R.string.submit_text_part2_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -88,10 +89,8 @@ class SubmitTextPart2Fragment : Fragment(){
      */
     private fun finishLesson() {
         Timer().schedule(5000) {
-            ttsEngine.speak(
-                "Great job. You correctly typed in the word hello. You have completed" +
-                        "this module. Sending you back to the lesson screen".trimIndent()
-            )
+            val outro = getString(R.string.submit_text_part2_outro).trimIndent()
+            ttsEngine.speak(outro)
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 val intent = Intent((activity as SubmitTextActivity), MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
