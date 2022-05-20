@@ -30,7 +30,7 @@
                 android:id="@+id/module_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{locked ? subtitle + ` (LOCKED)` : subtitle}"
+                android:text="@{subtitle}"
                 android:textSize="12sp"
                 android:textColor="?android:attr/textColorSecondary"/>
 
@@ -38,7 +38,7 @@
                 android:id="@+id/module_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/challenge_card_title"
+                android:text="@{locked ? `Locked - ` + @string/challenge_card_title : @string/challenge_card_title}"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="?android:attr/textColorPrimary" />

@@ -123,7 +123,6 @@ class LessonActivity : AppCompatActivity() {
         } else {
             moduleCardBinding.title = "Locked - " + module.title
             moduleCardBinding.moduleTitle.alpha = 0.5f
-            moduleCardBinding.moduleTitle.alpha = 0.5f
         }
 
         binding.modulesLinearLayout.addView(moduleCardBinding.moduleCard)
@@ -151,9 +150,7 @@ class LessonActivity : AppCompatActivity() {
                     challenge.startActivity(this)
                 }
             } else {
-                // TODO: find where challenge title is pulled from
-                challengeCardBinding.moduleTitle.text = "Locked - End of Lesson Challenge"
-                challengeCardBinding.moduleTitle.alpha = 0.5f
+                challengeCardBinding.locked = true
                 challengeCardBinding.moduleTitle.alpha = 0.5f
             }
 
