@@ -29,6 +29,7 @@ abstract class Lesson {
 
     abstract val title: String
     abstract val sequenceNumeral: Int
+    abstract val description: String
     val id: UUID = UUID.randomUUID()
     abstract val modules: ArrayList<Module>
 

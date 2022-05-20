@@ -45,10 +45,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{lesson.sequenceName + ` Modules`}"
-                        android:textSize="@dimen/header_size"
                         android:layout_marginStart="@dimen/horizontal_spacing"
                         android:layout_marginTop="@dimen/header_top_spacing"
                         android:layout_marginBottom="@dimen/header_bottom_spacing"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
                         android:textColor="?android:attr/textColorPrimary" />
                 </LinearLayout>
 
@@ -62,9 +62,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{lesson.sequenceName + ` Modules`}"
-                        android:textSize="@dimen/subheader_size"
-                        android:textColor="?android:attr/textColorPrimary" />
+                        android:text="@{lesson.description}"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
 
                 </LinearLayout>
 

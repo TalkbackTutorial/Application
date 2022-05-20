@@ -38,7 +38,8 @@
                         android:background="@color/surface"
                         android:text="@string/lessons"
                         android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="@dimen/header_size" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
