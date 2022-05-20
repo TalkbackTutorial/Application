@@ -50,9 +50,9 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         this.ttsEngine = TextToSpeechEngine((activity as VirtualKeyboardActivity)).onFinishedSpeaking(triggerOnce = true) {
             this.binding.virtualKeyboardConstraintLayout.visibility = View.VISIBLE
         }
+        setupTextView()
         this.binding.virtualKeyboardConstraintLayout.viewTreeObserver.addOnGlobalLayoutListener(keyboardLayoutListener)
         this.speakIntro()
-        setupTextView()
 
     }
 
@@ -74,6 +74,11 @@ class VirtualKeyboardPart1Fragment : Fragment() {
                     To exit this lesson, select the finish button on the screen.""".trimIndent()
             speakDuringLesson(info)
             insertFinishButton()
+        } else {
+            val info = """Looks like you haven't typed the word hello. Double tap on the screen to bring up the keyboard.
+                Tap on the backspace button to delete the previously typed word and try typing the word hello again.
+            """.trimIndent()
+            speakDuringLesson(info)
         }
     }
 
