@@ -9,7 +9,8 @@ class Lesson6 : Lesson() {
     override val description = "These cover the gestures and actions to use a virtual keyboard on the phone"
     override val modules: ArrayList<Module> = ArrayList(
         listOf(
-            VirtualKeyboardModule()
+            VirtualKeyboardModule(),
+            BrailleKeyboardModule()
         )
     )
 }
