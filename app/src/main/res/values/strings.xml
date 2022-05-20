@@ -54,4 +54,8 @@
     <string name="submit_text_part2_outro">Great job. You correctly typed in the word hello. You have completed this module. Sending you back to the lesson screen.</string>
     <string name="submit_text_part2_error">Incorrect word submitted. Try again.</string>
     <string name="hello">hello</string>
+    <string name="repeat_instructions">repeat instructions</string>
+    <string name="brailleSettingsIntro">Welcome to the open braille keyboard settings tutorial, you can access the braille keyboard settings page by swiping up with three fingers when the braille keyboard is active. Use all your knowledge, change the braille language to Arabic and enter any Arabic character in the following text box, then close the keyboard by using 2 fingers to swipe down, you would have to select arabic as one of the language options by entering the settings page from the braille keyboard options. After completing this, return to this text box.</string>
+    <string name="brailleSettingsOutro">Congrats, you have managed to open the braille settings page and enter an Arabic character in the text box. Click the continue button when you are ready.</string>
+    <string name="continueStr">Continue</string>
 </resources>
