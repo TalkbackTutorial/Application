@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.modules.opennotifications.OpenNotificationActivity
 import com.github.talkbacktutorial.databinding.FragmentOpenTalkbackMenuModulePart1Binding
 import java.util.*
 import kotlin.concurrent.schedule
@@ -39,7 +38,7 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine =
-            TextToSpeechEngine((activity as OpenNotificationActivity)).onFinishedSpeaking(
+            TextToSpeechEngine((activity as OpenTalkbackMenuActivity)).onFinishedSpeaking(
                 triggerOnce = true
             ) {
                 // Trigger this function once the intro is done speaking
@@ -77,7 +76,7 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent =
-                Intent((activity as OpenNotificationActivity), MainActivity::class.java)
+                Intent((activity as OpenTalkbackMenuActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
