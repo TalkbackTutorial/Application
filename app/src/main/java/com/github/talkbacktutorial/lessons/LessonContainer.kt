@@ -14,7 +14,8 @@ object LessonContainer {
             Lesson2(),
             Lesson3(),
             Lesson4(),
-            Lesson5()
+            Lesson5(),
+            Lesson6()
         )
     )
 
