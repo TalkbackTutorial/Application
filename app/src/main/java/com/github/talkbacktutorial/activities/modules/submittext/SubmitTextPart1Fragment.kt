@@ -36,12 +36,12 @@ class SubmitTextPart1Fragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as SubmitTextActivity))
-        ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            binding.editText.visibility = View.VISIBLE
-
-        }
+        binding.editText.visibility = View.INVISIBLE
         this.speakIntro()
         this.setupText()
+        ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+            binding.editText.visibility = View.VISIBLE
+        }
     }
 
     /**
@@ -74,7 +74,7 @@ class SubmitTextPart1Fragment : Fragment(){
      */
     private fun speakIntro() {
         val intro = getString(R.string.submit_text_part1_intro).trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
+        ttsEngine.speakOnInitialisation(intro)
     }
 
     override fun onDestroyView() {
@@ -87,8 +87,9 @@ class SubmitTextPart1Fragment : Fragment(){
      * @author Jai Clapp
      */
     private fun finishLesson() {
-        Timer().schedule(5000) {
+        Timer().schedule(6000) {
             val outro = getString(R.string.submit_text_part1_outro).trimIndent()
+            println("\n\nFINISHED\n\n")
             ttsEngine.speak(outro)
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 parentFragmentManager.commit {
