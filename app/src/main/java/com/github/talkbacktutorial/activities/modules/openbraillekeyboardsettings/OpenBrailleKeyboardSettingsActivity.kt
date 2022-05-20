@@ -15,9 +15,9 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 
 class OpenBrailleKeyboardSettingsActivity : AppCompatActivity() {
     private lateinit var ttsEngine: TextToSpeechEngine
-    private lateinit var textBox: EditText;
-    private lateinit var textDisplay: TextView;
-    private lateinit var contBtn: Button;
+    private lateinit var textBox: EditText
+    private lateinit var textDisplay: TextView
+    private lateinit var contBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +42,11 @@ class OpenBrailleKeyboardSettingsActivity : AppCompatActivity() {
         contBtn.setOnClickListener{ finish() }
     }
 
+    /**
+     * Checks if the given string contains any arabic characters
+     * taken from https://stackoverflow.com/questions/15107313/how-to-determine-a-string-is-english-or-arabic
+     * translated into Kotlin by Android studio
+     */
     private fun isProbablyArabic(s: String): Boolean {
         var i = 0
         while (i < s.length) {
