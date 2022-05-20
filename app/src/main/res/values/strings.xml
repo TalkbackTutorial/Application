@@ -59,6 +59,9 @@
     <string name="brailleSettingsOutro">Congrats, you have managed to open the braille settings page and enter an Arabic character in the text box. Click the continue button when you are ready.</string>
     <string name="continueStr">Continue</string>
     <string name="hideBrailleIntro">In this module you will learn how to close the braille keyboard when it is on the screen, this can be done by using 2 finger to swipe down while the braille keyboard is active, input the character \'a\' in the following text box and use the gesture to hide the keyboard. then return here.</string>
-    <string name="hideBraileOutro">Congrats, you have learnt to close the text box, use the continue button on this page to return to the lesson screen.</string>
+    <string name="hideBrailleOutro">Congrats, you have learnt to close the text box, use the continue button on this page to return to the lesson screen.</string>
     <string name="hideBrailleFail">That was not the correct gesture, that was for submitting text, try it again using the correct gesture, which is two finger swipe down.</string>
+    <string name="open_talkback_menu_intro">Welcome. In this module, you will learn how to open Talkback Menu. Talkback menu let you use commands to read, edit text, control speech output, change Talkback setting, and so on. To do this, use one finger to swipe up, or down then swipe right immediately. </string>
+    <string name="open_talkback_menu_outro">Well done! You now know how to open and close Talkback Menu. Once again, to do this you have to swipe up, or down then swipe right. You have completed the lesson.</string>
+    <string name="open_talkback_menu_feedback">Great job. You have opened the Talkback menu. Feel free to navigate around to see what you can do. Once you are done, go to the bottom of the menu and exit.</string>
 </resources>

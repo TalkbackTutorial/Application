@@ -33,7 +33,7 @@ class HideBrailleKeyboardActivity : AppCompatActivity() {
 
         textBox.addTextChangedListener {
             if (it.toString() == "a") {
-                this.textDisplay.text = getString(R.string.hideBraileOutro)
+                this.textDisplay.text = getString(R.string.hideBrailleOutro)
                 this.textBox.visibility = View.GONE
                 this.contBtn.visibility = View.VISIBLE
             }

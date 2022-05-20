@@ -66,12 +66,12 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
         }
     }
 
+    /**
+     * This function give feedback to guide the user what to do next
+     */
     private fun speakFeedback(counter: Int) {
         if (counter == 0) {
-            this.ttsEngine.speak(
-                "Great job. You have opened the Talkback menu. Feel free to navigate around to see what you can do." +
-                        "Once you are done, go to the bottom of the menu and exit."
-            )
+            this.ttsEngine.speak(getString(R.string.open_talkback_menu_feedback))
         } else {
             finishLesson()
         }
@@ -82,11 +82,7 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
      * @author Vinh Tuan Huynh
      */
     private fun speakIntro() {
-        val intro = """
-            Welcome. In this module, you'll learn how to open Talkback Menu.
-            Talkback menu let you use commands to read, edit text, control speech output, change Talkback setting, and so on.
-            To do this, use one finger to swipe up, or down then swipe right immediately. 
-        """.trimIndent()
+        val intro = getString(R.string.open_talkback_menu_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -95,11 +91,7 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
      * @author Vinh Tuan Huynh
      */
     private fun speakOutro() {
-        val outro = """
-            Well done! You now know how to open and close Talkback Menu. 
-            Once again, to do this you have to swipe up, or down then swipe right.
-            You have completed the lesson. 
-        """.trimIndent()
+        val outro = getString(R.string.open_talkback_menu_outro).trimIndent()
         this.ttsEngine.speak(outro)
     }
 
