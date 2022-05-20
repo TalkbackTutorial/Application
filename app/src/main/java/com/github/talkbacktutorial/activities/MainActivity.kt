@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
         lessonCardBinding.subtitle = lesson.sequenceName
         lessonCardBinding.locked = lesson.isLocked
 
-        if (!locked || DebugSettings.bypassLessonLocks) {
+        if (!locked || DebugSettings.bypassProgressionLocks) {
             lessonCardBinding.lessonCard.setOnClickListener {
                 lesson.startActivity(this)
             }

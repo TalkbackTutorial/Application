@@ -8,11 +8,8 @@ package com.github.talkbacktutorial
  */
 object DebugSettings {
 
-    // Unlocks all lessons if true
-    const val bypassLessonLocks = false
-
-    // Unlocks all modules if true
-    const val bypassModuleLocks = false
+    // Unlocks all lessons, modules and challenges if true
+    const val bypassProgressionLocks = false
 
     // Talkback isn't required if true
     const val talkbackNotRequired = false

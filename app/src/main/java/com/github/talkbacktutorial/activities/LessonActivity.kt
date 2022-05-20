@@ -116,7 +116,7 @@ class LessonActivity : AppCompatActivity() {
             this.lesson.getModuleSequenceNumeral(module)
         )
 
-        if (!locked || DebugSettings.bypassModuleLocks) {
+        if (!locked || DebugSettings.bypassProgressionLocks) {
             moduleCardBinding.moduleCard.setOnClickListener {
                 module.startActivity(this)
             }
@@ -146,7 +146,7 @@ class LessonActivity : AppCompatActivity() {
                 this.lesson.modules.size + 1
             )
 
-            if (!locked) {
+            if (!locked || DebugSettings.bypassProgressionLocks) {
                 challengeCardBinding.card.setOnClickListener {
                     challenge.startActivity(this)
                 }
