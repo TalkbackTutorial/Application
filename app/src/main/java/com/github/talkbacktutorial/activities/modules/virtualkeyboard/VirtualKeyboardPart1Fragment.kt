@@ -154,9 +154,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
 
     private fun endLesson() {
         // Lesson's complete go back to Main Activity
-        val intent = Intent((activity as VirtualKeyboardActivity), MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
+        activity?.onBackPressed()
     }
 
     override fun onDestroyView() {
