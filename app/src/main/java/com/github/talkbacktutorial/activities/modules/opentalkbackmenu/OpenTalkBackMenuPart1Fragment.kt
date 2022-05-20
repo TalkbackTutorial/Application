@@ -31,7 +31,12 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_open_talkback_menu_module_part_1, container, false)
+            DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_open_talkback_menu_module_part_1,
+                container,
+                false
+            )
         return binding.root
     }
 
@@ -42,8 +47,34 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
                 triggerOnce = true
             ) {
                 // Trigger this function once the intro is done speaking
+                this.observeUser()
             }
         this.speakIntro()
+    }
+
+    /**
+     * This function observe and count the view changes
+     * @author Vinh Tuan Huynh
+     */
+    private fun observeUser() {
+        // Simple listener detecting a change in window focus
+        view?.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
+            Timer().schedule(3500) {
+                speakFeedback(viewChangeCounter)
+                viewChangeCounter++
+            }
+        }
+    }
+
+    private fun speakFeedback(counter: Int) {
+        if (counter == 0) {
+            this.ttsEngine.speak(
+                "Great job. You have opened the Talkback menu. Feel free to navigate around to see what you can do." +
+                        "Once you are done, go to the bottom of the menu and exit."
+            )
+        } else {
+            finishLesson()
+        }
     }
 
     /**
@@ -53,7 +84,8 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
     private fun speakIntro() {
         val intro = """
             Welcome. In this module, you'll learn how to open Talkback Menu.
-            Talkback menu let you use commands to read, edit text, control speech output, change Talkback setting and so.
+            Talkback menu let you use commands to read, edit text, control speech output, change Talkback setting, and so on.
+            To do this, use one finger to swipe up, or down then swipe right immediately. 
         """.trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
@@ -64,7 +96,9 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
      */
     private fun speakOutro() {
         val outro = """
-            Well done! You now know how to open and close Talkback Menu. You will be moved to a new lesson.
+            Well done! You now know how to open and close Talkback Menu. 
+            Once again, to do this you have to swipe up, or down then swipe right.
+            You have completed the lesson. 
         """.trimIndent()
         this.ttsEngine.speak(outro)
     }
