@@ -78,7 +78,6 @@ class MediaVolumeControlPart1Fragment : Fragment() {
             mediaPlayer?.start()
             mediaPlayer?.isLooping = true
             val defaultStreamVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
-            // TODO add function
             totalSongDuration = mediaPlayer!!.duration
             maxStreamVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
             val vol: Float = defaultStreamVolume.toFloat() / maxStreamVolume
