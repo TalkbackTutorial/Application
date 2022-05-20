@@ -1,19 +1,27 @@
 package com.github.talkbacktutorial.activities.modules.virtualkeyboard
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import android.widget.TextView
+import android.view.inputmethod.EditorInfo
+import android.widget.Button
+import android.widget.EditText
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentVirtualKeyboardModulePart1Binding
 
+const val TYPED_STRING = "hello"
 
 class VirtualKeyboardPart1Fragment : Fragment() {
 
@@ -24,7 +32,8 @@ class VirtualKeyboardPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentVirtualKeyboardModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private lateinit var textView: TextView
+    private lateinit var editText: EditText
+    private var firstTime: Boolean = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,19 +50,37 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         this.ttsEngine = TextToSpeechEngine((activity as VirtualKeyboardActivity)).onFinishedSpeaking(triggerOnce = true) {
             this.binding.virtualKeyboardConstraintLayout.visibility = View.VISIBLE
         }
-        setupTextView()
+        this.binding.virtualKeyboardConstraintLayout.viewTreeObserver.addOnGlobalLayoutListener(keyboardLayoutListener)
         this.speakIntro()
+        setupTextView()
+
     }
 
     private fun setupTextView(){
-        this.textView = this.binding.editText
+        this.editText = this.binding.editText
+        editText.setOnEditorActionListener { _, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                onFinishTyping()
+            }
+            false
+        }
+    }
+
+    private fun onFinishTyping(){
+        if (editText.text.toString().lowercase() == TYPED_STRING){
+            val info = """Great job! You have typed the word hello with the on screen keyboard .
+                    Congratulations on completing this lesson.
+                    In this lesson you have successfully learnt how to type with the on screen keyboard.
+                    To exit this lesson, select the finish button on the screen.""".trimIndent()
+            speakDuringLesson(info)
+            insertFinishButton()
+        }
     }
 
     private fun speakIntro() {
         val intro = """
             In this tutorial, you will be learning how to open the on-screen virtual keyboard and 
-            type using it. To start, explore by touch to find the text box then double tap to open
-            the virtual keyboard. 
+            type using it. To start, double tap on the screen to open the virtual keyboard. 
         """.trimIndent()
 
         this.ttsEngine.speakOnInitialisation(intro)
@@ -63,33 +90,80 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         // navigation bar height
         var navigationBarHeight = 0
         var resourceId: Int =
-            getResources().getIdentifier("navigation_bar_height", "dimen", "android")
+            resources.getIdentifier("navigation_bar_height", "dimen", "android")
         if (resourceId > 0) {
-            navigationBarHeight = getResources().getDimensionPixelSize(resourceId)
+            navigationBarHeight = resources.getDimensionPixelSize(resourceId)
         }
 
         // status bar height
         var statusBarHeight = 0
-        resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android")
+        resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
         if (resourceId > 0) {
-            statusBarHeight = getResources().getDimensionPixelSize(resourceId)
+            statusBarHeight = resources.getDimensionPixelSize(resourceId)
         }
 
         // display window size for the app layout
         val rect = Rect()
-        activity?.getWindow()?.getDecorView()?.getWindowVisibleDisplayFrame(rect)
+        activity?.window?.decorView?.getWindowVisibleDisplayFrame(rect)
 
         // screen height - (user app height + status + nav) ..... if non-zero, then there is a soft keyboard
-        val keyboardHeight: Int = this.textView.getHeight() - (statusBarHeight + navigationBarHeight + rect.height())
+        val keyboardHeight: Int = this.editText.height - (statusBarHeight + navigationBarHeight + rect.height())
+        Log.i("KEYBOARD HEIGHT:", keyboardHeight.toString())
         if (keyboardHeight > 0) {
+            onShowKeyboard()
+        }
+    }
+
+    private fun onShowKeyboard() {
+        if (firstTime) {
             val info = """Great job! You opened up the on screen virtual keyboard.
                     Explore by touch to type hello using the keyboard""".trimIndent()
-            ttsEngine.speak(info)
+            speakDuringLesson(info)
+            firstTime = false
         }
+    }
+    private fun insertFinishButton() {
+        val constraintLayout = this.binding.virtualKeyboardConstraintLayout
+        val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
+        layoutParams.horizontalBias = 0.95f
+        layoutParams.endToEnd = constraintLayout.id
+        layoutParams.startToStart = constraintLayout.id
+        layoutParams.topToTop = constraintLayout.id
+        layoutParams.topMargin = 10.dpToPixels(requireContext())
+        val finishButton = Button(requireContext())
+        val text = "Finish"
+        finishButton.contentDescription = text
+        finishButton.text = text
+        finishButton.layoutParams = layoutParams
+        finishButton.setBackgroundResource(R.color.primary40)
+        finishButton.setOnClickListener {
+            endLesson()
+        }
+
+        constraintLayout.addView(finishButton)
+    }
+
+    private fun Int.dpToPixels(context: Context): Int = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
+    ).toInt()
+
+    private fun endLesson() {
+        // Lesson's complete go back to Main Activity
+        val intent = Intent((activity as VirtualKeyboardActivity), MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 
     override fun onDestroyView() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
+    }
+
+    private fun speakDuringLesson(info: String) {
+        this.binding.virtualKeyboardConstraintLayout.visibility = View.GONE
+        ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+            this.binding.virtualKeyboardConstraintLayout.visibility = View.VISIBLE
+        }
+        ttsEngine.speak(info)
     }
 }
