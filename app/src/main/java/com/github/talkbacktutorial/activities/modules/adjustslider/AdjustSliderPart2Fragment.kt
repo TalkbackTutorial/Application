@@ -11,8 +11,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.activities.modules.scroll.ScrollActivity
 import com.github.talkbacktutorial.databinding.FragmentAdjustSliderModulePart2Binding
+import com.github.talkbacktutorial.lessons.Lesson
+import com.github.talkbacktutorial.lessons.LessonContainer
 
 class AdjustSliderPart2Fragment : Fragment() {
 
@@ -135,7 +139,9 @@ class AdjustSliderPart2Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as AdjustSliderActivity), MainActivity::class.java)
+            val intent = Intent((activity as AdjustSliderActivity), LessonActivity::class.java)
+            val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
+            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

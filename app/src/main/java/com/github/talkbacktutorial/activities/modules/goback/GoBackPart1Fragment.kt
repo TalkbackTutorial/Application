@@ -11,9 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.activities.modules.scroll.ScrollActivity
 import com.github.talkbacktutorial.databinding.FragmentGobackModulePart1Binding
 import com.github.talkbacktutorial.databinding.PillButtonBinding
+import com.github.talkbacktutorial.lessons.Lesson
+import com.github.talkbacktutorial.lessons.LessonContainer
 
 class GoBackPart1Fragment : Fragment() {
 
@@ -115,7 +119,9 @@ class GoBackPart1Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as GoBackActivity), MainActivity::class.java)
+            val intent = Intent((activity as GoBackActivity), LessonActivity::class.java)
+            val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
+            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             returning = false

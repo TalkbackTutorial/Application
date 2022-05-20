@@ -107,7 +107,7 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
             Touching and dragging are used to go through the menu items more quickly.
             To start, you will explore a two column menu using this method.
             Touch the screen by your finger and drag it slowly around screen.
-            Make sure your finger is keep touching the screen.
+            Make sure your finger is touching the screen at all times.
             You can drag your finger to any direction, either up, down, right or left.
             Find the continue button in the menu, double tap it to continue.
         """.trimIndent()

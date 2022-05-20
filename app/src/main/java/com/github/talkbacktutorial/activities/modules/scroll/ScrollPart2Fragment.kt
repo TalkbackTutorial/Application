@@ -11,10 +11,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.activities.modules.explorebytouch.ExploreMenuByTouchActivity
 import com.github.talkbacktutorial.databinding.BasicHorizontalCardBinding
 import com.github.talkbacktutorial.databinding.FragmentScrollingModulePart2Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
+import com.github.talkbacktutorial.lessons.Lesson
+import com.github.talkbacktutorial.lessons.LessonContainer
 
 class ScrollPart2Fragment : Fragment() {
 
@@ -103,7 +107,9 @@ class ScrollPart2Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as ScrollActivity), MainActivity::class.java)
+            val intent = Intent((activity as ScrollActivity), LessonActivity::class.java)
+            val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
+            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
