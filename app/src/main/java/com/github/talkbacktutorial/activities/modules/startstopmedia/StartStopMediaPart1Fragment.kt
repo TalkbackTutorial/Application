@@ -154,9 +154,7 @@ class StartStopMediaPart1Fragment : Fragment() {
         }
 
         // Lesson's complete go back to Main Activity
-        val intent = Intent((activity as StartStopMediaActivity), MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
+        activity?.onBackPressed()
     }
 
     override fun onDestroyView() {
