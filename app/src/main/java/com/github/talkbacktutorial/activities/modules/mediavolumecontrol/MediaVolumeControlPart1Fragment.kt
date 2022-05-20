@@ -19,6 +19,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentMediaVolumeControlModulePart1Binding
+import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 import kotlin.math.roundToInt
 
 class MediaVolumeControlPart1Fragment : Fragment() {
@@ -155,25 +156,16 @@ class MediaVolumeControlPart1Fragment : Fragment() {
 
     private fun insertFinishButton() {
         val constraintLayout = this.binding.mediaVolumeControlConstraintLayout
+        val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, constraintLayout,false)
+        primaryButtonBinding.text = "Finish Lesson"
+        primaryButtonBinding.button.setOnClickListener{ endLesson() }
         val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
         layoutParams.horizontalBias = 0.95f
         layoutParams.endToEnd = constraintLayout.id
         layoutParams.startToStart = constraintLayout.id
         layoutParams.topToTop = constraintLayout.id
         layoutParams.topMargin = 10.dpToPixels(requireContext())
-        val finishButton = Button(requireContext())
-        val text = "Finish"
-        finishButton.contentDescription = text
-        finishButton.text = text
-        finishButton.layoutParams = layoutParams
-        finishButton.setBackgroundResource(R.color.primary40)
-        finishButton.setOnClickListener(
-            View.OnClickListener {
-                endLesson()
-            }
-        )
-
-        constraintLayout.addView(finishButton)
+        constraintLayout.addView(primaryButtonBinding.button, layoutParams)
     }
 
     private fun speakIntro() {
