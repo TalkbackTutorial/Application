@@ -2,6 +2,7 @@ package com.github.talkbacktutorial.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Debug
 import android.provider.Settings
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity() {
      * @author Jason Wu
      */
     override fun onStart() {
-        if (!isTalkBackActive()) {
+        if (!isTalkBackActive() && !DebugSettings.talkbackNotRequired) {
             this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
             popup(mainView)
         }
@@ -149,7 +151,7 @@ class MainActivity : AppCompatActivity() {
         lessonCardBinding.subtitle = lesson.sequenceName
         lessonCardBinding.locked = lesson.isLocked
 
-        if (!locked) {
+        if (!locked || DebugSettings.bypassLessonLocks) {
             lessonCardBinding.lessonCard.setOnClickListener {
                 lesson.startActivity(this)
             }

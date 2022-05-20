@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.database.LessonProgression
 import com.github.talkbacktutorial.database.LessonProgressionViewModel
@@ -115,7 +116,7 @@ class LessonActivity : AppCompatActivity() {
             this.lesson.getModuleSequenceNumeral(module)
         )
 
-        if (!locked) {
+        if (!locked || DebugSettings.bypassModuleLocks) {
             moduleCardBinding.moduleCard.setOnClickListener {
                 module.startActivity(this)
             }
