@@ -26,4 +26,8 @@ class LessonProgressionRepository(private val lessonProgressionDao: LessonProgre
     suspend fun deleteLessonProgression(lessonProgression: LessonProgression){
         lessonProgressionDao.delete(lessonProgression)
     }
+
+    suspend fun wipeAllLessonProgressions(){
+        lessonProgressionDao.wipeTable()
+    }
 }

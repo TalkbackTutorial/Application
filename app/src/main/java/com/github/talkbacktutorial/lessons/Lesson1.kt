@@ -3,6 +3,7 @@ package com.github.talkbacktutorial.lessons
 import android.content.Context
 import android.content.Intent
 import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
+import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.modules.Module
 
@@ -26,6 +27,7 @@ class Lesson1 : Lesson() {
      * @param context The context that starts Lesson0's Activity.
      */
     override fun startActivity(context: Context) {
+        InstanceSingleton.getInstanceSingleton().selectedLessonNumber = sequenceNumeral
         context.startActivity(Intent(context, Lesson1Activity::class.java))
     }
 }

@@ -1,6 +1,11 @@
 package com.github.talkbacktutorial.lessons.modules
 
 import android.content.Context
+import android.view.View
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
+import com.github.talkbacktutorial.database.LessonProgression
+import com.github.talkbacktutorial.database.LessonProgressionViewModel
 import java.util.*
 
 /**

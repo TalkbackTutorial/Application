@@ -134,6 +134,7 @@ class AdjustSliderPart2Fragment : Fragment() {
      * @author Antony Loose
      */
     private fun finishLesson() {
+
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as AdjustSliderActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

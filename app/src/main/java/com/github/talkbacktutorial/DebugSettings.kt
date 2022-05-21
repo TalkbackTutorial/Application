@@ -14,4 +14,6 @@ object DebugSettings {
     // Talkback isn't required if true
     const val talkbackNotRequired = false
 
+    // Wipes database on start if true
+    const val wipeDatabase = false
 }

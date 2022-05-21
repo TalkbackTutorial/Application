@@ -14,6 +14,7 @@ import android.widget.PopupWindow
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.iterator
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -52,7 +53,11 @@ class MainActivity : AppCompatActivity() {
         this.ttsEngine = TextToSpeechEngine(this)
         this.mainView = binding.constraintLayout
 
-        lesson0onStart()
+        if (DebugSettings.wipeDatabase) {
+            lessonProgressionViewModel.clearDatabase()
+        }
+
+//        lesson0onStart()
         displayLessons()
     }
 
@@ -70,8 +75,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun lesson0onStart() {
         lessonProgressionViewModel.getLessonProgression(1).observe(this) { lesson ->
-            if (!lesson.completed) {
-                LessonContainer.getLesson(1).startActivity(this)
+            if (lesson != null) {
+                if (!lesson.completed) {
+                    LessonContainer.getLesson(1).startActivity(this)
+                }
             }
         }
     }
@@ -123,7 +130,7 @@ class MainActivity : AppCompatActivity() {
             if (lessons.isEmpty()) {
                 lessonProgressionViewModel.fillDatabase()
             } else {
-                displayLessons(lessons)
+                displayLessonCards(lessons)
             }
         }
     }
@@ -135,16 +142,18 @@ class MainActivity : AppCompatActivity() {
      * whether the lesson is completed or not
      * @author Jade Davis
      */
-    private fun displayLessons(lessonProgressions: List<LessonProgression>) {
-        var lessonCount = 0
+    private fun displayLessonCards(lessonProgressions: List<LessonProgression>) {
+        binding.lessonLinearLayout.removeAllViews()
+
+        var lessonCount = -1
         val lessons = LessonContainer.getAllLessons()
 
         do {
-            loadLessonCard(lessons[lessonCount], locked = false)
             lessonCount++
+            loadLessonCard(lessons[lessonCount], locked = false)
         } while (lessonProgressions[lessonCount].completed)
 
-        for (i in lessonCount until lessons.size) {
+        for (i in lessonCount+1 until lessons.size) {
             loadLessonCard(lessons[i], locked = true)
         }
     }

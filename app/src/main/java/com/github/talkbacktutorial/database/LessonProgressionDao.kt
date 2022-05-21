@@ -10,10 +10,10 @@ import androidx.room.*
 @Dao
 interface LessonProgressionDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert
     suspend fun addLessonProgression(lessonProgression: LessonProgression)
 
-    @Query("SELECT * FROM lesson_table WHERE id-1 == :lessonNum")
+    @Query("SELECT * FROM lesson_table WHERE id+1 == :lessonNum")
     fun getLessonProgression(lessonNum: Int): LiveData<LessonProgression>
 
     @Query("SELECT * FROM lesson_table ORDER BY id ASC")
@@ -24,4 +24,7 @@ interface LessonProgressionDao {
 
     @Delete
     suspend fun delete(lessonProgression: LessonProgression)
+
+    @Query("DELETE FROM lesson_table")
+    suspend fun wipeTable()
 }

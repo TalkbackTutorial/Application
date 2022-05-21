@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.lesson1
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.database.LessonProgressionViewModel
 import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentLesson1Part3Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
@@ -81,6 +83,9 @@ class Lesson1Part3Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+            LessonProgressionViewModel.getProgressionViewModel(context as Context).updateCompletedModules(context as Context)
+            LessonProgressionViewModel.getProgressionViewModel(context as Context).markLessonCompleted(context as Context)
+
             val intent = Intent((activity as Lesson1Activity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
