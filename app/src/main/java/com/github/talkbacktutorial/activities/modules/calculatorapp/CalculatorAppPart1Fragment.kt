@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.calculatorapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,5 +37,22 @@ class CalculatorAppPart1Fragment : Fragment() {
             .onFinishedSpeaking(triggerOnce = true) {
 //                binding.continueCard.visibility = View.VISIBLE
             }
+    }
+
+    /**
+     * A card which starts a new fragment when interacted by user
+     * @author Joel Yang
+     */
+    private fun setupContinueCard() {
+        // The card starts off invisible
+        binding.continueCard.visibility = View.GONE
+        // The button transitions to the next fragment when clicked
+        binding.continueCard.setOnClickListener {
+            val sendIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, "com.simplemobiletools.calculator")
+
+            }
+        }
     }
 }
