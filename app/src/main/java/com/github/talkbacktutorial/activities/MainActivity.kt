@@ -45,15 +45,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-
         binding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lessonsModel = this.lessonsModel
+        this.lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
         this.ttsEngine = TextToSpeechEngine(this)
         this.mainView = binding.constraintLayout
 
         lesson0onStart()
-
         displayLessons()
     }
 
@@ -70,8 +69,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun lesson0onStart() {
-        lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
-
         lessonProgressionViewModel.getLessonProgression(1).observe(this) { lesson ->
             if (!lesson.completed) {
                 LessonContainer.getLesson(1).startActivity(this)
@@ -122,7 +119,6 @@ class MainActivity : AppCompatActivity() {
      * @author Jade Davis
      */
     private fun displayLessons() {
-        lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
         lessonProgressionViewModel.getAllLessonProgressions.observe(this) {lessons ->
             if (lessons.isEmpty()) {
                 lessonProgressionViewModel.fillDatabase()
