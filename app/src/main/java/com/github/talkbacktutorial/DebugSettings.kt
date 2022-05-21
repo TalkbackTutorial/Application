@@ -12,8 +12,8 @@ object DebugSettings {
     const val bypassProgressionLocks = false
 
     // Talkback isn't required if true
-    const val talkbackNotRequired = false
+    const val talkbackNotRequired = true
 
-    // Wipes database on start if true
+    // Wipes database and closes app if true
     const val wipeDatabase = false
 }

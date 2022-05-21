@@ -83,7 +83,7 @@ class Lesson1Part3Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            LessonProgressionViewModel.getProgressionViewModel(context as Context).updateCompletedModules(context as Context)
+            LessonProgressionViewModel.getProgressionViewModel(context as Context).markModuleCompleted(context as Context)
             LessonProgressionViewModel.getProgressionViewModel(context as Context).markLessonCompleted(context as Context)
 
             val intent = Intent((activity as Lesson1Activity), MainActivity::class.java)

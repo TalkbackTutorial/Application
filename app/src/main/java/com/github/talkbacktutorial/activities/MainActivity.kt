@@ -24,6 +24,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
+import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.LessonProgression
 import com.github.talkbacktutorial.database.LessonProgressionRepository
 import com.github.talkbacktutorial.database.LessonProgressionViewModel
@@ -32,6 +33,7 @@ import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.Lesson1
 import com.github.talkbacktutorial.lessons.LessonContainer
+import kotlin.system.exitProcess
 
 
 class MainActivity : AppCompatActivity() {
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             lessonProgressionViewModel.clearDatabase()
         }
 
-//        lesson0onStart()
+        lesson0onStart()
         displayLessons()
     }
 
@@ -175,6 +177,7 @@ class MainActivity : AppCompatActivity() {
 
         if (!locked || DebugSettings.bypassProgressionLocks) {
             lessonCardBinding.lessonCard.setOnClickListener {
+                InstanceSingleton.getInstanceSingleton().selectedLessonNumber = lesson.sequenceNumeral
                 lesson.startActivity(this)
             }
         } else {

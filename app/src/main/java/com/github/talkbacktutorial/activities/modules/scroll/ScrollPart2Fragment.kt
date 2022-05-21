@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.scroll
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.database.LessonProgressionViewModel
 import com.github.talkbacktutorial.databinding.BasicHorizontalCardBinding
 import com.github.talkbacktutorial.databinding.FragmentScrollingModulePart2Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
@@ -102,6 +104,8 @@ class ScrollPart2Fragment : Fragment() {
      * @author Andre Pham
      */
     private fun finishLesson() {
+        LessonProgressionViewModel.getProgressionViewModel(context as Context).markModuleCompleted(context as Context)
+
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as ScrollActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

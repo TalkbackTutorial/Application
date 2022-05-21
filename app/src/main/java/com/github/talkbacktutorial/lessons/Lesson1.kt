@@ -27,7 +27,6 @@ class Lesson1 : Lesson() {
      * @param context The context that starts Lesson0's Activity.
      */
     override fun startActivity(context: Context) {
-        InstanceSingleton.getInstanceSingleton().selectedLessonNumber = sequenceNumeral
         context.startActivity(Intent(context, Lesson1Activity::class.java))
     }
 }

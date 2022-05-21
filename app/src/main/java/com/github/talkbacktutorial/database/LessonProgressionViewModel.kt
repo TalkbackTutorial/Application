@@ -3,9 +3,11 @@ package com.github.talkbacktutorial.database
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.*
+import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.lessons.LessonContainer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.system.exitProcess
 
 /**
  * This view model acts as a communication centre between the repository and the UI
@@ -91,14 +93,17 @@ class LessonProgressionViewModel(application: Application): AndroidViewModel(app
     fun clearDatabase(){
         viewModelScope.launch(Dispatchers.IO){
             repository.wipeAllLessonProgressions()
+            exitProcess(0);
         }
     }
 
-    fun updateCompletedModules(context: Context) {
+    fun markModuleCompleted(context: Context) {
         val lessonNum = InstanceSingleton.getInstanceSingleton().selectedLessonNumber
+        var moduleCountUpdated = false
         if (lessonNum is Int) {
-            this.getLessonProgression(lessonNum-1).observe(context as LifecycleOwner, Observer {
-                if (it is LessonProgression) {
+            this.getLessonProgression(lessonNum).observe(context as LifecycleOwner, Observer {
+                if (it is LessonProgression && !moduleCountUpdated) {
+                    moduleCountUpdated = true
                     it.modulesCompleted++
                     this.updateLessonProgression(it)
                 }

@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.challenges.lesson2
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
+import com.github.talkbacktutorial.database.LessonProgressionViewModel
 import com.github.talkbacktutorial.databinding.ChallengeLayoutBinding
 import com.github.talkbacktutorial.lessons.challenges.lesson2challenge.Toy
 import com.github.talkbacktutorial.lessons.challenges.lesson2challenge.ToyContainer
