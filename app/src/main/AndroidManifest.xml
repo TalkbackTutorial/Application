@@ -53,7 +53,11 @@
         <activity android:name=".activities.modules.startstopmedia.StartStopMediaActivity"
             android:exported="false" />
         <activity android:name=".activities.modules.calculatorapp.CalculatorAppActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:launchMode="singleTask"/>
+        <activity android:name=".activities.modules.voicerecorderapp.VoiceRecorderAppActivity"
+            android:exported="true"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>
