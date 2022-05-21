@@ -72,9 +72,9 @@ class MainActivity : AppCompatActivity() {
     private fun lesson0onStart() {
         lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
 
-        lessonProgressionViewModel.getLessonProgression(1).observe(this) {lesson ->
-            if (lesson.completed) {
-                LessonContainer.getLesson("Lesson1").startActivity(this)
+        lessonProgressionViewModel.getLessonProgression(1).observe(this) { lesson ->
+            if (!lesson.completed) {
+                LessonContainer.getLesson(1).startActivity(this)
             }
         }
     }
