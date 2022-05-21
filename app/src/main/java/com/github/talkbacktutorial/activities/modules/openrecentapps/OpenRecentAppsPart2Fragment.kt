@@ -57,11 +57,7 @@ class OpenRecentAppsPart2Fragment : Fragment() {
      * @author Jai Clapp
      */
     private fun speakIntro() {
-        val intro = """
-            Try to open the recent apps menu by tapping the button in the bottom right corner
-            of your phone. You should feel a vibration once you have tapped the button. Once again,
-            open the recent apps menu and then return to the tutorial.
-        """.trimIndent()
+        val intro = getString(R.string.open_recent_apps_part2_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -82,11 +78,8 @@ class OpenRecentAppsPart2Fragment : Fragment() {
         }
         // Delay to prevent bug where the ttsEngine is repeated.
         Timer().schedule(500) {
-            ttsEngine.speak(
-                "You have completed the open recent apps module. " +
-                        "Sending you to the lesson screen.",
-                override = true
-            )
+            val outro = getString(R.string.open_recent_apps_part2_outro).trimIndent()
+            ttsEngine.speakOnInitialisation(outro)
         }
 
     }

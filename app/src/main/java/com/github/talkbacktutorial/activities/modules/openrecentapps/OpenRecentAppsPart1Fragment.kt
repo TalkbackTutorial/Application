@@ -1,9 +1,5 @@
 package com.github.talkbacktutorial.activities.modules.openrecentapps
 
-import android.accessibilityservice.AccessibilityService
-import android.app.Activity
-import android.app.ActivityManager
-import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ProcessLifecycleOwner
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart1Binding
@@ -57,14 +50,7 @@ class OpenRecentAppsPart1Fragment : Fragment() {
      * @author Jai Clapp
      */
     private fun speakIntro() {
-        val intro = """
-            Welcome.
-            In this module, you'll learn how to open recent apps. Recent apps are a handy way to
-            quickly switch between frequently used apps. This can be done in two different ways. 
-            Firstly, perform a swipe left and then, a swipe up gesture. 
-            Please try to perform these gestures one after another, and enter the recent apps menu. 
-            Once completed, return to the tutorial.
-        """.trimIndent()
+        val intro = getString(R.string.open_recent_apps_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -78,16 +64,13 @@ class OpenRecentAppsPart1Fragment : Fragment() {
      * @author Jai Clapp
      */
     private fun finishLesson() {
+        val outro = getString(R.string.open_recent_apps_part1_outro).trimIndent()
+        this.ttsEngine.speakOnInitialisation(outro)
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             parentFragmentManager.commit {
                 replace(this@OpenRecentAppsPart1Fragment.id, OpenRecentAppsPart2Fragment())
                 addToBackStack("openrecentappspart1")
             }
         }
-        this.ttsEngine.speak(
-            "Great job. You have correctly opened the recent app menu and" +
-                "returned to the tutorial." + "Now to try with a different method.",
-            override = true
-        )
     }
 }

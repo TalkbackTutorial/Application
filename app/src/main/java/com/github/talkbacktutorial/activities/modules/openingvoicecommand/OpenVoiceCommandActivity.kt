@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
+<<<<<<< HEAD
+=======
+import com.github.talkbacktutorial.activities.modules.OpenVoiceCommandPart1Fragment
+>>>>>>> d7437be9b823a5fade6329e125996498ba44e191
 import com.github.talkbacktutorial.databinding.ActivityOpenVoiceCommandModuleBinding
 
 class OpenVoiceCommandActivity : AppCompatActivity() {

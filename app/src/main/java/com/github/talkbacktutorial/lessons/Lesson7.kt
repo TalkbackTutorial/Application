@@ -8,8 +8,9 @@ class Lesson7 : Lesson() {
     override val sequenceNumeral: Int = 7
     override val modules: ArrayList<Module> = ArrayList(
             listOf(
-                SubmitTextModule()
+                SubmitTextModule(),
+                HideBrailleKeyboardModule(),
+                OpenBrailleKeyboardSettingsModule()
             )
     )
-
 }
