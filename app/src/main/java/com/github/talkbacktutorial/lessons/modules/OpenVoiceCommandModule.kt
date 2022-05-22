@@ -4,9 +4,7 @@ import android.content.Context
 import android.content.Intent
 import com.github.talkbacktutorial.activities.modules.openingvoicecommand.OpenVoiceCommandActivity
 
-/**
- * TODO
- */
+
 class OpenVoiceCommandModule : Module() {
 
     override val title: String = "Open Voice Command"
