@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
+            android:name=".activities.challenges.lesson4.Lesson4ChallengeActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.challenges.lesson2.Lesson2ChallengeActivity"
             android:exported="false" />
         <activity

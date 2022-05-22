@@ -73,7 +73,7 @@
     <string name="purchased_feedback">%1$s Purchased</string>
     <string name="added_to_watchlist_feedback">%1$s Added to Watchlist</string>
     <string name="lesson2_challenge_intro">Welcome to Lesson 2\'s challenge. In challenges, you\'ll be presented with practical scenarios to demonstrate your new learnt skills. In this challenge, you\'ll be presented with a store. To complete the lesson, add the tennis ball and the tennis racquet to your watchlist. The tennis ball has a price of $5, and the tennis racquet has a price of $180. You may now start.</string>
-    <string name="lesson2_challenge_outro">You have completed the challenge. Sending you to the main menu.</string>
+    <string name="challenge_outro">You have completed the challenge. Sending you to the main menu.</string>
     <string name="price_range">Price Range</string>
     <string name="rating_content_description">Rating: %1$d stars</string>
     <string name="popup_text">Talkback is disabled. This application requires you to first enable Talkback. Tap \'open settings\' to go to the accessibility settings page, or tap \'exit\' to exit the application.</string>
@@ -83,4 +83,14 @@
     <string name="talkback_disabled">Talkback Disabled</string>
     <string name="open_settings">Open Settings</string>
     <string name="close_application">Exit</string>
+    <string name="lesson4_challenge_intro">In this challenge, you\'ll be presented an article with an embedded video already playing. To complete the challenge, pause the video, and return its slider to the beginning of the video, then replay it. You may now start.</string>
+    <string name="article_video_content_description">Embedded Video</string>
+    <string name="article_title">The Different Memory Storage Areas of the Brain</string>
+    <string name="article_date">Saturday 15th July, 2042</string>
+    <string name="article_author">Author: Billy Eggman</string>
+    <string name="article_paragraph1">Within the cerebral cortex, the frontal and temporal lobes are heavily involved in explicit/declarative memory processes. Episodic memories tent to be stored in the frontal lobe (particularly the pre-frontal cortex) and temporal lobe. The same can be assumed with semantic memories. Components of our memories such as visuals and sounds are stored in areas throughout the cerebral cortex. Sound is sotred in the temporal lobe, while visuals in the occipital lobe.</string>
+    <string name="article_paragraph2">The hippocampus (in temporal lobe) consolidates memories, turning short term memories into long term declarative memories; semantic and episodic. It also has roles in emotional memory due to its proximity to the amygdala, and spatial memory.</string>
+    <string name="article_paragraph3">The amygdala (in temporal lobe) is involved in emotional memory, and links emotions and emotional responses (such as fear and aggression) to declarative memories. This helps us remember experiences by the emotion we felt during its formation. Also involved in the formation of procedural memories.</string>
+    <string name="article_paragraph4">The cerebellum is involved in motor learning and the memory of conditioned reflexes. It\'s involved in implicit memory such as procedural memories that require movement. Also has a role in spatial navigation.</string>
+    <string name="article_paragraph5">Finally, language is stored in Broca’s area in the left frontal lobe, and memory for pictures are stored in the occipital lobe.</string>
 </resources>

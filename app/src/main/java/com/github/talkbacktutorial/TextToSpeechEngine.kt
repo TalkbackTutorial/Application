@@ -76,6 +76,10 @@ class TextToSpeechEngine(context: AppCompatActivity) {
      * @param override If true, clears the queue of text to be spoken before speaking
      */
     fun speak(text: String, override: Boolean = false) {
+        if (DebugSettings.skipTTS) {
+            this.ttsEngine.speak("skip", TextToSpeech.QUEUE_FLUSH, null, "tts1")
+            return
+        }
         this.ttsEngine.speak(text, if (override) TextToSpeech.QUEUE_FLUSH else TextToSpeech.QUEUE_ADD, null, "tts1")
         TextToSpeechEngine.history.add(text)
     }

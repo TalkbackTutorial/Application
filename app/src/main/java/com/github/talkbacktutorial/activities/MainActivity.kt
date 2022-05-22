@@ -52,7 +52,9 @@ class MainActivity : AppCompatActivity() {
         this.ttsEngine = TextToSpeechEngine(this)
         this.mainView = binding.constraintLayout
 
-        lesson0onStart()
+        if (!DebugSettings.skipIntroductoryLesson) {
+            lesson0onStart()
+        }
         displayLessons()
     }
 
