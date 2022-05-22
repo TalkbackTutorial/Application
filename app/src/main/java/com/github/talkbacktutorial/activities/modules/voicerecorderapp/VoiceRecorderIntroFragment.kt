@@ -10,6 +10,11 @@ import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.FragmentVoiceRecorderModuleIntroBinding
 
+/**
+ * Introductory fragment asking user to install the forked app.
+ *
+ * @author Matthew Crossman
+ */
 class VoiceRecorderIntroFragment : Fragment() {
 
     private lateinit var binding: FragmentVoiceRecorderModuleIntroBinding

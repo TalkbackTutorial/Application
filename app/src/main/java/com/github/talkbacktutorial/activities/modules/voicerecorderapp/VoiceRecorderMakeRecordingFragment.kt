@@ -12,6 +12,11 @@ import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.FragmentVoiceRecorderModuleMakeRecordingBinding
 
+/**
+ * Fragment where user tries to make a voice recording.
+ *
+ * @author Matthew Crossman
+ */
 class VoiceRecorderMakeRecordingFragment : Fragment() {
 
     private lateinit var binding: FragmentVoiceRecorderModuleMakeRecordingBinding

@@ -9,6 +9,13 @@ import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigat
 import com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationPart1Fragment.NavigationMode
 import com.github.talkbacktutorial.databinding.ActivityBasicFrameBinding
 
+/**
+ * Activity implementing the jump headers module.
+ *
+ * Uses a common fragment across the jump navigation modules.
+ *
+ * @author Matthew Crossman
+ */
 class JumpHeadersActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityBasicFrameBinding

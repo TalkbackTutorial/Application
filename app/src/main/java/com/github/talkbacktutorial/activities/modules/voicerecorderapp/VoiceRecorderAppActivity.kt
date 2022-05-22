@@ -8,6 +8,12 @@ import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.ActivityBasicFrameBinding
 
+/**
+ * Activity implementing the module for learning how to use the external app "Simple Voice
+ * Recorder".
+ *
+ * @author Matthew Crossman
+ */
 class VoiceRecorderAppActivity : AppCompatActivity() {
     private val TUTORIAL_PREFIX = "TBT"
     private val EXTERNAL_APP_TAG = "SVR"
@@ -41,8 +47,8 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
             val actionCompleted = intent.getStringExtra(APP_ACTION_KEY)
 
             actionCompleted?.let {
-                // move on with module based on tag
-                if (actionCompleted == PLAY_RECORDING_TAG)
+                // move on with module based on tag IF intro is the current fragment
+                if (actionCompleted == PLAY_RECORDING_TAG && supportFragmentManager.fragments.first() is VoiceRecorderIntroFragment)
                     supportFragmentManager.commit {
                         replace(R.id.frame, VoiceRecorderPlayRecordingFragment())
                     }

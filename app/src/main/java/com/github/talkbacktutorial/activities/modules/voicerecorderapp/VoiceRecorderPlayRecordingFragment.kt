@@ -11,6 +11,11 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.FragmentVoiceRecorderModulePlayRecordingBinding
 
+/**
+ * Fragment where user tries to play a previously recorded voice recording.
+ *
+ * @author Matthew Crossman
+ */
 class VoiceRecorderPlayRecordingFragment : Fragment() {
     private lateinit var binding: FragmentVoiceRecorderModulePlayRecordingBinding
 

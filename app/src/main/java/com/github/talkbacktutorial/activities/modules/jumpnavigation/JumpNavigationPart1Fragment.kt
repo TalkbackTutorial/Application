@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Button
 import android.widget.TextView
+import androidx.annotation.NonNull
 import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
@@ -18,7 +19,13 @@ import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersPar
 import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksPart1Fragment
 import com.github.talkbacktutorial.databinding.FragmentJumpNavigationModulePart1Binding
 
-class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment() {
+/**
+ * A common "part 1" or introduction fragment for all jump navigation modules (links, headers, and
+ * controls). The mode must be set in order for it to work.
+ *
+ * @author Matthew Crossman
+ */
+class JumpNavigationPart1Fragment(@NonNull private val mode: NavigationMode) : Fragment() {
 
     private lateinit var binding: FragmentJumpNavigationModulePart1Binding
     private val isLastFragment = true
