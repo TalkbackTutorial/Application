@@ -55,13 +55,10 @@ class MainActivity : AppCompatActivity() {
         this.ttsEngine = TextToSpeechEngine(this)
         this.mainView = binding.constraintLayout
 
-        if (!DebugSettings.skipIntroductoryLesson) {
-            lesson0onStart()
-        }
         if (DebugSettings.wipeDatabase) {
             lessonProgressionViewModel.clearDatabase()
         }
-
+        
         displayLessons()
     }
 
@@ -73,6 +70,8 @@ class MainActivity : AppCompatActivity() {
         if (!isTalkBackActive() && !DebugSettings.talkbackNotRequired) {
             this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
             popup(mainView)
+        } else if (!DebugSettings.skipIntroductoryLesson) {
+            lesson0onStart()
         }
         super.onStart()
     }
