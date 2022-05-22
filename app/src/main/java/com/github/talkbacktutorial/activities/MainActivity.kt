@@ -14,6 +14,7 @@ import android.widget.PopupWindow
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.iterator
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +24,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
+import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.LessonProgression
 import com.github.talkbacktutorial.database.LessonProgressionRepository
 import com.github.talkbacktutorial.database.LessonProgressionViewModel
@@ -31,6 +33,7 @@ import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.Lesson1
 import com.github.talkbacktutorial.lessons.LessonContainer
+import kotlin.system.exitProcess
 
 
 class MainActivity : AppCompatActivity() {
@@ -55,6 +58,10 @@ class MainActivity : AppCompatActivity() {
         if (!DebugSettings.skipIntroductoryLesson) {
             lesson0onStart()
         }
+        if (DebugSettings.wipeDatabase) {
+            lessonProgressionViewModel.clearDatabase()
+        }
+
         displayLessons()
     }
 
@@ -72,8 +79,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun lesson0onStart() {
         lessonProgressionViewModel.getLessonProgression(1).observe(this) { lesson ->
-            if (!lesson.completed) {
-                LessonContainer.getLesson(1).startActivity(this)
+            if (lesson != null) {
+                if (!lesson.completed) {
+                    LessonContainer.getLesson(1).startActivity(this)
+                }
             }
         }
     }
@@ -125,7 +134,7 @@ class MainActivity : AppCompatActivity() {
             if (lessons.isEmpty()) {
                 lessonProgressionViewModel.fillDatabase()
             } else {
-                displayLessons(lessons)
+                displayLessonCards(lessons)
             }
         }
     }
@@ -137,16 +146,18 @@ class MainActivity : AppCompatActivity() {
      * whether the lesson is completed or not
      * @author Jade Davis
      */
-    private fun displayLessons(lessonProgressions: List<LessonProgression>) {
-        var lessonCount = 0
+    private fun displayLessonCards(lessonProgressions: List<LessonProgression>) {
+        binding.lessonLinearLayout.removeAllViews()
+
+        var lessonCount = -1
         val lessons = LessonContainer.getAllLessons()
 
         do {
-            loadLessonCard(lessons[lessonCount], locked = false)
             lessonCount++
+            loadLessonCard(lessons[lessonCount], locked = false)
         } while (lessonProgressions[lessonCount].completed)
 
-        for (i in lessonCount until lessons.size) {
+        for (i in lessonCount+1 until lessons.size) {
             loadLessonCard(lessons[i], locked = true)
         }
     }
@@ -168,6 +179,7 @@ class MainActivity : AppCompatActivity() {
 
         if (!locked || DebugSettings.bypassProgressionLocks) {
             lessonCardBinding.lessonCard.setOnClickListener {
+                InstanceSingleton.getInstanceSingleton().selectedLessonNumber = lesson.sequenceNumeral
                 lesson.startActivity(this)
             }
         } else {

@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.goback
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.database.LessonProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentGobackModulePart2Binding
 
 class GoBackPart2Fragment : Fragment() {
@@ -49,6 +51,7 @@ class GoBackPart2Fragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        LessonProgressionViewModel.getProgressionViewModel(context as Context).markModuleCompleted(context as Context)
         Log.v("onDestroyView", "func called")
         this.ttsEngine.shutDown()
         super.onDestroyView()

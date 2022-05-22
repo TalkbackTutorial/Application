@@ -31,31 +31,6 @@ class LessonActivity : AppCompatActivity() {
             this.displayModules()
         }
     }
-    /*
-    /**
-     * Adds a module card for each module the lesson holds, which starts the respective
-     * module when clicked.
-     * @author Andre Pham
-     */
-    private fun setupModules() {
-        // TODO: database integration, only display modules that have been completed and the next module
-        for (module in this.lesson.modules) {
-            val moduleCardBinding: ModuleCardBinding = DataBindingUtil.inflate(
-                layoutInflater,
-                R.layout.module_card, binding.modulesLinearLayout, false
-            )
-            moduleCardBinding.title = module.title
-            moduleCardBinding.subtitle = getString(
-                R.string.module_subtitle,
-                this.lesson.getModuleSequenceNumeral(module)
-            )
-            moduleCardBinding.moduleCard.setOnClickListener {
-                module.startActivity(this)
-            }
-            binding.modulesLinearLayout.addView(moduleCardBinding.moduleCard)
-        }
-    }
-    */
 
     /**
      * Pulls the required lessonProgression item from the database to determine which modules should be
@@ -65,10 +40,8 @@ class LessonActivity : AppCompatActivity() {
     private fun displayModules() {
         lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
         lessonProgressionViewModel.getAllLessonProgressions.observe(this) {lessons ->
-            if (lessons.isEmpty()) {
-                lessonProgressionViewModel.fillDatabase()
-            } else {
-                displayModules(lessons[lesson.sequenceNumeral])
+            if (lessons.isNotEmpty()) {
+                displayModuleCards(lessons[lesson.sequenceNumeral - 1])
             }
         }
     }
@@ -79,20 +52,20 @@ class LessonActivity : AppCompatActivity() {
      * @param lessonProgression A database entry which specifies the number of modules completed
      * @author Jade Davis
      */
-    private fun displayModules(lessonProgression: LessonProgression) {
-        var moduleCount = 0
+    private fun displayModuleCards(lessonProgression: LessonProgression) {
+        var moduleCount = -1
         val modules = this.lesson.modules
 
         do {
-            loadModuleCard(modules[moduleCount], locked = false)
             moduleCount++
-        } while (moduleCount <= lessonProgression.modulesCompleted)
+            loadModuleCard(modules[moduleCount], locked = false)
+        } while (moduleCount < lessonProgression.modulesCompleted && moduleCount < modules.size - 1)
 
-        for (i in moduleCount until modules.size) {
+        for (i in moduleCount+1 until modules.size) {
             loadModuleCard(modules[i], locked = true)
         }
 
-        if (modules.size - 1 == lessonProgression.modulesCompleted) {
+        if (modules.size == lessonProgression.modulesCompleted) {
             this.setupChallenge(locked = false)
         } else {
             this.setupChallenge(locked = true)

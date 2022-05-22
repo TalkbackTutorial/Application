@@ -20,4 +20,6 @@ object DebugSettings {
     // Skip Text to Speech
     const val skipTTS = false
 
+    // Wipes database and closes app if true
+    const val wipeDatabase = false
 }

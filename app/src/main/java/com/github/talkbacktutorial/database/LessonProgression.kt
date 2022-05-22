@@ -12,12 +12,12 @@ import org.jetbrains.annotations.NotNull
  */
 @Entity(tableName = "lesson_table")
 data class LessonProgression(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @NotNull
     @ColumnInfo(name = "id")
     val id: Int,
     @ColumnInfo(name = "completed")
-    val completed: Boolean,
+    var completed: Boolean,
     @ColumnInfo(name = "modulesCompleted")
-    val modulesCompleted: Int
+    var modulesCompleted: Int
 )
