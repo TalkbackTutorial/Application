@@ -38,18 +38,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
-    init {
-        val instance = this
-    }
-
-    companion object {
-        private val instance: MainActivity? = null
-
-        fun applicationContext() : Context {
-            return instance!!.applicationContext
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -63,8 +51,6 @@ class MainActivity : AppCompatActivity() {
         if (DebugSettings.wipeDatabase) {
             moduleProgressionViewModel.clearDatabase()
         }
-
-        displayLessons()
     }
 
     /**
@@ -84,6 +70,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun lesson0onStart() {
+        // TODO: decide how this will be handled as lesson 1 has no modules to be stored in db
         moduleProgressionViewModel.getModuleProgression("lesson0").observe(this) { lesson ->
             if (lesson != null) {
                 if (!lesson.completed) {
@@ -150,7 +137,7 @@ class MainActivity : AppCompatActivity() {
      * user's progression.
      * @param moduleProgressions All entries in the database, one for each lesson, specifies
      * whether the lesson is completed or not
-     * @author Jade Davis
+     * @author Antony Loose, Jade Davis
      */
     private fun displayLessonCards(modules: List<ModuleProgression>) {
         binding.lessonLinearLayout.removeAllViews()

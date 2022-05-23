@@ -5,12 +5,12 @@ import androidx.room.*
 
 /**
  * The data access object for accessing the progression of lessons
- * @author Antony Loose
+ * @author Antony Loose, Jade Davis
  */
 @Dao
 interface ModuleProgressionDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addModuleProgression(moduleProgression: ModuleProgression)
 
     @Query("SELECT * FROM module_table WHERE moduleName == :moduleName")

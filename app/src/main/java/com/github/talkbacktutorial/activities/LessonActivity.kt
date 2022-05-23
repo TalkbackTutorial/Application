@@ -51,17 +51,19 @@ class LessonActivity : AppCompatActivity() {
      * Loads all modules in the lesson, and sets each as locked or unlocked depending on the
      * user's progression.
      * @param moduleProgression A database entry which specifies the number of modules completed
-     * @author Jade Davis
+     * @author Jade Davis, Antony Loose
      */
     private fun displayModuleCards(moduleProgression: List<ModuleProgression>) {
+        binding.modulesLinearLayout.removeAllViews()
+
         val modules = mutableListOf<Module>()
         val complete = mutableListOf<Boolean>()
 
         for (module in lesson.modules){
-            for (m in moduleProgression){
-                if (module.title == m.moduleName){
+            for (mp in moduleProgression){
+                if (module.title == mp.moduleName){
                     modules.add(module)
-                    complete.add(m.completed)
+                    complete.add(mp.completed)
                 }
             }
         }
