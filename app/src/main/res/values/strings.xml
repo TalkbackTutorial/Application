@@ -93,4 +93,10 @@
     <string name="article_paragraph3">The amygdala (in temporal lobe) is involved in emotional memory, and links emotions and emotional responses (such as fear and aggression) to declarative memories. This helps us remember experiences by the emotion we felt during its formation. Also involved in the formation of procedural memories.</string>
     <string name="article_paragraph4">The cerebellum is involved in motor learning and the memory of conditioned reflexes. It\'s involved in implicit memory such as procedural memories that require movement. Also has a role in spatial navigation.</string>
     <string name="article_paragraph5">Finally, language is stored in Broca’s area in the left frontal lobe, and memory for pictures are stored in the occipital lobe.</string>
+    <string name="lesson5_challenge_intro">Welcome to Lesson 5\'s challenge. In this challenges, you\'ll be ask to perform a sequence of tasks.</string>
+    <string name="lesson5_challenge_fragment1_intro">Now, let\'s get start. Billy wants to know what the time is it. Go back to home screen and check the current time on your phone. Then back here to select the correct time.</string>
+    <string name="lesson5_challenge_wrong_selected_time">The selected time is not correct. Check the time again, and then select the closet time.</string>
+    <string name="lesson5_challenge_fragment2_intro">You selected the correct time. Now a new message is sent from Billy, open the notification to find it.</string>
+    <string name="lesson5_challenge_notification_title">Billy\'s message</string>
+    <string name="lesson5_challenge_outro">Hello I am Billy, you can complete this challenge by double tap this message from the notification. Then you will be sent to the main menu.</string>
 </resources>

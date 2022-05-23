@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             moduleProgressionViewModel.clearDatabase()
         }
         
-        displayLessons()
+
     }
 
     /**
@@ -76,9 +76,11 @@ class MainActivity : AppCompatActivity() {
             this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
             popup(mainView)
         } else if (!DebugSettings.skipIntroductoryLesson) {
+            DebugSettings.skipIntroductoryLesson = true
             lesson0onStart()
         }
         super.onStart()
+        displayLessons()
     }
 
     private fun lesson0onStart() {
@@ -87,7 +89,9 @@ class MainActivity : AppCompatActivity() {
                 if (!lesson.completed) {
                     LessonContainer.getLesson(1).startActivity(this)
                 }
+
             }
+            lessonProgressionViewModel.markLessonCompleted(this)
         }
     }
 
