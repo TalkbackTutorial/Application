@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.openrecentapps
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,14 +10,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
 
 class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
     private lateinit var binding: FragmentOpenRecentAppsPart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
+    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
     private var count = 0
 
     override fun onCreateView(
@@ -81,6 +86,12 @@ class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
      * @author Jai Clapp
      */
     private fun finishLesson() {
+
+        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
+
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as OpenRecentAppsActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

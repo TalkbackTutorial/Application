@@ -1,8 +1,8 @@
 package com.github.talkbacktutorial.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Debug
 import android.provider.Settings
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -14,26 +14,19 @@ import android.widget.PopupWindow
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.iterator
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
-import android.content.Context
 import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
 import com.github.talkbacktutorial.database.InstanceSingleton
-import com.github.talkbacktutorial.database.LessonProgression
-import com.github.talkbacktutorial.database.LessonProgressionRepository
-import com.github.talkbacktutorial.database.LessonProgressionViewModel
+import com.github.talkbacktutorial.database.ModuleProgression
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
-import com.github.talkbacktutorial.lessons.Lesson1
 import com.github.talkbacktutorial.lessons.LessonContainer
-import kotlin.system.exitProcess
 
 
 class MainActivity : AppCompatActivity() {
@@ -43,7 +36,19 @@ class MainActivity : AppCompatActivity() {
     lateinit var mainView: ConstraintLayout
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var lessonProgressionViewModel: LessonProgressionViewModel
+    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
+
+    init {
+        val instance = this
+    }
+
+    companion object {
+        private val instance: MainActivity? = null
+
+        fun applicationContext() : Context {
+            return instance!!.applicationContext
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,12 +56,12 @@ class MainActivity : AppCompatActivity() {
         binding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lessonsModel = this.lessonsModel
-        this.lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
+        this.moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
         this.ttsEngine = TextToSpeechEngine(this)
         this.mainView = binding.constraintLayout
 
         if (DebugSettings.wipeDatabase) {
-            lessonProgressionViewModel.clearDatabase()
+            moduleProgressionViewModel.clearDatabase()
         }
         
         displayLessons()
@@ -77,7 +82,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun lesson0onStart() {
-        lessonProgressionViewModel.getLessonProgression(1).observe(this) { lesson ->
+        moduleProgressionViewModel.getModuleProgression("lesson0").observe(this) { lesson ->
             if (lesson != null) {
                 if (!lesson.completed) {
                     LessonContainer.getLesson(1).startActivity(this)
@@ -129,11 +134,11 @@ class MainActivity : AppCompatActivity() {
      * @author Jade Davis
      */
     private fun displayLessons() {
-        lessonProgressionViewModel.getAllLessonProgressions.observe(this) {lessons ->
-            if (lessons.isEmpty()) {
-                lessonProgressionViewModel.fillDatabase()
+        moduleProgressionViewModel.getAllModuleProgressions.observe(this) { modules ->
+            if (modules.isEmpty()) {
+                moduleProgressionViewModel.fillDatabase()
             } else {
-                displayLessonCards(lessons)
+                displayLessonCards(modules)
             }
         }
     }
@@ -141,23 +146,29 @@ class MainActivity : AppCompatActivity() {
     /**
      * Loads all lessons, and sets each as locked or unlocked depending on the
      * user's progression.
-     * @param lessonProgressions All entries in the database, one for each lesson, specifies
+     * @param moduleProgressions All entries in the database, one for each lesson, specifies
      * whether the lesson is completed or not
      * @author Jade Davis
      */
-    private fun displayLessonCards(lessonProgressions: List<LessonProgression>) {
+    private fun displayLessonCards(modules: List<ModuleProgression>) {
         binding.lessonLinearLayout.removeAllViews()
 
-        var lessonCount = -1
-        val lessons = LessonContainer.getAllLessons()
-
-        do {
-            lessonCount++
-            loadLessonCard(lessons[lessonCount], locked = false)
-        } while (lessonProgressions[lessonCount].completed)
-
-        for (i in lessonCount+1 until lessons.size) {
-            loadLessonCard(lessons[i], locked = true)
+        var firstIncompleteLesson = true
+        for (lesson in LessonContainer.getAllLessons()){
+            var lessonCompleted = false
+            var modulesCompleted = 0
+            for (module in modules){
+                if (module.lessonNum == lesson.sequenceNumeral && module.completed){
+                    modulesCompleted++
+                }
+            }
+            if (modulesCompleted == lesson.modules.size){
+                lessonCompleted = true
+            }
+            loadLessonCard(lesson, !(lessonCompleted || firstIncompleteLesson))
+            if (!lessonCompleted && firstIncompleteLesson){
+                firstIncompleteLesson = false
+            }
         }
     }
 

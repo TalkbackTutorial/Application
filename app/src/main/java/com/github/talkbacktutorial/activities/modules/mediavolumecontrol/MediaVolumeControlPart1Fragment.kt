@@ -15,9 +15,12 @@ import android.widget.SeekBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentMediaVolumeControlModulePart1Binding
 import kotlin.math.roundToInt
 
@@ -30,6 +33,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentMediaVolumeControlModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
+    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
     private var mediaPlayer: MediaPlayer? = null
     private lateinit var audioManager: AudioManager
@@ -189,6 +193,12 @@ class MediaVolumeControlPart1Fragment : Fragment() {
     }
 
     private fun endLesson() {
+
+        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
+
         /* Lesson's complete go back to Main Activity */
         val intent = Intent((activity as MediaVolumeControlActivity), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

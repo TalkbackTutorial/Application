@@ -6,8 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.database.LessonProgression
-import com.github.talkbacktutorial.database.LessonProgressionViewModel
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgression
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.*
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.LessonContainer
@@ -18,7 +19,7 @@ class LessonActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLessonBinding
     private lateinit var lesson: Lesson
 
-    private lateinit var lessonProgressionViewModel: LessonProgressionViewModel
+    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +39,10 @@ class LessonActivity : AppCompatActivity() {
      * @author Jade Davis
      */
     private fun displayModules() {
-        lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
-        lessonProgressionViewModel.getAllLessonProgressions.observe(this) {lessons ->
-            if (lessons.isNotEmpty()) {
-                displayModuleCards(lessons[lesson.sequenceNumeral - 1])
+        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        moduleProgressionViewModel.getAllModuleProgressions.observe(this) { modules ->
+            if (modules.isNotEmpty()) {
+                displayModuleCards(modules)
             }
         }
     }
@@ -49,23 +50,33 @@ class LessonActivity : AppCompatActivity() {
     /**
      * Loads all modules in the lesson, and sets each as locked or unlocked depending on the
      * user's progression.
-     * @param lessonProgression A database entry which specifies the number of modules completed
+     * @param moduleProgression A database entry which specifies the number of modules completed
      * @author Jade Davis
      */
-    private fun displayModuleCards(lessonProgression: LessonProgression) {
-        var moduleCount = -1
-        val modules = this.lesson.modules
+    private fun displayModuleCards(moduleProgression: List<ModuleProgression>) {
+        val modules = mutableListOf<Module>()
+        val complete = mutableListOf<Boolean>()
 
+        for (module in lesson.modules){
+            for (m in moduleProgression){
+                if (module.title == m.moduleName){
+                    modules.add(module)
+                    complete.add(m.completed)
+                }
+            }
+        }
+
+        var moduleCount = -1
         do {
             moduleCount++
             loadModuleCard(modules[moduleCount], locked = false)
-        } while (moduleCount < lessonProgression.modulesCompleted && moduleCount < modules.size - 1)
+        } while (complete[moduleCount] && moduleCount < modules.size - 1)
 
         for (i in moduleCount+1 until modules.size) {
             loadModuleCard(modules[i], locked = true)
         }
 
-        if (modules.size == lessonProgression.modulesCompleted) {
+        if (complete[modules.size-1]) {
             this.setupChallenge(locked = false)
         } else {
             this.setupChallenge(locked = true)
@@ -91,6 +102,7 @@ class LessonActivity : AppCompatActivity() {
 
         if (!locked || DebugSettings.bypassProgressionLocks) {
             moduleCardBinding.moduleCard.setOnClickListener {
+                InstanceSingleton.getInstanceSingleton().selectedModuleName = module.title
                 module.startActivity(this)
             }
         } else {

@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.opennotifications
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentOpenNotificationModulePart1Binding
 import java.util.*
 import kotlin.concurrent.schedule
@@ -23,6 +27,7 @@ class OpenNotificationPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentOpenNotificationModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
+    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
     private var viewChangeCounter = 0
 
@@ -144,6 +149,12 @@ class OpenNotificationPart1Fragment : Fragment() {
      * @author Vinh Tuan Huynh
      */
     private fun finishLesson() {
+
+        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
+
         removeOnWindowFocusChangeListener {}
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent =

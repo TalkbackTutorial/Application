@@ -1,17 +1,22 @@
 package com.github.talkbacktutorial.activities.modules.gotohomescreen
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 
 class GoToHomeScreenActivity : AppCompatActivity() {
 
     private lateinit var ttsEngine: TextToSpeechEngine
     private var stoppedCount: Int = 0
     private lateinit var repeatBtn: Button
+    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +45,11 @@ class GoToHomeScreenActivity : AppCompatActivity() {
             }
             this.speakMid()
         } else if (stoppedCount == 2) {
+            // update db
+            moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+            InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+                moduleProgressionViewModel.markModuleCompleted(it, this as Context)
+            }
             repeatBtn.visibility = View.GONE // disable button before speaking outro
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 finish()
