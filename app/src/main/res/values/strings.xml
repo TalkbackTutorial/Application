@@ -49,6 +49,7 @@
     <string name="open_recent_apps_part2_outro">You have completed the open recent apps module. Sending you to the lesson screen.</string>
     <string name="open_voice_commands_intro">Welcome. In this module, you will learn how to enable voice commands. To enable voice commands you need to swipe right and then up.</string>
     <string name="open_voice_commands_outro">You have completed this module</string>
+    <string name="add_spaces_nl_braille_intro">Welcome to this module. In this module you will learn how to add spaces and new lines using the braille keyboard</string>
     <string name="submit_text_part1_intro">In this module, you will learn how to submit text using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly.</string>
     <string name="submit_text_part1_error">Incorrect letter submitted. Try again.</string>
     <string name="submit_text_part1_outro">Great job. You correctly typed in the letter A.</string>
