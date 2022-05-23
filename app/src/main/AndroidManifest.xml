@@ -13,7 +13,7 @@
             android:name=".activities.modules.hidebraillekeyboard.HideBrailleKeyboardActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.modules.openbraillekeyboardsettings.AddSpacesNLBrailleKeyboardActivity"
+            android:name=".activities.modules.openbraillekeyboardsettings.OpenBrailleKeyboardSettingsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
