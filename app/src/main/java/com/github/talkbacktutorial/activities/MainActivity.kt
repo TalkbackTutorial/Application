@@ -2,7 +2,6 @@ package com.github.talkbacktutorial.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Debug
 import android.provider.Settings
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -14,26 +13,19 @@ import android.widget.PopupWindow
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.iterator
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
-import android.content.Context
 import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.LessonProgression
-import com.github.talkbacktutorial.database.LessonProgressionRepository
 import com.github.talkbacktutorial.database.LessonProgressionViewModel
 import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
-import com.github.talkbacktutorial.lessons.Lesson1
 import com.github.talkbacktutorial.lessons.LessonContainer
-import kotlin.system.exitProcess
 
 
 class MainActivity : AppCompatActivity() {
@@ -72,19 +64,22 @@ class MainActivity : AppCompatActivity() {
             popup(mainView)
         } else if (!DebugSettings.skipIntroductoryLesson) {
             DebugSettings.skipIntroductoryLesson = true
-            lesson0onStart()
+            lesson1onStart()
         }
         super.onStart()
         displayLessons()
     }
 
-    private fun lesson0onStart() {
+    /**
+     * Starts the app on Lesson1 when user opens app for the first time
+     * @author Emmanuel Chu
+     */
+    private fun lesson1onStart() {
         lessonProgressionViewModel.getLessonProgression(1).observe(this) { lesson ->
             if (lesson != null) {
                 if (!lesson.completed) {
                     LessonContainer.getLesson(1).startActivity(this)
                 }
-
             }
             lessonProgressionViewModel.markLessonCompleted(this)
         }
