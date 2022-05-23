@@ -10,6 +10,7 @@ import android.widget.SeekBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
@@ -28,6 +29,7 @@ class AdjustSliderPart2Fragment : Fragment() {
 
     lateinit var mainView: ConstraintLayout
     lateinit var menuSlider: SeekBar
+    private lateinit var lessonProgressionViewModel: LessonProgressionViewModel
 
     // Slider vars
     val maxValue: Int = 100
@@ -136,8 +138,10 @@ class AdjustSliderPart2Fragment : Fragment() {
      * @author Antony Loose
      */
     private fun finishLesson() {
-        LessonProgressionViewModel.getProgressionViewModel(context as Context).markModuleCompleted(context as Context)
-        LessonProgressionViewModel.getProgressionViewModel(context as Context).markLessonCompleted(context as Context)
+
+        lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
+        lessonProgressionViewModel.markLessonCompleted(context as Context)
+        lessonProgressionViewModel.markModuleCompleted(context as Context)
 
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as AdjustSliderActivity), MainActivity::class.java)
