@@ -15,7 +15,7 @@ object DebugSettings {
     const val talkbackNotRequired = false
 
     // Skip introductory lesson
-    const val skipIntroductoryLesson = false
+    var skipIntroductoryLesson = false
 
     // Skip Text to Speech
     const val skipTTS = false
