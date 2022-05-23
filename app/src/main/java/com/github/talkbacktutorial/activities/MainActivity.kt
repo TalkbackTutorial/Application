@@ -63,8 +63,8 @@ class MainActivity : AppCompatActivity() {
         if (DebugSettings.wipeDatabase) {
             moduleProgressionViewModel.clearDatabase()
         }
-        
 
+        displayLessons()
     }
 
     /**
@@ -89,9 +89,7 @@ class MainActivity : AppCompatActivity() {
                 if (!lesson.completed) {
                     LessonContainer.getLesson(1).startActivity(this)
                 }
-
             }
-            lessonProgressionViewModel.markLessonCompleted(this)
         }
     }
 
