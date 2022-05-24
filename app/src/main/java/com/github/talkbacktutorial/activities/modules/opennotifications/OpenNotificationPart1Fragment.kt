@@ -17,6 +17,7 @@ import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentOpenNotificationModulePart1Binding
 import java.util.*
 import kotlin.concurrent.schedule
+import kotlin.concurrent.thread
 
 class OpenNotificationPart1Fragment : Fragment() {
 
@@ -149,10 +150,11 @@ class OpenNotificationPart1Fragment : Fragment() {
      * @author Vinh Tuan Huynh
      */
     private fun finishLesson() {
-
-        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
-        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
-            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        (activity as OpenNotificationActivity).runOnUiThread {
+            moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+            InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+                moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+            }
         }
 
         removeOnWindowFocusChangeListener {}
@@ -162,6 +164,7 @@ class OpenNotificationPart1Fragment : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
+
         this.speakOutro()
     }
 

@@ -16,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
@@ -104,7 +105,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
                     var volumeNum = p1 / 100.0f
                     mediaPlayer?.setVolume(volumeNum, volumeNum)
                     // If talkback is turned on
-                    if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled) {
+                    if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled || DebugSettings.talkbackNotRequired) {
                         if (mediaPlayer == null) {
                             val info = """The song is not played. Please press the play button to play the music.""".trimIndent()
                             speakDuringLesson(info)
