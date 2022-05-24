@@ -70,6 +70,10 @@ class MainActivity : AppCompatActivity() {
         displayLessons()
     }
 
+    /**
+     * Starts the app on Lesson1 when user opens app for the first time
+     * @author Emmanuel Chu
+     */
     private fun lesson1onStart() {
         val sharedPreferences: SharedPreferences = this.getSharedPreferences("lesson1Completed", Context.MODE_PRIVATE)
         val completedBoolean = sharedPreferences.getBoolean("completed", false)
@@ -79,6 +83,10 @@ class MainActivity : AppCompatActivity() {
         setLesson1Completed()
     }
 
+    /**
+     * Marks Lesson 1 as completed in Shared Preferences
+     * @author Emmanuel Chu
+     */
     private fun setLesson1Completed() {
         val sharedPreferences: SharedPreferences = this.getSharedPreferences("lesson1Completed", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
