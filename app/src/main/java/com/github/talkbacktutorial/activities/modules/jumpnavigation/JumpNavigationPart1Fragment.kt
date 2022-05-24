@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.jumpnavigation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,13 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.modules.jumpcontrols.JumpControlsPart1Fragment
 import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersPart1Fragment
 import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksPart1Fragment
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentJumpNavigationModulePart1Binding
 
 class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment() {
@@ -139,6 +143,7 @@ class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment()
             firstTargetText.text = firstTargetActiveText
 
             targets.first().setOnClickListener {
+                finishModule()
                 activity?.finish()
             }
 
@@ -178,5 +183,16 @@ class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment()
      */
     enum class NavigationMode {
         HEADERS, LINKS, CONTROLS
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun finishModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }

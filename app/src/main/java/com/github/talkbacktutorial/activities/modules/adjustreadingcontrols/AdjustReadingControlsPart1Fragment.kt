@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.adjustreadingcontrols
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentAdjustReadingControlsModulePart1Binding
 
 class AdjustReadingControlsPart1Fragment : Fragment() {
@@ -37,7 +41,19 @@ class AdjustReadingControlsPart1Fragment : Fragment() {
 
         // makes button leave the fragment
         binding.finishModule.setOnClickListener {
+            finishModule()
             activity?.onBackPressed()
+        }
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun finishModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
         }
     }
 }
