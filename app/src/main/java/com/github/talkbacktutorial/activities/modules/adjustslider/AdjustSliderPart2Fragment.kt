@@ -30,7 +30,6 @@ class AdjustSliderPart2Fragment : Fragment() {
 
     lateinit var mainView: ConstraintLayout
     lateinit var menuSlider: SeekBar
-    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
     // Slider vars
     val maxValue: Int = 100
@@ -140,10 +139,7 @@ class AdjustSliderPart2Fragment : Fragment() {
      */
     private fun finishLesson() {
 
-        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
-        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
-            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
-        }
+        updateModule()
 
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as AdjustSliderActivity), MainActivity::class.java)

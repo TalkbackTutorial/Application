@@ -143,7 +143,7 @@ class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment()
             firstTargetText.text = firstTargetActiveText
 
             targets.first().setOnClickListener {
-                finishModule()
+                updateModule()
                 activity?.finish()
             }
 
@@ -189,7 +189,7 @@ class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment()
      * This method updates the database when a module is completed
      * @author Antony Loose
      */
-    private fun finishModule(){
+    private fun updateModule(){
         val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
         InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
             moduleProgressionViewModel.markModuleCompleted(it, context as Context)

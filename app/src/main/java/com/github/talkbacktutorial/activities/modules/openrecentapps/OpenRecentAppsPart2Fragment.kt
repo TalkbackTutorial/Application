@@ -21,7 +21,6 @@ import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Bindin
 class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
     private lateinit var binding: FragmentOpenRecentAppsPart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
     private var count = 0
 
     override fun onCreateView(
@@ -87,10 +86,7 @@ class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
      */
     private fun finishLesson() {
 
-        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
-        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
-            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
-        }
+        updateModule()
 
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as OpenRecentAppsActivity), MainActivity::class.java)
@@ -102,5 +98,16 @@ class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
                 "Sending you to the lesson screen.",
             override = true
         )
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }

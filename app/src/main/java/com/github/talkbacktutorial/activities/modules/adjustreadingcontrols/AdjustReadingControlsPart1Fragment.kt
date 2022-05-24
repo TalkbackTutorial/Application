@@ -41,7 +41,7 @@ class AdjustReadingControlsPart1Fragment : Fragment() {
 
         // makes button leave the fragment
         binding.finishModule.setOnClickListener {
-            finishModule()
+            updateModule()
             activity?.onBackPressed()
         }
     }
@@ -50,7 +50,7 @@ class AdjustReadingControlsPart1Fragment : Fragment() {
      * This method updates the database when a module is completed
      * @author Antony Loose
      */
-    private fun finishModule(){
+    private fun updateModule(){
         val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
         InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
             moduleProgressionViewModel.markModuleCompleted(it, context as Context)

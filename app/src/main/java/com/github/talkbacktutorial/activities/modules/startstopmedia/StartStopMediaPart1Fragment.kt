@@ -31,7 +31,6 @@ class StartStopMediaPart1Fragment : Fragment() {
     private lateinit var binding: FragmentStartStopMediaModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
     private lateinit var videoView: CustomVideoView
-    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
     private var mediaController: MediaController? = null
     private var firstPlay: Boolean = true
     private var firstPause: Boolean = true
@@ -154,10 +153,7 @@ class StartStopMediaPart1Fragment : Fragment() {
 
     private fun endLesson() {
 
-        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
-        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
-            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
-        }
+        updateModule()
 
         if (mediaController != null && mediaController!!.isShowing()) {
             mediaController!!.hide()
@@ -177,4 +173,15 @@ class StartStopMediaPart1Fragment : Fragment() {
     private fun Int.dpToPixels(context: Context): Int = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
     ).toInt()
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
+    }
 }

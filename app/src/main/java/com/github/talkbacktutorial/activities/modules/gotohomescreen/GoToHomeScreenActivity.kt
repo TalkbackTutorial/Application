@@ -16,7 +16,6 @@ class GoToHomeScreenActivity : AppCompatActivity() {
     private lateinit var ttsEngine: TextToSpeechEngine
     private var stoppedCount: Int = 0
     private lateinit var repeatBtn: Button
-    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +45,8 @@ class GoToHomeScreenActivity : AppCompatActivity() {
             this.speakMid()
         } else if (stoppedCount == 2) {
             // update db
-            moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
-            InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
-                moduleProgressionViewModel.markModuleCompleted(it, this as Context)
-            }
+            updateModule()
+
             repeatBtn.visibility = View.GONE // disable button before speaking outro
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 finish()
@@ -107,5 +104,16 @@ class GoToHomeScreenActivity : AppCompatActivity() {
         val outro = "Nice, you have navigated back to this screen, you have now learnt how to use the go to home screen gesture. " +
             "Returning you to the lesson screen now.".trimIndent()
         this.ttsEngine.speakOnInitialisation(outro)
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, this)
+        }
     }
 }

@@ -28,7 +28,6 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
 
     private lateinit var binding: FragmentExploreMenuByTouchModulePart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -112,10 +111,7 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
      */
     private fun finishLesson() {
 
-        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
-        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
-            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
-        }
+        updateModule()
 
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as ExploreMenuByTouchActivity), MainActivity::class.java)
@@ -140,5 +136,16 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
     override fun onDestroyView() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }

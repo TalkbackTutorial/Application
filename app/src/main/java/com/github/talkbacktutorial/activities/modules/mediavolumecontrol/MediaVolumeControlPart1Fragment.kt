@@ -34,7 +34,6 @@ class MediaVolumeControlPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentMediaVolumeControlModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
     private var mediaPlayer: MediaPlayer? = null
     private lateinit var audioManager: AudioManager
@@ -195,10 +194,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
 
     private fun endLesson() {
 
-        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
-        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
-            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
-        }
+        updateModule()
 
         /* Lesson's complete go back to Main Activity */
         val intent = Intent((activity as MediaVolumeControlActivity), MainActivity::class.java)
@@ -224,5 +220,16 @@ class MediaVolumeControlPart1Fragment : Fragment() {
             binding.mediaVolumeControlConstraintLayout.visibility = View.VISIBLE
         }
         ttsEngine.speak(info)
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }
