@@ -36,7 +36,7 @@
     <string name="jump_text_continue_fragment_message">If you have changed reading mode to Paragraph mode, Please double tap to continue</string>
     <string name="jump_navigation_target_link_template"><![CDATA[<a href="http://google.com">%s</a>]]></string>
     <string name="voice_recorder_intro">In this module, you\'ll be doing a few tasks in a modified version of the Simple Voice Recorder app. You can retrieve this modified app from the link below:</string>
-    <string name="voice_recorder_link"><a href="https://github.com">Link to the modified Simple Voice Recorder</a></string>
+    <string name="voice_recorder_link"><a href="https://github.com/TalkbackTutorial/voice-recorder-fork/releases/download/5.7.1-tbfork/voice-recorder-core-debug.apk">Link to the modified Simple Voice Recorder</a></string>
     <string name="voice_recorder_make_recording_intro">Your first task will be to make a recording. You\'ll open the app, start recording, and stop. There\'s no need to record any sound.</string>
     <string name="external_app_open_button">Open the app</string>
     <string name="voice_recorder_install_prompt">Once you have installed the app, activate the button below to continue.</string>
