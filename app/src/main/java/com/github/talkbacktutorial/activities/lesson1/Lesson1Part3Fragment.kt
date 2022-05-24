@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.database.LessonProgressionViewModel
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentLesson1Part3Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
@@ -26,6 +28,7 @@ class Lesson1Part3Fragment : Fragment() {
 
     private lateinit var binding: FragmentLesson1Part3Binding
     private lateinit var ttsEngine: TextToSpeechEngine
+    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -82,10 +85,12 @@ class Lesson1Part3Fragment : Fragment() {
      * @author Andre Pham
      */
     private fun finishLesson() {
-        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            LessonProgressionViewModel.getProgressionViewModel(context as Context).markModuleCompleted(context as Context)
-            LessonProgressionViewModel.getProgressionViewModel(context as Context).markLessonCompleted(context as Context)
+        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
 
+        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as Lesson1Activity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)

@@ -14,7 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.database.LessonProgressionViewModel
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.BasicHorizontalCardBinding
 import com.github.talkbacktutorial.databinding.FragmentScrollingModulePart2Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
@@ -28,7 +29,7 @@ class ScrollPart2Fragment : Fragment() {
 
     private lateinit var binding: FragmentScrollingModulePart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private lateinit var lessonProgressionViewModel: LessonProgressionViewModel
+    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
     private val menuSize = 50
 
     override fun onCreateView(
@@ -107,8 +108,10 @@ class ScrollPart2Fragment : Fragment() {
      */
     private fun finishLesson() {
 
-        lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
-        lessonProgressionViewModel.markModuleCompleted(context as Context)
+        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
 
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as ScrollActivity), MainActivity::class.java)

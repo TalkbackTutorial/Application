@@ -2,6 +2,7 @@ package com.github.talkbacktutorial.database
 
 class InstanceSingleton {
     var selectedLessonNumber: Int? = null
+    var selectedModuleName: String? = null
 
     companion object {
         @Volatile

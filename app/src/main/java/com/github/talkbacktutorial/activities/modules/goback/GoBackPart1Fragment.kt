@@ -14,7 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.database.LessonProgressionViewModel
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentGobackModulePart1Binding
 import com.github.talkbacktutorial.databinding.PillButtonBinding
 
@@ -29,7 +30,7 @@ class GoBackPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentGobackModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private lateinit var lessonProgressionViewModel: LessonProgressionViewModel
+    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -118,8 +119,10 @@ class GoBackPart1Fragment : Fragment() {
      * @author Emmanuel Chu
      */
     private fun finishLesson() {
-        lessonProgressionViewModel = ViewModelProvider(this).get(LessonProgressionViewModel::class.java)
-        lessonProgressionViewModel.markModuleCompleted(context as Context)
+        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as GoBackActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

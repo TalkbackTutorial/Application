@@ -13,9 +13,12 @@ import android.widget.MediaController
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentStartStopMediaModulePart1Binding
 
 class StartStopMediaPart1Fragment : Fragment() {
@@ -28,6 +31,7 @@ class StartStopMediaPart1Fragment : Fragment() {
     private lateinit var binding: FragmentStartStopMediaModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
     private lateinit var videoView: CustomVideoView
+    private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
     private var mediaController: MediaController? = null
     private var firstPlay: Boolean = true
     private var firstPause: Boolean = true
@@ -149,6 +153,12 @@ class StartStopMediaPart1Fragment : Fragment() {
     }
 
     private fun endLesson() {
+
+        moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
+
         if (mediaController != null && mediaController!!.isShowing()) {
             mediaController!!.hide()
         }

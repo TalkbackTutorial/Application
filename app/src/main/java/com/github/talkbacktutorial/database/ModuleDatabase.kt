@@ -10,16 +10,16 @@ import androidx.room.RoomDatabase
  * the database throughout the application
  * @author Antony Loose
  */
-@Database(entities = [LessonProgression::class], version = 1, exportSchema = false)
-abstract class LessonDatabase: RoomDatabase() {
+@Database(entities = [ModuleProgression::class], version = 1, exportSchema = false)
+abstract class ModuleDatabase: RoomDatabase() {
 
-    abstract fun lessonProgressionDao(): LessonProgressionDao
+    abstract fun moduleProgressionDao(): ModuleProgressionDao
 
     companion object {
         @Volatile
-        private var INSTANCE: LessonDatabase? = null
+        private var INSTANCE: ModuleDatabase? = null
 
-        fun getDatabase(context: Context): LessonDatabase {
+        fun getDatabase(context: Context): ModuleDatabase {
             val tmpInstance = INSTANCE
             if (tmpInstance != null){
                 return tmpInstance
@@ -27,8 +27,8 @@ abstract class LessonDatabase: RoomDatabase() {
             synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    LessonDatabase::class.java,
-                    "lesson_database"
+                    ModuleDatabase::class.java,
+                    "module_database"
                 ).build()
                 INSTANCE = instance
                 return instance
