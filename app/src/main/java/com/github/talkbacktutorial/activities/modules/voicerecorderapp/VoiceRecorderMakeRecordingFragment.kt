@@ -1,14 +1,11 @@
 package com.github.talkbacktutorial.activities.modules.voicerecorderapp
 
-import android.content.ComponentName
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.FragmentVoiceRecorderModuleMakeRecordingBinding
 
@@ -39,12 +36,7 @@ class VoiceRecorderMakeRecordingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.voiceRecorderOpenButton.setOnClickListener {
-            val intent = Intent()
-
-            // target the main activity of the forked voice recorder app
-            intent.component = ComponentName("com.simplemobiletools.voicerecorder.tbtutorialfork.debug", "com.simplemobiletools.voicerecorder.activities.MainActivity")
-
-            startActivity(intent)
+            startActivity(VoiceRecorderAppActivity.getAppIntent())
         }
     }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,20 +16,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"
-                android:text="@string/voice_recorder_successful_recording" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/voice_recorder_play_recording_prompt" />
+                android:text="@string/voice_recorder_finish_text" />
 
             <Button
-                android:id="@+id/voice_recorder_open_button"
+                android:id="@+id/voice_recorder_finish_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"
-                android:text="@string/external_app_open_button" />
-
+                android:text="@string/finish_module_button" />
         </LinearLayout>
     </ScrollView>
 </layout>

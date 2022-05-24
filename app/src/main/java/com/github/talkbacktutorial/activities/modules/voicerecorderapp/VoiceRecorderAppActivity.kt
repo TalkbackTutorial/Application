@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.voicerecorderapp
 
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -21,14 +22,38 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
     private val FINISH_RECORDING_TAG = "${EXTERNAL_APP_TAG}_TASK_FINISH_RECORDING"
     private val PLAY_RECORDING_TAG = "${EXTERNAL_APP_TAG}_TASK_PLAY_RECORDING"
 
+    private lateinit var stage: VoiceRecorderStage
+
     lateinit var binding: ActivityBasicFrameBinding
         private set
+
+    companion object {
+        private val appIntent = Intent()
+
+        /**
+         * Gets the intent to open the external app needed by this activity and its fragments.
+         *
+         * @author Matthew Crossman
+         *
+         * @return an intent that can be used with startActivity
+         */
+        fun getAppIntent(): Intent {
+            appIntent.component = ComponentName(
+                "com.simplemobiletools.voicerecorder.tbtutorialfork.debug",
+                "com.simplemobiletools.voicerecorder.activities.MainActivity"
+            )
+
+            return appIntent
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         this.binding =
             DataBindingUtil.setContentView(this, R.layout.activity_basic_frame)
+
+        stage = VoiceRecorderStage.MAKE_RECORDING
 
         supportFragmentManager.commit {
             replace(R.id.frame, VoiceRecorderIntroFragment())
@@ -48,11 +73,29 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
 
             actionCompleted?.let {
                 // move on with module based on tag IF intro is the current fragment
-                if (actionCompleted == PLAY_RECORDING_TAG && supportFragmentManager.fragments.first() is VoiceRecorderIntroFragment)
+                if (actionCompleted == FINISH_RECORDING_TAG && stage == VoiceRecorderStage.MAKE_RECORDING) {
+                    // update stage
+                    stage = VoiceRecorderStage.PLAY_RECORDING
+
                     supportFragmentManager.commit {
                         replace(R.id.frame, VoiceRecorderPlayRecordingFragment())
                     }
+                } else if (actionCompleted == PLAY_RECORDING_TAG && stage == VoiceRecorderStage.PLAY_RECORDING) {
+                    stage = VoiceRecorderStage.FINISHED
+
+                    supportFragmentManager.commit {
+                        replace(R.id.frame, VoiceRecorderFinishedFragment())
+                    }
+                } else {
+                    // wrong move
+
+                }
             }
         }
     }
+
+    enum class VoiceRecorderStage {
+        MAKE_RECORDING, PLAY_RECORDING, FINISHED
+    }
+
 }

@@ -42,5 +42,9 @@
     <string name="voice_recorder_install_prompt">Once you have installed the app, activate the button below to continue.</string>
     <string name="continue_button">Continue</string>
     <string name="voice_recorder_make_recording_prompt">When you open the app, you should grant it microphone permission. To start recording, press the recording button at the bottom of the main page. The button below will take you to the app.</string>
-    <string name="voice_recorder_successful_recording">Well done. You have successfully made a voice recording. Now let\'s try playing that recording. To do so, you\'ll have to switch to the recordings tab in the app and activate the recording you made. The button below will take you back to the voice recorder:</string>
+    <string name="voice_recorder_successful_recording">Well done. You have successfully made a voice recording.</string>
+    <string name="voice_recorder_finish_text">You have successfully played back a recording you made. That\'s all there is right now for working with Simple Voice Recorder. The button below will finish this module.</string>
+    <string name="voice_recorder_wrong_action_text">You performed the wrong action. You are supposed to do the following:</string>
+    <string name="voice_recorder_play_recording_prompt">Let\'s try playing that recording. To do so, you\'ll have to switch to the recordings tab in the app and activate the recording you made. The button below will take you back to the voice recorder:</string>
+    <string name="voice_recorder_wrong_bad_stage">We couldn\'t find the prompt for your last task. Please report this as a bug.</string>
 </resources>
