@@ -2,6 +2,7 @@ package com.github.talkbacktutorial.activities
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.Settings
 import android.view.Gravity
@@ -63,21 +64,27 @@ class MainActivity : AppCompatActivity() {
             popup(mainView)
         } else if (!DebugSettings.skipIntroductoryLesson) {
             DebugSettings.skipIntroductoryLesson = true
-            lesson0onStart()
+            lesson1onStart()
         }
         super.onStart()
         displayLessons()
     }
 
-    private fun lesson0onStart() {
-        // TODO: decide how this will be handled as lesson 1 has no modules to be stored in db
-        moduleProgressionViewModel.getModuleProgression("lesson0").observe(this) { lesson ->
-            if (lesson != null) {
-                if (!lesson.completed) {
-                    LessonContainer.getLesson(1).startActivity(this)
-                }
-            }
+    private fun lesson1onStart() {
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences("lesson1Completed", Context.MODE_PRIVATE)
+        val completedBoolean = sharedPreferences.getBoolean("completed", false)
+        if (!completedBoolean) {
+            LessonContainer.getLesson(1).startActivity(this)
         }
+        setLesson1Completed()
+    }
+
+    private fun setLesson1Completed() {
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences("lesson1Completed", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply {
+            putBoolean("completed", true)
+        }.apply()
     }
 
     /**
