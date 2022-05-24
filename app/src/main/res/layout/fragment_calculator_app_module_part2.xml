@@ -25,7 +25,7 @@
                 android:id="@+id/continue_calculator_app"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/equation_calculator_app"
+                android:text="Finish Module"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
