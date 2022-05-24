@@ -15,6 +15,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_go_to_home_screen_module)
         this.ttsEngine = TextToSpeechEngine(this)
         repeatBtn = findViewById(R.id.repeatBtn)
