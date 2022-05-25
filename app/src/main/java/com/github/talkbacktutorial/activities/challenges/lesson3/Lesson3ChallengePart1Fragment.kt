@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
+import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -49,9 +50,6 @@ class Lesson3ChallengePart1Fragment : Fragment() {
 
         // strings and labels
         val promptTemplate = getString(R.string.jump_navigation_easy_prompt)
-//
-//        // intro fragment
-//        val introFragment: Fragment
 
         // switch strings & layout targets according to mode
         firstTarget = binding.challenge.targetHeader
@@ -64,14 +62,6 @@ class Lesson3ChallengePart1Fragment : Fragment() {
         val linkLabelPlural: String = getString(R.string.jump_links_entity_plural)
         val controlLabel: String = getString(R.string.jump_controls_entity)
         val controlLabelPlural: String = getString(R.string.jump_controls_entity_plural)
-
-//        introFragment = JumpHeadersPart1Fragment()
-
-
-        // attach appropriate intro fragment
-//        childFragmentManager.commit {
-//            replace(R.id.intro_text, introFragment)
-//        }
 
         // set up targets
         val targets = ArrayList(
@@ -93,50 +83,31 @@ class Lesson3ChallengePart1Fragment : Fragment() {
             binding.challenge.prompt3.text =
                 String.format(promptTemplate, controlLabel, controlLabelPlural)
 
-            // update cards
+            val targetTemplate = getString(R.string.jump_navigation_target_link_template)
+
+            // set up target strings
+            val secondTargetTemplate =
+                String.format(targetTemplate, getString(R.string.jump_navigation_hard_second_element))
 
             // set up button text
             firstTarget.text =
                 String.format(getString(R.string.jump_navigation_hard_first_element), headerLabel)
-            secondTarget.text =
-                String.format(getString(R.string.jump_navigation_hard_second_element), linkLabel)
             thirdTarget.text =
                 String.format(getString(R.string.jump_navigation_hard_last_element), controlLabel)
 
-            val firstTargetActiveActionText =
-                if (isLastFragment) getString(R.string.final_button_end_module_prompt) else getString(
-                    R.string.final_button_mid_module_prompt
-                )
+            val secondTargetTextContent = String.format(secondTargetTemplate, linkLabel)
 
-//            val firstTargetActiveText = String.format(
-//                getString(R.string.jump_navigation_easy_first_element_active),
-//                entityLabelPlural,
-//                firstTargetActiveActionText
-//            )
+            val secondTargetLink =
+                HtmlCompat.fromHtml(secondTargetTextContent, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
-//            val lastTargetActiveText =
-//                String.format(
-//                    getString(R.string.jump_navigation_easy_last_element_active),
-//                    entityLabel
-//                )
+            secondTarget.text = secondTargetLink
 
-            // set up cards as buttons
             thirdTarget.setOnClickListener {
-                // turn first button into finish module button
-//                firstTarget.text = firstTargetActiveText
-
-                targets.first().setOnClickListener {
                     updateModule()
                     activity?.finish()
-                }
-
-                // change last button text & remove listener
-//                secondTarget.text = lastTargetActiveText
-                thirdTarget.setOnClickListener(null)
             }
-
             super.onViewCreated(view, savedInstanceState)
-    }
+        }
 
 
 
@@ -144,13 +115,6 @@ class Lesson3ChallengePart1Fragment : Fragment() {
 
 
 
-}
-
-    /**
-     * Enumerates over navigation modes
-     */
-    enum class NavigationMode {
-        HEADERS, LINKS, CONTROLS
     }
 
     /**
@@ -187,26 +151,4 @@ class Lesson3ChallengePart1Fragment : Fragment() {
             moduleProgressionViewModel.markModuleCompleted(it, context as Context)
         }
     }
-
-
-//    private lateinit var binding: FragmentLesson3ChallengePart1Binding
-//    private lateinit var ttsEngine: TextToSpeechEngine
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lesson5_challenge_part1, container, false)
-//        return binding.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        this.ttsEngine = TextToSpeechEngine((activity as Lesson5ChallengeActivity))
-//            .onFinishedSpeaking(triggerOnce = true) {
-//            }
-//        this.speakIntro()
-//    }
-
 }

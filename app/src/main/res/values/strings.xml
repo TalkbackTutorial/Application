@@ -20,9 +20,9 @@
     <string name="jump_navigation_easy_last_element">This is the last %s. Activate it to continue.</string>
     <string name="jump_navigation_easy_last_element_active">To continue, swipe up to the previous %s</string>
     <string name="jump_navigation_easy_first_element_active">That\'s the basics of jumping between %s. Activate to %s.</string>
-    <string name="jump_navigation_hard_first_element">This is the first %s element. Jump to the next element below.</string>
-    <string name="jump_navigation_hard_second_element">This is the second %s element. Jump to the next element below.</string>
-    <string name="jump_navigation_hard_last_element">This is the last %s. Activate it to complete the challenge.</string>
+    <string name="jump_navigation_hard_first_element">You have successfully reached the first element… %s. Switch back to paragraph reading mode and swipe down to jump to the next part.</string>
+    <string name="jump_navigation_hard_second_element">You have successfully reached the second element… %s. Switch back to paragraph reading mode and swipe down to jump to the next part.</string>
+    <string name="jump_navigation_hard_last_element">You have successfully reached the last element… %s. Activate it to complete the challenge.</string>
     <string name="jump_headers_entity">header</string>
     <string name="jump_headers_entity_plural">headers</string>
     <string name="jump_controls_entity">control</string>
