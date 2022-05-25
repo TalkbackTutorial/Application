@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules.addspacesnlbraillekeyboard
+package com.github.talkbacktutorial.activities.modules.dnlbraillekeyboard
 
 import android.os.Bundle
 import android.view.*
@@ -14,7 +14,7 @@ import java.util.*
 import kotlin.concurrent.schedule
 
 
-class AddSpacesNLBrailleKeyboardPart1Fragment : Fragment(){
+class DNLBrailleKeyboardPart1Fragment : Fragment(){
 
     private lateinit var binding: FragmentAddSpacesNlBrailleKeyboardPart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
@@ -26,7 +26,7 @@ class AddSpacesNLBrailleKeyboardPart1Fragment : Fragment(){
     ): View {
         this.binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_add_spaces_nl_braille_keyboard_part1,
+            R.layout.fragment_dnl_braille_keyboard_part1,
             container,
             false
         )
@@ -59,7 +59,7 @@ class AddSpacesNLBrailleKeyboardPart1Fragment : Fragment(){
                     this.finishLesson()
                 }
                 else {
-                    val error = getString(R.string.add_spaces_nl_braille_part1_error).trimIndent()
+                    val error = getString(R.string.dnl_braille_part1_error).trimIndent()
                     ttsEngine.speak(error)
                 }
                 return@OnEditorActionListener true
@@ -73,7 +73,7 @@ class AddSpacesNLBrailleKeyboardPart1Fragment : Fragment(){
      * @author Mohak Malhotra
      */
     private fun speakIntro() {
-        val intro = getString(R.string.add_spaces_nl_braille_part1_intro).trimIndent()
+        val intro = getString(R.string.dnl_braille_part1_intro).trimIndent()
         ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -88,13 +88,13 @@ class AddSpacesNLBrailleKeyboardPart1Fragment : Fragment(){
      */
     private fun finishLesson() {
         Timer().schedule(6000) {
-            val outro = getString(R.string.add_spaces_nl_braille_part1_outro).trimIndent()
+            val outro = getString(R.string.dnl_braille_part1_outro).trimIndent()
             println("\n\nFINISHED\n\n")
             ttsEngine.speak(outro)
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 parentFragmentManager.commit {
                     replace(this@DNLBrailleKeyboardPart1Fragment.id, DNLBrailleKeyboardPart2Fragment())
-                    addToBackStack("addspacesnlbraillekeyboardpart1")
+                    addToBackStack("dlbraillekeyboardpart1")
                 }
             }
         }

@@ -1,6 +1,5 @@
 package com.github.talkbacktutorial.lessons
 
-import com.github.talkbacktutorial.activities.modules.addspacesnlbraillekeyboard.AddSpacesNLBrailleKeyboardActivity
 import com.github.talkbacktutorial.lessons.modules.*
 import java.util.ArrayList
 

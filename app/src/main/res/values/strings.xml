@@ -56,6 +56,14 @@
     <string name="add_spaces_nl_braille_part2_intro">Now, try to shift to a new line and submit using the same two finger swipe up gesture.</string>
     <string name="add_spaces_nl_braille_part2_outro">Great job. You correctly moved to a new line. You have completed this module. Sending you back to the lesson screen.</string>
     <string name="add_spaces_nl_braille_part2_error">Incorrect input submitted. Try again.</string>
+
+    <string name="dnl_braille_part1_intro">In this module, you will learn how to add a space using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly.</string>
+    <string name="dnl_braille_part1_error">Incorrect letter submitted. Try again.</string>
+    <string name="dnl_braille_part1_outro">Great job. You correctly typed in a space.</string>
+    <string name="dnl_braille_part2_intro">Now, try to shift to a new line and submit using the same two finger swipe up gesture.</string>
+    <string name="dnl_braille_part2_outro">Great job. You correctly moved to a new line. You have completed this module. Sending you back to the lesson screen.</string>
+    <string name="dnl_braille_part2_error">Incorrect input submitted. Try again.</string>
+
     <string name="submit_text_part1_intro">In this module, you will learn how to submit text using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly.</string>
     <string name="submit_text_part1_error">Incorrect letter submitted. Try again.</string>
     <string name="submit_text_part1_outro">Great job. You correctly typed in the letter A.</string>
