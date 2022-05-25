@@ -20,6 +20,9 @@
     <string name="jump_navigation_easy_last_element">This is the last %s. Activate it to continue.</string>
     <string name="jump_navigation_easy_last_element_active">To continue, swipe up to the previous %s</string>
     <string name="jump_navigation_easy_first_element_active">That\'s the basics of jumping between %s. Activate to %s.</string>
+    <string name="jump_navigation_hard_first_element">This is the first %s element. Jump to the next element below.</string>
+    <string name="jump_navigation_hard_second_element">This is the second %s element. Jump to the next element below.</string>
+    <string name="jump_navigation_hard_last_element">This is the last %s. Activate it to complete the challenge.</string>
     <string name="jump_headers_entity">header</string>
     <string name="jump_headers_entity_plural">headers</string>
     <string name="jump_controls_entity">control</string>
@@ -99,4 +102,5 @@
     <string name="lesson5_challenge_fragment2_intro">You selected the correct time. Now a new message is sent from Billy, open the notification to find it.</string>
     <string name="lesson5_challenge_notification_title">Billy\'s message</string>
     <string name="lesson5_challenge_outro">Hello I am Billy, you can complete this challenge by double tap this message from the notification. Then you will be sent to the main menu.</string>
+    <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a number of different page elements which you will need to navigate through. To complete the challenge, you must navigate through all page elements using the specified reading controls until you reach the complete challenge button.</string>
 </resources>
