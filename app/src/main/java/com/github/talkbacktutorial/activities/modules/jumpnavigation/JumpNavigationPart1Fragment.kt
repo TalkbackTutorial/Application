@@ -1,6 +1,5 @@
 package com.github.talkbacktutorial.activities.modules.jumpnavigation
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,20 +7,25 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Button
 import android.widget.TextView
+import androidx.annotation.NonNull
+import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.modules.jumpcontrols.JumpControlsPart1Fragment
 import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersPart1Fragment
 import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksPart1Fragment
-import com.github.talkbacktutorial.database.InstanceSingleton
-import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentJumpNavigationModulePart1Binding
 
-class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment() {
+/**
+ * A common "part 1" or introduction fragment for all jump navigation modules (links, headers, and
+ * controls). The mode must be set in order for it to work.
+ *
+ * @author Matthew Crossman
+ */
+class JumpNavigationPart1Fragment(@NonNull private val mode: NavigationMode) : Fragment() {
 
     private lateinit var binding: FragmentJumpNavigationModulePart1Binding
     private val isLastFragment = true
@@ -107,9 +111,49 @@ class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment()
                 ViewCompat.setAccessibilityHeading(it, true)
         }
 
-        binding.challenge.prompt.text = String.format(promptTemplate, entityLabelPlural, entityLabel)
+        binding.challenge.prompt.text =
+            String.format(promptTemplate, entityLabelPlural, entityLabel)
 
-        // update cards
+        // templating the target strings
+        val targetTemplate =
+            if (mode == NavigationMode.LINKS) getString(R.string.jump_navigation_target_link_template) else "%s"
+
+        // set up target strings
+        val firstTargetTemplate =
+            String.format(targetTemplate, getString(R.string.jump_navigation_easy_first_element))
+        val firstTargetActiveTemplate = String.format(
+            targetTemplate,
+            getString(R.string.jump_navigation_easy_first_element_active)
+        )
+
+        val lastTargetTemplate =
+            String.format(targetTemplate, getString(R.string.jump_navigation_easy_last_element))
+        val lastTargetActiveTemplate = String.format(
+            targetTemplate,
+            getString(R.string.jump_navigation_easy_last_element_active)
+        )
+
+        // text contents
+        val firstTargetActiveActionText =
+            if (isLastFragment) getString(R.string.final_button_end_module_prompt) else getString(R.string.final_button_mid_module_prompt)
+
+        // links vs regular text
+        val firstTargetTextContent = String.format(firstTargetTemplate, entityLabel)
+        val lastTargetTextContent = String.format(lastTargetTemplate, entityLabel)
+        val firstTargetActiveTextContent =
+            String.format(firstTargetActiveTemplate, entityLabel, firstTargetActiveActionText)
+        val lastTargetActiveTextContent = String.format(lastTargetActiveTemplate, entityLabel)
+
+        val firstTargetLink =
+            HtmlCompat.fromHtml(firstTargetTextContent, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        val lastTargetLink =
+            HtmlCompat.fromHtml(lastTargetTextContent, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        val firstTargetActiveLink =
+            HtmlCompat.fromHtml(firstTargetActiveTextContent, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        val lastTargetActiveLink =
+            HtmlCompat.fromHtml(lastTargetActiveTextContent, HtmlCompat.FROM_HTML_MODE_COMPACT)
+
+        // start editing targets
         val firstTargetText = when (mode) {
             NavigationMode.CONTROLS -> firstTarget as Button
             else -> firstTarget as TextView
@@ -120,35 +164,33 @@ class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment()
             else -> lastTarget as TextView
         }
 
-        // set up button text
-        firstTargetText.text =
-            String.format(getString(R.string.jump_navigation_easy_first_element), entityLabel)
-        lastTargetText.text =
-            String.format(getString(R.string.jump_navigation_easy_last_element), entityLabel)
+        // set target text
+        if (mode == NavigationMode.LINKS) {
+            firstTargetText.text = firstTargetLink
+            lastTargetText.text = lastTargetLink
+        } else {
+            firstTargetText.text = firstTargetTextContent
+            lastTargetText.text = lastTargetTextContent
+        }
 
-        val firstTargetActiveActionText =
-            if (isLastFragment) getString(R.string.final_button_end_module_prompt) else getString(R.string.final_button_mid_module_prompt)
-        val firstTargetActiveText = String.format(
-            getString(R.string.jump_navigation_easy_first_element_active),
-            entityLabelPlural,
-            firstTargetActiveActionText
-        )
-
-        val lastTargetActiveText =
-            String.format(getString(R.string.jump_navigation_easy_last_element_active), entityLabel)
-
-        // set up cards as buttons
+        // make targets usable
         lastTarget.setOnClickListener {
             // turn first button into finish module button
-            firstTargetText.text = firstTargetActiveText
+            if (mode == NavigationMode.LINKS)
+                firstTargetText.text = firstTargetActiveLink
+            else
+                firstTargetText.text = firstTargetActiveTextContent
 
             targets.first().setOnClickListener {
-                updateModule()
                 activity?.finish()
             }
 
             // change last button text & remove listener
-            lastTargetText.text = lastTargetActiveText
+            if (mode == NavigationMode.LINKS)
+                lastTargetText.text = lastTargetActiveLink
+            else
+                lastTargetText.text = lastTargetActiveTextContent
+
             lastTarget.setOnClickListener(null)
         }
 
@@ -183,16 +225,5 @@ class JumpNavigationPart1Fragment(private val mode: NavigationMode) : Fragment()
      */
     enum class NavigationMode {
         HEADERS, LINKS, CONTROLS
-    }
-
-    /**
-     * This method updates the database when a module is completed
-     * @author Antony Loose
-     */
-    private fun updateModule(){
-        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
-        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
-            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
-        }
     }
 }
