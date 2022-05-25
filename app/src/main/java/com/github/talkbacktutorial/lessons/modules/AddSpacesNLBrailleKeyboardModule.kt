@@ -9,7 +9,7 @@ import com.github.talkbacktutorial.activities.modules.addspacesnlbraillekeyboard
  * @author: Mohak Malhotra
  */
 class AddSpacesNLBrailleKeyboardModule : Module() {
-    override val title: String = "Hide Braille Keyboard"
+    override val title: String = "Add Spaces and New Line"
 
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, AddSpacesNLBrailleKeyboardActivity::class.java))
