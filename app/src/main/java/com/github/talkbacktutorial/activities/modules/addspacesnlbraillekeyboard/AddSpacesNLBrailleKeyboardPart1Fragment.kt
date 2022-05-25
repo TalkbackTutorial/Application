@@ -16,7 +16,7 @@ import kotlin.concurrent.schedule
 
 class AddSpacesNLBrailleKeyboardPart1Fragment : Fragment(){
 
-    private lateinit var binding: FragmentAddSpacesNLBrailleKeyboardPart1Binding
+    private lateinit var binding: FragmentAddSpacesNlBrailleKeyboardPart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
@@ -35,7 +35,7 @@ class AddSpacesNLBrailleKeyboardPart1Fragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as AddSpaceActivity))
+        this.ttsEngine = TextToSpeechEngine((activity as AddSpacesNLBrailleKeyboardActivity))
         binding.editText.visibility = View.INVISIBLE
         this.speakIntro()
         this.setupText()
