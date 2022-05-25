@@ -6,6 +6,8 @@
         <intent>
             <action android:name="android.intent.action.TTS_SERVICE" />
         </intent>
+        <package android:name="com.simplemobiletools.voicerecorder.tbtutorialfork.debug" />
+        <package android:name="com.simplemobiletools.calculator.debug" />
     </queries>
 
     <application

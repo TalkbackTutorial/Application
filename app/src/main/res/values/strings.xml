@@ -49,4 +49,5 @@
     <string name="voice_recorder_play_recording_prompt">Let\'s try playing that recording. To do so, you\'ll have to switch to the recordings tab in the app and activate the recording you made. The button below will take you back to the voice recorder:</string>
     <string name="voice_recorder_wrong_bad_stage">We couldn\'t find the prompt for your last task. Please report this as a bug.</string>
     <string name="equation_calculator_app">In this task, please provide the correct calculation for 9 × 5 to get the result 45. As a quick hint for this task, please use the knowledge, in "explore menu by scroll" lesson that you have already learned previously, to find the correct buttons.</string>
+    <string name="calculator_not_installed_message">Calculator is not installed. Please install it and reopen this module.</string>
 </resources>

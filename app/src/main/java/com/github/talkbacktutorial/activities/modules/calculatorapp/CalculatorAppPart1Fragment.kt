@@ -2,6 +2,7 @@ package com.github.talkbacktutorial.activities.modules.calculatorapp
 
 import android.content.ComponentName
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +40,14 @@ class CalculatorAppPart1Fragment : Fragment() {
                 binding.continueCard.visibility = View.VISIBLE
             }
         this.setupContinueCard()
+        this.setupInstallPrompt()
         this.speakIntro()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // check on return if app installed
+        this.setupInstallPrompt()
     }
 
     /**
@@ -67,6 +75,43 @@ class CalculatorAppPart1Fragment : Fragment() {
 
             startActivity(intent)
         }
+    }
+
+    /**
+     * Sets up a message telling the user to install the app. It only appears if the calculator app
+     * wasn't found on the device.
+     *
+     * @author Matthew Crossman
+     */
+    private fun setupInstallPrompt() {
+        if (!checkInstalled())
+            binding.installPrompt.visibility = View.VISIBLE
+        else
+            binding.installPrompt.visibility = View.GONE
+    }
+
+    /**
+     * Checks if calculator app is installed
+     *
+     * @author Matthew Crossman
+     *
+     * @return true if calculator was found
+     */
+    private fun checkInstalled(): Boolean {
+        val pm = context?.packageManager
+
+        pm?.let {
+            val appAvailable: Boolean = try {
+                pm.getPackageInfo("com.simplemobiletools.calculator.debug", 0)
+                true
+            } catch (_: PackageManager.NameNotFoundException) {
+                false
+            }
+
+            return appAvailable;
+        }
+
+        return false;
     }
 
     override fun onDestroyView() {

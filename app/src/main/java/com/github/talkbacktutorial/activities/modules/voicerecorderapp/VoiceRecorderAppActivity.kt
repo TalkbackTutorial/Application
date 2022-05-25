@@ -30,6 +30,9 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
     companion object {
         private val appIntent = Intent()
 
+        const val packageName = "com.simplemobiletools.voicerecorder.tbtutorialfork.debug"
+        const val targetClassName = "com.simplemobiletools.voicerecorder.activities.MainActivity"
+
         /**
          * Gets the intent to open the external app needed by this activity and its fragments.
          *
@@ -39,8 +42,8 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
          */
         fun getAppIntent(): Intent {
             appIntent.component = ComponentName(
-                "com.simplemobiletools.voicerecorder.tbtutorialfork.debug",
-                "com.simplemobiletools.voicerecorder.activities.MainActivity"
+                packageName,
+                targetClassName
             )
 
             return appIntent

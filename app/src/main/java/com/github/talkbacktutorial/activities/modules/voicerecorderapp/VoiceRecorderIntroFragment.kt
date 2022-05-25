@@ -1,6 +1,8 @@
 package com.github.talkbacktutorial.activities.modules.voicerecorderapp
 
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,11 +38,39 @@ class VoiceRecorderIntroFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.voiceRecorderIntroContinue.isEnabled = checkInstalled()
+
+        binding.voiceRecorderAppLink.movementMethod = LinkMovementMethod.getInstance()
+
         binding.voiceRecorderIntroContinue.setOnClickListener {
             parentFragmentManager.commit {
                 replace(R.id.frame, VoiceRecorderMakeRecordingFragment())
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // check installation status on return
+        binding.voiceRecorderIntroContinue.isEnabled = checkInstalled()
+    }
+
+    private fun checkInstalled(): Boolean {
+        val pm = context?.packageManager
+
+        pm?.let {
+            val appAvailable: Boolean = try {
+                pm.getPackageInfo(VoiceRecorderAppActivity.packageName, 0)
+                true
+            } catch (_: PackageManager.NameNotFoundException) {
+                false
+            }
+
+            return appAvailable;
+        }
+
+        return false;
     }
 
 }

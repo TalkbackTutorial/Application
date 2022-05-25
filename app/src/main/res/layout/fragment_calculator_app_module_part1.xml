@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -20,6 +21,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="@dimen/horizontal_card_spacing">
+
+            <TextView
+                android:id="@+id/install_prompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/calculator_not_installed_message"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/continue_calculator_app"

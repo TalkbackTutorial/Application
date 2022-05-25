@@ -12,6 +12,7 @@
             android:padding="@dimen/content_padding">
 
             <TextView
+                android:id="@+id/voice_recorder_play_success"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"
@@ -23,7 +24,7 @@
                 android:text="@string/voice_recorder_play_recording_prompt" />
 
             <Button
-                android:id="@+id/voice_recorder_open_button"
+                android:id="@+id/voice_recorder_play_open_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"

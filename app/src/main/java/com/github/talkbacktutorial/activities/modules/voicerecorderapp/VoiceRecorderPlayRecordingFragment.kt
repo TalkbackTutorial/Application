@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
@@ -35,7 +36,7 @@ class VoiceRecorderPlayRecordingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // activate button
-        binding.voiceRecorderOpenButton.setOnClickListener {
+        binding.voiceRecorderPlayOpenButton.setOnClickListener {
             startActivity(VoiceRecorderAppActivity.getAppIntent())
         }
     }
