@@ -1,15 +1,20 @@
 package com.github.talkbacktutorial.activities.modules.addspacesnlbraillekeyboard
 
-import android.app.Activity
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
-import android.view.inputmethod.InputMethodManager
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import androidx.databinding.DataBindingUtil
 import com.github.talkbacktutorial.R
+import java.util.*
+import kotlin.concurrent.schedule
+
 
 
 class AddSpacesNLBrailleKeyboardActivity : AppCompatActivity() {
@@ -30,14 +35,12 @@ class AddSpacesNLBrailleKeyboardActivity : AppCompatActivity() {
         this.textDisplay.text = getString(R.string.add_spaces_nl_braille_intro)
 
         textBox.addTextChangedListener {
-            if (isProbablyArabic(it.toString())) {
-                this.textDisplay.text = getString(R.string.brailleSettingsOutro)
+                this.textDisplay.text = getString(R.string.add_spaces_nl_braille_outro)
                 this.textBox.visibility = View.GONE
                 this.contBtn.visibility = View.VISIBLE
-            }
         }
         contBtn.setOnClickListener{ finish() }
     }
-    
+
 
 }

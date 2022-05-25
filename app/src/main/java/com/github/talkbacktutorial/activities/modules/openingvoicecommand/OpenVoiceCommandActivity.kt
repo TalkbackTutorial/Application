@@ -7,9 +7,9 @@ import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.modules.openingvoicecommand.OpenVoiceCommandPart1Fragment
 import com.github.talkbacktutorial.databinding.ActivityOpenVoiceCommandModuleBinding
-//import android.Manifest
-//import android.content.pm.PackageManager
-//import androidx.core.app.ActivityCompat
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
 // This constant is needed to verify the audio permission result
 private const val ASR_PERMISSION_REQUEST_CODE = 0
 class OpenVoiceCommandActivity : AppCompatActivity() {
