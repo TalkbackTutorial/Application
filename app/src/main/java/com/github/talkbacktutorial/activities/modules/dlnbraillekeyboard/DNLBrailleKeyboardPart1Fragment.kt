@@ -3,6 +3,7 @@ package com.github.talkbacktutorial.activities.modules.dnlbraillekeyboard
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -12,6 +13,8 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.*
 import java.util.*
 import kotlin.concurrent.schedule
+import android.text.Editable
+import android.text.TextWatcher
 
 
 class DNLBrailleKeyboardPart1Fragment : Fragment(){
@@ -49,22 +52,30 @@ class DNLBrailleKeyboardPart1Fragment : Fragment(){
      * @author Mohak Malhotra
      */
     private fun setupText() {
-        // Adding EditorActionListener.
-        binding.editText.setOnEditorActionListener(OnEditorActionListener { _, actionId, _ ->
-            // When an editor action has been completed, do something.
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
+
+        binding.editText.setText("L",TextView.BufferType.EDITABLE)
+
+        binding.editText.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable) {
                 val text = binding.editText.text.toString()
                 // Checking for correct user space input.
-                if (text.lowercase() == " ") {
-                    this.finishLesson()
+                if (text.lowercase() == "") {
+                    finishLesson()
                 }
                 else {
                     val error = getString(R.string.dnl_braille_part1_error).trimIndent()
                     ttsEngine.speak(error)
                 }
-                return@OnEditorActionListener true
             }
-            false
+
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+            }
         })
     }
 
