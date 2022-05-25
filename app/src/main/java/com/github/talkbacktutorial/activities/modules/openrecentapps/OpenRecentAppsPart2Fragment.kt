@@ -77,7 +77,7 @@ class OpenRecentAppsPart2Fragment : Fragment() {
             startActivity(intent)
         }
         // Delay to prevent bug where the ttsEngine is repeated.
-        Timer().schedule(500) {
+        Timer().schedule(2000) {
             val outro = getString(R.string.open_recent_apps_part2_outro).trimIndent()
             ttsEngine.speakOnInitialisation(outro)
         }
