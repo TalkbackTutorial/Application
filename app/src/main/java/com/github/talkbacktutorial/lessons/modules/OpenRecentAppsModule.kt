@@ -5,7 +5,8 @@ import android.content.Intent
 import com.github.talkbacktutorial.activities.modules.openrecentapps.OpenRecentAppsActivity
 
 /**
- * TODO
+ * A module that teaches the user to open the recent apps menu.
+ * @author Jai Clapp
  */
 class OpenRecentAppsModule : Module() {
 

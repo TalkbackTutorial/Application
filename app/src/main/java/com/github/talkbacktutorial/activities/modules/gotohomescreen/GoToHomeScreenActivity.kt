@@ -1,11 +1,15 @@
 package com.github.talkbacktutorial.activities.modules.gotohomescreen
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 
 class GoToHomeScreenActivity : AppCompatActivity() {
 
@@ -40,6 +44,9 @@ class GoToHomeScreenActivity : AppCompatActivity() {
             }
             this.speakMid()
         } else if (stoppedCount == 2) {
+            // update db
+            updateModule()
+
             repeatBtn.visibility = View.GONE // disable button before speaking outro
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 finish()
@@ -65,12 +72,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
      * @author Mingxuan Fu
      */
     private fun speakIntro() {
-        val intro = """
-            Welcome.
-            In this module, you'll learn how to return to the home screen from inside an application,
-            to perform this task, swipe up then left. Try it now. 
-            But return to the tutorial after you've reached the home screen.
-        """.trimIndent()
+        val intro = getString(R.string.go_to_home_screen_intro).trimIndent()
         // This is a very basic implementation that just asks the user to return
         // to the application by themselves
         this.ttsEngine.speakOnInitialisation(intro)
@@ -81,11 +83,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
      * @author Mingxuan Fu
      */
     private fun speakMid() {
-        val outro = (
-            "Good, you are back, this gesture is useful as it allows you to return to the " +
-                "home screen at anytime no matter where you are. Now do it again, " +
-                "remember the gesture is swipe up then left"
-            ).trimIndent()
+        val outro = getString(R.string.go_to_home_screen_mid).trimIndent()
         this.ttsEngine.speakOnInitialisation(outro)
     }
 
@@ -94,8 +92,18 @@ class GoToHomeScreenActivity : AppCompatActivity() {
      * @author Mingxuan Fu
      */
     private fun speakOutro() {
-        val outro = "Nice, you have navigated back to this screen, you have now learnt how to use the go to home screen gesture. " +
-            "Returning you to the lesson screen now.".trimIndent()
+        val outro = getString(R.string.go_to_home_screen_outro).trimIndent()
         this.ttsEngine.speakOnInitialisation(outro)
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, this)
+        }
     }
 }

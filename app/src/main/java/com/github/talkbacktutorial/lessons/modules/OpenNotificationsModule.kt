@@ -5,7 +5,8 @@ import android.content.Intent
 import com.github.talkbacktutorial.activities.modules.opennotifications.OpenNotificationActivity
 
 /**
- *
+ * Module that teaches the user how to open notification panel
+ * @author Vinh Tuan Huynh
  */
 class OpenNotificationsModule : Module() {
 

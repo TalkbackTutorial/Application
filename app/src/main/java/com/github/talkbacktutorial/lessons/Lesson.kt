@@ -3,6 +3,7 @@ package com.github.talkbacktutorial.lessons
 import android.content.Context
 import android.content.Intent
 import com.github.talkbacktutorial.activities.LessonActivity
+import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.modules.Module
 import java.util.*
 
@@ -31,6 +32,7 @@ abstract class Lesson {
     abstract val sequenceNumeral: Int
     val id: UUID = UUID.randomUUID()
     abstract val modules: ArrayList<Module>
+    abstract val challenge: Challenge?
 
     var isLocked: Boolean = false
         private set

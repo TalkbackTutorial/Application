@@ -16,6 +16,7 @@ object LessonContainer {
             Lesson4(),
             Lesson5(),
             Lesson6()
+            Lesson7()
         )
     )
 
@@ -25,6 +26,14 @@ object LessonContainer {
      */
     fun getAllLessons(): ArrayList<Lesson> {
         return ArrayList(lessons)
+    }
+
+    /**
+     * Retrieves a lesson by its sequence numeral.
+     * @author Andre Pham
+     */
+    fun getLesson(sequenceNumeral: Int): Lesson {
+        return this.lessons.first { it.sequenceNumeral == sequenceNumeral }
     }
 
     /**
