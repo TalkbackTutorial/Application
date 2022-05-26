@@ -65,12 +65,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
      * @author Mingxuan Fu
      */
     private fun speakIntro() {
-        val intro = """
-            Welcome.
-            In this module, you'll learn how to return to the home screen from inside an application,
-            to perform this task, swipe up then left. Try it now. 
-            But return to the tutorial after you've reached the home screen.
-        """.trimIndent()
+        val intro = getString(R.string.go_to_home_screen_intro).trimIndent()
         // This is a very basic implementation that just asks the user to return
         // to the application by themselves
         this.ttsEngine.speakOnInitialisation(intro)
@@ -81,11 +76,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
      * @author Mingxuan Fu
      */
     private fun speakMid() {
-        val outro = (
-            "Good, you are back, this gesture is useful as it allows you to return to the " +
-                "home screen at anytime no matter where you are. Now do it again, " +
-                "remember the gesture is swipe up then left"
-            ).trimIndent()
+        val outro = getString(R.string.go_to_home_screen_mid).trimIndent()
         this.ttsEngine.speakOnInitialisation(outro)
     }
 
@@ -94,8 +85,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
      * @author Mingxuan Fu
      */
     private fun speakOutro() {
-        val outro = "Nice, you have navigated back to this screen, you have now learnt how to use the go to home screen gesture. " +
-            "Returning you to the lesson screen now.".trimIndent()
+        val outro = getString(R.string.go_to_home_screen_outro).trimIndent()
         this.ttsEngine.speakOnInitialisation(outro)
     }
 }
