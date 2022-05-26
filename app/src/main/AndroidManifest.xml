@@ -81,6 +81,13 @@
         <activity
             android:name=".activities.modules.submittext.SubmitTextActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.modules.addspacesnlbraillekeyboard.AddSpacesNLBrailleKeyboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.dnlbraillekeyboard.DNLBrailleKeyboardActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
