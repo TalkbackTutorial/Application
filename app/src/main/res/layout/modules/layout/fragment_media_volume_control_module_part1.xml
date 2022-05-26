@@ -22,8 +22,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="Music: « Ofelia's dream » from Bensound.com"
-            android:textColor="#000000"
-            android:textColorHint="#FFFFFF"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,27 +51,27 @@
 
         <ImageButton
             android:id="@+id/playButton"
-            android:layout_width="72dp"
-            android:layout_height="56dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
-            android:backgroundTint="@color/green_A400"
             android:contentDescription="play"
             app:layout_constraintEnd_toStartOf="@+id/stopButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="@+id/volumeControlSeekBar"
             app:layout_constraintTop_toBottomOf="@+id/volumeControlSeekBar"
+            android:background="?android:attr/colorPrimary"
             app:srcCompat="@drawable/ic_baseline_play_arrow" />
 
         <ImageButton
             android:id="@+id/stopButton"
-            android:layout_width="72dp"
-            android:layout_height="56dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
-            android:backgroundTint="@color/green_A400"
             android:contentDescription="stop"
             app:layout_constraintEnd_toEndOf="@+id/volumeControlSeekBar"
             app:layout_constraintHorizontal_bias="0.5"
+            android:background="?android:attr/colorPrimary"
             app:layout_constraintStart_toEndOf="@+id/playButton"
             app:layout_constraintTop_toBottomOf="@+id/volumeControlSeekBar"
             app:srcCompat="@drawable/ic_baseline_stop" />

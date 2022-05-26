@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:layout_marginHorizontal="@dimen/vertical_card_spacing"
-        app:cardBackgroundColor="@color/foreground_fill"
         app:cardElevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -143,5 +143,9 @@ class LessonActivity : AppCompatActivity() {
 
             binding.modulesLinearLayout.addView(challengeCardBinding.card)
         }
+
+        binding.backButton.setOnClickListener{
+            onBackPressed()
+        }
     }
 }

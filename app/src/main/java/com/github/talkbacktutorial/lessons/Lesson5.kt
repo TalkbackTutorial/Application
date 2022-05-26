@@ -13,6 +13,7 @@ class Lesson5 : Lesson() {
 
     override val title: String = "Advanced Menu Navigation"
     override val sequenceNumeral: Int = 5
+    override val description: String = "These cover the gestures and actions to perform navigation in an advance menu"
     override val modules: ArrayList<Module> = ArrayList(
         listOf(
             OpenRecentAppsModule(),

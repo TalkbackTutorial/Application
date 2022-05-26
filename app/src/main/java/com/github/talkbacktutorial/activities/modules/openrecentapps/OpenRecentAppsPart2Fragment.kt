@@ -15,7 +15,12 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.activities.modules.explorebytouch.ExploreMenuByTouchActivity
+import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
+import com.github.talkbacktutorial.lessons.Lesson
+import com.github.talkbacktutorial.lessons.LessonContainer
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
@@ -79,7 +84,9 @@ class OpenRecentAppsPart2Fragment : Fragment() {
         updateModule()
 
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as OpenRecentAppsActivity), MainActivity::class.java)
+            val intent = Intent((activity as OpenRecentAppsActivity), LessonActivity::class.java)
+            val currentLesson : Lesson = LessonContainer.getAllLessons()[4]
+            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

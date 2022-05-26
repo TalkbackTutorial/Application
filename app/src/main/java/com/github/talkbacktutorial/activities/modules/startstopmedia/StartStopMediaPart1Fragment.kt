@@ -20,6 +20,7 @@ import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentStartStopMediaModulePart1Binding
+import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 
 class StartStopMediaPart1Fragment : Fragment() {
 
@@ -132,23 +133,16 @@ class StartStopMediaPart1Fragment : Fragment() {
 
     private fun insertFinishButton() {
         val constraintLayout = this.binding.startStopMediaControlConstraintLayout
+        val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, constraintLayout,false)
+        primaryButtonBinding.text = "Finish Lesson"
+        primaryButtonBinding.button.setOnClickListener{ endLesson() }
         val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
         layoutParams.horizontalBias = 0.95f
         layoutParams.endToEnd = constraintLayout.id
         layoutParams.startToStart = constraintLayout.id
         layoutParams.topToTop = constraintLayout.id
         layoutParams.topMargin = 10.dpToPixels(requireContext())
-        val finishButton = Button(requireContext())
-        val text = "Finish"
-        finishButton.contentDescription = text
-        finishButton.text = text
-        finishButton.layoutParams = layoutParams
-        finishButton.setBackgroundResource(R.color.green_A400)
-        finishButton.setOnClickListener {
-            endLesson()
-        }
-
-        constraintLayout.addView(finishButton)
+        constraintLayout.addView(primaryButtonBinding.button, layoutParams)
     }
 
     private fun endLesson() {
@@ -160,9 +154,7 @@ class StartStopMediaPart1Fragment : Fragment() {
         }
 
         // Lesson's complete go back to Main Activity
-        val intent = Intent((activity as StartStopMediaActivity), MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
+        activity?.onBackPressed()
     }
 
     override fun onDestroyView() {

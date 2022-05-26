@@ -12,12 +12,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentExploreMenuByTouchModulePart2Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
+import com.github.talkbacktutorial.lessons.Lesson
+import com.github.talkbacktutorial.lessons.Lesson.Companion.INTENT_KEY
+import com.github.talkbacktutorial.lessons.LessonContainer
 
 class ExploreMenuByTouchPart2Fragment : Fragment() {
 
@@ -114,7 +118,9 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
         updateModule()
 
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as ExploreMenuByTouchActivity), MainActivity::class.java)
+            val intent = Intent((activity as ExploreMenuByTouchActivity), LessonActivity::class.java)
+            val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
+            intent.putExtra(INTENT_KEY, currentLesson.id.toString())
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

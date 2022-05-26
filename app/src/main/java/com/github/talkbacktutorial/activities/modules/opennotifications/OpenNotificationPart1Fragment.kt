@@ -139,10 +139,7 @@ class OpenNotificationPart1Fragment : Fragment() {
 
         removeOnWindowFocusChangeListener {}
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent =
-                Intent((activity as OpenNotificationActivity), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            activity?.onBackPressed()
         }
 
         this.speakOutro()

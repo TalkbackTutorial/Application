@@ -17,6 +17,7 @@ class Lesson1 : Lesson() {
     override val title: String = "Getting Started"
     override val sequenceNumeral: Int = 1
     override val modules: ArrayList<Module> = ArrayList()
+    override val description: String = ""
     override val challenge: Challenge? = null
 
     /**
