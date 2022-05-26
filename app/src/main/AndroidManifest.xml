@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.github.talkbacktutorial">
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+        <package android:name="com.simplemobiletools.voicerecorder.tbtutorialfork.debug" />
+        <package android:name="com.simplemobiletools.calculator.debug" />
+    </queries>
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+  
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -94,6 +104,12 @@
         <activity
             android:name=".activities.modules.submittext.SubmitTextActivity"
             android:exported="false" />
+        <activity android:name=".activities.modules.calculatorapp.CalculatorAppActivity"
+            android:exported="true"
+            android:launchMode="singleTask"/>
+        <activity android:name=".activities.modules.voicerecorderapp.VoiceRecorderAppActivity"
+            android:exported="true"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>
