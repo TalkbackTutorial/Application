@@ -1,14 +1,18 @@
 package com.github.talkbacktutorial.activities.modules.openrecentapps
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.HandlerCompat.postDelayed
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.LessonActivity
@@ -17,8 +21,13 @@ import com.github.talkbacktutorial.activities.modules.explorebytouch.ExploreMenu
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.LessonContainer
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
+import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
+import java.util.*
+import kotlin.concurrent.schedule
 
-class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
+class OpenRecentAppsPart2Fragment : Fragment() {
     private lateinit var binding: FragmentOpenRecentAppsPart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
     private var count = 0
@@ -34,31 +43,21 @@ class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
             container,
             false
         )
-        // Adding the fragment as the view lifecycle observer
-        ProcessLifecycleOwner.get().lifecycle.addObserver(this)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as OpenRecentAppsActivity))
-
         this.speakIntro()
-    }
-
-    override fun onPause() {
-        super<Fragment>.onPause()
-        super<DefaultLifecycleObserver>.onPause(this)
-        // Increment the count when the application is paused
-        count++
-    }
-
-    override fun onResume() {
-        super<Fragment>.onResume()
-        super<DefaultLifecycleObserver>.onPause(this)
-        // Very simple check if the application has been paused previously
-        if (count > 0) {
-            finishLesson()
+        // Simple listener detecting a change in window focus
+        view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
+            count++
+            // If the count is greater than 1, the app must have lost focus and re-gained focus
+            // Count changed to one here as changing fragments does not count as a focus change
+            if (count > 1) {
+                finishLesson()
+            }
         }
     }
 
@@ -67,11 +66,7 @@ class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
      * @author Jai Clapp
      */
     private fun speakIntro() {
-        val intro = """
-            Try to open the recent apps menu by tapping the button in the bottom right corner
-            of your phone. You should feel a vibration once you have tapped the button. Once again,
-            open a different app from the recent apps menu and then return to the tutorial.
-        """.trimIndent()
+        val intro = getString(R.string.open_recent_apps_part2_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -85,6 +80,9 @@ class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
      * @author Jai Clapp
      */
     private fun finishLesson() {
+
+        updateModule()
+
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as OpenRecentAppsActivity), LessonActivity::class.java)
             val currentLesson : Lesson = LessonContainer.getAllLessons()[4]
@@ -92,10 +90,22 @@ class OpenRecentAppsPart2Fragment : Fragment(), DefaultLifecycleObserver {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-        this.ttsEngine.speak(
-            "You have completed the open recent apps module. " +
-                "Sending you to the lesson screen.",
-            override = true
-        )
+        // Delay to prevent bug where the ttsEngine is repeated.
+        Timer().schedule(2000) {
+            val outro = getString(R.string.open_recent_apps_part2_outro).trimIndent()
+            ttsEngine.speakOnInitialisation(outro)
+        }
+
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }

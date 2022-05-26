@@ -13,9 +13,12 @@ import android.widget.MediaController
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentStartStopMediaModulePart1Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 
@@ -143,6 +146,9 @@ class StartStopMediaPart1Fragment : Fragment() {
     }
 
     private fun endLesson() {
+
+        updateModule()
+
         if (mediaController != null && mediaController!!.isShowing()) {
             mediaController!!.hide()
         }
@@ -159,4 +165,15 @@ class StartStopMediaPart1Fragment : Fragment() {
     private fun Int.dpToPixels(context: Context): Int = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
     ).toInt()
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
+    }
 }

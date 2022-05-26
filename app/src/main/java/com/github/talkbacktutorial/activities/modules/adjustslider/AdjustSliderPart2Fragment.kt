@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.adjustslider
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +10,14 @@ import android.widget.SeekBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.activities.modules.scroll.ScrollActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentAdjustSliderModulePart2Binding
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.LessonContainer
@@ -138,6 +142,9 @@ class AdjustSliderPart2Fragment : Fragment() {
      * @author Antony Loose
      */
     private fun finishLesson() {
+
+        updateModule()
+
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as AdjustSliderActivity), LessonActivity::class.java)
             val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
@@ -146,5 +153,16 @@ class AdjustSliderPart2Fragment : Fragment() {
             startActivity(intent)
         }
         speakOutro()
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }

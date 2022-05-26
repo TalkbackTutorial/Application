@@ -8,4 +8,6 @@
     <!-- TODO: remove header_size and subheader_size and follow M3 -->
     <dimen name="header_size">38sp</dimen>
     <dimen name="subheader_size">16sp</dimen>
+    <dimen name="content_padding">16dp</dimen>
+    <dimen name="paragraph_spacing">4dp</dimen>
 </resources>

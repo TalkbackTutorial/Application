@@ -9,6 +9,12 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.FragmentJumpControlsModulePart1Binding
 
+/**
+ * A fragment holding some introductory text displayed in the common jump navigation fragment.
+ *
+ * @author Matthew Crossman
+ * @see com.github.talkbacktutorial.activities.modules.jumpnavigation.JumpNavigationPart1Fragment
+ */
 class JumpControlsPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentJumpControlsModulePart1Binding

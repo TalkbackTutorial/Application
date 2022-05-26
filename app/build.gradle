@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id "org.jlleitschuh.gradle.ktlint" version "10.3.0"
+    id 'kotlin-kapt' // needed for Room to work
 }
 
 android {
@@ -36,7 +37,7 @@ android {
     sourceSets {
         main {
             res {
-                srcDirs 'src\\main\\res', 'src\\main\\res\\layout\\modules', 'src\\main\\res\\layout\\lessons', 'src\\main\\res\\layout\\components', 'src\\main\\res\\layout\\lesson1'
+                srcDirs 'src\\main\\res', 'src\\main\\res\\layout\\modules', 'src\\main\\res\\layout\\lessons', 'src\\main\\res\\layout\\components', 'src\\main\\res\\layout\\lesson1', 'src\\main\\res\\layout\\challenges'
             }
         }
     }
@@ -60,4 +61,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.google.android.material:material:1.5.0'
+
+    // Room
+    def room_version = "2.4.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
 }

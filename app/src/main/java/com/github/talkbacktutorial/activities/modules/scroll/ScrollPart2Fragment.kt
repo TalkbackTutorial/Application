@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.scroll
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +10,14 @@ import android.view.accessibility.AccessibilityEvent
 import androidx.core.view.allViews
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.activities.modules.explorebytouch.ExploreMenuByTouchActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.BasicHorizontalCardBinding
 import com.github.talkbacktutorial.databinding.FragmentScrollingModulePart2Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
@@ -106,6 +110,9 @@ class ScrollPart2Fragment : Fragment() {
      * @author Andre Pham
      */
     private fun finishLesson() {
+
+        updateModule()
+
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as ScrollActivity), LessonActivity::class.java)
             val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
@@ -119,5 +126,16 @@ class ScrollPart2Fragment : Fragment() {
     override fun onDestroyView() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }
