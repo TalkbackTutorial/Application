@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.github.talkbacktutorial">
-
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -21,6 +21,12 @@
             android:exported="false" />
         <activity
             android:name=".activities.challenges.lesson5.Lesson5ChallengeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.hidebraillekeyboard.HideBrailleKeyboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.openbraillekeyboardsettings.OpenBrailleKeyboardSettingsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
@@ -74,6 +80,9 @@
             android:name=".activities.modules.opennotifications.OpenNotificationActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.modules.opentalkbackmenu.OpenTalkbackMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.modules.openrecentapps.OpenRecentAppsActivity"
             android:exported="false" />
         <activity
@@ -81,6 +90,9 @@
             android:exported="false" />
         <activity
             android:name=".activities.modules.startstopmedia.StartStopMediaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.submittext.SubmitTextActivity"
             android:exported="false" />
     </application>
 
