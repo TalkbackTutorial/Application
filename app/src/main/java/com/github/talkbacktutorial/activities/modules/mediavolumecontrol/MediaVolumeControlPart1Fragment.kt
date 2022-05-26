@@ -15,9 +15,13 @@ import android.widget.SeekBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentMediaVolumeControlModulePart1Binding
 import kotlin.math.roundToInt
 
@@ -100,7 +104,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
                     var volumeNum = p1 / 100.0f
                     mediaPlayer?.setVolume(volumeNum, volumeNum)
                     // If talkback is turned on
-                    if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled) {
+                    if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled || DebugSettings.talkbackNotRequired) {
                         if (mediaPlayer == null) {
                             val info = """The song is not played. Please press the play button to play the music.""".trimIndent()
                             speakDuringLesson(info)
@@ -189,6 +193,9 @@ class MediaVolumeControlPart1Fragment : Fragment() {
     }
 
     private fun endLesson() {
+
+        updateModule()
+
         /* Lesson's complete go back to Main Activity */
         val intent = Intent((activity as MediaVolumeControlActivity), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -213,5 +220,16 @@ class MediaVolumeControlPart1Fragment : Fragment() {
             binding.mediaVolumeControlConstraintLayout.visibility = View.VISIBLE
         }
         ttsEngine.speak(info)
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }

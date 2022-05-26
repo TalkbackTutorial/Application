@@ -1,11 +1,15 @@
 package com.github.talkbacktutorial.activities.modules.gotohomescreen
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 
 class GoToHomeScreenActivity : AppCompatActivity() {
 
@@ -40,6 +44,9 @@ class GoToHomeScreenActivity : AppCompatActivity() {
             }
             this.speakMid()
         } else if (stoppedCount == 2) {
+            // update db
+            updateModule()
+
             repeatBtn.visibility = View.GONE // disable button before speaking outro
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 finish()
@@ -87,5 +94,16 @@ class GoToHomeScreenActivity : AppCompatActivity() {
     private fun speakOutro() {
         val outro = getString(R.string.go_to_home_screen_outro).trimIndent()
         this.ttsEngine.speakOnInitialisation(outro)
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, this)
+        }
     }
 }

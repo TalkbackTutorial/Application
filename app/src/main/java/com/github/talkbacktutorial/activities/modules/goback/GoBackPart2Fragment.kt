@@ -53,4 +53,5 @@ class GoBackPart2Fragment : Fragment() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }
+
 }

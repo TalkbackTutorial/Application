@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.explorebytouch
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +9,12 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentExploreMenuByTouchModulePart2Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
@@ -106,6 +110,9 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
      * @author Jason Wu
      */
     private fun finishLesson() {
+
+        updateModule()
+
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as ExploreMenuByTouchActivity), MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -129,5 +136,16 @@ class ExploreMenuByTouchPart2Fragment : Fragment() {
     override fun onDestroyView() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
+    }
+
+    /**
+     * This method updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }

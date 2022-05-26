@@ -28,6 +28,14 @@ object LessonContainer {
     }
 
     /**
+     * Retrieves a lesson by its sequence numeral.
+     * @author Andre Pham
+     */
+    fun getLesson(sequenceNumeral: Int): Lesson {
+        return this.lessons.first { it.sequenceNumeral == sequenceNumeral }
+    }
+
+    /**
      * Retrieves a single lesson by ID.
      * @author Andre Pham
      */
