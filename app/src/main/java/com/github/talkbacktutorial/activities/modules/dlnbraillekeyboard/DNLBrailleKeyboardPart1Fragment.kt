@@ -2,9 +2,7 @@ package com.github.talkbacktutorial.activities.modules.dnlbraillekeyboard
 
 import android.os.Bundle
 import android.view.*
-import android.view.inputmethod.EditorInfo
 import android.widget.TextView
-import android.widget.TextView.OnEditorActionListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -19,7 +17,7 @@ import android.text.TextWatcher
 
 class DNLBrailleKeyboardPart1Fragment : Fragment(){
 
-    private lateinit var binding: FragmentAddSpacesNlBrailleKeyboardPart1Binding
+    private lateinit var binding: FragmentDnlBrailleKeyboardPart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(

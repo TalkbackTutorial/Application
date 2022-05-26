@@ -11,8 +11,8 @@ class Lesson7 : Lesson() {
                 SubmitTextModule(),
                 HideBrailleKeyboardModule(),
                 OpenBrailleKeyboardSettingsModule(),
-                AddSpacesNLBrailleKeyboardModule()
-//                DelLWBrailleKeyboardModule()
+                AddSpacesNLBrailleKeyboardModule(),
+                DNLBrailleKeyboardModule()
             )
     )
 }

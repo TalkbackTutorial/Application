@@ -35,7 +35,7 @@ class AddSpacesNLBrailleKeyboardPart2Fragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as DNLBrailleKeyboardActivity))
+        this.ttsEngine = TextToSpeechEngine((activity as AddSpacesNLBrailleKeyboardActivity))
         binding.editText.visibility = View.INVISIBLE
         this.speakIntro()
         this.setupText()
@@ -93,7 +93,7 @@ class AddSpacesNLBrailleKeyboardPart2Fragment : Fragment(){
             val outro = getString(R.string.add_spaces_nl_braille_part2_outro).trimIndent()
             ttsEngine.speak(outro)
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                val intent = Intent((activity as DNLBrailleKeyboardActivity), MainActivity::class.java)
+                val intent = Intent((activity as AddSpacesNLBrailleKeyboardActivity), MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
             }

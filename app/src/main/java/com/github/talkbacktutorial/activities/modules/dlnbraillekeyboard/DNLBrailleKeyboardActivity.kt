@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.ActivitySubmitTextModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityDnlBrailleKeyboardBinding
 
 class DNLBrailleKeyboardActivity : AppCompatActivity() {
-    lateinit var binding: DNLBrailleKeyboardModuleBinding
+    lateinit var binding: ActivityDnlBrailleKeyboardBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {

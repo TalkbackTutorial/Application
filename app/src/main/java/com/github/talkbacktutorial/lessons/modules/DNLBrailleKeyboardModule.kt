@@ -2,7 +2,7 @@ package com.github.talkbacktutorial.lessons.modules
 
 import android.content.Context
 import android.content.Intent
-import com.github.talkbacktutorial.activities.modules.addspacesnlbraillekeyboard.DNLBrailleKeyboardActivity
+import com.github.talkbacktutorial.activities.modules.dnlbraillekeyboard.DNLBrailleKeyboardActivity
 
 /**
  * Teaches the user how to delete letters and words using braille keyboard

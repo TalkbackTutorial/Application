@@ -35,7 +35,7 @@ class AddSpacesNLBrailleKeyboardPart1Fragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as DNLBrailleKeyboardActivity))
+        this.ttsEngine = TextToSpeechEngine((activity as AddSpacesNLBrailleKeyboardActivity))
         binding.editText.visibility = View.INVISIBLE
         this.speakIntro()
         this.setupText()
@@ -93,7 +93,7 @@ class AddSpacesNLBrailleKeyboardPart1Fragment : Fragment(){
             ttsEngine.speak(outro)
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 parentFragmentManager.commit {
-                    replace(this@DNLBrailleKeyboardPart1Fragment.id, DNLBrailleKeyboardPart2Fragment())
+                    replace(this@AddSpacesNLBrailleKeyboardPart1Fragment.id, AddSpacesNLBrailleKeyboardPart2Fragment())
                     addToBackStack("addspacesnlbraillekeyboardpart1")
                 }
             }

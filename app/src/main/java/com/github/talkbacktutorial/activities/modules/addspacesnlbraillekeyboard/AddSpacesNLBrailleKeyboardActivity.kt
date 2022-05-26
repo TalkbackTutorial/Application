@@ -5,19 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.AddSpacesNLBrailleKeyboardModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityAddSpacesNlBrailleKeyboardBinding
 
 class AddSpacesNLBrailleKeyboardActivity : AppCompatActivity() {
-    lateinit var binding: AddSpacesNLBrailleKeyboardModuleBinding
+    lateinit var binding: ActivityAddSpacesNlBrailleKeyboardBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         this.binding =
-            DataBindingUtil.setContentView(this, R.layout.activity_submit_text_module)
+            DataBindingUtil.setContentView(this, R.layout.activity_add_spaces_nl_braille_keyboard)
         supportFragmentManager.commit {
-            replace(R.id.frame, DNLBrailleKeyboardPart1Fragment())
+            replace(R.id.frame, AddSpacesNLBrailleKeyboardPart1Fragment())
         }
     }
 
