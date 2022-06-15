@@ -3,6 +3,7 @@ package com.github.talkbacktutorial.activities.modules.addspacesnlbraillekeyboar
 /**
  * This has been commented out by Andre Pham due to stopping the application from compiling.
  * It is the responsibility of Mohak Malhotra and Jai Clapp to restore this.
+ * https://github.com/TalkbackTutorial/Application/issues/39
  */
 
 //import android.os.Bundle
