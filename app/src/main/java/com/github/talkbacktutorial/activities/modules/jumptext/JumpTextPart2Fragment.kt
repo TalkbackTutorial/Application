@@ -24,7 +24,6 @@ class JumpTextPart2Fragment : Fragment() {
         fun newInstance() = JumpTextPart2Fragment()
     }
 
-    // callback run after this fragment is created for AdjustReadingControlsActivity
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -71,7 +70,7 @@ class JumpTextPart2Fragment : Fragment() {
     }
 
     /**
-     * This method updates the database when a module is completed
+     * Updates the database when a module is completed
      * @author Antony Loose
      */
     private fun updateModule(){

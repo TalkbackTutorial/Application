@@ -10,10 +10,8 @@ import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersPart1Fragment
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentLesson3ChallengePart1Binding
@@ -27,7 +25,6 @@ class Lesson3ChallengePart1Fragment : Fragment() {
     }
 
     private lateinit var binding: FragmentLesson3ChallengePart1Binding
-    private val isLastFragment = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +34,6 @@ class Lesson3ChallengePart1Fragment : Fragment() {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lesson3_challenge_part1, container, false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // set accessibility delegate/interceptor
@@ -108,17 +104,11 @@ class Lesson3ChallengePart1Fragment : Fragment() {
             }
             super.onViewCreated(view, savedInstanceState)
         }
-
-
-
-
-
-
-
     }
 
     /**
      * Intercepts focus events to move your position if you're on a pushback element
+     * @author Emmanuel Chu
      */
     private class InterceptorDelegate(val binding: FragmentLesson3ChallengePart1Binding) :
         View.AccessibilityDelegate() {
@@ -135,14 +125,12 @@ class Lesson3ChallengePart1Fragment : Fragment() {
                 if (binding.challenge.pushbackText2.isAccessibilityFocused)
                     binding.challenge.wrongActionText2.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
             }
-
             return super.onRequestSendAccessibilityEvent(host, child, event)
         }
     }
 
-
     /**
-     * This method updates the database when a module is completed
+     * Updates the database when a module is completed
      * @author Antony Loose
      */
     private fun updateModule(){

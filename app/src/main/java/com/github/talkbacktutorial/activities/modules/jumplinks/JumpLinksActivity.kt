@@ -11,7 +11,6 @@ import com.github.talkbacktutorial.databinding.ActivityBasicFrameBinding
 
 /**
  * Activity implementing the jump links module.
- *
  * Uses a common fragment across the jump navigation modules.
  *
  * @author Matthew Crossman

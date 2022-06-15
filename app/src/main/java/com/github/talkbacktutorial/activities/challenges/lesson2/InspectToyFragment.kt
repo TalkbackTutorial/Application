@@ -1,13 +1,13 @@
 package com.github.talkbacktutorial.activities.challenges.lesson2
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.FragmentInspectToyBinding
 import com.github.talkbacktutorial.lessons.challenges.lesson2challenge.Toy

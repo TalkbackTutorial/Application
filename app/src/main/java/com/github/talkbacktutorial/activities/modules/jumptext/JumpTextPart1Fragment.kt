@@ -20,7 +20,6 @@ class JumpTextPart1Fragment : Fragment() {
         fun newInstance() = JumpTextPart1Fragment()
     }
 
-    // callback run after this fragment is created for AdjustReadingControlsActivity
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

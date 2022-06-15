@@ -1,14 +1,12 @@
 package com.github.talkbacktutorial.activities.modules.startstopmedia
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.MediaController
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
@@ -16,7 +14,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentStartStopMediaModulePart1Binding
@@ -146,13 +143,10 @@ class StartStopMediaPart1Fragment : Fragment() {
     }
 
     private fun endLesson() {
-
         updateModule()
-
         if (mediaController != null && mediaController!!.isShowing()) {
             mediaController!!.hide()
         }
-
         // Lesson's complete go back to Main Activity
         activity?.onBackPressed()
     }
@@ -167,7 +161,7 @@ class StartStopMediaPart1Fragment : Fragment() {
     ).toInt()
 
     /**
-     * This method updates the database when a module is completed
+     * Updates the database when a module is completed
      * @author Antony Loose
      */
     private fun updateModule(){

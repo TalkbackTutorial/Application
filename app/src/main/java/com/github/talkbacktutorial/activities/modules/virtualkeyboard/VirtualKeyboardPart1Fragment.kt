@@ -1,10 +1,8 @@
 package com.github.talkbacktutorial.activities.modules.virtualkeyboard
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -18,16 +16,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentVirtualKeyboardModulePart1Binding
 
-const val TYPED_STRING = "hello"
 
 class VirtualKeyboardPart1Fragment : Fragment() {
-
     companion object {
         @JvmStatic
         fun newInstance() = VirtualKeyboardPart1Fragment()
+
+        const val TYPED_STRING = "hello"
     }
 
     private lateinit var binding: FragmentVirtualKeyboardModulePart1Binding
@@ -56,7 +53,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
 
     }
 
-    private fun setupTextView(){
+    private fun setupTextView() {
         this.editText = this.binding.editText
         editText.setOnEditorActionListener { _, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -66,7 +63,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         }
     }
 
-    private fun onFinishTyping(){
+    private fun onFinishTyping() {
         if (editText.text.toString().lowercase() == TYPED_STRING){
             val info = """Great job! You have typed the word hello with the on screen keyboard .
                     Congratulations on completing this lesson.
@@ -113,7 +110,6 @@ class VirtualKeyboardPart1Fragment : Fragment() {
 
         // screen height - (user app height + status + nav) ..... if non-zero, then there is a soft keyboard
         val keyboardHeight: Int = this.editText.height - (statusBarHeight + navigationBarHeight + rect.height())
-        Log.i("KEYBOARD HEIGHT:", keyboardHeight.toString())
         if (keyboardHeight > 0) {
             onShowKeyboard()
         }
@@ -127,6 +123,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
             firstTime = false
         }
     }
+
     private fun insertFinishButton() {
         val constraintLayout = this.binding.virtualKeyboardConstraintLayout
         val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)

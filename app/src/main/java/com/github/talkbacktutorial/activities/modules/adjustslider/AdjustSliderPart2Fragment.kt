@@ -14,8 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.LessonActivity
-import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.modules.scroll.ScrollActivity
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentAdjustSliderModulePart2Binding
@@ -142,9 +140,7 @@ class AdjustSliderPart2Fragment : Fragment() {
      * @author Antony Loose
      */
     private fun finishLesson() {
-
         updateModule()
-
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as AdjustSliderActivity), LessonActivity::class.java)
             val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
@@ -156,7 +152,7 @@ class AdjustSliderPart2Fragment : Fragment() {
     }
 
     /**
-     * This method updates the database when a module is completed
+     * Updates the database when a module is completed
      * @author Antony Loose
      */
     private fun updateModule(){

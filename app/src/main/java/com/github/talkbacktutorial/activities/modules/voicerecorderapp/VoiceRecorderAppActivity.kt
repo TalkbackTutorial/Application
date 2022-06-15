@@ -35,9 +35,7 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
 
         /**
          * Gets the intent to open the external app needed by this activity and its fragments.
-         *
          * @author Matthew Crossman
-         *
          * @return an intent that can be used with startActivity
          */
         fun getAppIntent(): Intent {
@@ -66,10 +64,8 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
-        /*
-            New intent usually means this activity was called from elsewhere after first start.
-            This is probably the external app.
-         */
+        // New intent usually means this activity was called from elsewhere after first start.
+        // This is probably the external app.
         intent?.let {
             // get extras
             val actionCompleted = intent.getStringExtra(APP_ACTION_KEY)
@@ -91,7 +87,6 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
                     }
                 } else {
                     // wrong move
-
                 }
             }
         }

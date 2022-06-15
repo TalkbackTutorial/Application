@@ -2,7 +2,6 @@ package com.github.talkbacktutorial.lessons.challenges.lesson4challenge
 
 import android.content.Context
 import android.content.Intent
-import com.github.talkbacktutorial.activities.challenges.lesson2.Lesson2ChallengeActivity
 import com.github.talkbacktutorial.activities.challenges.lesson4.Lesson4ChallengeActivity
 import com.github.talkbacktutorial.lessons.challenges.Challenge
 

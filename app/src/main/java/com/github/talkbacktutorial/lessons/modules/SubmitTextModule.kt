@@ -8,7 +8,6 @@ import com.github.talkbacktutorial.activities.modules.submittext.SubmitTextActiv
  * A module that teaches the user how to submit text on the virtual braille keyboard.
  * @author Jai Clapp
  */
-
 class SubmitTextModule : Module() {
 
     override val title: String = "Submit Text"

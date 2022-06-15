@@ -3,7 +3,6 @@ package com.github.talkbacktutorial.activities.modules.goback
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.LessonActivity
-import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.modules.scroll.ScrollActivity
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentGobackModulePart1Binding
@@ -45,7 +42,6 @@ class GoBackPart1Fragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.v("returning: ", returning.toString())
         super.onViewCreated(view, savedInstanceState)
         binding.finishLessonButton.button.visibility = View.GONE
         binding.continueButton.button.visibility = View.GONE
@@ -142,7 +138,7 @@ class GoBackPart1Fragment : Fragment() {
     }
 
     /**
-     * This method updates the database when a module is completed
+     * Updates the database when a module is completed
      * @author Antony Loose
      */
     private fun updateModule(){

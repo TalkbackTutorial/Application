@@ -14,7 +14,6 @@ class Toy(
     val price: Double,
     val description: String
 ) {
-
     val starRating: Int = (1..5).random()
     val id: UUID = UUID.randomUUID()
 }

@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.modules.jumptext.JumpTextActivity
 import com.github.talkbacktutorial.databinding.FragmentCalculatorAppModulePart1Binding
 
 class CalculatorAppPart1Fragment : Fragment() {
@@ -107,10 +106,8 @@ class CalculatorAppPart1Fragment : Fragment() {
             } catch (_: PackageManager.NameNotFoundException) {
                 false
             }
-
             return appAvailable;
         }
-
         return false;
     }
 

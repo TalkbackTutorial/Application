@@ -3,27 +3,20 @@ package com.github.talkbacktutorial.activities.modules.openrecentapps
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.HandlerCompat.postDelayed
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.LessonActivity
-import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.modules.explorebytouch.ExploreMenuByTouchActivity
-import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
-import com.github.talkbacktutorial.lessons.Lesson
-import com.github.talkbacktutorial.lessons.LessonContainer
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
+import com.github.talkbacktutorial.lessons.Lesson
+import com.github.talkbacktutorial.lessons.LessonContainer
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -80,9 +73,7 @@ class OpenRecentAppsPart2Fragment : Fragment() {
      * @author Jai Clapp
      */
     private fun finishLesson() {
-
         updateModule()
-
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as OpenRecentAppsActivity), LessonActivity::class.java)
             val currentLesson : Lesson = LessonContainer.getAllLessons()[4]
@@ -95,11 +86,10 @@ class OpenRecentAppsPart2Fragment : Fragment() {
             val outro = getString(R.string.open_recent_apps_part2_outro).trimIndent()
             ttsEngine.speakOnInitialisation(outro)
         }
-
     }
 
     /**
-     * This method updates the database when a module is completed
+     * Updates the database when a module is completed
      * @author Antony Loose
      */
     private fun updateModule(){

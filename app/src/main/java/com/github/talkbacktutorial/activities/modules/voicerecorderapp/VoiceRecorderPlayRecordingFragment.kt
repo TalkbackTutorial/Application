@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
@@ -16,6 +15,7 @@ import com.github.talkbacktutorial.databinding.FragmentVoiceRecorderModulePlayRe
  * @author Matthew Crossman
  */
 class VoiceRecorderPlayRecordingFragment : Fragment() {
+
     private lateinit var binding: FragmentVoiceRecorderModulePlayRecordingBinding
 
     override fun onCreateView(

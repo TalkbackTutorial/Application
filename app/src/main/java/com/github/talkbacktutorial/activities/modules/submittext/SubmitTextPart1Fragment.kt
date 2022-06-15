@@ -1,7 +1,9 @@
 package com.github.talkbacktutorial.activities.modules.submittext
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView.OnEditorActionListener
 import androidx.databinding.DataBindingUtil
@@ -9,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.databinding.*
+import com.github.talkbacktutorial.databinding.FragmentSubmitTextPart1Binding
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -89,7 +91,6 @@ class SubmitTextPart1Fragment : Fragment(){
     private fun finishLesson() {
         Timer().schedule(6000) {
             val outro = getString(R.string.submit_text_part1_outro).trimIndent()
-            println("\n\nFINISHED\n\n")
             ttsEngine.speak(outro)
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 parentFragmentManager.commit {

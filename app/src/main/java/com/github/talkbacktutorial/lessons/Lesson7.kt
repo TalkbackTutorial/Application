@@ -1,8 +1,10 @@
 package com.github.talkbacktutorial.lessons
 
 import com.github.talkbacktutorial.lessons.challenges.Challenge
-import com.github.talkbacktutorial.lessons.modules.*
-import java.util.ArrayList
+import com.github.talkbacktutorial.lessons.modules.HideBrailleKeyboardModule
+import com.github.talkbacktutorial.lessons.modules.Module
+import com.github.talkbacktutorial.lessons.modules.OpenBrailleKeyboardSettingsModule
+import com.github.talkbacktutorial.lessons.modules.SubmitTextModule
 
 class Lesson7 : Lesson() {
 
@@ -13,8 +15,7 @@ class Lesson7 : Lesson() {
         listOf(
             SubmitTextModule(),
             HideBrailleKeyboardModule(),
-            OpenBrailleKeyboardSettingsModule(),
-            AddSpacesNLBrailleKeyboardModule()
+            OpenBrailleKeyboardSettingsModule()
         )
     )
     override val challenge: Challenge? = null

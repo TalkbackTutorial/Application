@@ -63,7 +63,6 @@ class MainActivity : AppCompatActivity() {
             this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
             popup(mainView)
         } else if (!DebugSettings.skipIntroductoryLesson) {
-            DebugSettings.skipIntroductoryLesson = true
             lesson1onStart()
         }
         super.onStart()

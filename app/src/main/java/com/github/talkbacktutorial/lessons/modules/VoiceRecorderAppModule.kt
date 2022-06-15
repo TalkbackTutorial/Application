@@ -6,7 +6,9 @@ import com.github.talkbacktutorial.activities.modules.voicerecorderapp.VoiceReco
 
 
 class VoiceRecorderAppModule: Module() {
+
     override val title = "Voice Recorder App"
+
     override fun startActivity(context: Context) {
         context.startActivity(Intent(context, VoiceRecorderAppActivity::class.java))
     }

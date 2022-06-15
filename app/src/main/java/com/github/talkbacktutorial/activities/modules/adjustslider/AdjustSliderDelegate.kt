@@ -24,7 +24,7 @@ class AdjustSliderDelegate(activity: AdjustSliderActivity) : View.AccessibilityD
     private val ttsEngine = TextToSpeechEngine(activity)
 
     /**
-     * This method runs when an accessibility event occurs.
+     * Runs when an accessibility event occurs.
      * When the slider value changes or the slider is highlighted it will check the current event,
      * if the event is adjusting the slider value it interrupts talkback and reads out the value using tts
      * this is so that talkback doesn't interrupt our tts when reading out instructions

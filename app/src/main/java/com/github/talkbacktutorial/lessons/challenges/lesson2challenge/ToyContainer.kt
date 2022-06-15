@@ -1,10 +1,8 @@
 package com.github.talkbacktutorial.lessons.challenges.lesson2challenge
 
-import android.content.res.Resources
 import com.github.talkbacktutorial.App
 import com.github.talkbacktutorial.R
 import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * Contains all toys to be retrieved and used within the application.

@@ -1,6 +1,5 @@
 package com.github.talkbacktutorial.activities.modules.gotohomescreen
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -98,7 +97,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
     }
 
     /**
-     * This method updates the database when a module is completed
+     * Updates the database when a module is completed
      * @author Antony Loose
      */
     private fun updateModule(){

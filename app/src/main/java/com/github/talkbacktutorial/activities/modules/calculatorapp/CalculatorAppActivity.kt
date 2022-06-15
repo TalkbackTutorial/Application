@@ -3,18 +3,11 @@ package com.github.talkbacktutorial.activities.modules.calculatorapp
 import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.modules.explorebytouch.ExploreMenuByTouchPart1Fragment
-import com.github.talkbacktutorial.activities.modules.voicerecorderapp.VoiceRecorderAppActivity
-import com.github.talkbacktutorial.activities.modules.voicerecorderapp.VoiceRecorderFinishedFragment
-import com.github.talkbacktutorial.activities.modules.voicerecorderapp.VoiceRecorderPlayRecordingFragment
 import com.github.talkbacktutorial.databinding.ActivityCalculatorAppModuleBinding
-import com.github.talkbacktutorial.databinding.ActivityExploreMenuByTouchModuleBinding
 
 class CalculatorAppActivity : AppCompatActivity() {
     private val TUTORIAL_PREFIX = "TBT"
@@ -30,7 +23,6 @@ class CalculatorAppActivity : AppCompatActivity() {
 
         /**
          * Gets the intent to open the external app needed by this activity and its fragments.
-         *
          * @return an intent that can be used with startActivity
          */
         fun getAppIntent(): Intent {
@@ -55,24 +47,19 @@ class CalculatorAppActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
-        /*
-            New intent usually means this activity was called from elsewhere after first start.
-            This is probably the external app.
-         */
+        // New intent usually means this activity was called from elsewhere after first start.
+        // This is probably the external app.
         intent?.let {
             // get extras
             val actionCompleted = intent.getStringExtra(APP_ACTION_KEY)
-
             actionCompleted?.let {
                 // move on with module based on tag IF intro is the current fragment
                  if (actionCompleted == FINISH_CALCULATOR_TAG) {
-
                     supportFragmentManager.commit {
                         replace(R.id.frame, CalculatorAppPart2Fragment())
                     }
                 } else {
                     // wrong move
-
                 }
             }
         }

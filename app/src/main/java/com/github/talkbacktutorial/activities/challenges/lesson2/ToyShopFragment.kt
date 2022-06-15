@@ -1,25 +1,19 @@
 package com.github.talkbacktutorial.activities.challenges.lesson2
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.commit
+import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.lesson1.Lesson1Part2Fragment
 import com.github.talkbacktutorial.databinding.FragmentToyShopBinding
 import com.github.talkbacktutorial.databinding.ToyCardBinding
 import com.github.talkbacktutorial.lessons.challenges.lesson2challenge.Toy
 import com.github.talkbacktutorial.lessons.challenges.lesson2challenge.ToyContainer
 import java.text.NumberFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class ToyShopFragment : Fragment() {
 

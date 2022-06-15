@@ -62,7 +62,6 @@ class AdjustSliderPart1Fragment() : Fragment() {
      */
     private fun setSliderHandler() {
         this.menuSlider.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
                 if (i == maxValue && !hasReachedMax) {
                     hasReachedMax = true
@@ -73,11 +72,9 @@ class AdjustSliderPart1Fragment() : Fragment() {
                 }
             }
 
-            override fun onStartTrackingTouch(seek: SeekBar) {
-            }
+            override fun onStartTrackingTouch(seek: SeekBar) { }
 
-            override fun onStopTrackingTouch(seek: SeekBar) {
-            }
+            override fun onStopTrackingTouch(seek: SeekBar) { }
         })
     }
 

@@ -3,9 +3,7 @@ package com.github.talkbacktutorial.database
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.*
-import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.lessons.LessonContainer
-import com.github.talkbacktutorial.lessons.modules.Module
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.system.exitProcess

@@ -1,7 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.goback
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +48,6 @@ class GoBackPart2Fragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        Log.v("onDestroyView", "func called")
         this.ttsEngine.shutDown()
         super.onDestroyView()
     }

@@ -1,7 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.hidebraillekeyboard
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -10,12 +9,10 @@ import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import androidx.databinding.DataBindingUtil
 import com.github.talkbacktutorial.R
-import java.util.*
-import kotlin.concurrent.schedule
 
 class HideBrailleKeyboardActivity : AppCompatActivity() {
+
     private lateinit var textBox: EditText
     private lateinit var textDisplay: TextView
     private lateinit var contBtn: Button

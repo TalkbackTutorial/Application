@@ -1,9 +1,7 @@
 package com.github.talkbacktutorial.activities.modules.openbraillekeyboardsettings
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -41,8 +39,7 @@ class OpenBrailleKeyboardSettingsActivity : AppCompatActivity() {
 
     /**
      * Checks if the given string contains any arabic characters
-     * taken from https://stackoverflow.com/questions/15107313/how-to-determine-a-string-is-english-or-arabic
-     * translated into Kotlin by Android studio
+     * https://stackoverflow.com/questions/15107313/how-to-determine-a-string-is-english-or-arabic
      */
     private fun isProbablyArabic(s: String): Boolean {
         var i = 0

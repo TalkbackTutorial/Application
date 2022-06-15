@@ -1,15 +1,11 @@
 package com.github.talkbacktutorial.activities.challenges.lesson3
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.challenges.lesson2.ToyShopFragment
-import com.github.talkbacktutorial.activities.challenges.lesson4.ArticleFragment
 import com.github.talkbacktutorial.databinding.ChallengeLayoutBinding
 
 class Lesson3ChallengeActivity : AppCompatActivity() {
@@ -38,6 +34,4 @@ class Lesson3ChallengeActivity : AppCompatActivity() {
         }
         this.ttsEngine.speakOnInitialisation(getString(R.string.lesson3_challenge_intro))
     }
-
-
 }

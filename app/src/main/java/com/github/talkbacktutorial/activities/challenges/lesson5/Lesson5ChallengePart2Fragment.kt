@@ -5,7 +5,6 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +20,7 @@ import com.github.talkbacktutorial.databinding.FragmentLesson5ChallengePart2Bind
 
 
 class Lesson5ChallengePart2Fragment : Fragment() {
+
     companion object {
         @JvmStatic
         fun newInstance() = Lesson5ChallengePart2Fragment()

@@ -1,14 +1,13 @@
 package com.github.talkbacktutorial.activities.challenges.lesson4
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.challenges.lesson2.ToyShopFragment
 import com.github.talkbacktutorial.databinding.ChallengeLayoutBinding
 
 class Lesson4ChallengeActivity : AppCompatActivity() {

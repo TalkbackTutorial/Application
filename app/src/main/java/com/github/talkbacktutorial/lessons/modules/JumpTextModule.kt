@@ -2,7 +2,6 @@ package com.github.talkbacktutorial.lessons.modules
 
 import android.content.Context
 import android.content.Intent
-import com.github.talkbacktutorial.activities.modules.adjustreadingcontrols.AdjustReadingControlsActivity
 import com.github.talkbacktutorial.activities.modules.jumptext.JumpTextActivity
 
 /**

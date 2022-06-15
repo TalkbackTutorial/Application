@@ -2,7 +2,9 @@ package com.github.talkbacktutorial.activities.modules.submittext
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView.OnEditorActionListener
 import androidx.databinding.DataBindingUtil
@@ -10,7 +12,7 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.databinding.*
+import com.github.talkbacktutorial.databinding.FragmentSubmitTextPart2Binding
 import java.util.*
 import kotlin.concurrent.schedule
 

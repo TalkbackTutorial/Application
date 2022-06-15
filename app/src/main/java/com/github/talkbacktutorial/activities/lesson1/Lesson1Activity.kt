@@ -1,12 +1,10 @@
 package com.github.talkbacktutorial.activities.lesson1
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.ActivityLesson1Binding
 
 class Lesson1Activity : AppCompatActivity() {

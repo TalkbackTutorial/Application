@@ -1,7 +1,8 @@
 package com.github.talkbacktutorial.lessons
 
 import com.github.talkbacktutorial.lessons.challenges.Challenge
-import com.github.talkbacktutorial.lessons.modules.*
+import com.github.talkbacktutorial.lessons.modules.Module
+import com.github.talkbacktutorial.lessons.modules.VirtualKeyboardModule
 
 class Lesson6 : Lesson() {
 

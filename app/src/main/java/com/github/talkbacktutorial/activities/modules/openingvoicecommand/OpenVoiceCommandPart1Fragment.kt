@@ -10,24 +10,17 @@ import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.activities.modules.openrecentapps.OpenRecentAppsActivity
 import com.github.talkbacktutorial.databinding.FragmentOpenVoiceCommandModulePart1Binding
-import java.util.*
-import kotlin.concurrent.schedule
 
 class OpenVoiceCommandPart1Fragment : Fragment() {
 
     companion object {
         @JvmStatic
         fun newInstance() = OpenVoiceCommandPart1Fragment()
-
-
     }
 
     private lateinit var binding: FragmentOpenVoiceCommandModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-
-    private var viewChangeCounter = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,15 +34,11 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as OpenVoiceCommandActivity)).onFinishedSpeaking(
-            triggerOnce = true
-        ) {
-            // Trigger this function once the intro is done speaking
-            //this.detectVoice()
-            this.speakOutro()
-        }
+        this.ttsEngine = TextToSpeechEngine((activity as OpenVoiceCommandActivity))
+            .onFinishedSpeaking(triggerOnce = true) {
+                this.speakOutro()
+            }
         this.speakIntro()
-
     }
 
     /**
@@ -68,8 +57,6 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
         val outro = getString(R.string.open_voice_commands_outro).trimIndent()
         this.ttsEngine.speak(outro)
     }
-
-
 
     private fun Fragment.removeOnWindowFocusChangeListener(callback: (hasFocus: Boolean) -> Unit) =
         view?.viewTreeObserver?.removeOnWindowFocusChangeListener(callback)

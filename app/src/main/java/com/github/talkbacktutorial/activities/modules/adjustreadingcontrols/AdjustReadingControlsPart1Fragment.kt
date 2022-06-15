@@ -47,7 +47,7 @@ class AdjustReadingControlsPart1Fragment : Fragment() {
     }
 
     /**
-     * This method updates the database when a module is completed
+     * Updates the database when a module is completed
      * @author Antony Loose
      */
     private fun updateModule(){

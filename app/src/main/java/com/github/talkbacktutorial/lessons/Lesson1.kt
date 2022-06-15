@@ -3,7 +3,6 @@ package com.github.talkbacktutorial.lessons
 import android.content.Context
 import android.content.Intent
 import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
-import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.modules.Module
 

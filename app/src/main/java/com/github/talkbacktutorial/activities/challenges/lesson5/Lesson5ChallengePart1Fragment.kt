@@ -42,10 +42,8 @@ class Lesson5ChallengePart1Fragment : Fragment() {
         this.speakIntro()
     }
 
-    /**
-     * Show menu items after user back to app
-     */
     override fun onResume() {
+        // Show menu items after user back to app
         if (count == 1){
             showMenuItems(6)
         }

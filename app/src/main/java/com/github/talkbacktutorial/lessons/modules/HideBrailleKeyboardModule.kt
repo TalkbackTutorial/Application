@@ -9,6 +9,7 @@ import com.github.talkbacktutorial.activities.modules.hidebraillekeyboard.HideBr
  * @author: Mingxuan Fu
  */
 class HideBrailleKeyboardModule : Module() {
+
     override val title: String = "Hide Braille Keyboard"
 
     override fun startActivity(context: Context) {

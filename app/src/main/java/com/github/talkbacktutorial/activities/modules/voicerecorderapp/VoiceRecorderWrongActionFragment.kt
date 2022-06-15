@@ -11,6 +11,7 @@ import com.github.talkbacktutorial.activities.modules.voicerecorderapp.VoiceReco
 import com.github.talkbacktutorial.databinding.FragmentVoiceRecorderModuleWrongBinding
 
 class VoiceRecorderWrongActionFragment(private val stage: VoiceRecorderStage) : Fragment() {
+
     lateinit var binding: FragmentVoiceRecorderModuleWrongBinding
 
     override fun onCreateView(

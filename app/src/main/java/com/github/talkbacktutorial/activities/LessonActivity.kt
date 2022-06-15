@@ -9,7 +9,9 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgression
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
-import com.github.talkbacktutorial.databinding.*
+import com.github.talkbacktutorial.databinding.ActivityLessonBinding
+import com.github.talkbacktutorial.databinding.ChallengeCardBinding
+import com.github.talkbacktutorial.databinding.ModuleCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.LessonContainer
 import com.github.talkbacktutorial.lessons.modules.Module
