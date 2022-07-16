@@ -16,7 +16,7 @@
             android:layout_marginTop="@dimen/header_top_spacing"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="4">
+            android:weightSum="6">
 
             <LinearLayout
                 android:id="@+id/layout1"
@@ -29,6 +29,15 @@
 
             <LinearLayout
                 android:id="@+id/layout2"
+                android:layout_width="409dp"
+                android:layout_height="729dp"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="1dp"
+                android:layout_weight="2" />
+
+            <LinearLayout
+                android:id="@+id/layout3"
                 android:layout_width="409dp"
                 android:layout_height="729dp"
                 android:orientation="vertical"
