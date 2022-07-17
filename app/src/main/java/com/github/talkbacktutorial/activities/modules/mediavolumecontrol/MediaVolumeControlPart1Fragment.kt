@@ -105,10 +105,10 @@ class MediaVolumeControlPart1Fragment : Fragment() {
                     // If talkback is turned on
                     if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled || DebugSettings.talkbackNotRequired) {
                         if (mediaPlayer == null) {
-                            val info = """The song is not played. Please press the play button to play the music.""".trimIndent()
+                            val info = getString(R.string.media_volume_control_part1_play_prompt).trimIndent()
                             speakDuringLesson(info)
                         } else lessonLogic()
-                    } else speakDuringLesson("Talkback is currently not turned on. Please turn Talkback on to continue this lesson")
+                    } else speakDuringLesson(getString(R.string.media_volume_control_part1_talkback_prompt))
                 }
             }
 
@@ -128,21 +128,12 @@ class MediaVolumeControlPart1Fragment : Fragment() {
                 binding.mediaVolumeControlConstraintLayout.visibility = View.VISIBLE
                 if (mediaPlayer?.isPlaying == false) mediaPlayer?.start()
             }
-            val info = """
-                        current Volume is set above 75.
-                        Now that you learned how to increase the volume, we will try decreasing the volume below 25.
-                        To decrease the volume, swipe down.
-            """.trimIndent()
+            val info = getString(R.string.media_volume_control_part1_decrease_volume).trimIndent()
             ttsEngine.speak(info)
             swipeUp = true
         } else if (currentVolume <= 25 && swipeUp) {
             stopMedia()
-            val info = """
-                        current volume is set below 25.
-                        Congratulations on completing this lesson.
-                        In this lesson you have successfully learn how to control the media volume of your phone.
-                        To exit this lesson, select the finish button on the top right corner of the screen.
-            """.trimIndent()
+            val info = getString(R.string.media_volume_control_part1_outro).trimIndent()
             speakDuringLesson(info)
             insertFinishButton()
         }
@@ -160,7 +151,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
     private fun insertFinishButton() {
         val constraintLayout = this.binding.mediaVolumeControlConstraintLayout
         val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, constraintLayout,false)
-        primaryButtonBinding.text = "Finish Lesson"
+        primaryButtonBinding.text = ""
         primaryButtonBinding.button.setOnClickListener{ endLesson() }
         val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
         layoutParams.horizontalBias = 0.95f
@@ -172,13 +163,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
     }
 
     private fun speakIntro() {
-        val intro = """
-            In this tutorial, you will be learning how to control the media volume sliders, increasing or decreasing your phone's media volume. 
-            To start, explore your screen by touch and find the play button. 
-            Once found, double tap to play the music.
-            Then, increase the volume of the media above 75 by swiping up.
-        """.trimIndent()
-
+        val intro = getString(R.string.media_volume_control_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 

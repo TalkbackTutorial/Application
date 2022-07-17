@@ -83,16 +83,7 @@ class AdjustSliderPart1Fragment() : Fragment() {
      * @author Jade Davis
      */
     private fun speakIntro() {
-        val intro = """
-            Welcome.
-            In this module, you'll learn how to increase and decrease slider values.
-            A slider is a track that contains values between a minimum and a maximum.
-            Sliders are often used to adjust times. For example. song times or video times.
-            You can also adjust this phones volume using a slider.
-            To start you will try increasing a sliders value.
-            To increase a slider swipe up.
-            To continue increase the slider value to 100%
-        """.trimIndent()
+        val intro = getString(R.string.adjust_slider_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -101,12 +92,7 @@ class AdjustSliderPart1Fragment() : Fragment() {
      * @author Antony Loose
      */
     private fun speakGoToMin() {
-        val goToMin = """
-            Well done!
-            Now you will try decreasing the sliders value.
-            To decrease a slider swipe down.
-            To continue set the slider value to 50%
-        """.trimIndent()
+        val goToMin = getString(R.string.adjust_slider_part1_go_to_min).trimIndent()
         this.ttsEngine.speak(goToMin)
     }
 
@@ -115,11 +101,7 @@ class AdjustSliderPart1Fragment() : Fragment() {
      * @author Jade Davis
      */
     private fun speakOutro() {
-        val outro = """
-            Well done!
-            You now know how to adjust a slider by swiping up or down.
-            You will now be taken to the next part of this module
-        """.trimIndent()
+        val outro = getString(R.string.adjust_slider_part1_outro).trimIndent()
         this.ttsEngine.speak(outro)
     }
 

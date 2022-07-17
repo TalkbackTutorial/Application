@@ -93,11 +93,7 @@ class GoBackPart1Fragment : Fragment() {
      * @author Emmanuel Chu
      */
     private fun speakIntro() {
-        val intro = """
-            Welcome.
-            In this lesson, you'll learn how to go back the previous page.
-            Double tap to continue.
-        """.trimIndent()
+        val intro = getString(R.string.go_back_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -106,10 +102,7 @@ class GoBackPart1Fragment : Fragment() {
      * @author Emmanuel Chu
      */
     private fun speakConclusion() {
-        val conclusion = """
-            You have successfully navigated back to the previous page.
-            Double tap to complete lesson.
-        """.trimIndent()
+        val conclusion = getString(R.string.go_back_part1_conclusion).trimIndent()
         this.ttsEngine.speakOnInitialisation(conclusion)
     }
 
@@ -129,7 +122,7 @@ class GoBackPart1Fragment : Fragment() {
             startActivity(intent)
             returning = false
         }
-        this.ttsEngine.speak("You have completed the lesson. Sending you to the main menu.", override = true)
+        this.ttsEngine.speak(getString(R.string.go_back_part1_outro), override = true)
     }
 
     override fun onDestroyView() {

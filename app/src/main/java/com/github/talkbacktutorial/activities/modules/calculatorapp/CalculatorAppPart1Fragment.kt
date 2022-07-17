@@ -54,7 +54,7 @@ class CalculatorAppPart1Fragment : Fragment() {
      * @author Joel Yang
      */
     private fun speakIntro() {
-        val intro = "In this module, you will apply what you have learnt from the previous lessons to use the simple calculator app. You will be given a simple calculation task to work on. Unless you complete this task successfully, we will let you retry as many times".trimIndent()
+        val intro = getString(R.string.calculator_app_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 

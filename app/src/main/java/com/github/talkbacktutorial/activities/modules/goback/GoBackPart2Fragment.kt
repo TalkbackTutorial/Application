@@ -41,9 +41,7 @@ class GoBackPart2Fragment : Fragment() {
      * @author Emmanuel Chu
      */
     private fun speakIntro() {
-        val intro = """
-            To navigate back to the previous page, swipe down then left
-        """.trimIndent()
+        val intro = getString(R.string.go_back_part2_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
