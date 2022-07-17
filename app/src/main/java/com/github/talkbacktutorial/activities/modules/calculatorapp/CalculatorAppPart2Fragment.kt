@@ -44,7 +44,7 @@ class CalculatorAppPart2Fragment : Fragment() {
      * @author Joel Yang
      */
     private fun speakIntro() {
-        val intro = "You have successfully completed this module. We have sent you back to the talkback module. please proceed to finish module.".trimIndent()
+        val intro = getString(R.string.calculator_app_part2_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 

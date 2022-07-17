@@ -57,9 +57,9 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
                 layoutInflater,
                 R.layout.basic_card, binding.layout1, false
             )
-            basicCardBinding.text = "Row $menuItemNum Column1"
+            basicCardBinding.text = getString(R.string.row) + "$menuItemNum " + getString(R.string.column1)
             basicCardBinding.card.setOnClickListener {
-                ttsEngine.speak("You have interacted with a menu item. Find the button, then double tap to finish the lesson.")
+                ttsEngine.speak(getString(R.string.explore_menu_by_touch_menu_item_prompt))
             }
             binding.layout1.addView(basicCardBinding.card)
             if (menuItemNum == 1) basicCardBinding.card.sendAccessibilityEvent(
@@ -72,15 +72,15 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
                 R.layout.basic_card, binding.layout2, false
             )
             if(menuItemNum == 6){
-                basicCardBinding2.text = "Finish Lesson Button"
+                basicCardBinding2.text = getString(R.string.finish_lesson_button)
                 basicCardBinding2.card.setOnClickListener{
                     this.finishLesson()
                 }
             }
             else{
-                basicCardBinding2.text = "Row $menuItemNum Column2"
+                basicCardBinding2.text = getString(R.string.row) + "$menuItemNum " + getString(R.string.column2)
                 basicCardBinding2.card.setOnClickListener {
-                    ttsEngine.speak("You have interacted with a menu item. Find the button, then double tap to finish the lesson.")
+                    ttsEngine.speak(getString(R.string.explore_menu_by_touch_menu_item_prompt))
                 }
             }
             binding.layout2.addView(basicCardBinding2.card)
@@ -90,9 +90,9 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
                 layoutInflater,
                 R.layout.basic_card, binding.layout3, false
             )
-            basicCardBinding3.text = "Row $menuItemNum Column3"
+            basicCardBinding3.text = getString(R.string.row) + "$menuItemNum " + getString(R.string.column3)
             basicCardBinding3.card.setOnClickListener {
-                ttsEngine.speak("You have interacted with a menu item. Find the button, then double tap to finish the lesson.")
+                ttsEngine.speak(getString(R.string.explore_menu_by_touch_menu_item_prompt))
             }
             binding.layout3.addView(basicCardBinding3.card)
         }
@@ -103,19 +103,7 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
      * @author Jason Wu
      */
     private fun speakIntro() {
-        val intro = """
-            Welcome! 
-            We will mainly focus on interact with menu in this lesson.
-            In this module, you will learn how to explore the menu.
-            Usually there are many items in the menu, and you may want to browse them more efficiently.
-            Touching and dragging are used to go through the menu items more quickly.
-            To start, you will explore a three column menu using this method.
-            Touch the screen by your finger and drag it slowly around screen.
-            Make sure your finger is touching the screen at all times.
-            You can drag your finger to any direction.
-            To finish this module, you will need to find the finish button in the menu items.
-            Once you find the button, double tap to finish the module.
-        """.trimIndent()
+        val intro = getString(R.string.explore_menu_by_touch_part1_intro).trimIndent()
 
         this.ttsEngine.speakOnInitialisation(intro)
     }
@@ -135,7 +123,7 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-        this.ttsEngine.speak("You have completed the lesson. Sending you to the main menu.", override = true)
+        this.ttsEngine.speak(getString(R.string.explore_menu_by_touch_part2_outro), override = true)
     }
 
     override fun onDestroyView() {

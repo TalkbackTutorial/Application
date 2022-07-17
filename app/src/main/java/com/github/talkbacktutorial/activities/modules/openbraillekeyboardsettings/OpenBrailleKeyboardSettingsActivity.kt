@@ -23,13 +23,13 @@ class OpenBrailleKeyboardSettingsActivity : AppCompatActivity() {
         this.textDisplay = findViewById(R.id.brailleSettingsTextView)
         this.contBtn = findViewById(R.id.brailleSettingsContinueBtn)
         this.contBtn.visibility = View.GONE
-        this.contBtn.text = getString(R.string.continueStr)
+        this.contBtn.text = getString(R.string.continue_str)
 
-        this.textDisplay.text = getString(R.string.brailleSettingsIntro)
+        this.textDisplay.text = getString(R.string.braille_settings_intro)
 
         textBox.addTextChangedListener {
             if (isProbablyArabic(it.toString())) {
-                this.textDisplay.text = getString(R.string.brailleSettingsOutro)
+                this.textDisplay.text = getString(R.string.braille_settings_outro)
                 this.textBox.visibility = View.GONE
                 this.contBtn.visibility = View.VISIBLE
             }

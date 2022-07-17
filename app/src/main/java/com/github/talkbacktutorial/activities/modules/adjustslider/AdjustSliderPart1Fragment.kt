@@ -112,7 +112,7 @@ class AdjustSliderPart1Fragment() : Fragment() {
                     this@AdjustSliderPart1Fragment.id,
                     AdjustSliderPart2Fragment.newInstance()
                 )
-                addToBackStack("adjustSliderModulePart2")
+                addToBackStack(getString(R.string.adjust_slider_part2_backstack))
             }
         }
         this.speakOutro()

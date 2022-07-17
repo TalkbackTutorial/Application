@@ -52,11 +52,11 @@ class Lesson1Part2Fragment : Fragment() {
                 layoutInflater,
                 R.layout.basic_card, binding.cardLinearLayout, false
             )
-            basicCardBinding.text = "Menu Item $menuItemNum"
+            basicCardBinding.text = getString(R.string.menu_item) + " $menuItemNum"
             basicCardBinding.card.setOnClickListener {
                 parentFragmentManager.commit {
                     replace(this@Lesson1Part2Fragment.id, Lesson1Part3Fragment.newInstance())
-                    addToBackStack("lesson0part3")
+                    addToBackStack(getString(R.string.lesson1_part3_backstack))
                 }
             }
             binding.cardLinearLayout.addView(basicCardBinding.card)
@@ -71,13 +71,7 @@ class Lesson1Part2Fragment : Fragment() {
      * @author Andre Pham
      */
     private fun speakIntro() {
-        val intro = """
-            To start, you will learn to navigate back and forth between elements on the screen.
-            To go to the next element, swipe right.
-            To go to the previous element, swipe left.
-            Elements will always speak a description of itself.
-            When you're ready to move on, double tap.
-        """.trimIndent()
+        val intro = getString(R.string.lesson1_part2_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 

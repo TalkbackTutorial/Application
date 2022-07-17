@@ -1,22 +1,133 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- General !-->
     <string name="app_name">Talkback Tutorial</string>
     <string name="lessons">Lessons</string>
     <string name="nl">\n</string>
+    <string name="underscore">_</string>
+    <string name="finish_lesson">Finish Lesson</string>
+    <string name="finish_lesson_button">Finish Lesson Button</string>
+    <string name="finish_module">Finish Module</string>
+    <string name="finish_module_button">Finish module</string>
+    <string name="row">Row</string>
+    <string name="column1">Column1</string>
+    <string name="column2">Column2</string>
+    <string name="column3">Column3</string>
+    <string name="a">a</string>
+    <string name="hello">hello</string>
+    <string name="repeat_instructions">repeat instructions</string>
+    <string name="continue_str">Continue</string>
+    <string name="continue_button">Continue</string>
+    <string name="input">Input</string>
+
+
+    <!-- Challenges !-->
+
+    <!-- Lesson 1 !-->
+    <string name="lesson1_part1_intro">Welcome. In your first lesson, you will learn to move forwards and backwards between menu items, as well as interact with them. Double tap to continue.</string>
+    <string name="lesson1_part2_backstack">lesson1part2</string>
+    <string name="menu_item">Menu Item</string>
+    <string name="lesson1_part3_backstack">lesson1part3</string>
+    <string name="lesson1_part2_intro">To start, you will learn to navigate back and forth between elements on the screen. To go to the next element, swipe right. To go to the previous element, swipe left. Elements will always speak a description of itself. When you are ready to move on, double tap.</string>
+    <string name="lesson1_menu_item_prompt">You have interacted with a menu item. Find the button, then double tap to finish the lesson.</string>
+    <string name="lesson1_lesson_complete">You have completed the lesson. Sending you to the main menu.</string>
+    <string name="lesson1_part3_intro">You will now learn to interact with elements on the screen. To interact with an element, double tap when you have selected it. For this activity, explore the elements on the screen until you reach the button. To tap the button and finish the lesson, double tap.</string>
+
+    <!-- AddSpacesNLBrailleKeyboard !-->
+    <string name="add_spaces_nl_braille_part1_intro">In this module, you will learn how to add a space using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly.</string>
+    <string name="add_spaces_nl_braille_part1_error">Incorrect letter submitted. Try again.</string>
+    <string name="add_spaces_nl_braille_part1_outro">Great job. You correctly typed in a space.</string>
+    <string name="add_spaces_nl_braille_part2_intro">Now, try to shift to a new line and submit using the same two finger swipe up gesture.</string>
+    <string name="add_spaces_nl_braille_part2_outro">Great job. You correctly moved to a new line. You have completed this module. Sending you back to the lesson screen.</string>
+    <string name="add_spaces_nl_braille_part2_error">Incorrect input submitted. Try again.</string>
+
+    <!-- AdjustReadingControls !-->
+    <string name="adjust_reading_controls_part1_justification">There are reading and navigation modes. Reading modes help you read in a granular way, such as by words, paragraphs, or characters. Navigation modes help you move around more efficiently, such as by jumping from button to button.</string>
     <string name="adjust_reading_controls_part1_intro">This module covers how to adjust TalkBack\'s reading controls, which lets us make TalkBack read and navigate in different ways. When you change modes, TalkBack will speak the mode you switched to.</string>
     <string name="adjust_reading_controls_part1_prompt">To change your mode, swipe up and down in one motion. Try to go through all of the options before moving on.</string>
     <string name="adjust_reading_controls_part1_backwards_prompt">You can go backwards through the list. Swipe down then up in one motion to go through the list in the opposite direction.</string>
     <string name="adjust_reading_controls_part1_multi_finger">Modes can also be switched by swiping with three fingers horizontally either to the left or to the right. Try going through the list with three finger swipes in both directions before moving on.</string>
     <string name="adjust_reading_controls_part1_finished_text">That\'s all there is to changing modes. The rest of this lesson covers how to use these modes. Activate the button below to finish this module.</string>
-    <string name="finish_module_button">Finish module</string>
+
+
+    <!-- Adjust Slider !-->
+    <string name="percentage">%</string> <!--not complete!-->
+    <string name="adjust_slider_part2_backstack">adjustSliderModulePart2</string>
+    <string name="adjust_slider_part1_intro">Welcome.In this module, you will learn how to increase and decrease slider values. A slider is a track that contains values between a minimum and a maximum. Sliders are often used to adjust times. For example. song times or video times. You can also adjust this phones volume using a slider. To start you will try increasing a sliders value. To increase a slider swipe up. To continue increase the slider value to 100%</string>
+    <string name="adjust_slider_part1_go_to_min">Well done! Now you will try decreasing the sliders value. To decrease a slider swipe down. To continue set the slider value to 50%</string>
+    <string name="adjust_slider_part1_outro">Well done! You now know how to adjust a slider by swiping up or down. You will now be taken to the next part of this module</string>
+    <string name="adjust_slider_part2_intro">Welcome to the next part of the module. Another way of adjusting sliders is to double tap then drag. To start you will try increasing the sliders value. To increase a slider double tap and hold the slider then drag right. To continue increase the slider value to 100%. Note that you will have to use explore by touch to find the slider.</string>
+    <string name="adjust_slider_part2_go_to_min">Now you will try decreasing the sliders value. To decrease a slider double tap and hold then drag left. To continue decrease the slider value to 0%.</string>
+    <string name="adjust_slider_part2_outro">Well done! now you know how to adjust sliders by dragging. This gesture can be used for any sliders, but will be most useful for adjusting video and song times.</string>
+
+    <!-- CalculatorApp !-->
+    <string name="tbt">TBT</string>
+    <string name="sc">SC</string>
+    <string name="action">_ACTION</string>
+    <string name="task_finish_calculator">_TASK_FINISH_CALCULATOR</string>
+    <string name="calculator_app_pkg">com.simplemobiletools.calculatorapp.debug</string> <!--not complete!-->
+    <string name="calculator_app_cls">com.simplemobiletools.calculator.activities.SplashActivity.Orange</string> <!--not complete!-->
+    <string name="calculator_app_part1_pkg">com.simplemobiletools.calculator.debug</string>
+    <string name="calculator_app_part1_cls">com.simplemobiletools.calculator.activities.SplashActivity.Orange</string>
+    <string name="calculator_app_debug">"com.simplemobiletools.calculator.debug"</string>
+    <string name="calculator_app_part1_intro">In this module, you will apply what you have learnt from the previous lessons to use the simple calculator app. You will be given a simple calculation task to work on. Unless you complete this task successfully, we will let you retry as many times.</string>
+    <string name="calculator_app_part2_intro">You have successfully completed this module. We have sent you back to the talkback module. please proceed to finish module.</string>
+    <string name="finish_calculator_module">Sending you back to the main module page</string>
+    <string name="equation_calculator_app">In this task, please provide the correct calculation for 9 × 5 to get the result 45. As a quick hint for this task, please use the knowledge, in "explore menu by scroll" lesson that you have already learned previously, to find the correct buttons.</string>
+    <string name="calculator_not_installed_message">Calculator is not installed. Please install it and reopen this module.</string>
+
+    <!-- DlnBrailleKeyboard !-->
+    <string name="dnl_braille_part1_intro">In this module, you will learn how to delete letters and words using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly. Finally, there is just one letter in the text field below L. Delete that using the keyboard</string>
+    <string name="dnl_braille_part1_error">Sorry you were not able to delete the letter. Try again.</string>
+    <string name="dnl_braille_part1_outro">Great job. You correctly deleted a letteer.</string>
+    <string name="dnl_braille_part2_intro">Now, try to delete the word Hello in the textfield below.</string>
+    <string name="dnl_braille_part2_outro">Great job. You correctly deleted the word. You have completed this module. Sending you back to the lesson screen.</string>
+    <string name="dnl_braille_part2_error">Sorry you were not able to delete the word. Try again.</string>
+
+
+    <!-- ExploreByTouch !-->
+    <string name="explore_menu_by_touch_menu_item_prompt">You have interacted with a menu item. Find the button, then double tap to finish the lesson.</string>
+    <string name="explore_menu_by_touch_part1_intro">Welcome! We will mainly focus on interact with menu in this lesson. In this module, you will learn how to explore the menu. Usually there are many items in the menu, and you may want to browse them more efficiently. Touching and dragging are used to go through the menu items more quickly. To start, you will explore a two column menu using this method. Touch the screen by your finger and drag it slowly around screen. Make sure your finger is touching the screen at all times. You can drag your finger to any direction, either up, down, right or left. Find the continue button in the menu, double tap it to continue.</string>
+    <string name="explore_menu_by_touch_part1_prompt">Touch the screen with your finger, then drag it slowly around the screen. You can drag your finger in any direction and do not leave the screen. Find the continue button and double tap it.</string>
+    <string name="explore_menu_by_touch_part2_intro">To finish this module, you will need to find the finish button in the menu items. Once you find the button, double tap to finish the module.</string>
+    <string name="explore_menu_by_touch_part2_prompt">You have interacted with a menu item. Find the button, then double tap to finish the lesson.</string>
+    <string name="explore_menu_by_touch_part2_outro">You have completed the lesson. Sending you to the main menu.</string>
+
+    <!-- GoBack !-->
+    <string name="go_back_part1_intro">Welcome. In this lesson, you will learn how to go back the previous page. Double tap to continue.</string>
+    <string name="go_back_part1_conclusion">You have successfully navigated back to the previous page. Double tap to complete lesson.</string>
+    <string name="go_back_part1_outro">You have completed the lesson. Sending you to the main menu.</string>
+    <string name="go_back_part2_intro">To navigate back to the previous page, swipe down then left.</string>
+    <string name="go_back_part2_backstack">gobackModulePart2</string>
+
+    <!-- GoToHomeScreen !-->
+    <string name="stopped_count">stoppedCount</string>
+    <string name="go_to_home_screen_intro">Welcome. In this module, you will learn how to return to the home screen from inside an application, to perform this task, swipe up then left. Try it now. But return to the tutorial after you have reached the home screen.</string>
+    <string name="go_to_home_screen_mid">Good, you are back, this gesture is useful as it allows you to return to the home screen at anytime no matter where you are. Now do it again, remember the gesture is swipe up then left</string>
+    <string name="go_to_home_screen_outro">Nice, you have navigated back to this screen, you have now learnt how to use the go to home screen gesture. Returning you to the lesson screen now.</string>
+
+    <!-- HideBrailleKeyboard !-->
+    <string name="hide_braille_intro">In this module you will learn how to close the braille keyboard when it is on the screen, this can be done by using 2 finger to swipe down while the braille keyboard is active, input the character \'a\' in the following text box and use the gesture to hide the keyboard. then return here.</string>
+    <string name="hide_braille_outro">Congrats, you have learnt to close the text box, use the continue button on this page to return to the lesson screen.</string>
+    <string name="hide_braille_fail">That was not the correct gesture, that was for submitting text, try it again using the correct gesture, which is two finger swipe down.</string>
+
+    <!-- JumpControls !-->
     <string name="jump_controls_intro_initial_text">The \"Controls\" reading mode allows jumping between buttons, sliders, switches, and other interactive things.</string>
-    <string name="jump_navigation_easy_prompt">Switch to the %s reading mode and swipe down to jump to the next %s.</string>
-    <string name="wrong_action_message">You performed the wrong action. Please try again.</string>
-    <string name="pushback_text">This element will push you back</string>
-    <string name="adjust_reading_controls_part1_justification">There are reading and navigation modes. Reading modes help you read in a granular way, such as by words, paragraphs, or characters. Navigation modes help you move around more efficiently, such as by jumping from button to button.</string>
-    <string name="finish_module">Finish Module</string>
-    <string name="jump_text_paragraph_can" tools:ignore="Typos">Can you can a canned can into an un-canned can like a canner can can a canned can into an un-canned can?</string>
-    <string name="jump_text_paragraph_seashells">She sells seashells on the seashore. The shells she sells are seashells, I’m sure. And if she sells seashells on the seashore, Then I’m sure she sells seashore shells.</string>
-    <string name="jump_text_paragraph_piper">Peter Piper picked a peck of pickled peppers; A peck of pickled peppers Peter Piper picked; If Peter Piper picked a peck of pickled peppers, Where’s the peck of pickled peppers Peter Piper picked</string>
+    <string name="jump_controls_entity">control</string>
+    <string name="jump_controls_entity_plural">controls</string>
+
+    <!-- JumpHeaders !-->
+    <string name="jump_headers_entity">header</string>
+    <string name="jump_headers_entity_plural">headers</string>
+    <string name="jump_headers_intro_1">The \"Headers\" reading mode allows you to jump between headers, such those found before blocks of text or groups of form fields.</string>
+
+
+    <!-- JumpLinks !-->
+    <string name="jump_links_entity">link</string>
+    <string name="jump_links_entity_plural">links</string>
+    <string name="jump_links_intro_1">The \"Links\" navigation mode lets you jump between clickable links on a page, such as a URL.</string>
+
+    <!-- JumpNavigation !-->
     <string name="jump_navigation_easy_first_element">There\'s another %s below. Jump to it.</string>
     <string name="jump_navigation_easy_last_element">This is the last %s. Activate it to continue.</string>
     <string name="jump_navigation_easy_last_element_active">To continue, swipe up to the previous %s</string>
@@ -24,36 +135,90 @@
     <string name="jump_navigation_hard_first_element">You have successfully reached the first element… %s. Switch back to paragraph reading mode and swipe down to jump to the next part.</string>
     <string name="jump_navigation_hard_second_element">You have successfully reached the second element… %s. Switch back to paragraph reading mode and swipe down to jump to the next part.</string>
     <string name="jump_navigation_hard_last_element">You have successfully reached the last element… %s. Activate it to complete the challenge.</string>
-    <string name="jump_headers_entity">header</string>
-    <string name="jump_headers_entity_plural">headers</string>
-    <string name="jump_controls_entity">control</string>
-    <string name="jump_controls_entity_plural">controls</string>
-    <string name="jump_links_entity">link</string>
-    <string name="jump_links_entity_plural">links</string>
-    <string name="final_button_mid_module_prompt">continue</string>
-    <string name="final_button_end_module_prompt">finish module</string>
-    <string name="jump_headers_intro_1">The \"Headers\" reading mode allows you to jump between headers, such those found before blocks of text or groups of form fields.</string>
-    <string name="jump_links_intro_1">The \"Links\" navigation mode lets you jump between clickable links on a page, such as a URL.</string>
+    <string name="jump_navigation_easy_prompt">Switch to the %s reading mode and swipe down to jump to the next %s.</string>
+    <string name="jump_navigation_target_link_template"><![CDATA[<a href="http://google.com">%s</a>]]></string>
+    <string name="percent_s">%s</string>
+
+    <!-- JumpText !-->
+    <string name="jump_text_paragraph_can" tools:ignore="Typos">Can you can a canned can into an un-canned can like a canner can can a canned can into an un-canned can?</string>
+    <string name="jump_text_paragraph_seashells">She sells seashells on the seashore. The shells she sells are seashells, I’m sure. And if she sells seashells on the seashore, Then I’m sure she sells seashore shells.</string>
+    <string name="jump_text_paragraph_piper">Peter Piper picked a peck of pickled peppers; A peck of pickled peppers Peter Piper picked; If Peter Piper picked a peck of pickled peppers, Where’s the peck of pickled peppers Peter Piper picked</string>
     <string name="jump_text_request_paragraph_mode">We will now learn to use each reading modes. As you have learned previously, please switch to the reading mode that says \"Paragraph\"</string>
     <string name="jump_text_paragraphs_intro">You will now learn to transition between paragraphs. A single swipe up or down will transition between different paragraphs that are on the screen. Please try it until you reach a button that says finish lesson, then double tap to finish the lesson. For your information, this will be a very long practice text so it would be easier to complete it using the Paragraph reading mode. However, you can still try out different reading modes such as Characters, Words and lines reading modes.</string>
     <string name="jump_text_paragraphs_conclusion">You have completed the lesson. To summarise, in this lesson you have learnt to use the Paragraph reading mode to navigate through the page. In the future, you can utilise these different reading modes such as Headers, Controls, Links and more, to navigate through your phone. Sending you back to the Lesson modules.</string>
     <string name="jump_text_continue_fragment_message">If you have changed reading mode to Paragraph mode, Please double tap to continue</string>
-    <string name="jump_navigation_target_link_template"><![CDATA[<a href="http://google.com">%s</a>]]></string>
-    <string name="voice_recorder_intro">In this module, you\'ll be doing a few tasks in a modified version of the Simple Voice Recorder app. You can retrieve this modified app from the link below:</string>
-    <string name="voice_recorder_link"><a href="https://github.com/TalkbackTutorial/voice-recorder-fork/releases/download/5.7.1-tbfork/voice-recorder-core-debug.apk">Link to the modified Simple Voice Recorder</a></string>
-    <string name="voice_recorder_make_recording_intro">Your first task will be to make a recording. You\'ll open the app, start recording, and stop. There\'s no need to record any sound.</string>
-    <string name="external_app_open_button">Open the app</string>
-    <string name="voice_recorder_install_prompt">Once you have installed the app, activate the button below to continue.</string>
-    <string name="continue_button">Continue</string>
-    <string name="voice_recorder_make_recording_prompt">When you open the app, you should grant it microphone permission. To start recording, press the recording button at the bottom of the main page. The button below will take you to the app.</string>
-    <string name="finish_calculator_module">Sending you back to the main module page</string>
+
+
+    <!-- MediaVolumeControl !-->
+    <string name="media_volume_control_part1_intro">In this tutorial, you will be learning how to control the media volume sliders, increasing or decreasing your phone\'s media volume. To start, explore your screen by touch and find the play button. Once found, double tap to play the music. Then, increase the volume of the media above 75 by swiping up.</string>
+    <string name="media_volume_control_part1_play_prompt">The song is not played. Please press the play button to play the music.</string>
+    <string name="media_volume_control_part1_talkback_prompt">Talkback is currently not turned on. Please turn Talkback on to continue this lesson</string>
+    <string name="media_volume_control_part1_decrease_volume">current Volume is set above 75. Now that you learned how to increase the volume, we will try decreasing the volume below 25. To decrease the volume, swipe down.</string>
+    <string name="media_volume_control_part1_outro">Current volume is set below 25. Congratulations on completing this lesson. In this lesson you have successfully learn how to control the media volume of your phone. To exit this lesson, select the finish button on the top right corner of the screen.</string>
+
+    <!-- OpenBrailleKeyboardSettings !-->
+    <string name="braille_settings_intro">Welcome to the open braille keyboard settings tutorial, you can access the braille keyboard settings page by swiping up with three fingers when the braille keyboard is active. Use all your knowledge, change the braille language to Arabic and enter any Arabic character in the following text box, then close the keyboard by using 2 fingers to swipe down, you would have to select arabic as one of the language options by entering the settings page from the braille keyboard options. After completing this, return to this text box.</string>
+    <string name="braille_settings_outro">Congrats, you have managed to open the braille settings page and enter an Arabic character in the text box. Click the continue button when you are ready.</string>
+
+    <!-- OpeningVoiceCommand !-->
+    <string name="open_voice_commands_intro">Welcome. In this module, you will learn how to enable voice commands. To enable voice commands you need to swipe right and then up.</string>
+    <string name="open_voice_commands_outro">You have completed this module</string>
+
+
+    <!-- OpenNotifications !-->
+    <string name="open_notifications_intro">Welcome. In this module, you will learn how to open your notification panel. Notifications are a way to let you know that something new has happened so you do not miss anything that might be worth your attention and appears whether you are using the application or not. There are two way to do this. First, let us open the notification panel by putting 2 finger on top of the screen then swipe down. Once you opened the notification panel, Talkback will start taking over for a few second. Please wait until Talkback is done then follow the next instruction. Good luck.</string>
+    <string name="open_notifications_feedback_1">Good job. You have opened the notification panel. Now try to close it by doing the same gesture but this time start from the bottom to top"</string>
+    <string name="open_notifications_feedback_2">Well done. The notification panel has been closed. Let\'s try to open it one more time but this time, open it by swiping right, then down immediately.</string>
+    <string name="open_notifications_feedback_3">Excellent. Now close it again by swiping from the bottom with 2 fingers</string>
+    <string name="open_notifications_outro">Well done! You now know how to open and check and close your notification panel. Notification panel can also be used to perform many kind of shortcut. For example, connect or disconnect wifi or bluetooth. You have completed the lesson. We will send you back.</string>
+
+    <!-- OpenRecentApps !-->
+    <string name="open_recent_apps_part1_intro">Welcome. In this module, you will learn how to open recent apps. Recent apps are a handy way to quickly switch between frequently used apps. This can be done in two different ways. Firstly, perform a swipe left and then, a swipe up gesture. Please try to perform these gestures one after another, and enter the recent apps menu. Once completed, return to the tutorial.</string>
+    <string name="open_recent_apps_part1_outro">Great job. You have correctly opened the recent app menu and returned to the tutorial. Now to try with a different method.</string>
+    <string name="open_recent_apps_part2_intro">Try to open the recent apps menu using the recents button in the bottom right or bottom left corner of your phone. You can double tap this button to open the recent apps menu. If your device does not support a recents button, or you are unsure, perform a swipe left and then, a swipe up gesture again to open the recent apps menu. Then return to the tutorial.</string>
+    <string name="open_recent_apps_part2_outro">You have completed the open recent apps module. Sending you to the lesson screen.</string>
+
+    <!-- OpenTalkbackMenu !-->
+    <string name="open_talkback_menu_intro">Welcome. In this module, you will learn how to open Talkback Menu. Talkback menu let you use commands to read, edit text, control speech output, change Talkback setting, and so on. To do this, use one finger to swipe up, or down then swipe right immediately. </string>
+    <string name="open_talkback_menu_outro">Well done! You now know how to open and close Talkback Menu. Once again, to do this you have to swipe up, or down then swipe right. You have completed the lesson.</string>
+    <string name="open_talkback_menu_feedback">Great job. You have opened the Talkback menu. Feel free to navigate around to see what you can do. Once you are done, go to the bottom of the menu and exit.</string>
+
+    <!-- Scroll !-->
+
+    <!-- StartStopMedia !-->
+
+
+    <!-- SubmitText !-->
+    <string name="submit_text_part1_intro">In this module, you will learn how to submit text using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly.</string>
+    <string name="submit_text_part1_error">Incorrect letter submitted. Try again.</string>
+    <string name="submit_text_part1_outro">Great job. You correctly typed in the letter A.</string>
+    <string name="submit_text_part2_intro">Now, try to type the word hello and submit using the same two finger swipe up gesture.</string>
+    <string name="submit_text_part2_outro">Great job. You correctly typed in the word hello. You have completed this module. Sending you back to the lesson screen.</string>
+    <string name="submit_text_part2_error">Incorrect word submitted. Try again.</string>
+
+    <!-- Virtual Keyboard !-->
+
+    <!-- VoiceRecorderApp !-->
     <string name="voice_recorder_successful_recording">Well done. You have successfully made a voice recording.</string>
     <string name="voice_recorder_finish_text">You have successfully played back a recording you made. That\'s all there is right now for working with Simple Voice Recorder. The button below will finish this module.</string>
     <string name="voice_recorder_wrong_action_text">You performed the wrong action. You are supposed to do the following:</string>
     <string name="voice_recorder_play_recording_prompt">Let\'s try playing that recording. To do so, you\'ll have to switch to the recordings tab in the app and activate the recording you made. The button below will take you back to the voice recorder:</string>
     <string name="voice_recorder_wrong_bad_stage">We couldn\'t find the prompt for your last task. Please report this as a bug.</string>
-    <string name="equation_calculator_app">In this task, please provide the correct calculation for 9 × 5 to get the result 45. As a quick hint for this task, please use the knowledge, in "explore menu by scroll" lesson that you have already learned previously, to find the correct buttons.</string>
-    <string name="calculator_not_installed_message">Calculator is not installed. Please install it and reopen this module.</string>
+    <string name="voice_recorder_intro">In this module, you\'ll be doing a few tasks in a modified version of the Simple Voice Recorder app. You can retrieve this modified app from the link below:</string>
+    <string name="voice_recorder_link"><a href="https://github.com/TalkbackTutorial/voice-recorder-fork/releases/download/5.7.1-tbfork/voice-recorder-core-debug.apk">Link to the modified Simple Voice Recorder</a></string>
+    <string name="voice_recorder_make_recording_intro">Your first task will be to make a recording. You\'ll open the app, start recording, and stop. There\'s no need to record any sound.</string>
+    <string name="external_app_open_button">Open the app</string>
+    <string name="voice_recorder_install_prompt">Once you have installed the app, activate the button below to continue.</string>
+    <string name="voice_recorder_make_recording_prompt">When you open the app, you should grant it microphone permission. To start recording, press the recording button at the bottom of the main page. The button below will take you to the app.</string>
+
+    <!-- Unsorted !-->
+
+    <string name="wrong_action_message">You performed the wrong action. Please try again.</string>
+    <string name="pushback_text">This element will push you back</string>
+
+    <string name="final_button_mid_module_prompt">continue</string>
+    <string name="final_button_end_module_prompt">finish module</string>
+
     <string name="challenge_card_title">End of Lesson Challenge</string>
     <string name="module_subtitle">Module %1$d</string>
     <string name="shop_title">Billy\'s Toy Shop</string>
@@ -123,89 +288,5 @@
     <string name="lesson5_challenge_outro">Hello I am Billy, you can complete this challenge by double tap this message from the notification. Then you will be sent to the main menu.</string>
 
     <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a number of different page elements which you will need to navigate through. To complete the challenge, you must navigate through all page elements using the specified reading controls until you reach the complete challenge button.</string>
-    <string name="input">Input</string>
-
-    <string name="go_to_home_screen_intro">Welcome. In this module, you will learn how to return to the home screen from inside an application, to perform this task, swipe up then left. Try it now. But return to the tutorial after you have reached the home screen.</string>
-    <string name="go_to_home_screen_mid">Good, you are back, this gesture is useful as it allows you to return to the home screen at anytime no matter where you are. Now do it again, remember the gesture is swipe up then left</string>
-    <string name="go_to_home_screen_outro">Nice, you have navigated back to this screen, you have now learnt how to use the go to home screen gesture. Returning you to the lesson screen now.</string>
-
-    <string name="open_notifications_intro">Welcome. In this module, you will learn how to open your notification panel. Notifications are a way to let you know that something new has happened so you do not miss anything that might be worth your attention and appears whether you are using the application or not. There are two way to do this. First, let us open the notification panel by putting 2 finger on top of the screen then swipe down. Once you opened the notification panel, Talkback will start taking over for a few second. Please wait until Talkback is done then follow the next instruction. Good luck.</string>
-    <string name="open_notifications_feedback_1">Good job. You have opened the notification panel. Now try to close it by doing the same gesture but this time start from the bottom to top"</string>
-    <string name="open_notifications_feedback_2">Well done. The notification panel has been closed. Let\'s try to open it one more time but this time, open it by swiping right, then down immediately.</string>
-    <string name="open_notifications_feedback_3">Excellent. Now close it again by swiping from the bottom with 2 fingers</string>
-    <string name="open_notifications_outro">Well done! You now know how to open and check and close your notification panel. Notification panel can also be used to perform many kind of shortcut. For example, connect or disconnect wifi or bluetooth. You have completed the lesson. We will send you back.</string>
-
-    <string name="open_recent_apps_part1_intro">Welcome. In this module, you will learn how to open recent apps. Recent apps are a handy way to quickly switch between frequently used apps. This can be done in two different ways. Firstly, perform a swipe left and then, a swipe up gesture. Please try to perform these gestures one after another, and enter the recent apps menu. Once completed, return to the tutorial.</string>
-    <string name="open_recent_apps_part1_outro">Great job. You have correctly opened the recent app menu and returned to the tutorial. Now to try with a different method.</string>
-    <string name="open_recent_apps_part2_intro">Try to open the recent apps menu using the recents button in the bottom right or bottom left corner of your phone. You can double tap this button to open the recent apps menu. If your device does not support a recents button, or you are unsure, perform a swipe left and then, a swipe up gesture again to open the recent apps menu. Then return to the tutorial.</string>
-    <string name="open_recent_apps_part2_outro">You have completed the open recent apps module. Sending you to the lesson screen.</string>
-
-    <string name="open_voice_commands_intro">Welcome. In this module, you will learn how to enable voice commands. To enable voice commands you need to swipe right and then up.</string>
-    <string name="open_voice_commands_outro">You have completed this module</string>
-
-    <string name="add_spaces_nl_braille_part1_intro">In this module, you will learn how to add a space using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly.</string>
-    <string name="add_spaces_nl_braille_part1_error">Incorrect letter submitted. Try again.</string>
-    <string name="add_spaces_nl_braille_part1_outro">Great job. You correctly typed in a space.</string>
-    <string name="add_spaces_nl_braille_part2_intro">Now, try to shift to a new line and submit using the same two finger swipe up gesture.</string>
-    <string name="add_spaces_nl_braille_part2_outro">Great job. You correctly moved to a new line. You have completed this module. Sending you back to the lesson screen.</string>
-    <string name="add_spaces_nl_braille_part2_error">Incorrect input submitted. Try again.</string>
-
-    <string name="dnl_braille_part1_intro">In this module, you will learn how to delete letters and words using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly. Finally, there is just one letter in the text field below L. Delete that using the keyboard</string>
-    <string name="dnl_braille_part1_error">Sorry you were not able to delete the letter. Try again.</string>
-    <string name="dnl_braille_part1_outro">Great job. You correctly deleted a letteer.</string>
-    <string name="dnl_braille_part2_intro">Now, try to delete the word Hello in the textfield below.</string>
-    <string name="dnl_braille_part2_outro">Great job. You correctly deleted the word. You have completed this module. Sending you back to the lesson screen.</string>
-    <string name="dnl_braille_part2_error">Sorry you were not able to delete the word. Try again.</string>
-
-    <string name="submit_text_part1_intro">In this module, you will learn how to submit text using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly.</string>
-    <string name="submit_text_part1_error">Incorrect letter submitted. Try again.</string>
-    <string name="submit_text_part1_outro">Great job. You correctly typed in the letter A.</string>
-    <string name="submit_text_part2_intro">Now, try to type the word hello and submit using the same two finger swipe up gesture.</string>
-    <string name="submit_text_part2_outro">Great job. You correctly typed in the word hello. You have completed this module. Sending you back to the lesson screen.</string>
-    <string name="submit_text_part2_error">Incorrect word submitted. Try again.</string>
-
-    <string name="hello">hello</string>
-    <string name="repeat_instructions">repeat instructions</string>
-
-    <string name="brailleSettingsIntro">Welcome to the open braille keyboard settings tutorial, you can access the braille keyboard settings page by swiping up with three fingers when the braille keyboard is active. Use all your knowledge, change the braille language to Arabic and enter any Arabic character in the following text box, then close the keyboard by using 2 fingers to swipe down, you would have to select arabic as one of the language options by entering the settings page from the braille keyboard options. After completing this, return to this text box.</string>
-    <string name="brailleSettingsOutro">Congrats, you have managed to open the braille settings page and enter an Arabic character in the text box. Click the continue button when you are ready.</string>
-    <string name="continueStr">Continue</string>
-
-    <string name="hideBrailleIntro">In this module you will learn how to close the braille keyboard when it is on the screen, this can be done by using 2 finger to swipe down while the braille keyboard is active, input the character \'a\' in the following text box and use the gesture to hide the keyboard. then return here.</string>
-    <string name="hideBrailleOutro">Congrats, you have learnt to close the text box, use the continue button on this page to return to the lesson screen.</string>
-    <string name="hideBrailleFail">That was not the correct gesture, that was for submitting text, try it again using the correct gesture, which is two finger swipe down.</string>
-
-    <string name="open_talkback_menu_intro">Welcome. In this module, you will learn how to open Talkback Menu. Talkback menu let you use commands to read, edit text, control speech output, change Talkback setting, and so on. To do this, use one finger to swipe up, or down then swipe right immediately. </string>
-    <string name="open_talkback_menu_outro">Well done! You now know how to open and close Talkback Menu. Once again, to do this you have to swipe up, or down then swipe right. You have completed the lesson.</string>
-    <string name="open_talkback_menu_feedback">Great job. You have opened the Talkback menu. Feel free to navigate around to see what you can do. Once you are done, go to the bottom of the menu and exit.</string>
-
-    <string name="adjust_slider_part1_intro">Welcome.In this module, you will learn how to increase and decrease slider values. A slider is a track that contains values between a minimum and a maximum. Sliders are often used to adjust times. For example. song times or video times. You can also adjust this phones volume using a slider. To start you will try increasing a sliders value. To increase a slider swipe up. To continue increase the slider value to 100%</string>
-    <string name="adjust_slider_part1_go_to_min">Well done! Now you will try decreasing the sliders value. To decrease a slider swipe down. To continue set the slider value to 50%</string>
-    <string name="adjust_slider_part1_outro">Well done! You now know how to adjust a slider by swiping up or down. You will now be taken to the next part of this module</string>
-    <string name="adjust_slider_part2_intro">Welcome to the next part of the module. Another way of adjusting sliders is to double tap then drag. To start you will try increasing the sliders value. To increase a slider double tap and hold the slider then drag right. To continue increase the slider value to 100%. Note that you will have to use explore by touch to find the slider.</string>
-    <string name="adjust_slider_part2_go_to_min">Now you will try decreasing the sliders value. To decrease a slider double tap and hold then drag left. To continue decrease the slider value to 0%.</string>
-    <string name="adjust_slider_part2_outro">Well done! now you know how to adjust sliders by dragging. This gesture can be used for any sliders, but will be most useful for adjusting video and song times.</string>
-
-    <string name="calculator_app_part1_intro">In this module, you will apply what you have learnt from the previous lessons to use the simple calculator app. You will be given a simple calculation task to work on. Unless you complete this task successfully, we will let you retry as many times.</string>
-    <string name="calculator_app_part2_intro">You have successfully completed this module. We have sent you back to the talkback module. please proceed to finish module.</string>
-
-    <string name="explore_menu_by_touch_part1_intro">Welcome! We will mainly focus on interact with menu in this lesson. In this module, you will learn how to explore the menu. Usually there are many items in the menu, and you may want to browse them more efficiently. Touching and dragging are used to go through the menu items more quickly. To start, you will explore a two column menu using this method. Touch the screen by your finger and drag it slowly around screen. Make sure your finger is touching the screen at all times. You can drag your finger to any direction, either up, down, right or left. Find the continue button in the menu, double tap it to continue.</string>
-    <string name="explore_menu_by_touch_part1_prompt">Touch the screen with your finger, then drag it slowly around the screen. You can drag your finger in any direction and do not leave the screen. Find the continue button and double tap it.</string>
-    <string name="explore_menu_by_touch_part2_intro">To finish this module, you will need to find the finish button in the menu items. Once you find the button, double tap to finish the module.</string>
-    <string name="explore_menu_by_touch_part2_prompt">You have interacted with a menu item. Find the button, then double tap to finish the lesson.</string>
-    <string name="explore_menu_by_touch_part2_outro">You have completed the lesson. Sending you to the main menu.</string>
-
-    <string name="go_back_part1_intro">Welcome. In this lesson, you will learn how to go back the previous page. Double tap to continue.</string>
-    <string name="go_back_part1_conclusion">You have successfully navigated back to the previous page. Double tap to complete lesson.</string>
-    <string name="go_back_part1_outro">You have completed the lesson. Sending you to the main menu.</string>
-    <string name="go_back_part2_intro">To navigate back to the previous page, swipe down then left.</string>
-
-    <string name="media_volume_control_part1_intro">In this tutorial, you will be learning how to control the media volume sliders, increasing or decreasing your phone\'s media volume. To start, explore your screen by touch and find the play button. Once found, double tap to play the music. Then, increase the volume of the media above 75 by swiping up.</string>
-    <string name="media_volume_control_part1_play_prompt">The song is not played. Please press the play button to play the music.</string>
-    <string name="media_volume_control_part1_talkback_prompt">Talkback is currently not turned on. Please turn Talkback on to continue this lesson</string>
-    <string name="media_volume_control_part1_decrease_volume">current Volume is set above 75. Now that you learned how to increase the volume, we will try decreasing the volume below 25. To decrease the volume, swipe down.</string>
-    <string name="media_volume_control_part1_outro">Current volume is set below 25. Congratulations on completing this lesson. In this lesson you have successfully learn how to control the media volume of your phone. To exit this lesson, select the finish button on the top right corner of the screen.</string>
-    <string name="finish_lesson">Finish Lesson</string>
-
 
 </resources>

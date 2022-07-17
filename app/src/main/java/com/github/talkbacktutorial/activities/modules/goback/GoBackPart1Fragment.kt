@@ -71,7 +71,7 @@ class GoBackPart1Fragment : Fragment() {
         binding.continueButton.button.setOnClickListener {
             parentFragmentManager.commit {
                 replace(this@GoBackPart1Fragment.id, GoBackPart2Fragment.newInstance())
-                addToBackStack("gobackModulePart2")
+                addToBackStack(getString(R.string.go_back_part2_backstack))
             }
         }
     }
@@ -82,7 +82,7 @@ class GoBackPart1Fragment : Fragment() {
      */
     private fun setupFinishLessonButton() {
         val primaryButtonBinding: PillButtonBinding = binding.finishLessonButton
-        primaryButtonBinding.text = "Finish Lesson"
+        primaryButtonBinding.text = getString(R.string.finish_lesson)
         primaryButtonBinding.button.setOnClickListener {
             this.finishLesson()
         }

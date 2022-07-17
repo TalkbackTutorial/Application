@@ -51,7 +51,7 @@ class Lesson1Part1Fragment : Fragment() {
         binding.continueButton.button.setOnClickListener {
             parentFragmentManager.commit {
                 replace(this@Lesson1Part1Fragment.id, Lesson1Part2Fragment.newInstance())
-                addToBackStack("lesson0part2")
+                addToBackStack(getString(R.string.lesson1_part2_backstack))
             }
         }
     }
@@ -61,11 +61,7 @@ class Lesson1Part1Fragment : Fragment() {
      * @author Andre Pham
      */
     private fun speakIntro() {
-        val intro = """
-            Welcome. 
-            In your first lesson, you'll learn to move forwards and backwards between menu items, as well as interact with them.
-            Double tap to continue.
-        """.trimIndent()
+        val intro = getString(R.string.lesson1_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 

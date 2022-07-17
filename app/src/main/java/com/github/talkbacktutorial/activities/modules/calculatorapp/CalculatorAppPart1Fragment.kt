@@ -70,7 +70,7 @@ class CalculatorAppPart1Fragment : Fragment() {
             val intent = Intent()
 
             // target the main activity of the forked calculator recorder app
-            intent.component = ComponentName("com.simplemobiletools.calculator.debug", "com.simplemobiletools.calculator.activities.SplashActivity.Orange")
+            intent.component = ComponentName(getString(R.string.calculator_app_part1_pkg), getString(R.string.calculator_app_part1_cls))
 
             startActivity(intent)
         }
@@ -101,7 +101,7 @@ class CalculatorAppPart1Fragment : Fragment() {
 
         pm?.let {
             val appAvailable: Boolean = try {
-                pm.getPackageInfo("com.simplemobiletools.calculator.debug", 0)
+                pm.getPackageInfo(getString(R.string.calculator_app_debug), 0)
                 true
             } catch (_: PackageManager.NameNotFoundException) {
                 false

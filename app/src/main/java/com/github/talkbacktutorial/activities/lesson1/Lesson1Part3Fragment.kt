@@ -57,9 +57,9 @@ class Lesson1Part3Fragment : Fragment() {
     private fun showMenuItems(amount: Int) {
         for (menuItemNum in 1..amount) {
             val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(layoutInflater, R.layout.basic_card, binding.linearLayout, false)
-            basicCardBinding.text = "Menu Item $menuItemNum"
+            basicCardBinding.text = getString(R.string.menu_item) + " $menuItemNum"
             basicCardBinding.card.setOnClickListener {
-                ttsEngine.speak("You have interacted with a menu item. Find the button, then double tap to finish the lesson.")
+                ttsEngine.speak(getString(R.string.lesson1_menu_item_prompt))
             }
             binding.linearLayout.addView(basicCardBinding.card)
             if (menuItemNum == 1) basicCardBinding.card.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
@@ -73,7 +73,7 @@ class Lesson1Part3Fragment : Fragment() {
      */
     private fun insertFinishLessonButton(position: Int) {
         val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, binding.linearLayout, false)
-        primaryButtonBinding.text = "Finish Lesson"
+        primaryButtonBinding.text = getString(R.string.finish_lesson)
         primaryButtonBinding.button.setOnClickListener {
             this.finishLesson()
         }
@@ -95,7 +95,7 @@ class Lesson1Part3Fragment : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-        this.ttsEngine.speak("You have completed the lesson. Sending you to the main menu.", override = true)
+        this.ttsEngine.speak(getString(R.string.lesson1_lesson_complete), override = true)
     }
 
     /**
@@ -103,12 +103,7 @@ class Lesson1Part3Fragment : Fragment() {
      * @author Andre Pham
      */
     private fun speakIntro() {
-        val intro = """
-            You will now learn to interact with elements on the screen.
-            To interact with an element, double tap when you have selected it.
-            For this activity, explore the elements on the screen until you reach the button.
-            To tap the button and finish the lesson, double tap.
-        """.trimIndent()
+        val intro = getString(R.string.lesson1_part3_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 

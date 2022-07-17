@@ -116,7 +116,7 @@ class JumpNavigationPart1Fragment(@NonNull private val mode: NavigationMode) : F
 
         // templating the target strings
         val targetTemplate =
-            if (mode == NavigationMode.LINKS) getString(R.string.jump_navigation_target_link_template) else "%s"
+            if (mode == NavigationMode.LINKS) getString(R.string.jump_navigation_target_link_template) else getString(R.string.percent_s)
 
         // set up target strings
         val firstTargetTemplate =
