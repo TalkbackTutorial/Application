@@ -65,20 +65,15 @@ class ScrollPart2Fragment : Fragment() {
                 layoutInflater,
                 R.layout.basic_horizontal_card, binding.cardLinearLayout, false
             )
-            basicCardBinding.text = "Menu Item $menuItemNum"
+            basicCardBinding.text = getString(R.string.menu_item) + "$menuItemNum"
             basicCardBinding.card.setOnClickListener {
-                val info = """
-                    Menu Item $menuItemNum
-                    To scroll right, swipe left with two fingers.
-                    To scroll left, swipe with two fingers in the opposite direction.
-                    To finish, first check the checkbox at the end of the horizontal menu, then press the button at the beginning of the horizontal menu.
-                """.trimIndent()
+                val info = getString(R.string.menu_item) + "$menuItemNum" + getString(R.string.scroll_part2_set_up).trimIndent()
                 this.ttsEngine.speak(info)
             }
             binding.cardLinearLayout.addView(basicCardBinding.card)
         }
         val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, binding.cardLinearLayout, false)
-        primaryButtonBinding.text = "Finish Lesson"
+        primaryButtonBinding.text = getString(R.string.finish_lesson)
         primaryButtonBinding.button.setOnClickListener {
             this.finishLesson()
         }
@@ -91,15 +86,7 @@ class ScrollPart2Fragment : Fragment() {
      * @author Andre Pham
      */
     private fun speakIntro() {
-        val intro = """
-            Now you'll learn how to scroll through horizontal menus.
-            When scrolling vertically, you used two fingers to swipe up and down.
-            Now, when scrolling horizontally, you will use two fingers to swipe left and right.
-            To scroll right, swipe left with two fingers.
-            To scroll left, swipe with two fingers in the opposite direction.
-            To finish the lesson, scroll to the end of the horizontal menu, and interact with the button to finish the lesson.
-            You may now start.
-        """.trimIndent()
+        val intro = getString(R.string.scroll_part2_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -118,7 +105,7 @@ class ScrollPart2Fragment : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-        this.ttsEngine.speak("You have completed the lesson. Sending you to the main menu.", override = true)
+        this.ttsEngine.speak(getString(R.string.scroll_part2_outro), override = true)
     }
 
     override fun onDestroyView() {

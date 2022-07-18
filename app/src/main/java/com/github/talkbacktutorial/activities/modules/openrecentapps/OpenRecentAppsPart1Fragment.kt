@@ -69,7 +69,7 @@ class OpenRecentAppsPart1Fragment : Fragment() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             parentFragmentManager.commit {
                 replace(this@OpenRecentAppsPart1Fragment.id, OpenRecentAppsPart2Fragment())
-                addToBackStack("openrecentappspart1")
+                addToBackStack(getString(R.string.open_recent_apps_part1_backstack))
             }
         }
     }

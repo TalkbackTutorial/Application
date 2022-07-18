@@ -57,7 +57,7 @@ class SubmitTextPart1Fragment : Fragment(){
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val text = binding.editText.text.toString()
                 // Checking for correct user input.
-                if (text.lowercase() == "a") {
+                if (text.lowercase() == getString(R.string.a)) {
                     this.finishLesson()
                 }
                 else {
@@ -95,7 +95,7 @@ class SubmitTextPart1Fragment : Fragment(){
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 parentFragmentManager.commit {
                     replace(this@SubmitTextPart1Fragment.id, SubmitTextPart2Fragment())
-                    addToBackStack("submittextpart1")
+                    addToBackStack(getString(R.string.submit_text_part1_backstack))
                 }
             }
         }

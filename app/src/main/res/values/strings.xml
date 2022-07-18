@@ -9,6 +9,7 @@
     <string name="finish_lesson_button">Finish Lesson Button</string>
     <string name="finish_module">Finish Module</string>
     <string name="finish_module_button">Finish module</string>
+    <string name="finish">Finish</string>
     <string name="row">Row</string>
     <string name="column1">Column1</string>
     <string name="column2">Column2</string>
@@ -19,6 +20,9 @@
     <string name="continue_str">Continue</string>
     <string name="continue_button">Continue</string>
     <string name="input">Input</string>
+    <string name="android">android</string>
+    <string name="forward_slash">/</string>
+    <string name="menu_item">Menu Item</string>
 
 
     <!-- Challenges !-->
@@ -26,7 +30,6 @@
     <!-- Lesson 1 !-->
     <string name="lesson1_part1_intro">Welcome. In your first lesson, you will learn to move forwards and backwards between menu items, as well as interact with them. Double tap to continue.</string>
     <string name="lesson1_part2_backstack">lesson1part2</string>
-    <string name="menu_item">Menu Item</string>
     <string name="lesson1_part3_backstack">lesson1part3</string>
     <string name="lesson1_part2_intro">To start, you will learn to navigate back and forth between elements on the screen. To go to the next element, swipe right. To go to the previous element, swipe left. Elements will always speak a description of itself. When you are ready to move on, double tap.</string>
     <string name="lesson1_menu_item_prompt">You have interacted with a menu item. Find the button, then double tap to finish the lesson.</string>
@@ -177,6 +180,7 @@
     <string name="open_recent_apps_part1_outro">Great job. You have correctly opened the recent app menu and returned to the tutorial. Now to try with a different method.</string>
     <string name="open_recent_apps_part2_intro">Try to open the recent apps menu using the recents button in the bottom right or bottom left corner of your phone. You can double tap this button to open the recent apps menu. If your device does not support a recents button, or you are unsure, perform a swipe left and then, a swipe up gesture again to open the recent apps menu. Then return to the tutorial.</string>
     <string name="open_recent_apps_part2_outro">You have completed the open recent apps module. Sending you to the lesson screen.</string>
+    <string name="open_recent_apps_part1_backstack">"openrecentappspart1"</string>
 
     <!-- OpenTalkbackMenu !-->
     <string name="open_talkback_menu_intro">Welcome. In this module, you will learn how to open Talkback Menu. Talkback menu let you use commands to read, edit text, control speech output, change Talkback setting, and so on. To do this, use one finger to swipe up, or down then swipe right immediately. </string>
@@ -184,9 +188,19 @@
     <string name="open_talkback_menu_feedback">Great job. You have opened the Talkback menu. Feel free to navigate around to see what you can do. Once you are done, go to the bottom of the menu and exit.</string>
 
     <!-- Scroll !-->
+    <string name="scroll_part1_set_up">To scroll down, place two fingers on the screen at the same time, then swipe upwards with both of them. To scroll up, swipe with two fingers in the opposite direction. To finish, find the Continue button at the bottom of this vertical menu, then double tap it to continue.</string>
+    <string name="scroll_part2_backstack">scrollingModulePart2</string>
+    <string name="scroll_part1_intro_p1">Welcome. In this module, you will learn how to scroll through vertical and horizontal menus. Screens often contain very long lists that contain more items than the screen can show at once. Scrolling is used to go through these very long lists of items very quickly. To start, you will try scrolling through a vertical menu with</string>
+    <string name="scroll_part1_intro_p2">items. To scroll down, place two fingers on the screen at the same time, then swipe upwards with both of them. To scroll up, swipe with two fingers in the opposite direction. To finish, find the Continue button at the bottom of this vertical menu, then double tap it to continue. You may now start.</string>
+    <string name="scroll_part2_set_up">To scroll right, swipe left with two fingers. To scroll left, swipe with two fingers in the opposite direction. To finish, first check the checkbox at the end of the horizontal menu, then press the button at the beginning of the horizontal menu.</string>
+    <string name="scroll_part2_intro">Now you will learn how to scroll through horizontal menus. When scrolling vertically, you used two fingers to swipe up and down. Now, when scrolling horizontally, you will use two fingers to swipe left and right. To scroll right, swipe left with two fingers. To scroll left, swipe with two fingers in the opposite direction. To finish the lesson, scroll to the end of the horizontal menu, and interact with the button to finish the lesson. You may now start.</string>
+    <string name="scroll_part2_outro">You have completed the lesson. Sending you to the main menu.</string>
 
     <!-- StartStopMedia !-->
-
+    <string name="android_resource">android.resource://</string>
+    <string name="start_stop_media_part1_outro">Great job! You have paused the video. Congratulations on completing this lesson. In this lesson you have successfully learn how to play and pause a video. To exit this lesson, select the finish button on the screen.</string>
+    <string name="start_stop_media_part1_play">Great job! You have played the video. Now that you learned how to play the video, we will try pause the video. To pause the video, explore by touch to find the pause button and double tap on the button to pause the video.</string>
+    <string name="start_stop_media_part1_intro">In this tutorial, you will be learning how to start and stop a video. To start, double tap your screen by touch to bring up the media controller. Next swipe right until you find the play button. Double tap to start playing the video. If nothing happens when you swipe, double tap again to bring up the media controller.</string>
 
     <!-- SubmitText !-->
     <string name="submit_text_part1_intro">In this module, you will learn how to submit text using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly.</string>
@@ -195,8 +209,17 @@
     <string name="submit_text_part2_intro">Now, try to type the word hello and submit using the same two finger swipe up gesture.</string>
     <string name="submit_text_part2_outro">Great job. You correctly typed in the word hello. You have completed this module. Sending you back to the lesson screen.</string>
     <string name="submit_text_part2_error">Incorrect word submitted. Try again.</string>
+    <string name="submit_text_part1_backstack">submittextpart1</string>
 
     <!-- Virtual Keyboard !-->
+    <string name="virtual_keyboard_hello">hello</string>
+    <string name="virtual_keyboard_part1_on_finish_typing">Great job! You have typed the word hello with the on screen keyboard. Congratulations on completing this lesson. In this lesson you have successfully learnt how to type with the on screen keyboard. To exit this lesson, select the finish button on the screen.</string>
+    <string name="virtual_keyboard_part1_on_finish_typing_fail">Looks like you have not typed the word hello. Double tap on the screen to bring up the keyboard. Tap on the backspace button to delete the previously typed word and try typing the word hello again.</string>
+    <string name="virtual_keyboard_part1_intro">In this tutorial, you will be learning how to open the on-screen virtual keyboard and type using it. To start, double tap on the screen to open the virtual keyboard. </string>
+    <string name="virtual_keyboard_navigation_bar_height">navigation_bar_height</string>
+    <string name="virtual_keyboard_status_bar_height">status_bar_height</string>
+    <string name="virtual_keyboard_dimen">dimen</string>
+    <string name="virtual_keyboard_part1_on_show_keyboard">Great job! You opened up the on screen virtual keyboard. Explore by touch to type hello using the keyboard</string>
 
     <!-- VoiceRecorderApp !-->
     <string name="voice_recorder_successful_recording">Well done. You have successfully made a voice recording.</string>
@@ -215,9 +238,9 @@
 
     <string name="wrong_action_message">You performed the wrong action. Please try again.</string>
     <string name="pushback_text">This element will push you back</string>
-
     <string name="final_button_mid_module_prompt">continue</string>
     <string name="final_button_end_module_prompt">finish module</string>
+
 
     <string name="challenge_card_title">End of Lesson Challenge</string>
     <string name="module_subtitle">Module %1$d</string>

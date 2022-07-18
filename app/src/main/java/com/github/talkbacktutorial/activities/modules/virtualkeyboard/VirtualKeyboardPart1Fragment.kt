@@ -65,26 +65,17 @@ class VirtualKeyboardPart1Fragment : Fragment() {
 
     private fun onFinishTyping() {
         if (editText.text.toString().lowercase() == TYPED_STRING){
-            val info = """Great job! You have typed the word hello with the on screen keyboard .
-                    Congratulations on completing this lesson.
-                    In this lesson you have successfully learnt how to type with the on screen keyboard.
-                    To exit this lesson, select the finish button on the screen.""".trimIndent()
+            val info = getString(R.string.virtual_keyboard_part1_on_finish_typing).trimIndent()
             speakDuringLesson(info)
             insertFinishButton()
         } else {
-            val info = """Looks like you haven't typed the word hello. Double tap on the screen to bring up the keyboard.
-                Tap on the backspace button to delete the previously typed word and try typing the word hello again.
-            """.trimIndent()
+            val info = getString(R.string.virtual_keyboard_part1_on_finish_typing_fail).trimIndent()
             speakDuringLesson(info)
         }
     }
 
     private fun speakIntro() {
-        val intro = """
-            In this tutorial, you will be learning how to open the on-screen virtual keyboard and 
-            type using it. To start, double tap on the screen to open the virtual keyboard. 
-        """.trimIndent()
-
+        val intro = getString(R.string.virtual_keyboard_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -92,14 +83,14 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         // navigation bar height
         var navigationBarHeight = 0
         var resourceId: Int =
-            resources.getIdentifier("navigation_bar_height", "dimen", "android")
+            resources.getIdentifier(getString(R.string.virtual_keyboard_navigation_bar_height), getString(R.string.virtual_keyboard_dimen), getString(R.string.android))
         if (resourceId > 0) {
             navigationBarHeight = resources.getDimensionPixelSize(resourceId)
         }
 
         // status bar height
         var statusBarHeight = 0
-        resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        resourceId = resources.getIdentifier(getString(R.string.virtual_keyboard_status_bar_height), getString(R.string.virtual_keyboard_dimen), getString(R.string.android))
         if (resourceId > 0) {
             statusBarHeight = resources.getDimensionPixelSize(resourceId)
         }
@@ -117,8 +108,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
 
     private fun onShowKeyboard() {
         if (firstTime) {
-            val info = """Great job! You opened up the on screen virtual keyboard.
-                    Explore by touch to type hello using the keyboard""".trimIndent()
+            val info = getString(R.string.virtual_keyboard_part1_on_show_keyboard).trimIndent()
             speakDuringLesson(info)
             firstTime = false
         }
@@ -133,7 +123,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         layoutParams.topToTop = constraintLayout.id
         layoutParams.topMargin = 10.dpToPixels(requireContext())
         val finishButton = Button(requireContext())
-        val text = "Finish"
+        val text = getString(R.string.finish)
         finishButton.contentDescription = text
         finishButton.text = text
         finishButton.layoutParams = layoutParams

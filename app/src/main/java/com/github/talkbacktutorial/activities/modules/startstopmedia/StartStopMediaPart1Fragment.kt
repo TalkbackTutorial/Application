@@ -55,7 +55,7 @@ class StartStopMediaPart1Fragment : Fragment() {
     private fun setUpVideo() {
         // Get videoView by id
         this.videoView = this.binding.customVideoview
-        videoView.setVideoPath("android.resource://" + requireActivity().packageName + "/" + R.raw.video_test)
+        videoView.setVideoPath(getString(R.string.android_resource) + requireActivity().packageName + getString(R.string.forward_slash) + R.raw.video_test)
         videoView.setOnPreparedListener { mp -> mp.isLooping = true }
         mediaController = MediaController(context)
         mediaController?.setAnchorView(videoView)
@@ -78,12 +78,7 @@ class StartStopMediaPart1Fragment : Fragment() {
                         binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
                     }
                     mediaController?.hide()
-                    val info = """
-                        Great job! You've paused the video.
-                        Congratulations on completing this lesson.
-                        In this lesson you have successfully learn how to play and pause a video.
-                        To exit this lesson, select the finish button on the screen.
-                    """.trimIndent()
+                    val info = getString(R.string.start_stop_media_part1_outro).trimIndent()
 
                     ttsEngine.speak(info)
                     firstPause = false
@@ -93,12 +88,7 @@ class StartStopMediaPart1Fragment : Fragment() {
             override fun onPlay() {
                 mediaController?.hide()
                 if (firstPlay) {
-                    val info = """
-                        Great job! You've played the video.
-                        Now that you learned how to play the video, we will try pause the video.
-                        To pause the video, explore by touch to find the pause button and double tap
-                        on the button to pause the video.
-                    """.trimIndent()
+                    val info = getString(R.string.start_stop_media_part1_play).trimIndent()
 
                     Handler().postDelayed(
                         Runnable {
@@ -118,12 +108,7 @@ class StartStopMediaPart1Fragment : Fragment() {
         })
     }
     private fun speakIntro() {
-        val intro = """
-            In this tutorial, you will be learning how to start and stop a video. 
-            To start, double tap your screen by touch to bring up the media controller. 
-            Next swipe right until you find the play button. Double tap to start playing the video.
-            If nothing happens when you swipe, double tap again to bring up the media controller.
-        """.trimIndent()
+        val intro = getString(R.string.start_stop_media_part1_intro).trimIndent()
 
         this.ttsEngine.speakOnInitialisation(intro)
     }
@@ -131,7 +116,7 @@ class StartStopMediaPart1Fragment : Fragment() {
     private fun insertFinishButton() {
         val constraintLayout = this.binding.startStopMediaControlConstraintLayout
         val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, constraintLayout,false)
-        primaryButtonBinding.text = "Finish Lesson"
+        primaryButtonBinding.text = getString(R.string.finish_lesson)
         primaryButtonBinding.button.setOnClickListener{ endLesson() }
         val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
         layoutParams.horizontalBias = 0.95f

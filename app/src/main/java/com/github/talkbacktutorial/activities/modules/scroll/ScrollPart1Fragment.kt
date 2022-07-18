@@ -58,27 +58,22 @@ class ScrollPart1Fragment : Fragment() {
                 layoutInflater,
                 R.layout.basic_card, binding.cardLinearLayout, false
             )
-            basicCardBinding.text = "Menu Item $menuItemNum"
+            basicCardBinding.text = getString(R.string.menu_item) + "$menuItemNum"
             basicCardBinding.card.setOnClickListener {
-                val info = """
-                    Menu Item $menuItemNum
-                    To scroll down, place two fingers on the screen at the same time, then swipe upwards with both of them.
-                    To scroll up, swipe with two fingers in the opposite direction.
-                    To finish, find the Continue button at the bottom of this vertical menu, then double tap it to continue.
-                """.trimIndent()
+                val info = getString(R.string.menu_item) + "$menuItemNum" + getString(R.string.scroll_part1_set_up).trimIndent()
                 this.ttsEngine.speak(info)
             }
             binding.cardLinearLayout.addView(basicCardBinding.card)
         }
         val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, binding.cardLinearLayout, false)
-        primaryButtonBinding.text = "Continue"
+        primaryButtonBinding.text = getString(R.string.continue_str)
         primaryButtonBinding.button.setOnClickListener {
             parentFragmentManager.commit {
                 replace(
                     this@ScrollPart1Fragment.id,
                     ScrollPart2Fragment.newInstance()
                 )
-                addToBackStack("scrollingModulePart2")
+                addToBackStack(getString(R.string.scroll_part2_backstack))
             }
         }
         binding.cardLinearLayout.addView(primaryButtonBinding.button)
@@ -89,17 +84,7 @@ class ScrollPart1Fragment : Fragment() {
      * @author Andre Pham
      */
     private fun speakIntro() {
-        val intro = """
-            Welcome.
-            In this module, you'll learn how to scroll through vertical and horizontal menus.
-            Screens often contain very long lists that contain more items than the screen can show at once.
-            Scrolling is used to go through these very long lists of items very quickly.
-            To start, you'll try scrolling through a vertical menu with ${this.menuSize} items.
-            To scroll down, place two fingers on the screen at the same time, then swipe upwards with both of them.
-            To scroll up, swipe with two fingers in the opposite direction.
-            To finish, find the Continue button at the bottom of this vertical menu, then double tap it to continue.
-            You may now start.
-        """.trimIndent()
+        val intro = getString(R.string.scroll_part1_intro_p1) + "${this.menuSize}" + getString(R.string.scroll_part1_intro_p2).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
