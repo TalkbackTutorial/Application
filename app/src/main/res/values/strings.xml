@@ -23,9 +23,38 @@
     <string name="android">android</string>
     <string name="forward_slash">/</string>
     <string name="menu_item">Menu Item</string>
+    <string name="android_resource">android.resource://</string>
 
 
     <!-- Challenges !-->
+    <string name="challenge_outro">You have completed the challenge. Sending you to the main menu.</string>
+
+    <!-- Lesson 2 Challenge !-->
+    <string name="aud">AUD</string>
+    <string name="inspect_toy">inspectToy</string>
+    <string name="tennis_ball">Tennis Ball</string>
+    <string name="tennis_racquet">Tennis Racquet</string>
+    <string name="lesson2_challenge_intro">Welcome to Lesson 2\'s challenge. In challenges, you\'ll be presented with practical scenarios to demonstrate your new learnt skills. In this challenge, you\'ll be presented with a store. To complete the lesson, add the tennis ball and the tennis racquet to your watchlist. The tennis ball has a price of $5, and the tennis racquet has a price of $180. You may now start.</string>
+    <string name="rating_content_description">Rating: %1$d stars</string>
+
+    <!-- Lesson 3 Challenge !-->
+    <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a number of different page elements which you will need to navigate through. To complete the challenge, you must navigate through all page elements using the specified reading controls until you reach the complete challenge button.</string>
+
+    <!-- Lesson 4 Challenge !-->
+    <string name="lesson4_challenge_intro">In this challenge, you\'ll be presented an article with an embedded video already playing. To complete the challenge, pause the video, and return its slider to the beginning of the video, then replay it. You may now start.</string>
+
+    <!-- Lesson 5 Challenge !-->
+    <string name="lesson5_challenge_intro">Welcome to Lesson 5\'s challenge. In this challenges, you\'ll be ask to perform a sequence of tasks.</string>
+    <string name="lesson5_challenge_fragment1_intro">Now, let\'s get start. Billy wants to know what the time is it. Go back to home screen and check the current time on your phone. Then back here to select the correct time.</string>
+    <string name="lesson5_challenge_wrong_selected_time">The selected time is not correct. Check the time again, and then select the closet time.</string>
+    <string name="lesson5_challenge_fragment2_intro">You selected the correct time. Now a new message is sent from Billy, open the notification to find it.</string>
+    <string name="lesson5_challenge_notification_title">Billy\'s message</string>
+    <string name="lesson5_challenge_outro">Hello I am Billy, you can complete this challenge by double tap this message from the notification. Then you will be sent to the main menu.</string>
+    <string name="date_format">HH:mm</string>
+    <string name="lesson5_challenge_part2_backstack">lesson5ChallengePart2</string>
+    <string name="lesson5_challenge_part2_channel_id">TBT1</string>
+    <string name="lesson5_challenge_part2_notification_name">Talkback tutorial</string>
+    <string name="lesson5_challenge_part2_notification_desc">Notification description</string>
 
     <!-- Lesson 1 !-->
     <string name="lesson1_part1_intro">Welcome. In your first lesson, you will learn to move forwards and backwards between menu items, as well as interact with them. Double tap to continue.</string>
@@ -86,7 +115,6 @@
     <string name="dnl_braille_part2_intro">Now, try to delete the word Hello in the textfield below.</string>
     <string name="dnl_braille_part2_outro">Great job. You correctly deleted the word. You have completed this module. Sending you back to the lesson screen.</string>
     <string name="dnl_braille_part2_error">Sorry you were not able to delete the word. Try again.</string>
-
 
     <!-- ExploreByTouch !-->
     <string name="explore_menu_by_touch_menu_item_prompt">You have interacted with a menu item. Find the button, then double tap to finish the lesson.</string>
@@ -197,7 +225,7 @@
     <string name="scroll_part2_outro">You have completed the lesson. Sending you to the main menu.</string>
 
     <!-- StartStopMedia !-->
-    <string name="android_resource">android.resource://</string>
+
     <string name="start_stop_media_part1_outro">Great job! You have paused the video. Congratulations on completing this lesson. In this lesson you have successfully learn how to play and pause a video. To exit this lesson, select the finish button on the screen.</string>
     <string name="start_stop_media_part1_play">Great job! You have played the video. Now that you learned how to play the video, we will try pause the video. To pause the video, explore by touch to find the pause button and double tap on the button to pause the video.</string>
     <string name="start_stop_media_part1_intro">In this tutorial, you will be learning how to start and stop a video. To start, double tap your screen by touch to bring up the media controller. Next swipe right until you find the play button. Double tap to start playing the video. If nothing happens when you swipe, double tap again to bring up the media controller.</string>
@@ -240,8 +268,6 @@
     <string name="pushback_text">This element will push you back</string>
     <string name="final_button_mid_module_prompt">continue</string>
     <string name="final_button_end_module_prompt">finish module</string>
-
-
     <string name="challenge_card_title">End of Lesson Challenge</string>
     <string name="module_subtitle">Module %1$d</string>
     <string name="shop_title">Billy\'s Toy Shop</string>
@@ -260,8 +286,6 @@
     <string name="train_set_description">Hop on board for a fun-filled journey through the farm with this wooden train set that will teach your little one various skills.</string>
     <string name="toy_guitar_description">Delight your little musician with this guitar that is an ideal plaything to indulge in, for interactive, musical fun.</string>
     <string name="egg_description">Can I offer you a nice egg in this trying time?</string>
-    <string name="tennis_ball">Tennis Ball</string>
-    <string name="tennis_racquet">Tennis Racquet</string>
     <string name="basket_ball">Basket Ball</string>
     <string name="teddy_bear">Teddy Bear</string>
     <string name="princess_doll">Princess Doll</string>
@@ -280,10 +304,7 @@
     <string name="add_to_watchlist">Add to Watchlist</string>
     <string name="purchased_feedback">%1$s Purchased</string>
     <string name="added_to_watchlist_feedback">%1$s Added to Watchlist</string>
-    <string name="lesson2_challenge_intro">Welcome to Lesson 2\'s challenge. In challenges, you\'ll be presented with practical scenarios to demonstrate your new learnt skills. In this challenge, you\'ll be presented with a store. To complete the lesson, add the tennis ball and the tennis racquet to your watchlist. The tennis ball has a price of $5, and the tennis racquet has a price of $180. You may now start.</string>
-    <string name="challenge_outro">You have completed the challenge. Sending you to the main menu.</string>
     <string name="price_range">Price Range</string>
-    <string name="rating_content_description">Rating: %1$d stars</string>
     <string name="popup_text">Talkback is disabled. This application requires you to first enable Talkback. Tap \'open settings\' to go to the accessibility settings page, or tap \'exit\' to exit the application.</string>
     <string name="popup_display_text">Talkback is required for this application. You can enable it in the accessibility settings of your device.</string>
     <string name="exit_application">Exiting the application.</string>
@@ -291,8 +312,6 @@
     <string name="talkback_disabled">Talkback Disabled</string>
     <string name="open_settings">Open Settings</string>
     <string name="close_application">Exit</string>
-    
-    <string name="lesson4_challenge_intro">In this challenge, you\'ll be presented an article with an embedded video already playing. To complete the challenge, pause the video, and return its slider to the beginning of the video, then replay it. You may now start.</string>
     <string name="article_video_content_description">Embedded Video</string>
     <string name="article_title">The Different Memory Storage Areas of the Brain</string>
     <string name="article_date">Saturday 15th July, 2042</string>
@@ -302,14 +321,5 @@
     <string name="article_paragraph3">The amygdala (in temporal lobe) is involved in emotional memory, and links emotions and emotional responses (such as fear and aggression) to declarative memories. This helps us remember experiences by the emotion we felt during its formation. Also involved in the formation of procedural memories.</string>
     <string name="article_paragraph4">The cerebellum is involved in motor learning and the memory of conditioned reflexes. It\'s involved in implicit memory such as procedural memories that require movement. Also has a role in spatial navigation.</string>
     <string name="article_paragraph5">Finally, language is stored in Broca\'s area in the left frontal lobe, and memory for pictures are stored in the occipital lobe.</string>
-
-    <string name="lesson5_challenge_intro">Welcome to Lesson 5\'s challenge. In this challenges, you\'ll be ask to perform a sequence of tasks.</string>
-    <string name="lesson5_challenge_fragment1_intro">Now, let\'s get start. Billy wants to know what the time is it. Go back to home screen and check the current time on your phone. Then back here to select the correct time.</string>
-    <string name="lesson5_challenge_wrong_selected_time">The selected time is not correct. Check the time again, and then select the closet time.</string>
-    <string name="lesson5_challenge_fragment2_intro">You selected the correct time. Now a new message is sent from Billy, open the notification to find it.</string>
-    <string name="lesson5_challenge_notification_title">Billy\'s message</string>
-    <string name="lesson5_challenge_outro">Hello I am Billy, you can complete this challenge by double tap this message from the notification. Then you will be sent to the main menu.</string>
-
-    <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a number of different page elements which you will need to navigate through. To complete the challenge, you must navigate through all page elements using the specified reading controls until you reach the complete challenge button.</string>
 
 </resources>

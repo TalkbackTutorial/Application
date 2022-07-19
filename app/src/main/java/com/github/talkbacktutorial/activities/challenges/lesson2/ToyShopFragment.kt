@@ -36,7 +36,7 @@ class ToyShopFragment : Fragment() {
         binding.priceSlider.setLabelFormatter { value: Float ->
             val format = NumberFormat.getCurrencyInstance()
             format.maximumFractionDigits = 0
-            format.currency = Currency.getInstance("AUD")
+            format.currency = Currency.getInstance(getString(R.string.aud))
             format.format(value.toDouble())
         }
         binding.priceSlider.addOnChangeListener { rangeSlider, value, fromUser ->
@@ -78,7 +78,7 @@ class ToyShopFragment : Fragment() {
                     com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
                     com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                     .replace(this@ToyShopFragment.id, InspectToyFragment.newInstance(toy))
-                    .addToBackStack("inspectToy")
+                    .addToBackStack(getString(R.string.inspect_toy))
                     .commit()
             }
         }

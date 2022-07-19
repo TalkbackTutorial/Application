@@ -61,7 +61,7 @@ class Lesson5ChallengePart1Fragment : Fragment() {
      */
     private fun showMenuItems(amount: Int) {
         val current = LocalTime.now()
-        val formatter = DateTimeFormatter.ofPattern("HH:mm")
+        val formatter = DateTimeFormatter.ofPattern(getString(R.string.date_format))
 
         for (menuItemNum in 1..amount) {
             val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(
@@ -90,7 +90,7 @@ class Lesson5ChallengePart1Fragment : Fragment() {
                 basicCardBinding2.card.setOnClickListener {
                     parentFragmentManager.commit {
                         replace(this@Lesson5ChallengePart1Fragment.id, Lesson5ChallengePart2Fragment.newInstance())
-                        addToBackStack("lesson5ChallengePart2")
+                        addToBackStack(getString(R.string.lesson5_challenge_part2_backstack))
                     }
                 }
             } else {

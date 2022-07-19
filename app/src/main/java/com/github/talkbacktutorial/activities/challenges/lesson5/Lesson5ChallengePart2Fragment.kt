@@ -27,7 +27,7 @@ class Lesson5ChallengePart2Fragment : Fragment() {
     }
     private lateinit var binding: FragmentLesson5ChallengePart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private val CHANNEL_ID = "TBT1"
+    private val CHANNEL_ID = getString(R.string.lesson5_challenge_part2_channel_id)
     private val notificationId = 1
 
     override fun onCreateView(
@@ -54,8 +54,8 @@ class Lesson5ChallengePart2Fragment : Fragment() {
      * @author Jason Wu
      */
     private fun createNotificationChannel(){
-        val name = "Talkback tutorial"
-        val descriptionText = "Notification description"
+        val name = getString(R.string.lesson5_challenge_part2_notification_name)
+        val descriptionText = getString(R.string.lesson5_challenge_part2_notification_desc)
         val importance = NotificationManager.IMPORTANCE_DEFAULT
         val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
             description = descriptionText

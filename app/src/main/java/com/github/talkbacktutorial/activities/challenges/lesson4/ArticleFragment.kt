@@ -40,7 +40,7 @@ class ArticleFragment : Fragment() {
      */
     private fun setUpVideo() {
         val videoView = this.binding.articleVideo
-        videoView.setVideoPath("android.resource://" + requireActivity().packageName + "/" + R.raw.animated_man)
+        videoView.setVideoPath(getString(R.string.android_resource) + requireActivity().packageName + getString(R.string.forward_slash) + R.raw.animated_man)
         videoView.setOnPreparedListener { it.isLooping = true }
         val mediaController = MediaController(context)
         videoView.setOnClickListener {
