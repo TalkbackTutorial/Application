@@ -87,6 +87,9 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
                     }
                 } else {
                     // wrong move
+                    supportFragmentManager.commit {
+                        replace(R.id.frame, VoiceRecorderWrongActionFragment(stage))
+                    }
                 }
             }
         }
