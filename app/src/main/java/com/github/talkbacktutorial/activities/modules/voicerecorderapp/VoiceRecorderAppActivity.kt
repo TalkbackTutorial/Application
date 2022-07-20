@@ -61,11 +61,15 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Handles intents targeting this activity made after it was initialised (onCreate). This is
+     * used to manage intents dispatched by our forked Simple Voice Recorder.
+     *
+     * @author Matthew Crossman
+     */
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
-        // New intent usually means this activity was called from elsewhere after first start.
-        // This is probably the external app.
         intent?.let {
             // get extras
             val actionCompleted = intent.getStringExtra(APP_ACTION_KEY)
@@ -95,8 +99,31 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Enum specifying different stages in the module that need to be tracked. These are used by
+     * onNewIntent to determine what to show next. Stage updates are sent as extras in the intent
+     * sent out by the external app.
+     *
+     * @author Matthew Crossman
+     * @see onNewIntent
+     */
     enum class VoiceRecorderStage {
-        MAKE_RECORDING, PLAY_RECORDING, FINISHED
+        /**
+         * The section teaching the user how to make a new voice recording. Currently the first
+         * stage.
+         */
+        MAKE_RECORDING,
+
+        /**
+         * Teaching the user how to play back a previous recording. Should be after MAKE_RECORDING.
+         */
+        PLAY_RECORDING,
+
+        /**
+         * Marks the completion of the module, indicating that VoiceRecorderAppActivity should wrap
+         * things up.
+         */
+        FINISHED
     }
 
 }

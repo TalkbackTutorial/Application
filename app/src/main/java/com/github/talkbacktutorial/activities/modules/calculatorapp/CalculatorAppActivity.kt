@@ -44,11 +44,13 @@ class CalculatorAppActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Handles intents targeting this activity made after it was initialised (onCreate). This is
+     * used to manage intents dispatched by our forked Simple Calculator.
+     */
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
-        // New intent usually means this activity was called from elsewhere after first start.
-        // This is probably the external app.
         intent?.let {
             // get extras
             val actionCompleted = intent.getStringExtra(APP_ACTION_KEY)
