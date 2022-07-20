@@ -143,20 +143,20 @@
     <string name="hide_braille_fail">That was not the correct gesture, that was for submitting text, try it again using the correct gesture, which is two finger swipe down.</string>
 
     <!-- JumpControls !-->
-    <string name="jump_controls_intro_initial_text">The \"Controls\" reading mode allows jumping between buttons, sliders, switches, and other interactive things.</string>
+    <string name="jump_controls_intro_initial_text">The controls reading mode lets you move from one control to the next. Controls can be buttons or switches that you can click, sliders that you can move around, or anything else that you can press or manipulate.</string>
     <string name="jump_controls_entity">control</string>
     <string name="jump_controls_entity_plural">controls</string>
 
     <!-- JumpHeaders !-->
     <string name="jump_headers_entity">header</string>
     <string name="jump_headers_entity_plural">headers</string>
-    <string name="jump_headers_intro_1">The \"Headers\" reading mode allows you to jump between headers, such those found before blocks of text or groups of form fields.</string>
+    <string name="jump_headers_intro_1">The headers reading mode allows you to jump between headers, such those found before blocks of text or groups of form fields.</string>
 
 
     <!-- JumpLinks !-->
     <string name="jump_links_entity">link</string>
     <string name="jump_links_entity_plural">links</string>
-    <string name="jump_links_intro_1">The \"Links\" navigation mode lets you jump between clickable links on a page, such as a URL.</string>
+    <string name="jump_links_intro_1">The links navigation mode lets you jump between clickable links on a page. Links are short pieces of text that stand in place of an address, such as a URL or website link, that can be clicked to take you to that address. Not all links can be reached by jumping in this navigation mode, however all of the links in this lesson will work.</string>
 
     <!-- JumpNavigation !-->
     <string name="jump_navigation_easy_first_element">There\'s another %s below. Jump to it.</string>
