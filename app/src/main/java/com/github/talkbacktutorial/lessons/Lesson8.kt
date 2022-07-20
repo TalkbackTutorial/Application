@@ -11,7 +11,7 @@ import com.github.talkbacktutorial.lessons.modules.VoiceRecorderAppModule
  *
  * This should be one of the last lessons in the app.
  *
- * @author Team 4
+ * @author Team 3
  */
 class Lesson8 : Lesson() {
 

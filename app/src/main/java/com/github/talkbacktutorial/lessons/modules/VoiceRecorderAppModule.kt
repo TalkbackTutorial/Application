@@ -7,7 +7,7 @@ import com.github.talkbacktutorial.activities.modules.voicerecorderapp.VoiceReco
 /**
  * This modules involves performing a set of tasks within a custom fork of Simple Voice Recorder.
  *
- * @author Team 4
+ * @author Team 3
  * @see <a href="https://github.com/TalkbackTutorial/voice-recorder-fork">Repository for the forked app</a>
  */
 class VoiceRecorderAppModule: Module() {

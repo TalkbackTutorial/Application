@@ -7,7 +7,7 @@ import com.github.talkbacktutorial.activities.modules.calculatorapp.CalculatorAp
 /**
  * This module involves performing a set of tasks within a custom fork of Simple Calculator.
  *
- * @author Team 4
+ * @author Team 3
  * @see <a href="https://github.com/TalkbackTutorial/calculator-fork">Calculator fork repo (app being used here)</a>
  */
 class CalculatorAppModule: Module() {
