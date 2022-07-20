@@ -5,6 +5,12 @@ import com.github.talkbacktutorial.lessons.modules.CalculatorAppModule
 import com.github.talkbacktutorial.lessons.modules.Module
 import com.github.talkbacktutorial.lessons.modules.VoiceRecorderAppModule
 
+/**
+ * This lesson covers working within external apps. This should be one of the last lessons in the
+ * app.
+ *
+ * @author Team 4
+ */
 class Lesson8 : Lesson() {
 
     override val title: String = "External Apps"

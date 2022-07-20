@@ -16,6 +16,7 @@ import com.github.talkbacktutorial.databinding.FragmentVoiceRecorderModuleIntroB
  * Introductory fragment asking user to install the forked app.
  *
  * @author Matthew Crossman
+ * @see <a href="https://github.com/TalkbackTutorial/voice-recorder-fork">SVR fork repo (app being used here)</a>
  */
 class VoiceRecorderIntroFragment : Fragment() {
 
@@ -52,6 +53,11 @@ class VoiceRecorderIntroFragment : Fragment() {
         binding.voiceRecorderIntroContinue.isEnabled = checkInstalled()
     }
 
+    /**
+     * Checks whether the relevant voice recorder app is currently installed.
+     *
+     * @return true if the desired package (SVR-fork) is installed, false otherwise
+     */
     private fun checkInstalled(): Boolean {
         val pm = context?.packageManager
         pm?.let {
