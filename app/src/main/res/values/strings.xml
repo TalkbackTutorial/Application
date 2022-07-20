@@ -256,7 +256,7 @@
     <string name="voice_recorder_play_recording_prompt">Let\'s try playing that recording. To do so, you\'ll have to switch to the recordings tab in the app and activate the recording you made. The button below will take you back to the voice recorder:</string>
     <string name="voice_recorder_wrong_bad_stage">We couldn\'t find the prompt for your last task. Please report this as a bug.</string>
     <string name="voice_recorder_intro">In this module, you\'ll be doing a few tasks in a modified version of the Simple Voice Recorder app. You can retrieve this modified app from the link below:</string>
-    <string name="voice_recorder_link"><a href="https://github.com/TalkbackTutorial/voice-recorder-fork/releases/download/5.7.1-tbfork/voice-recorder-core-debug.apk">Link to the modified Simple Voice Recorder</a></string>
+    <string name="voice_recorder_link"><a href="https://github.com/TalkbackTutorial/voice-recorder-fork/releases/download/5.8.2-tbfork/voice-recorder-fdroid-debug.apk">Link to the modified Simple Voice Recorder</a></string>
     <string name="voice_recorder_make_recording_intro">Your first task will be to make a recording. You\'ll open the app, start recording, and stop. There\'s no need to record any sound.</string>
     <string name="external_app_open_button">Open the app</string>
     <string name="voice_recorder_install_prompt">Once you have installed the app, activate the button below to continue.</string>
