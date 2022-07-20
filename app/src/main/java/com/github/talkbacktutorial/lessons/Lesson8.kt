@@ -6,8 +6,10 @@ import com.github.talkbacktutorial.lessons.modules.Module
 import com.github.talkbacktutorial.lessons.modules.VoiceRecorderAppModule
 
 /**
- * This lesson covers working within external apps. This should be one of the last lessons in the
- * app.
+ * This lesson covers working within external apps. It involves opening modified versions of third-
+ * party apps and performing a set of actions within them.
+ *
+ * This should be one of the last lessons in the app.
  *
  * @author Team 4
  */

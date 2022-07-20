@@ -5,7 +5,7 @@ import android.content.Intent
 import com.github.talkbacktutorial.activities.modules.voicerecorderapp.VoiceRecorderAppActivity
 
 /**
- * Module covering the use of a custom forked version of Simple Voice Recorder.
+ * This modules involves performing a set of tasks within a custom fork of Simple Voice Recorder.
  *
  * @author Team 4
  * @see <a href="https://github.com/TalkbackTutorial/voice-recorder-fork">Repository for the forked app</a>
