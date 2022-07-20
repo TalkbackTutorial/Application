@@ -8,12 +8,14 @@ import android.view.accessibility.AccessibilityEvent
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.NonNull
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
+import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.modules.jumpcontrols.JumpControlsPart1Fragment
 import com.github.talkbacktutorial.activities.modules.jumpheaders.JumpHeadersPart1Fragment
 import com.github.talkbacktutorial.activities.modules.jumplinks.JumpLinksPart1Fragment
@@ -29,6 +31,7 @@ class JumpNavigationPart1Fragment(@NonNull private val mode: NavigationMode) : F
 
     private lateinit var binding: FragmentJumpNavigationModulePart1Binding
     private val isLastFragment = true
+    private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +50,9 @@ class JumpNavigationPart1Fragment(@NonNull private val mode: NavigationMode) : F
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // set accessibility delegate/interceptor
         view.accessibilityDelegate = InterceptorDelegate(this.binding)
+
+        // set up TTS engine
+        this.ttsEngine = TextToSpeechEngine(activity as AppCompatActivity)
 
         // interactive targets
         val firstTarget: View
@@ -141,7 +147,7 @@ class JumpNavigationPart1Fragment(@NonNull private val mode: NavigationMode) : F
         val firstTargetTextContent = String.format(firstTargetTemplate, entityLabel)
         val lastTargetTextContent = String.format(lastTargetTemplate, entityLabel)
         val firstTargetActiveTextContent =
-            String.format(firstTargetActiveTemplate, entityLabel, firstTargetActiveActionText)
+            String.format(firstTargetActiveTemplate, entityLabelPlural, firstTargetActiveActionText)
         val lastTargetActiveTextContent = String.format(lastTargetActiveTemplate, entityLabel)
 
         val firstTargetLink =
@@ -192,6 +198,10 @@ class JumpNavigationPart1Fragment(@NonNull private val mode: NavigationMode) : F
                 lastTargetText.text = lastTargetActiveTextContent
 
             lastTarget.setOnClickListener(null)
+
+            // re-announce the content of the current element
+            if (mode != NavigationMode.CONTROLS)
+                ttsEngine.speak(lastTargetText.text.toString())
         }
 
         super.onViewCreated(view, savedInstanceState)
