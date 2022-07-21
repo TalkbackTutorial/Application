@@ -1,10 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- General !-->
+    <string name="intent_key">C57D2EB9-C8D0-4315-916D-C05159E8EE23</string>
     <string name="app_name">Talkback Tutorial</string>
     <string name="lessons">Lessons</string>
     <string name="nl">\n</string>
     <string name="underscore">_</string>
+    <string name="lesson_space">"Lesson "</string>
     <string name="finish_lesson">Finish Lesson</string>
     <string name="finish_lesson_button">Finish Lesson Button</string>
     <string name="finish_module">Finish Module</string>
@@ -143,20 +145,20 @@
     <string name="hide_braille_fail">That was not the correct gesture, that was for submitting text, try it again using the correct gesture, which is two finger swipe down.</string>
 
     <!-- JumpControls !-->
-    <string name="jump_controls_intro_initial_text">The controls reading mode lets you move from one control to the next. Controls can be buttons or switches that you can click, sliders that you can move around, or anything else that you can press or manipulate.</string>
+    <string name="jump_controls_intro_initial_text">The \"Controls\" reading mode allows jumping between buttons, sliders, switches, and other interactive things.</string>
     <string name="jump_controls_entity">control</string>
     <string name="jump_controls_entity_plural">controls</string>
 
     <!-- JumpHeaders !-->
     <string name="jump_headers_entity">header</string>
     <string name="jump_headers_entity_plural">headers</string>
-    <string name="jump_headers_intro_1">The headers reading mode allows you to jump between headers, such those found before blocks of text or groups of form fields.</string>
+    <string name="jump_headers_intro_1">The \"Headers\" reading mode allows you to jump between headers, such those found before blocks of text or groups of form fields.</string>
 
 
     <!-- JumpLinks !-->
     <string name="jump_links_entity">link</string>
     <string name="jump_links_entity_plural">links</string>
-    <string name="jump_links_intro_1">The links navigation mode lets you jump between clickable links on a page. Links are short pieces of text that stand in place of an address, such as a URL or website link, that can be clicked to take you to that address. Not all links can be reached by jumping in this navigation mode, however all of the links in this lesson will work.</string>
+    <string name="jump_links_intro_1">The \"Links\" navigation mode lets you jump between clickable links on a page, such as a URL.</string>
 
     <!-- JumpNavigation !-->
     <string name="jump_navigation_easy_first_element">There\'s another %s below. Jump to it.</string>
@@ -256,7 +258,7 @@
     <string name="voice_recorder_play_recording_prompt">Let\'s try playing that recording. To do so, you\'ll have to switch to the recordings tab in the app and activate the recording you made. The button below will take you back to the voice recorder:</string>
     <string name="voice_recorder_wrong_bad_stage">We couldn\'t find the prompt for your last task. Please report this as a bug.</string>
     <string name="voice_recorder_intro">In this module, you\'ll be doing a few tasks in a modified version of the Simple Voice Recorder app. You can retrieve this modified app from the link below:</string>
-    <string name="voice_recorder_link"><a href="https://github.com/TalkbackTutorial/voice-recorder-fork/releases/download/5.8.2-tbfork/voice-recorder-fdroid-debug.apk">Link to the modified Simple Voice Recorder</a></string>
+    <string name="voice_recorder_link"><a href="https://github.com/TalkbackTutorial/voice-recorder-fork/releases/download/5.7.1-tbfork/voice-recorder-core-debug.apk">Link to the modified Simple Voice Recorder</a></string>
     <string name="voice_recorder_make_recording_intro">Your first task will be to make a recording. You\'ll open the app, start recording, and stop. There\'s no need to record any sound.</string>
     <string name="external_app_open_button">Open the app</string>
     <string name="voice_recorder_install_prompt">Once you have installed the app, activate the button below to continue.</string>
