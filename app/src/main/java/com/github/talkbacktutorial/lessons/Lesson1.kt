@@ -2,6 +2,8 @@ package com.github.talkbacktutorial.lessons
 
 import android.content.Context
 import android.content.Intent
+import com.github.talkbacktutorial.App
+import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
 import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.modules.Module
@@ -13,10 +15,10 @@ import com.github.talkbacktutorial.lessons.modules.Module
  */
 class Lesson1 : Lesson() {
 
-    override val title: String = "Getting Started"
+    override val title: String = App.resources.getString(R.string.lesson1_title)
     override val sequenceNumeral: Int = 1
     override val modules: ArrayList<Module> = ArrayList()
-    override val description: String = ""
+    override val description: String = App.resources.getString(R.string.empty_string)
     override val challenge: Challenge? = null
 
     /**

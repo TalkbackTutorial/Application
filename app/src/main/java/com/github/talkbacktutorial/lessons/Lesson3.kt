@@ -1,5 +1,7 @@
 package com.github.talkbacktutorial.lessons
 
+import com.github.talkbacktutorial.App
+import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.challenges.lesson3challenge.Lesson3Challenge
 import com.github.talkbacktutorial.lessons.modules.*
@@ -12,9 +14,9 @@ import com.github.talkbacktutorial.lessons.modules.*
  */
 class Lesson3 : Lesson() {
 
-    override val title = "Controlling Reading"
+    override val title = App.resources.getString(R.string.lesson3_title)
     override val sequenceNumeral = 3
-    override val description: String = "These cover the gestures and actions to perform to change the read settings of Talkback"
+    override val description: String = App.resources.getString(R.string.lesson3_desc)
     override val modules = ArrayList(
         listOf(
             AdjustReadingControlsModule(),

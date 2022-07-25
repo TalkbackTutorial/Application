@@ -1,5 +1,7 @@
 package com.github.talkbacktutorial.lessons
 
+import com.github.talkbacktutorial.App
+import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.challenges.lesson2challenge.Lesson2Challenge
 import com.github.talkbacktutorial.lessons.modules.*
@@ -11,9 +13,9 @@ import com.github.talkbacktutorial.lessons.modules.*
  */
 class Lesson2 : Lesson() {
 
-    override val title: String = "Basic Menu Navigation"
+    override val title: String = App.resources.getString(R.string.lesson2_title)
     override val sequenceNumeral: Int = 2
-    override val description: String = "These cover the basics of Android navigation through Talkback"
+    override val description: String = App.resources.getString(R.string.lesson2_desc)
     override val modules: ArrayList<Module> = ArrayList(
         listOf(
             ExploreMenuByTouchModule(),

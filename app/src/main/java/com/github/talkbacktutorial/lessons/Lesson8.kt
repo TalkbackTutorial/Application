@@ -1,5 +1,7 @@
 package com.github.talkbacktutorial.lessons
 
+import com.github.talkbacktutorial.App
+import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.modules.CalculatorAppModule
 import com.github.talkbacktutorial.lessons.modules.Module
@@ -15,9 +17,9 @@ import com.github.talkbacktutorial.lessons.modules.VoiceRecorderAppModule
  */
 class Lesson8 : Lesson() {
 
-    override val title: String = "External Apps"
+    override val title: String = App.resources.getString(R.string.lesson8_title)
     override val sequenceNumeral: Int = 8
-    override val description = "These provide real world experience by having you jump to other applications"
+    override val description = App.resources.getString(R.string.lesson8_desc)
     override val modules: ArrayList<Module> = ArrayList(
         listOf(
             CalculatorAppModule(),

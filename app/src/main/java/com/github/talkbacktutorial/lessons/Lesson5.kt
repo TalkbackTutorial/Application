@@ -1,5 +1,7 @@
 package com.github.talkbacktutorial.lessons
 
+import com.github.talkbacktutorial.App
+import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.challenges.lesson5challenge.Lesson5Challenge
 import com.github.talkbacktutorial.lessons.modules.*
@@ -10,9 +12,9 @@ import com.github.talkbacktutorial.lessons.modules.*
  */
 class Lesson5 : Lesson() {
 
-    override val title: String = "Advanced Menu Navigation"
+    override val title: String = App.resources.getString(R.string.lesson5_title)
     override val sequenceNumeral: Int = 5
-    override val description: String = "These cover the gestures and actions to perform navigation in an advance menu"
+    override val description: String = App.resources.getString(R.string.lesson5_desc)
     override val modules: ArrayList<Module> = ArrayList(
         listOf(
             OpenRecentAppsModule(),

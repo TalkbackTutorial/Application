@@ -26,7 +26,24 @@
     <string name="forward_slash">/</string>
     <string name="menu_item">Menu Item</string>
     <string name="android_resource">android.resource://</string>
+    <string name="empty_string">" "</string>
 
+    <!-- Lessons !-->
+    <string name="lesson1_title">Getting Started</string>
+    <string name="lesson2_title">Basic Menu Navigation</string>
+    <string name="lesson2_desc">These cover the basics of Android navigation through Talkback</string>
+    <string name="lesson3_title">Controlling Reading</string>
+    <string name="lesson3_desc">These cover the gestures and actions to perform to change the read settings of Talkback</string>
+    <string name="lesson4_title">Interacting with Media</string>
+    <string name="lesson4_desc">These cover the gestures and action to interact with media</string>
+    <string name="lesson5_title">Advanced Menu Navigation</string>
+    <string name="lesson5_desc">These cover the gestures and actions to perform navigation in an advance menu</string>
+    <string name="lesson6_title">Typing Lesson</string>
+    <string name="lesson6_desc">These cover the gestures and actions to use a virtual keyboard on your phone</string>
+    <string name="lesson7_title">Typing Using Braille Keyboard</string>
+    <string name="lesson7_desc">These cover the gestures and actions to use the braille keyboard on your phone</string>
+    <string name="lesson8_title">External Apps</string>
+    <string name="lesson8_desc">These provide real world experience by having you jump to other applications</string>
 
     <!-- Challenges !-->
     <string name="challenge_outro">You have completed the challenge. Sending you to the main menu.</string>

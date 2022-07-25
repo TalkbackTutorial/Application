@@ -1,5 +1,7 @@
 package com.github.talkbacktutorial.lessons
 
+import com.github.talkbacktutorial.App
+import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.challenges.lesson4challenge.Lesson4Challenge
 import com.github.talkbacktutorial.lessons.modules.MediaVolumeControlModule
@@ -13,9 +15,9 @@ import com.github.talkbacktutorial.lessons.modules.StartStopMediaModule
  */
 class Lesson4 : Lesson() {
 
-    override val title: String = "Interacting with Media"
+    override val title: String = App.resources.getString(R.string.lesson4_title)
     override val sequenceNumeral: Int = 4
-    override val description: String = "These cover the gestures and action to interact with media"
+    override val description: String = App.resources.getString(R.string.lesson4_desc)
     override val modules: ArrayList<Module> = ArrayList(
         listOf(
             StartStopMediaModule(),
