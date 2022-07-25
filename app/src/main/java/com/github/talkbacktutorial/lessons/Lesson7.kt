@@ -8,6 +8,12 @@ import com.github.talkbacktutorial.lessons.modules.Module
 import com.github.talkbacktutorial.lessons.modules.OpenBrailleKeyboardSettingsModule
 import com.github.talkbacktutorial.lessons.modules.SubmitTextModule
 
+/**
+ * Lesson 7 teaches the user how to use the braille keyboard with talkback, enabling visually
+ * impaired users to type text.
+ * @author Team 1
+ */
+
 class Lesson7 : Lesson() {
 
     override val title: String = App.resources.getString(R.string.lesson7_title)
