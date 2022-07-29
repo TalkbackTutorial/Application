@@ -72,6 +72,10 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         this.speakIntro()
     }
 
+    /**
+     * Set up the media control components: play button, stop button and volume slider
+     * @author Natalie Law
+     */
     private fun mediaControls() {
         this.binding.playButton.setOnClickListener {
             // when users click on the fab button
@@ -120,6 +124,11 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         })
     }
 
+    /**
+     * Determines the logic of the lesson. It checks whether the volume is above 75; or below 25 (and has previously
+     * completed the swipe up gesture). Based on the conditions, the method determines the next steps for the lesson.
+     * @author Natalie Law
+     */
     private fun lessonLogic() {
         if (currentVolume >= 75) {
             if (mediaPlayer?.isPlaying == true) mediaPlayer?.pause()
@@ -139,6 +148,10 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         }
     }
 
+    /**
+     * Stop the media player from playing the music
+     * @author Natalie Law
+     */
     private fun stopMedia() {
         if (mediaPlayer !== null) {
             mediaPlayer?.stop()
@@ -162,11 +175,19 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         constraintLayout.addView(primaryButtonBinding.button, layoutParams)
     }
 
+    /**
+     * Introduction of the lesson module using TTS
+     * @author Natalie Law
+     */
     private fun speakIntro() {
         val intro = getString(R.string.media_volume_control_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
+    /**
+     * End the lesson and bring user back to the Main Activity
+     * @author Natalie Law
+     */
     private fun endLesson() {
         updateModule()
 
@@ -188,6 +209,11 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
     ).toInt()
 
+    /**
+     * This method is used to ensure that the TTS will not be interrupted when speaking during the lesson. This is
+     * done by hiding the view when TTS is speaking and when finished, set the view back the visible.
+     * @author Natalie Law
+     */
     private fun speakDuringLesson(info: String) {
         binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
         ttsEngine.onFinishedSpeaking(triggerOnce = true) {
