@@ -1,6 +1,7 @@
 package com.github.talkbacktutorial.gestures.delegates
 
 import android.content.Context
+import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import com.github.talkbacktutorial.gestures.data.FlingMotionData
@@ -25,7 +26,9 @@ class SimpleGestureDelegate(
     fun onTouchEventCallback(event: MotionEvent) {
         if (event.actionMasked == MotionEvent.ACTION_DOWN) {
             this.moveMotionData.clear()
-            this.tapData.reset()
+            this.tapData.tapCount += 1
+        } else if (event.actionMasked == MotionEvent.ACTION_POINTER_DOWN) {
+            this.tapData.pointerCount = event.pointerCount
         } else if (event.actionMasked == MotionEvent.ACTION_MOVE) {
             this.moveMotionData.pullDataFrom(event)
         }
@@ -45,11 +48,6 @@ class SimpleGestureDelegate(
         val horizontalThreshold = abs(xDelta) > SWIPE_THRESHOLD && abs(velocityX) > SWIPE_VELOCITY_THRESHOLD
         val verticalThreshold = abs(yDelta) > SWIPE_THRESHOLD && abs(velocityY) > SWIPE_VELOCITY_THRESHOLD
         return horizontalThreshold || verticalThreshold
-    }
-
-    override fun onDoubleTap(e: MotionEvent?): Boolean {
-        this.tapData.tapCount = 2
-        return super.onDoubleTap(e)
     }
 
 }

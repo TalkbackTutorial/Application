@@ -1,11 +1,5 @@
 package com.github.talkbacktutorial.gestures
 
-import android.gesture.GestureLibraries
-import android.gesture.GestureLibrary
-import android.util.Log
-import android.widget.Switch
-import com.github.talkbacktutorial.App
-import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.gestures.data.FlingMotionData
 import com.github.talkbacktutorial.gestures.data.GestureData
 import com.github.talkbacktutorial.gestures.data.MoveMotionData
@@ -24,12 +18,19 @@ class GestureIdentifier {
     val moveMotionData = MoveMotionData()
 
     fun onGestureConclusion(): TalkbackGesture {
-//        Log.i("andre", this.gestureData.toString())
-//        Log.i("andre", this.flingMotionData.toString())
-//        Log.i("andre", this.moveMotionData.toString())
 
+        this.tapData.postReset()
+        if (this.tapData.tapCount == 1) {
+            when (this.tapData.pointerCount) {
+                2 -> return TalkbackGesture.TAP_2
+                3 -> return TalkbackGesture.TAP_3
+            }
+        }
         if (this.tapData.tapCount == 2) {
-            return TalkbackGesture.DOUBLE_TAP
+            when (this.tapData.pointerCount) {
+                1 -> return TalkbackGesture.DOUBLE_TAP
+                2 -> return TalkbackGesture.DOUBLE_TAP_2
+            }
         }
 
         if (!this.flingMotionData.dataIsValid()) {
