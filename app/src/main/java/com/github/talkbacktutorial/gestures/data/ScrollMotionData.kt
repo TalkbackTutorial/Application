@@ -1,13 +1,13 @@
 package com.github.talkbacktutorial.gestures.data
 
 import android.graphics.PointF
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.MotionEvent
 import kotlin.math.abs
-import kotlin.math.max
 
+/**
+ * Stores and manipulates data relating to a single scroll motion.
+ * @author Andre Pham
+ */
 class ScrollMotionData {
 
     companion object {
@@ -24,6 +24,13 @@ class ScrollMotionData {
         private set
     private var travelCount = 0
 
+    /**
+     * Populate this class with the data of a single scroll motion.
+     * @param downMotionEvent The motion event of a finger coming in contact
+     * @param upMotionEvent The motion event of a finger losing contact
+     * @param pointerCount The number of fingers performing the gesture
+     * @author Andre Pham
+     */
     fun setData(
         downMotionEvent: MotionEvent?,
         upMotionEvent: MotionEvent?,
@@ -43,6 +50,10 @@ class ScrollMotionData {
         }
     }
 
+    /**
+     * Reset the data this class holds to represent no gesture.
+     * @author Andre Pham
+     */
     fun reset() {
         this.downMotionCoords.clear()
         this.upMotionCoords.clear()
@@ -52,6 +63,12 @@ class ScrollMotionData {
         this.travelCount = 0
     }
 
+    /**
+     * Determine if each finger is travelling in (somewhat) parallel in the same direction
+     * to perform the gesture.
+     * @return True if the fingers were aligned in position/direction during the scroll
+     * @author Andre Pham
+     */
     fun pointersAreAligned(): Boolean {
         if (this.pointerCount == 1) {
             return true
@@ -108,14 +125,32 @@ class ScrollMotionData {
         return pointsAreAligned
     }
 
+    /**
+     * Whether or not the performed scroll was horizontal (or vertical).
+     * @return True if the horizontal distance travelled was further than the vertical.
+     * @author Andre Pham
+     */
     fun isHorizontalScroll(): Boolean {
         return abs(this.distanceX) > abs(this.distanceY)
     }
 
+    /**
+     * Check to see if the scroll was actually a tap.
+     * Otherwise, sometimes taps are detected as scrolls that just travelled very little distance.
+     * @return True if this scroll wasn't actually a tap gesture.
+     * @author Andre Pham
+     */
     fun verifiedNotTap(): Boolean {
         return this.travelCount >= TRAVEL_THRESHOLD
     }
 
+    /**
+     * The offset between two points.
+     * @param point1 The origin point
+     * @param point2 The offset point
+     * @return A point, where x is the horizontal offset, and y is the vertical offset
+     * @author Andre Pham
+     */
     private fun pointOffset(point1: MotionEvent.PointerCoords, point2: MotionEvent.PointerCoords): PointF {
         return PointF(point2.x - point1.x, point2.y - point1.y)
     }
