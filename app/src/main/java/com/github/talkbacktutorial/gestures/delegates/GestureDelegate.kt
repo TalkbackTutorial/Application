@@ -5,6 +5,11 @@ import android.gesture.GestureOverlayView
 import android.view.MotionEvent
 import com.github.talkbacktutorial.gestures.data.GestureData
 
+/**
+ * A class to delegate gesture callbacks.
+ * Used to retrieve gesture data on a gesture's completion.
+ * @author Andre Pham
+ */
 class GestureDelegate(
     private val gestureData: GestureData
 ): GestureOverlayView.OnGestureListener {

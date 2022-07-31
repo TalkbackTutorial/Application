@@ -4,6 +4,11 @@ import android.util.Log
 import com.github.talkbacktutorial.gestures.data.*
 import kotlin.math.abs
 
+/**
+ * Used to identify a Talkback gesture.
+ * Uses fling, tap, gesture and scroll data retrieved via delegates.
+ * @author Andre Pham
+ */
 class GestureIdentifier {
 
     companion object {
@@ -16,6 +21,11 @@ class GestureIdentifier {
     val gestureData = GestureData()
     val scrollMotionData = ScrollMotionData()
 
+    /**
+     * Identify, based on the current data, which Talkback gesture matches the gesture performed.
+     * @return The enum representing the matching gesture
+     * @author Andre Pham
+     */
     fun onGestureConclusion(): TalkbackGesture {
         this.tapData.postReset()
 

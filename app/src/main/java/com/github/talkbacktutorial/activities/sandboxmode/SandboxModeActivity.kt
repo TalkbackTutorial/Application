@@ -25,6 +25,7 @@ class SandboxModeActivity : AppCompatActivity() {
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_sandbox_mode)
 
+        // Setup delegates to feed data to gestureIdentifier
         this.gestureDelegate = GestureDelegate(this.gestureIdentifier.gestureData)
         this.simpleGestureDelegate = SimpleGestureDelegate(
             this,
@@ -33,6 +34,7 @@ class SandboxModeActivity : AppCompatActivity() {
             this.gestureIdentifier.scrollMotionData
         )
 
+        // Add listeners to gesture and touch overlay
         this.binding.gestureOverlay.addOnGestureListener(this.gestureDelegate)
         this.binding.touchOverlay.setOnTouchListener { view, event ->
             this.simpleGestureDelegate.onTouchEventCallback(event)

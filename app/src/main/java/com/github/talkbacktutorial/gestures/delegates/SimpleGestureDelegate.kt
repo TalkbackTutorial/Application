@@ -9,6 +9,11 @@ import com.github.talkbacktutorial.gestures.data.ScrollMotionData
 import com.github.talkbacktutorial.gestures.data.TapData
 import kotlin.math.abs
 
+/**
+ * A class to delegate simple gesture callbacks.
+ * Used to retrieve fling, tap and scroll gesture data.
+ * @author Andre Pham
+ */
 class SimpleGestureDelegate(
     context: Context,
     private val flingMotionData: FlingMotionData,
@@ -23,6 +28,11 @@ class SimpleGestureDelegate(
 
     private val detector = GestureDetector(context, this)
 
+    /**
+     * A callback to be triggered on a touch event.
+     * @param event The motion event triggering the touch event.
+     * @author Andre Pham
+     */
     fun onTouchEventCallback(event: MotionEvent) {
         if (event.actionMasked == MotionEvent.ACTION_DOWN) {
             this.scrollMotionData.reset()
