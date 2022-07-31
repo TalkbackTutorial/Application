@@ -63,7 +63,7 @@ class GestureIdentifier {
             }
         }
 
-        if (!this.flingMotionData.dataIsValid()) {
+        if (!this.flingMotionData.dataIsValid() || this.scrollMotionData.pointerCount > 1 || this.tapData.pointerCount > 1) {
             return TalkbackGesture.NO_MATCH
         }
 

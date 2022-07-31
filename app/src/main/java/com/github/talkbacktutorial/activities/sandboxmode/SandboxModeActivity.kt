@@ -38,7 +38,7 @@ class SandboxModeActivity : AppCompatActivity() {
             this.simpleGestureDelegate.onTouchEventCallback(event)
             if (event.actionMasked == MotionEvent.ACTION_UP) {
                 val output = this.gestureIdentifier.onGestureConclusion()
-                Log.i("andre", output.toString())
+                this.binding.temporaryDemo.text = output.name
             }
             return@setOnTouchListener true
         }
