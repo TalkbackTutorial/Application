@@ -1,6 +1,28 @@
 package com.github.talkbacktutorial.gestures
 
+/**
+ * An enum class that identifies all Talkback gestures.
+ * Source of gestures: https://media.dequeuniversity.com/en/courses/generic/testing-screen-readers/2.0/docs/talkback-images-guide.pdf
+ * @author Andre Pham
+ */
 enum class TalkbackGesture {
+
+    /**
+     * An overview on how to interpret these names.
+     *
+     * UP/DOWN/LEFT/RIGHT are swipe directions.
+     * - DOWN = swipe down
+     * - DOWN_RIGHT = swipe down, then right, without losing contact with the screen
+     * - LEFT_RIGHT = swipe left, then right, without losing contact with the screen
+     *
+     * X_TAP are taps. X is the number of taps.
+     * - DOUBLE_TAP = a double tap with a single finger
+     *
+     * Digits are the number of fingers.
+     * - TAP_2 = a single tap with two fingers (two fingers tap the screen once)
+     * - TRIPLE_TAP_2 = a triple tap with two fingers (two fingers tap the screen three times)
+     * - UP_2 = swipe up using two fingers
+     */
 
     // Open the TalkBack menu
     DOWN_RIGHT,
