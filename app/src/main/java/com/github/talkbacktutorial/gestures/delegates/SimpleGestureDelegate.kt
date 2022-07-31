@@ -21,11 +21,6 @@ class SimpleGestureDelegate(
     private val scrollMotionData: ScrollMotionData
 ): GestureDetector.SimpleOnGestureListener() {
 
-    companion object {
-        private const val SWIPE_THRESHOLD = 100
-        private const val SWIPE_VELOCITY_THRESHOLD = 100
-    }
-
     private val detector = GestureDetector(context, this)
 
     /**
@@ -50,12 +45,7 @@ class SimpleGestureDelegate(
         velocityY: Float
     ): Boolean {
         this.flingMotionData.setData(downMotionEvent, upMotionEvent, velocityX, velocityY)
-
-        val xDelta: Float = upMotionEvent?.x?.minus(downMotionEvent!!.x) ?: 0.0F
-        val yDelta: Float = upMotionEvent?.y?.minus(downMotionEvent!!.y) ?: 0.0F
-        val horizontalThreshold = abs(xDelta) > SWIPE_THRESHOLD && abs(velocityX) > SWIPE_VELOCITY_THRESHOLD
-        val verticalThreshold = abs(yDelta) > SWIPE_THRESHOLD && abs(velocityY) > SWIPE_VELOCITY_THRESHOLD
-        return horizontalThreshold || verticalThreshold
+        return super.onFling(downMotionEvent, upMotionEvent, velocityX, velocityY)
     }
 
     override fun onScroll(
