@@ -30,7 +30,7 @@ class SandboxModeActivity : AppCompatActivity() {
             this,
             this.gestureIdentifier.flingMotionData,
             this.gestureIdentifier.tapData,
-            this.gestureIdentifier.moveMotionData
+            this.gestureIdentifier.scrollMotionData
         )
 
         this.binding.gestureOverlay.addOnGestureListener(this.gestureDelegate)

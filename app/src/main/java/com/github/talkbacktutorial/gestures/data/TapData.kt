@@ -17,7 +17,6 @@ class TapData {
                 this.tapCount = 0
                 this.pointerCount = 1
                 this.timerActive = false
-                Log.i("andre", "reset")
             }, 500)
         }
     }

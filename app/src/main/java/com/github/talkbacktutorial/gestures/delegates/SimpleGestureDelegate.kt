@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import com.github.talkbacktutorial.gestures.data.FlingMotionData
-import com.github.talkbacktutorial.gestures.data.MoveMotionData
+import com.github.talkbacktutorial.gestures.data.ScrollMotionData
 import com.github.talkbacktutorial.gestures.data.TapData
 import kotlin.math.abs
 
@@ -13,7 +13,7 @@ class SimpleGestureDelegate(
     context: Context,
     private val flingMotionData: FlingMotionData,
     private val tapData: TapData,
-    private val moveMotionData: MoveMotionData
+    private val scrollMotionData: ScrollMotionData
 ): GestureDetector.SimpleOnGestureListener() {
 
     companion object {
@@ -25,12 +25,10 @@ class SimpleGestureDelegate(
 
     fun onTouchEventCallback(event: MotionEvent) {
         if (event.actionMasked == MotionEvent.ACTION_DOWN) {
-            this.moveMotionData.clear()
+            this.scrollMotionData.reset()
             this.tapData.tapCount += 1
         } else if (event.actionMasked == MotionEvent.ACTION_POINTER_DOWN) {
             this.tapData.pointerCount = event.pointerCount
-        } else if (event.actionMasked == MotionEvent.ACTION_MOVE) {
-            this.moveMotionData.pullDataFrom(event)
         }
         this.detector.onTouchEvent(event)
     }
@@ -48,6 +46,16 @@ class SimpleGestureDelegate(
         val horizontalThreshold = abs(xDelta) > SWIPE_THRESHOLD && abs(velocityX) > SWIPE_VELOCITY_THRESHOLD
         val verticalThreshold = abs(yDelta) > SWIPE_THRESHOLD && abs(velocityY) > SWIPE_VELOCITY_THRESHOLD
         return horizontalThreshold || verticalThreshold
+    }
+
+    override fun onScroll(
+        downMotionEvent: MotionEvent?,
+        upMotionEvent: MotionEvent?,
+        distanceX: Float,
+        distanceY: Float
+    ): Boolean {
+        this.scrollMotionData.setData(downMotionEvent, upMotionEvent, upMotionEvent?.pointerCount ?: 1)
+        return super.onScroll(downMotionEvent, upMotionEvent, distanceX, distanceY)
     }
 
 }

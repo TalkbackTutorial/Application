@@ -1,9 +1,8 @@
 package com.github.talkbacktutorial.gestures
 
-import com.github.talkbacktutorial.gestures.data.FlingMotionData
-import com.github.talkbacktutorial.gestures.data.GestureData
-import com.github.talkbacktutorial.gestures.data.MoveMotionData
-import com.github.talkbacktutorial.gestures.data.TapData
+import android.util.Log
+import com.github.talkbacktutorial.gestures.data.*
+import kotlin.math.abs
 
 class GestureIdentifier {
 
@@ -15,21 +14,52 @@ class GestureIdentifier {
     val flingMotionData = FlingMotionData()
     val tapData = TapData()
     val gestureData = GestureData()
-    val moveMotionData = MoveMotionData()
+    val scrollMotionData = ScrollMotionData()
 
     fun onGestureConclusion(): TalkbackGesture {
-
         this.tapData.postReset()
+
+        if (this.scrollMotionData.verifiedNotTap() && this.scrollMotionData.pointersAreAligned()) {
+            if (this.scrollMotionData.isHorizontalScroll()) {
+                if (this.scrollMotionData.distanceX > 0) {
+                    when (this.scrollMotionData.pointerCount) {
+                        2 -> return TalkbackGesture.RIGHT_2
+                        3 -> return TalkbackGesture.RIGHT_3
+                    }
+                } else {
+                    when (this.scrollMotionData.pointerCount) {
+                        2 -> return TalkbackGesture.LEFT_2
+                        3 -> return TalkbackGesture.LEFT_3
+                    }
+                }
+            } else {
+                if (this.scrollMotionData.distanceY > 0) {
+                    when (this.scrollMotionData.pointerCount) {
+                        2 -> return TalkbackGesture.DOWN_2
+                        3 -> return TalkbackGesture.DOWN_3
+                    }
+                } else {
+                    when (this.scrollMotionData.pointerCount) {
+                        2 -> return TalkbackGesture.UP_2
+                        3 -> return TalkbackGesture.UP_3
+                    }
+                }
+            }
+        }
+
         if (this.tapData.tapCount == 1) {
             when (this.tapData.pointerCount) {
                 2 -> return TalkbackGesture.TAP_2
                 3 -> return TalkbackGesture.TAP_3
             }
-        }
-        if (this.tapData.tapCount == 2) {
+        } else if (this.tapData.tapCount == 2) {
             when (this.tapData.pointerCount) {
                 1 -> return TalkbackGesture.DOUBLE_TAP
                 2 -> return TalkbackGesture.DOUBLE_TAP_2
+            }
+        } else if (this.tapData.tapCount == 3) {
+            when (this.tapData.pointerCount) {
+                2 -> return TalkbackGesture.TRIPLE_TAP_2
             }
         }
 
