@@ -74,6 +74,58 @@ enum class TalkbackGesture {
     RIGHT_UP,
 
     // None
-    NO_MATCH,
+    NO_MATCH;
+
+    /**
+     * If this gesture represents a fling.
+     * @return True if a fling generates this gesture.
+     * @author Andre Pham
+     */
+    fun isFlingGesture(): Boolean {
+        return when (this) {
+            DOWN_RIGHT -> true
+            UP_RIGHT -> true
+            TAP_3 -> false
+            TAP_2 -> false
+            UP_2 -> true
+            DOWN_2 -> true
+            LEFT_2 -> true
+            RIGHT_2 -> true
+            UP_DOWN -> true
+            DOWN_UP -> true
+            UP_3 -> true
+            DOWN_3 -> true
+            LEFT_3 -> true
+            RIGHT_3 -> true
+            TRIPLE_TAP_2 -> false
+            DOWN -> true
+            UP -> true
+            LEFT -> true
+            RIGHT -> true
+            DOUBLE_TAP -> false
+            DOWN_LEFT -> true
+            UP_LEFT -> true
+            LEFT_UP -> true
+            RIGHT_DOWN -> true
+            DOUBLE_TAP_2 -> false
+            RIGHT_LEFT -> true
+            LEFT_RIGHT -> true
+            LEFT_DOWN -> true
+            RIGHT_UP -> true
+            NO_MATCH -> false
+        }
+    }
+
+    /**
+     * If this gesture represents a tap.
+     * @return True if tap(s) generates this gesture.
+     * @author Andre Pham
+     */
+    fun isTapGesture(): Boolean {
+        if (this == NO_MATCH) {
+            return false
+        }
+        return !this.isFlingGesture()
+    }
 
 }

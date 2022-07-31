@@ -23,11 +23,19 @@ class TapData {
         if (!this.timerActive) {
             this.timerActive = true
             Handler(Looper.getMainLooper()).postDelayed({
-                this.tapCount = 0
-                this.pointerCount = 1
+                this.reset()
                 this.timerActive = false
             }, 500)
         }
+    }
+
+    /**
+     * Immediately reset this class's tap data.
+     * @author Andre Pham
+     */
+    fun reset() {
+        this.tapCount = 0
+        this.pointerCount = 1
     }
 
 }

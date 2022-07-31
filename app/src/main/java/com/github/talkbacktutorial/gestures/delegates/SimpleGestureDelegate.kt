@@ -31,6 +31,7 @@ class SimpleGestureDelegate(
     fun onTouchEventCallback(event: MotionEvent) {
         if (event.actionMasked == MotionEvent.ACTION_DOWN) {
             this.scrollMotionData.reset()
+            this.flingMotionData.reset()
             this.tapData.tapCount += 1
         } else if (event.actionMasked == MotionEvent.ACTION_POINTER_DOWN) {
             this.tapData.pointerCount = event.pointerCount

@@ -36,6 +36,17 @@ class FlingMotionData {
     }
 
     /**
+     * Reset the data this class holds to represent no gesture.
+     * @author Andre Pham
+     */
+    fun reset() {
+        this.downMotionEvent = null
+        this.upMotionEvent = null
+        this.velocityX = 0.0F
+        this.velocityY = 0.0F
+    }
+
+    /**
      * Determines if the current fling data can be used.
      * @return If the motion events are null
      * @author Andre Pham

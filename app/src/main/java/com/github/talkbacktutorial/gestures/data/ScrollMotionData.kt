@@ -1,6 +1,7 @@
 package com.github.talkbacktutorial.gestures.data
 
 import android.graphics.PointF
+import android.util.Log
 import android.view.MotionEvent
 import kotlin.math.abs
 
@@ -11,7 +12,7 @@ import kotlin.math.abs
 class ScrollMotionData {
 
     companion object {
-        private const val TRAVEL_THRESHOLD = 10
+        private const val TRAVEL_THRESHOLD = 6
     }
 
     private val downMotionCoords = MotionEvent.PointerCoords()

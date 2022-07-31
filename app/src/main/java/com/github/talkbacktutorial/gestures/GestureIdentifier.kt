@@ -22,11 +22,26 @@ class GestureIdentifier {
     val scrollMotionData = ScrollMotionData()
 
     /**
-     * Identify, based on the current data, which Talkback gesture matches the gesture performed.
+     * A callback to trigger whenever a gesture is fully concluded, in order to identify
+     * the performed Talkback gesture.
      * @return The enum representing the matching gesture
      * @author Andre Pham
      */
     fun onGestureConclusion(): TalkbackGesture {
+        val gesture = this.identifyGesture()
+        if (gesture.isFlingGesture()) {
+            Log.i("andre", "reset")
+            this.tapData.reset()
+        }
+        return gesture
+    }
+
+    /**
+     * Identify, based on the current data, which Talkback gesture matches the gesture performed.
+     * @return The enum representing the matching gesture
+     * @author Andre Pham
+     */
+    private fun identifyGesture(): TalkbackGesture {
         this.tapData.postReset()
 
         if (this.scrollMotionData.verifiedNotTap() && this.scrollMotionData.pointersAreAligned()) {
