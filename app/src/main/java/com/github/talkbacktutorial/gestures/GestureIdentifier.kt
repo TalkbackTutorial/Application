@@ -30,7 +30,6 @@ class GestureIdentifier {
     fun onGestureConclusion(): TalkbackGesture {
         val gesture = this.identifyGesture()
         if (gesture.isFlingGesture()) {
-            Log.i("andre", "reset")
             this.tapData.reset()
         }
         return gesture
