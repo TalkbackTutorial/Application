@@ -27,7 +27,7 @@ class Lesson5ChallengePart2Fragment : Fragment() {
     }
     private lateinit var binding: FragmentLesson5ChallengePart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private val CHANNEL_ID = getString(R.string.lesson5_challenge_part2_channel_id)
+    private val CHANNEL_ID = "T1B1"     // It will crash the app if put this into string resource
     private val notificationId = 1
 
     override fun onCreateView(

@@ -64,14 +64,11 @@
 
     <!-- Lesson 5 Challenge !-->
     <string name="lesson5_challenge_intro">Welcome to Lesson 5\'s challenge. In this challenges, you\'ll be ask to perform a sequence of tasks.</string>
-    <string name="lesson5_challenge_fragment1_intro">Now, let\'s get start. Billy wants to know what the time is it. Go back to home screen and check the current time on your phone. Then back here to select the correct time.</string>
-    <string name="lesson5_challenge_wrong_selected_time">The selected time is not correct. Check the time again, and then select the closet time.</string>
-    <string name="lesson5_challenge_fragment2_intro">You selected the correct time. Now a new message is sent from Billy, open the notification to find it.</string>
+    <string name="lesson5_challenge_fragment1_intro">Now, go to your home screen and back to this app to find the next task.</string>
+    <string name="lesson5_challenge_fragment2_intro">Welcome back. Now a new message is sent from Billy, open the notification to find it.</string>
     <string name="lesson5_challenge_notification_title">Billy\'s message</string>
     <string name="lesson5_challenge_outro">Hello I am Billy, you can complete this challenge by double tap this message from the notification. Then you will be sent to the main menu.</string>
-    <string name="date_format">HH:mm</string>
     <string name="lesson5_challenge_part2_backstack">lesson5ChallengePart2</string>
-    <string name="lesson5_challenge_part2_channel_id">TBT1</string>
     <string name="lesson5_challenge_part2_notification_name">Talkback tutorial</string>
     <string name="lesson5_challenge_part2_notification_desc">Notification description</string>
 
