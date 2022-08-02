@@ -212,21 +212,11 @@ class MainActivity : AppCompatActivity() {
      * @author Antony Loose
      */
     private fun loadSandboxCard(){
-        val sandboxCardBinding: LessonCardBinding = DataBindingUtil.inflate(
-            layoutInflater,
-            R.layout.lesson_card, binding.lessonLinearLayout, false
-        )
-        sandboxCardBinding.title = "Sandbox Mode"
-        sandboxCardBinding.subtitle = "Practice your gestures in a sandbox environment"
-        sandboxCardBinding.locked = false
-
-        sandboxCardBinding.lessonCard.setOnClickListener {
-            // navigate to sandbox mode
+        val openSandbox: () -> Unit = {
             val intent = Intent(this, SandboxModeActivity::class.java)
             this.startActivity(intent)
         }
-
-        binding.lessonLinearLayout.addView(sandboxCardBinding.lessonCard)
+        loadCard("Sandbox mode", "Practice your gestures in a sandbox enviroment", openSandbox)
     }
 
     /**
@@ -234,19 +224,32 @@ class MainActivity : AppCompatActivity() {
      * @author Antony Loose
      */
     private fun loadGameModeCard(){
-        val gameModeCardBinding: LessonCardBinding = DataBindingUtil.inflate(
+        val openGameMode: () -> Unit = {}
+        // TODO: come up with name and subtitle for game
+        loadCard("Game mode", "Try beat your high score!", openGameMode)
+    }
+
+    /**
+     * A general function for loading simple cards
+     * @param title the title of the card
+     * @param subtitle the subtitle of the card
+     * @param onClick a lambda function that is called when the card is clicked
+     * @author Antony Loose
+     */
+    private fun loadCard(title: String, subtitle: String, onClick: () -> Unit){
+        val cardBinding: LessonCardBinding = DataBindingUtil.inflate(
             layoutInflater,
             R.layout.lesson_card, binding.lessonLinearLayout, false
         )
-        // TODO: come up with name and subtitle for game
-        gameModeCardBinding.title = "Game Mode"
-        gameModeCardBinding.subtitle = "Try beat your high score!"
-        gameModeCardBinding.locked = false
+        cardBinding.title = title
+        cardBinding.subtitle = subtitle
+        cardBinding.locked = false
 
-        gameModeCardBinding.lessonCard.setOnClickListener {
+        cardBinding.lessonCard.setOnClickListener {
             // navigate to game mode
+            onClick()
         }
 
-        binding.lessonLinearLayout.addView(gameModeCardBinding.lessonCard)
+        binding.lessonLinearLayout.addView(cardBinding.lessonCard)
     }
 }
