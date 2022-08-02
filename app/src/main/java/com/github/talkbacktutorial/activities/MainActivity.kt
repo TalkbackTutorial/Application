@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.sandboxmode.SandboxModeActivity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgression
@@ -221,6 +222,8 @@ class MainActivity : AppCompatActivity() {
 
         sandboxCardBinding.lessonCard.setOnClickListener {
             // navigate to sandbox mode
+            val intent = Intent(this, SandboxModeActivity::class.java)
+            this.startActivity(intent)
         }
 
         binding.lessonLinearLayout.addView(sandboxCardBinding.lessonCard)
