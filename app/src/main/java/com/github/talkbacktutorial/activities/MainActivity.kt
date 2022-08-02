@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             lesson1onStart()
         }
         super.onStart()
-        displayLessons()
+        displayCards()
     }
 
     /**
@@ -136,12 +136,14 @@ class MainActivity : AppCompatActivity() {
      * locked.
      * @author Jade Davis
      */
-    private fun displayLessons() {
+    private fun displayCards() {
         moduleProgressionViewModel.getAllModuleProgressions.observe(this) { modules ->
             if (modules.isEmpty()) {
                 moduleProgressionViewModel.fillDatabase()
             } else {
                 displayLessonCards(modules)
+                loadSandboxCard()
+                loadGameModeCard()
             }
         }
     }
@@ -202,5 +204,46 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.lessonLinearLayout.addView(lessonCardBinding.lessonCard)
+    }
+
+    /**
+     * Load sandbox card
+     * @author Antony Loose
+     */
+    private fun loadSandboxCard(){
+        val sandboxCardBinding: LessonCardBinding = DataBindingUtil.inflate(
+            layoutInflater,
+            R.layout.lesson_card, binding.lessonLinearLayout, false
+        )
+        sandboxCardBinding.title = "Sandbox Mode"
+        sandboxCardBinding.subtitle = "Practice your gestures in a sandbox environment"
+        sandboxCardBinding.locked = false
+
+        sandboxCardBinding.lessonCard.setOnClickListener {
+            // navigate to sandbox mode
+        }
+
+        binding.lessonLinearLayout.addView(sandboxCardBinding.lessonCard)
+    }
+
+    /**
+     * Load game mode card
+     * @author Antony Loose
+     */
+    private fun loadGameModeCard(){
+        val gameModeCardBinding: LessonCardBinding = DataBindingUtil.inflate(
+            layoutInflater,
+            R.layout.lesson_card, binding.lessonLinearLayout, false
+        )
+        // TODO: come up with name and subtitle for game
+        gameModeCardBinding.title = "Game Mode"
+        gameModeCardBinding.subtitle = "Try beat your high score!"
+        gameModeCardBinding.locked = false
+
+        gameModeCardBinding.lessonCard.setOnClickListener {
+            // navigate to game mode
+        }
+
+        binding.lessonLinearLayout.addView(gameModeCardBinding.lessonCard)
     }
 }
