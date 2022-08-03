@@ -6,6 +6,10 @@ import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.modules.Module
 import com.github.talkbacktutorial.lessons.modules.VirtualKeyboardModule
 
+/**
+ * Lesson6 teaches the user how to open and type using the virtual/on-screen keyboard
+ * @author Team4
+ */
 class Lesson6 : Lesson() {
 
     override val title: String = App.resources.getString(R.string.lesson6_title)
