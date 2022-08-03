@@ -5,7 +5,7 @@ package com.github.talkbacktutorial.gestures
  * Source of gestures: https://media.dequeuniversity.com/en/courses/generic/testing-screen-readers/2.0/docs/talkback-images-guide.pdf
  * @author Andre Pham
  */
-enum class TalkbackGesture {
+enum class TalkbackGesture(val description: String) {
 
     /**
      * An overview on how to interpret these names.
@@ -25,56 +25,56 @@ enum class TalkbackGesture {
      */
 
     // Open the TalkBack menu
-    DOWN_RIGHT,
-    UP_RIGHT,
-    TAP_3,
+    DOWN_RIGHT("Open the talkback menu"),
+    UP_RIGHT("Open the talkback menu"),
+    TAP_3("Open the talkback menu"),
 
     // Pause or resume reading
-    TAP_2,
+    TAP_2("Pause or resume reading"),
 
     // Scroll
-    UP_2,
-    DOWN_2,
-    LEFT_2,
-    RIGHT_2,
+    UP_2("Scroll down"),
+    DOWN_2("Scroll up"),
+    LEFT_2("Scroll right"),
+    RIGHT_2("Scroll left"),
 
     // Reading controls
-    UP_DOWN,
-    DOWN_UP,
-    UP_3,
-    DOWN_3,
-    LEFT_3,
-    RIGHT_3,
+    UP_DOWN("Change to next reading control"),
+    DOWN_UP("Change to previous reading control"),
+    UP_3("Change to next reading control"),
+    DOWN_3("Change to previous reading control"),
+    LEFT_3("Change to next reading control"),
+    RIGHT_3("Change to previous reading control"),
 
     // Start reading continuously
-    TRIPLE_TAP_2,
+    TRIPLE_TAP_2("Read continuously from this point"),
 
     // Travel reading control items
-    DOWN,
-    UP,
+    DOWN("Travel reading control items"),
+    UP("Travel reading control items"),
 
     // Elements
-    LEFT,
-    RIGHT,
-    DOUBLE_TAP,
+    LEFT("Read previous item"),
+    RIGHT("Read next item"),
+    DOUBLE_TAP("Activate element"), // TODO: use better word than activate
 
     // Navigation
-    DOWN_LEFT,
-    UP_LEFT,
-    LEFT_UP,
-    RIGHT_DOWN,
+    DOWN_LEFT("Go back"),
+    UP_LEFT("Go to home screen"),
+    LEFT_UP("Show recent apps"),
+    RIGHT_DOWN("Show notifications"),
 
     // Media
-    DOUBLE_TAP_2,
-    RIGHT_LEFT,
-    LEFT_RIGHT,
+    DOUBLE_TAP_2("Start or stop media. Or answer or end call"),
+    RIGHT_LEFT("Increase slider"),
+    LEFT_RIGHT("Decrease slider"),
 
     // Other
-    LEFT_DOWN,
-    RIGHT_UP,
+    LEFT_DOWN("Search for a word or phrase"),
+    RIGHT_UP("Open voice commands"),
 
     // None
-    NO_MATCH;
+    NO_MATCH("");
 
     /**
      * If this gesture represents a fling.

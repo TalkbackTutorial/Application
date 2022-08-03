@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.github.talkbacktutorial.R
+import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
 import com.github.talkbacktutorial.databinding.ActivitySandboxModeBinding
 import com.github.talkbacktutorial.gestures.delegates.GestureDelegate
 import com.github.talkbacktutorial.gestures.GestureIdentifier
@@ -18,12 +21,16 @@ class SandboxModeActivity : AppCompatActivity() {
     private val gestureIdentifier = GestureIdentifier()
     private lateinit var gestureDelegate: GestureDelegate
     private lateinit var simpleGestureDelegate: SimpleGestureDelegate
+    private lateinit var ttsEngine: TextToSpeechEngine
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_sandbox_mode)
+
+        // initialise tts
+        this.ttsEngine = TextToSpeechEngine(this)
 
         // Setup delegates to feed data to gestureIdentifier
         this.gestureDelegate = GestureDelegate(this.gestureIdentifier.gestureData)
@@ -40,6 +47,8 @@ class SandboxModeActivity : AppCompatActivity() {
             this.simpleGestureDelegate.onTouchEventCallback(event)
             if (event.actionMasked == MotionEvent.ACTION_UP) {
                 val output = this.gestureIdentifier.onGestureConclusion()
+                // speak
+                this.ttsEngine.speak(output.description, true)
                 this.binding.temporaryDemo.text = output.name
             }
             return@setOnTouchListener true
