@@ -53,6 +53,11 @@ class VirtualKeyboardPart1Fragment : Fragment() {
 
     }
 
+    /**
+     * Function that setups a EditText field which can be used to type in and calls the function
+     * onFinishTyping() when the user has finished typing.
+     * @author Sandy Du
+     */
     private fun setupTextView() {
         this.editText = this.binding.editText
         editText.setOnEditorActionListener { _, actionId, event ->
@@ -63,6 +68,10 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         }
     }
 
+    /**
+     * Function that checks if the user has typed in the correct word requested in the text field
+     * @author Sandy Du
+     */
     private fun onFinishTyping() {
         if (editText.text.toString().lowercase() == TYPED_STRING){
             val info = getString(R.string.virtual_keyboard_part1_on_finish_typing).trimIndent()
@@ -74,11 +83,21 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         }
     }
 
+    /**
+     * Function that uses the TTS Engine to speak the intro when the module is first opened.
+     * @author Sandy Du, Nabeeb Yusuf
+     */
     private fun speakIntro() {
         val intro = getString(R.string.virtual_keyboard_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
+    /**
+     * Function that observes the change in dimension such as height of the screen to determine if
+     * the virtual keyboard has been opened. If it has been opened, it calls the function
+     * onShowKeyboard()
+     * @author Sandy Du, Nabeeb Yusuf
+     */
     private val keyboardLayoutListener: ViewTreeObserver.OnGlobalLayoutListener = ViewTreeObserver.OnGlobalLayoutListener {
         // navigation bar height
         var navigationBarHeight = 0
@@ -106,6 +125,11 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         }
     }
 
+    /**
+     * Function that uses the TTS Engine to give audio feedback when the virtual keyboard has
+     * been opened.
+     * @author Sandy Du
+     */
     private fun onShowKeyboard() {
         if (firstTime) {
             val info = getString(R.string.virtual_keyboard_part1_on_show_keyboard).trimIndent()
@@ -114,6 +138,10 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         }
     }
 
+    /**
+     * Function that inserts the finish button on screen for the user to exit the module.
+     * @author Team4
+     */
     private fun insertFinishButton() {
         val constraintLayout = this.binding.virtualKeyboardConstraintLayout
         val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
@@ -135,10 +163,19 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         constraintLayout.addView(finishButton)
     }
 
+    /**
+     * Function that converts pixels to integer values
+     * @author Sandy Du
+     */
     private fun Int.dpToPixels(context: Context): Int = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
     ).toInt()
 
+
+    /**
+     * Function that exits the module.
+     * @author Sandy Du
+     */
     private fun endLesson() {
         // Lesson's complete go back to Main Activity
         activity?.onBackPressed()
@@ -149,6 +186,11 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         super.onDestroyView()
     }
 
+
+    /**
+     * Function that hides the screen when the tts engine is speaking
+     * @author Team4
+     */
     private fun speakDuringLesson(info: String) {
         this.binding.virtualKeyboardConstraintLayout.visibility = View.GONE
         ttsEngine.onFinishedSpeaking(triggerOnce = true) {
