@@ -9,7 +9,7 @@
     <string name="lesson_space">"Lesson "</string>
     <string name="finish_lesson">Finish Lesson</string>
     <string name="finish_lesson_button">Finish Lesson Button</string>
-    <string name="finish_module">Finish Module</string>
+    <string name="continue_jump_text">Continue module</string>
     <string name="finish_module_button">Finish module</string>
     <string name="finish">Finish</string>
     <string name="row">Row</string>
@@ -190,13 +190,29 @@
     <string name="percent_s">%s</string>
 
     <!-- JumpText !-->
-    <string name="jump_text_paragraph_can">Paragraph 3. Dont cry over spilled milk simply means that there is no point to being upset over something that has already happened and cannot be changed</string>
-    <string name="jump_text_paragraph_seashells">Paragraph 2. She sells seashells on the seashore. The shells she sells are seashells, I’m sure. And if she sells seashells on the seashore, Then I’m sure she sells seashore shells.</string>
-    <string name="jump_text_paragraph_piper">Paragraph 1. Peter Piper picked a peck of pickled peppers; A peck of pickled peppers Peter Piper picked</string>
-    <string name="jump_text_request_paragraph_mode">We will now learn to use each reading modes. As you have learned previously, please switch to the reading mode that says \"Paragraph\"</string>
-    <string name="jump_text_paragraphs_intro">You will now learn to transition between paragraphs. A single swipe up or down will transition between different paragraphs that are on the screen. Please try it until you reach a button that says finish module, then double tap to finish the module. For your information, this will be a very long practice text. so, it would be easier to complete it using the Paragraph reading mode. However, you can still try out different reading modes such as Characters, Words and lines reading modes.</string>
-    <string name="jump_text_paragraphs_conclusion">You have completed the module. To summarise, in this module you have learnt to use the Paragraph reading mode to navigate through the page. In the future, you can utilise these different reading modes such as Headers, Controls, Links and more, to navigate through your phone. Sending you back to the Lesson modules.</string>
+    <string name="jump_text_paragraph_3">Paragraph 3. The world is indeed full of peril, and in it there are many dark places; but still there is much that is fair, and though in all lands love is now mingled with grief, it grows, perhaps, the greater.</string>
+    <string name="jump_text_paragraph_2">Paragraph 2. Beautiful she is, sir! Lovely! Sometimes like a great tree in flower, sometimes like a white daffadowndilly, small and slender like. Hard as diamonds, soft as moonlight. Warm as sunlight, cold as frost in the stars. Proud and far-off as a snow-mountain, and as merry as any lass I ever saw with daisies in her hair in springtime….It strikes me that folk takes their peril with them into Lorien, and finds it there because they’ve brought it. But perhaps you could call her perilous, because she’s so strong in herself. You, you could dash yourself to pieces on her, like a ship on a rock; or drownd yourself, like a hobbit in a river. But neither rock nor river would be to blame.</string>
+    <string name="jump_text_paragraph_1">Paragraph 1. All Art that is not mere story-telling, or mere portraiture, is symbolic, and has the purpose of those symbolic talismans which medieval magicians made with complex colours and forms, and bade their patients ponder over daily, and guard with holy secrecy; for it entangles, in complex colours and forms, a part of the Divine Essence. A person or a landscape that is a part of a story or a portrait, evokes but so much emotion as the story or the portrait can permit without loosening the bonds that make it a story or a portrait; but if you liberate a person or a landscape from the bonds of motives and their actions, causes and their effects, and from all bonds but the bonds of your love, it will change under your eyes, and become a symbol of an infinite emotion, a perfected emotion, a part of the Divine Essence; for we love nothing but the perfect, and our dreams make all things perfect, that we may love them. Religious and visionary people, monks and nuns, and medicine-men, and opium-eaters, see symbols in their trances; for religious and visionary thought is thought about perfection and the way to perfection; and symbols are the only things free enough from all bonds to speak of perfection.</string>
+    <string name="jump_text_request_paragraph_mode">We will now learn to use each text reading modes. As you have learned previously, please switch to the reading mode that says \"Paragraph\"</string>
+    <string name="jump_text_paragraphs_intro">Firstly, we will learn to use paragraph reading mode. If you have already changed to paragraph mode, A single swipe up or down will transition between different paragraphs that are on the screen. Please try it until you reach a button that says continue module, then double tap to continue the module.</string>
+    <string name="jump_text_paragraphs_intro2"> Moving forward, we will learn to use lines reading mode. If you have already changed to lines mode, A single swipe up or down will transition between different lines that are on the screen similar to paragraph mode. Please try it until you reach a button that says continue module, then double tap to continue the module.</string>
+    <string name="jump_text_paragraphs_intro3"> We will continue to learn to use the word reading mode. As you have familiarized yourself with the reading modes learnt previously, please try this yourself and navigate to the continue word, then double tap to proceed </string>
+    <string name="jump_text_paragraphs_intro4"> Finally in this module, use the character reading mode to navigate to the hidden alphabet that comes after the alphabet "S". For example, the alphabet "B" comes before alphabet "C". navigate to the hidden alphabet that comes after the alphabet "S". After you have found the hidden alphabet, double tap to finish this module</string>
+    <string name="jump_text_paragraphs_conclusion">You have completed this module. To summarise, in this module you have learnt to use all text reading modes to navigate through a page. Sending you back to the Lesson modules.</string>
     <string name="jump_text_continue_fragment_message">If you have changed reading mode to Paragraph mode, Please double tap to continue</string>
+    <string name="jump_text_line_1">Line 1. Be not afraid of greatness.
+        Some are born great, some achieve greatness,
+        and others have greatness thrust upon them.</string>
+    <string name="jump_text_line_2">Line 2. Wisely, and slow. They stumble that run fast.</string>
+    <string name="jump_text_line_3">Line 3. Better three hours too soon,
+        than a minute too late.</string>
+    <string name="jump_text_word_1">Something about her voice gave me enough confidence to</string>
+    <string name="jump_text_word_2">continue</string>
+    <string name="jump_text_char_1">CON</string>
+    <string name="jump_text_char_2">T</string>
+    <string name="jump_text_char_3">INUE</string>
+
+
 
 
     <!-- MediaVolumeControl !-->
@@ -340,5 +356,6 @@
     <string name="article_paragraph3">The amygdala (in temporal lobe) is involved in emotional memory, and links emotions and emotional responses (such as fear and aggression) to declarative memories. This helps us remember experiences by the emotion we felt during its formation. Also involved in the formation of procedural memories.</string>
     <string name="article_paragraph4">The cerebellum is involved in motor learning and the memory of conditioned reflexes. It\'s involved in implicit memory such as procedural memories that require movement. Also has a role in spatial navigation.</string>
     <string name="article_paragraph5">Finally, language is stored in Broca\'s area in the left frontal lobe, and memory for pictures are stored in the occipital lobe.</string>
+
 
 </resources>

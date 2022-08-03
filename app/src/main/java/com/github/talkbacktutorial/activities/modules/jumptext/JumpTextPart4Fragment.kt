@@ -13,16 +13,17 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
-import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart2Binding
+import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart3Binding
+import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart4Binding
 
-class JumpTextPart2Fragment : Fragment() {
+class JumpTextPart4Fragment : Fragment() {
 
-    private lateinit var binding: FragmentJumpTextModulePart2Binding
+    private lateinit var binding: FragmentJumpTextModulePart4Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
     companion object {
         @JvmStatic
-        fun newInstance() = JumpTextPart2Fragment()
+        fun newInstance() = JumpTextPart4Fragment()
     }
 
     override fun onCreateView(
@@ -31,7 +32,7 @@ class JumpTextPart2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part2, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part4, container, false)
         return binding.root
     }
 
@@ -39,7 +40,7 @@ class JumpTextPart2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
         this.speakIntro()
-        binding.continueText.setOnClickListener {
+        binding.textView2.setOnClickListener {
             this.onClickContinueLesson()
         }
     }
@@ -49,7 +50,7 @@ class JumpTextPart2Fragment : Fragment() {
      * @author Joel Yang
      */
     private fun speakIntro() {
-        val intro = getString(R.string.jump_text_paragraphs_intro).trimIndent()
+        val intro = getString(R.string.jump_text_paragraphs_intro3).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -60,7 +61,7 @@ class JumpTextPart2Fragment : Fragment() {
     private fun onClickContinueLesson() {
         updateModule()
         parentFragmentManager.commit {
-            replace(this@JumpTextPart2Fragment.id, JumpTextPart3Fragment.newInstance())
+            replace(this@JumpTextPart4Fragment.id, JumpTextPart5Fragment.newInstance())
         }
     }
 
