@@ -167,23 +167,6 @@ class MediaVolumeControlPart1Fragment : Fragment() {
     }
 
     /**
-     * TODO: Button obsolete. Lesson now automatically ends after the outro.
-     */
-    private fun insertFinishButton() {
-        val constraintLayout = this.binding.mediaVolumeControlConstraintLayout
-        val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, constraintLayout,false)
-        primaryButtonBinding.text = ""
-        primaryButtonBinding.button.setOnClickListener{ endLesson() }
-        val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
-        layoutParams.horizontalBias = 0.95f
-        layoutParams.endToEnd = constraintLayout.id
-        layoutParams.startToStart = constraintLayout.id
-        layoutParams.topToTop = constraintLayout.id
-        layoutParams.topMargin = 10.dpToPixels(requireContext())
-        constraintLayout.addView(primaryButtonBinding.button, layoutParams)
-    }
-
-    /**
      * Introduction of the lesson module using TTS
      * @author Natalie Law
      */
@@ -212,10 +195,6 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         stopMedia()
         super.onDestroyView()
     }
-
-    private fun Int.dpToPixels(context: Context): Int = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
-    ).toInt()
 
     /**
      * This method is used to ensure that the TTS will not be interrupted when speaking during the lesson. This is
