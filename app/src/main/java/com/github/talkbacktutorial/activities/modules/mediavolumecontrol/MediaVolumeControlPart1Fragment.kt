@@ -125,11 +125,14 @@ class MediaVolumeControlPart1Fragment : Fragment() {
     }
 
     /**
-     * Determines the logic of the lesson. It checks whether the volume is above 75; or below 25 (and has previously
+     * Determines the logic of the lesson. It first prompts the user to increase the volume to 75 by swiping up.
+     * Then it checks whether the volume is above 75; or below 25 (and has previously
      * completed the swipe up gesture). Based on the conditions, the method determines the next steps for the lesson.
      * @author Natalie Law
      */
     private fun lessonLogic() {
+        val startInfo = getString(R.string.media_volume_control_part1_increase_volume).trimIndent()
+        ttsEngine.speak(startInfo)
         if (currentVolume >= 75) {
             if (mediaPlayer?.isPlaying == true) mediaPlayer?.pause()
             binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
@@ -142,9 +145,11 @@ class MediaVolumeControlPart1Fragment : Fragment() {
             swipeUp = true
         } else if (currentVolume <= 25 && swipeUp) {
             stopMedia()
+            ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                endLesson()
+            }
             val info = getString(R.string.media_volume_control_part1_outro).trimIndent()
             speakDuringLesson(info)
-            insertFinishButton()
         }
     }
 
@@ -161,6 +166,9 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         }
     }
 
+    /**
+     * TODO: Button obsolete. Lesson now automatically ends after the outro.
+     */
     private fun insertFinishButton() {
         val constraintLayout = this.binding.mediaVolumeControlConstraintLayout
         val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, constraintLayout,false)
