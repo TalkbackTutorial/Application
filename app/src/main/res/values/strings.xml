@@ -200,7 +200,8 @@
 
 
     <!-- MediaVolumeControl !-->
-    <string name="media_volume_control_part1_intro">In this tutorial, you will be learning how to control the media volume sliders, increasing or decreasing your phone\'s media volume. To start, explore your screen by touch and find the play button. Once found, double tap to play the music. Then, increase the volume of the media above 75 by swiping up.</string>
+    <string name="media_volume_control_part1_intro">In this tutorial, you will be learning how to control the media volume sliders and adjust your phone\'s volume. To start, explore your screen by touch and find the play button then double tap to play the music.</string>
+    <string name="media_volume_control_part1_increase_volume">Great job! Now, increase the volume of the media above 75 by swiping up.</string>
     <string name="media_volume_control_part1_play_prompt">The song is not played. Please press the play button to play the music.</string>
     <string name="media_volume_control_part1_talkback_prompt">Talkback is currently not turned on. Please turn Talkback on to continue this lesson</string>
     <string name="media_volume_control_part1_decrease_volume">current Volume is set above 75. Now that you learned how to increase the volume, we will try decreasing the volume below 25. To decrease the volume, swipe down.</string>
