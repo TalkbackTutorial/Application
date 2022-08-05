@@ -17,6 +17,10 @@ import com.github.talkbacktutorial.gestures.delegates.SimpleGestureDelegate
 class GameModeActivity : AppCompatActivity() {
 
     private var score = 0
+        set(value) {
+            field = value
+            binding.scoreLabel.text = value.toString()
+        }
     private lateinit var currentGesture: TalkbackGesture
     private lateinit var binding: ActivityGameModeBinding
     private val gestureIdentifier = GestureIdentifier()
