@@ -3,7 +3,6 @@ package com.github.talkbacktutorial.activities.gamemode
 import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -11,9 +10,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.ActivityGameModeBinding
 import com.github.talkbacktutorial.gamemode.Game
-import com.github.talkbacktutorial.gamemode.GesturePool
 import com.github.talkbacktutorial.gestures.GestureIdentifier
-import com.github.talkbacktutorial.gestures.TalkbackGesture
 import com.github.talkbacktutorial.gestures.delegates.GestureDelegate
 import com.github.talkbacktutorial.gestures.delegates.SimpleGestureDelegate
 
@@ -94,7 +91,7 @@ class GameModeActivity : AppCompatActivity() {
      * @author Andre Pham
      */
     private fun onStartRound() {
-        this.binding.staticScoreLabel.text = this.game.requiredGesture.description
-        this.ttsEngine.speak(this.game.requiredGesture.description)
+        this.binding.staticScoreLabel.text = this.game.requiredGesture.actionDescription
+        this.ttsEngine.speak(this.game.requiredGesture.actionDescription)
     }
 }

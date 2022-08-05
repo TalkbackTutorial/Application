@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.gamemode
 
+import com.github.talkbacktutorial.gestures.TalkbackAction
 import com.github.talkbacktutorial.gestures.TalkbackGesture
 
 class GesturePool {
@@ -16,9 +17,9 @@ class GesturePool {
      */
     private fun fillPool() {
         val newPool = TalkbackGesture.values().toMutableList()
-        newPool.removeAll { it.gestureAction() == null } // Remove gestures such as NO_MATCH
+        newPool.removeAll { it.action == TalkbackAction.NONE } // Remove gestures such as NO_MATCH
         newPool.shuffle() // Must shuffle before removing duplicates
-        gestures = ArrayList(newPool.distinctBy { it.gestureAction() })
+        gestures = ArrayList(newPool.distinctBy { it.action }) // Remove duplicate actions
     }
 
     /**

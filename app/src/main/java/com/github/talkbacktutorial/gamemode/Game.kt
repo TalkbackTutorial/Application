@@ -72,7 +72,7 @@ class Game(
      * @author Andre Pham
      */
     private fun gestureMatches(): Boolean {
-        return this.performedGesture.gestureAction() == this.requiredGesture.gestureAction()
+        return this.performedGesture.gestureActionMatches(this.requiredGesture)
     }
 
 }

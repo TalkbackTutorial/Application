@@ -5,7 +5,7 @@ package com.github.talkbacktutorial.gestures
  * Source of gestures: https://media.dequeuniversity.com/en/courses/generic/testing-screen-readers/2.0/docs/talkback-images-guide.pdf
  * @author Andre Pham
  */
-enum class TalkbackGesture(val description: String) {
+enum class TalkbackGesture(val action: TalkbackAction) {
 
     /**
      * An overview on how to interpret these names.
@@ -25,56 +25,59 @@ enum class TalkbackGesture(val description: String) {
      */
 
     // Open the TalkBack menu
-    DOWN_RIGHT("Open the talkback menu"),
-    UP_RIGHT("Open the talkback menu"),
-    TAP_3("Open the talkback menu"),
+    DOWN_RIGHT(TalkbackAction.OPEN_TALKBACK_MENU),
+    UP_RIGHT(TalkbackAction.OPEN_TALKBACK_MENU),
+    TAP_3(TalkbackAction.OPEN_TALKBACK_MENU),
 
     // Pause or resume reading
-    TAP_2("Pause or resume reading"),
+    TAP_2(TalkbackAction.PAUSE_RESUME_READING),
 
     // Scroll
-    UP_2("Scroll down"),
-    DOWN_2("Scroll up"),
-    LEFT_2("Scroll right"),
-    RIGHT_2("Scroll left"),
+    UP_2(TalkbackAction.SCROLL_DOWN),
+    DOWN_2(TalkbackAction.SCROLL_UP),
+    LEFT_2(TalkbackAction.SCROLL_RIGHT),
+    RIGHT_2(TalkbackAction.SCROLL_LEFT),
 
     // Reading controls
-    UP_DOWN("Change to next reading control"),
-    DOWN_UP("Change to previous reading control"),
-    UP_3("Change to next reading control"),
-    DOWN_3("Change to previous reading control"),
-    LEFT_3("Change to next reading control"),
-    RIGHT_3("Change to previous reading control"),
+    UP_DOWN(TalkbackAction.NEXT_READING_CONTROL),
+    DOWN_UP(TalkbackAction.PREVIOUS_READING_CONTROL),
+    UP_3(TalkbackAction.NEXT_READING_CONTROL),
+    DOWN_3(TalkbackAction.PREVIOUS_READING_CONTROL),
+    LEFT_3(TalkbackAction.NEXT_READING_CONTROL),
+    RIGHT_3(TalkbackAction.PREVIOUS_READING_CONTROL),
 
     // Start reading continuously
-    TRIPLE_TAP_2("Read continuously from this point"),
+    TRIPLE_TAP_2(TalkbackAction.READ_CONTINUOUSLY),
 
     // Travel reading control items
-    DOWN("Jump to previous reading control item"),
-    UP("Jump to next reading control item"),
+    DOWN(TalkbackAction.PREVIOUS_READING_CONTROL_ITEM),
+    UP(TalkbackAction.NEXT_READING_CONTROL_ITEM),
 
     // Elements
-    LEFT("Move to previous item"),
-    RIGHT("Move to next item"),
-    DOUBLE_TAP("Interact with item"),
+    LEFT(TalkbackAction.PREVIOUS_ITEM),
+    RIGHT(TalkbackAction.NEXT_ITEM),
+    DOUBLE_TAP(TalkbackAction.INTERACT_ITEM),
 
     // Navigation
-    DOWN_LEFT("Go back"),
-    UP_LEFT("Go to home screen"),
-    LEFT_UP("Show recent apps"),
-    RIGHT_DOWN("Show notification panel"),
+    DOWN_LEFT(TalkbackAction.BACK),
+    UP_LEFT(TalkbackAction.HOME_SCREEN),
+    LEFT_UP(TalkbackAction.RECENT_APPS),
+    RIGHT_DOWN(TalkbackAction.NOTIFICATION_PANEL),
 
     // Media
-    DOUBLE_TAP_2("Start or stop media. Answer or end a call"),
-    RIGHT_LEFT("Increase slider"),
-    LEFT_RIGHT("Decrease slider"),
+    DOUBLE_TAP_2(TalkbackAction.MEDIA_OR_CALL),
+    RIGHT_LEFT(TalkbackAction.SLIDER_INCREASE),
+    LEFT_RIGHT(TalkbackAction.SLIDER_DECREASE),
 
     // Other
-    LEFT_DOWN("Screen text search"),
-    RIGHT_UP("Open voice commands"),
+    LEFT_DOWN(TalkbackAction.TEXT_SEARCH),
+    RIGHT_UP(TalkbackAction.VOICE_COMMANDS),
 
     // None
-    NO_MATCH("");
+    NO_MATCH(TalkbackAction.NONE);
+
+    val actionDescription: String
+        get() { return this.action.description }
 
     /**
      * If this gesture represents a fling.
@@ -129,36 +132,13 @@ enum class TalkbackGesture(val description: String) {
     }
 
     /**
-     * returns an int corresponding to what action the gesture causes
-     * @author Antony Loose
+     * Checks if two gestures perform the same action.
+     * @param gesture the gesture to check against
+     * @return True if the gesture action descriptions match
+     * @author Andre Pham
      */
-    fun gestureAction(): Int? {
-        return when (this) {
-            DOWN_RIGHT, UP_RIGHT, TAP_3 -> 0
-            TAP_2 -> 1
-            UP_2 -> 2
-            DOWN_2 -> 3
-            LEFT_2 -> 4
-            RIGHT_2 -> 5
-            UP_DOWN, LEFT_3, UP_3 -> 6
-            DOWN_UP, DOWN_3, RIGHT_3 -> 7
-            TRIPLE_TAP_2 -> 8
-            DOWN -> 9
-            UP -> 10
-            LEFT -> 11
-            RIGHT -> 12
-            DOUBLE_TAP -> 13
-            DOWN_LEFT -> 14
-            UP_LEFT -> 15
-            LEFT_UP -> 16
-            RIGHT_DOWN -> 17
-            DOUBLE_TAP_2 -> 18
-            RIGHT_LEFT -> 19
-            LEFT_RIGHT -> 20
-            LEFT_DOWN -> 21
-            RIGHT_UP -> 22
-            NO_MATCH -> null
-        }
+    fun gestureActionMatches(gesture: TalkbackGesture): Boolean {
+        return this.action == gesture.action
     }
 
 }

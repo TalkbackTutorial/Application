@@ -3,13 +3,10 @@ package com.github.talkbacktutorial.activities.sandboxmode
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
-import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
 import com.github.talkbacktutorial.databinding.ActivitySandboxModeBinding
 import com.github.talkbacktutorial.gestures.delegates.GestureDelegate
 import com.github.talkbacktutorial.gestures.GestureIdentifier
@@ -48,7 +45,7 @@ class SandboxModeActivity : AppCompatActivity() {
             if (event.actionMasked == MotionEvent.ACTION_UP) {
                 val output = this.gestureIdentifier.onGestureConclusion()
                 // speak
-                this.ttsEngine.speak(output.description, true)
+                this.ttsEngine.speak(output.actionDescription, true)
                 this.binding.temporaryDemo.text = output.name
             }
             return@setOnTouchListener true
