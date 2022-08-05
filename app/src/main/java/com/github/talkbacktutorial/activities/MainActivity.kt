@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.gamemode.GameModeAcitivity
+import com.github.talkbacktutorial.activities.gamemode.GameModeActivity
 import com.github.talkbacktutorial.activities.sandboxmode.SandboxModeActivity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
 import com.github.talkbacktutorial.database.InstanceSingleton
@@ -226,7 +226,7 @@ class MainActivity : AppCompatActivity() {
      */
     private fun loadGameModeCard(){
         val openGameMode: () -> Unit = {
-            val intent = Intent(this, GameModeAcitivity::class.java)
+            val intent = Intent(this, GameModeActivity::class.java)
             this.startActivity(intent)
         }
         // TODO: come up with name and subtitle for game

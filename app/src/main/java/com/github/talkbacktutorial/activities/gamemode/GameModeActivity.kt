@@ -14,7 +14,7 @@ import com.github.talkbacktutorial.gestures.TalkbackGesture
 import com.github.talkbacktutorial.gestures.delegates.GestureDelegate
 import com.github.talkbacktutorial.gestures.delegates.SimpleGestureDelegate
 
-class GameModeAcitivity : AppCompatActivity() {
+class GameModeActivity : AppCompatActivity() {
 
     private var score = 0
     private lateinit var currentGesture: TalkbackGesture
