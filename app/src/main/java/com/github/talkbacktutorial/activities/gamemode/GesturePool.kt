@@ -4,9 +4,9 @@ import android.util.Log
 import com.github.talkbacktutorial.gestures.TalkbackGesture
 import kotlin.random.Random
 
-class GesturePool(
-    private var gestures: MutableList<TalkbackGesture> = TalkbackGesture.values().toMutableList()
-) {
+class GesturePool {
+
+    private var gestures = ArrayList<TalkbackGesture>()
 
     init {
         fillPool()
