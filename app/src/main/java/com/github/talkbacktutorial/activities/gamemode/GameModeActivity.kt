@@ -2,6 +2,7 @@ package com.github.talkbacktutorial.activities.gamemode
 
 import android.annotation.SuppressLint
 import android.gesture.Gesture
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
@@ -50,6 +51,10 @@ class GameModeActivity : AppCompatActivity() {
             this.gestureIdentifier.scrollMotionData
         )
 
+        // declare sound effects
+        val correct = MediaPlayer.create(this, R.raw.correct)
+        val incorrect = MediaPlayer.create(this, R.raw.wrong)
+
         // add listeners to overlay
         this.binding.gestureOverlay.addOnGestureListener(this.gesturedDelegate)
         this.binding.touchOverlay.setOnTouchListener { view, event ->
@@ -57,14 +62,11 @@ class GameModeActivity : AppCompatActivity() {
             if (event.actionMasked == MotionEvent.ACTION_UP) {
                 val output = this.gestureIdentifier.onGestureConclusion()
                 if (checkGesture(output)){
-                    // play the next round
-                    // TODO: replace "correct with "ding"
-                    this.ttsEngine.speak("Correct", true)
+                    correct.start()
                     this.score += 1
                     playRound()
                 }else{
-                    // TODO: insert "brr brr" here
-                    this.ttsEngine.speak("Incorrect", true)
+                    incorrect.start()
                     this.score = 0
                 }
             }
