@@ -50,8 +50,8 @@ enum class TalkbackGesture(val description: String) {
     TRIPLE_TAP_2("Read continuously from this point"),
 
     // Travel reading control items
-    DOWN("Jump to next reading control item"),
-    UP("Jump to previous reading control item"),
+    DOWN("Jump to previous reading control item"),
+    UP("Jump to next reading control item"),
 
     // Elements
     LEFT("Move to previous item"),
@@ -136,15 +136,28 @@ enum class TalkbackGesture(val description: String) {
         return when (this) {
             DOWN_RIGHT, UP_RIGHT, TAP_3 -> 0
             TAP_2 -> 1
-            UP_2, DOWN_2, LEFT_2, RIGHT_2 -> 2
-            UP_DOWN, DOWN_UP, UP_3, DOWN_3, LEFT_3, RIGHT_3 -> 3
-            TRIPLE_TAP_2 -> 4
-            DOWN, UP -> 5
-            LEFT, RIGHT, DOUBLE_TAP -> 6
-            DOWN_LEFT, UP_LEFT, LEFT_UP, RIGHT_DOWN -> 7
-            DOUBLE_TAP_2, RIGHT_LEFT, LEFT_RIGHT -> 8
-            LEFT_DOWN, RIGHT_UP -> 9
-            NO_MATCH -> 10
+            UP_2 -> 2
+            DOWN_2 -> 3
+            LEFT_2 -> 4
+            RIGHT_2 -> 5
+            UP_DOWN, LEFT_3, UP_3 -> 6
+            DOWN_UP, DOWN_3, RIGHT_3 -> 7
+            TRIPLE_TAP_2 -> 8
+            DOWN -> 9
+            UP -> 10
+            LEFT -> 11
+            RIGHT -> 12
+            DOUBLE_TAP -> 13
+            DOWN_LEFT -> 14
+            UP_LEFT -> 15
+            LEFT_UP -> 16
+            RIGHT_DOWN -> 17
+            DOUBLE_TAP_2 -> 18
+            RIGHT_LEFT -> 19
+            LEFT_RIGHT -> 20
+            LEFT_DOWN -> 21
+            RIGHT_UP -> 22
+            NO_MATCH -> 23
         }
     }
 
