@@ -73,7 +73,7 @@ class OpenNotificationPart1Fragment : Fragment() {
             // once the user open noti panel. Teach them how to close it. Since Talkback will be talking a lot here and there is no way to stop it,
             // extend the timer so tts engine can talk after Talkback is done talking.
             // Note that the delay time does not have to be exact it can be anything as long as it is after Talkback start ranting :)
-            Timer().schedule(7000) {
+            Timer().schedule(10000) {
                 ttsEngine.speak(getString(R.string.open_notifications_feedback_1))
             }
         } else if (counter == 1) {
@@ -81,7 +81,7 @@ class OpenNotificationPart1Fragment : Fragment() {
             ttsEngine.speak(getString(R.string.open_notifications_feedback_2))
         } else if (counter == 2) {
             // tell the user to close the panel after it is opened again
-            Timer().schedule(7000) {
+            Timer().schedule(10000) {
                 ttsEngine.speak(getString(R.string.open_notifications_feedback_3))
             }
         } else if (counter == 3) {
