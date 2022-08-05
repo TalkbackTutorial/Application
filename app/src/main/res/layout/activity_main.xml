@@ -21,6 +21,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/horizontal_card_spacing"
                 android:orientation="vertical">
 
                 <LinearLayout

@@ -216,7 +216,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SandboxModeActivity::class.java)
             this.startActivity(intent)
         }
-        loadCard("Sandbox mode", "Practice your gestures in a sandbox enviroment", openSandbox)
+        loadCard("Experiment With Gestures", "Sandbox Mode", openSandbox)
     }
 
     /**
@@ -225,8 +225,7 @@ class MainActivity : AppCompatActivity() {
      */
     private fun loadGameModeCard(){
         val openGameMode: () -> Unit = {}
-        // TODO: come up with name and subtitle for game
-        loadCard("Game mode", "Try beat your high score!", openGameMode)
+        loadCard("Consolidate Learnt Gestures", "Minigame", openGameMode)
     }
 
     /**
