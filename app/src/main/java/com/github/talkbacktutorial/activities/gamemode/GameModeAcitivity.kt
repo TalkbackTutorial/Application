@@ -54,12 +54,12 @@ class GameModeAcitivity : AppCompatActivity() {
                 if (checkGesture(output)){
                     // play the next round
                     // TODO: replace "correct with "ding"
-                    this.ttsEngine.speak("Correct")
+                    this.ttsEngine.speak("Correct", true)
                     this.score += 1
                     playRound()
                 }else{
                     // TODO: insert "brr brr" here
-                    this.ttsEngine.speak("Incorrect")
+                    this.ttsEngine.speak("Incorrect", true)
                     this.score = 0
                 }
             }
