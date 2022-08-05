@@ -132,7 +132,7 @@ enum class TalkbackGesture(val description: String) {
      * returns an int corresponding to what action the gesture causes
      * @author Antony Loose
      */
-    fun gestureAction(): Int{
+    fun gestureAction(): Int? {
         return when (this) {
             DOWN_RIGHT, UP_RIGHT, TAP_3 -> 0
             TAP_2 -> 1
@@ -157,7 +157,7 @@ enum class TalkbackGesture(val description: String) {
             LEFT_RIGHT -> 20
             LEFT_DOWN -> 21
             RIGHT_UP -> 22
-            NO_MATCH -> 23
+            NO_MATCH -> null
         }
     }
 

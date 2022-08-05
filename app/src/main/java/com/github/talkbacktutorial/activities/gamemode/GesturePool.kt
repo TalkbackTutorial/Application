@@ -1,11 +1,12 @@
 package com.github.talkbacktutorial.activities.gamemode
 
+import android.util.Log
 import com.github.talkbacktutorial.gestures.TalkbackGesture
 import kotlin.random.Random
 
-class GesturePool (
-    var gestures: MutableList<TalkbackGesture> = TalkbackGesture.values().toMutableList()
-    ) {
+class GesturePool(
+    private var gestures: MutableList<TalkbackGesture> = TalkbackGesture.values().toMutableList()
+) {
 
     init {
         fillPool()
@@ -13,30 +14,24 @@ class GesturePool (
 
     /**
      * Refill the pool
-     * @author Antony Loose
+     * @author Antony Loose, Andre Pham
      */
-    fun fillPool(){
-        gestures = TalkbackGesture.values().toMutableList()
+    private fun fillPool() {
+        val newPool = TalkbackGesture.values().toMutableList()
+        newPool.removeAll { it.gestureAction() == null } // Remove gestures such as NO_MATCH
+        newPool.shuffle() // Must shuffle before removing duplicates
+        gestures = ArrayList(newPool.distinctBy { it.gestureAction() })
     }
 
     /**
-     * Takes a gesture from the pool and removes any gestures with the same action, if the pool is empty
-     * then we refill
-     * @author Antony Loose
+     * Takes a gesture from the pool and refill if necessary
+     * @author Andre Pham
      */
-    fun takeGesture(): TalkbackGesture{
-        // get random gesture
-        val randIndex = Random.nextInt(gestures.size)
-        val randGesture = gestures[randIndex]
-
-        // remove gestures with the same actions
-        gestures.removeAll { it.gestureAction() == randGesture.gestureAction() }
-
-        // refill if empty
-        if (gestures.size == 0){
+    fun takeGesture(): TalkbackGesture {
+        val gesture = this.gestures.removeLast()
+        if (gestures.isEmpty()) {
             fillPool()
         }
-
-        return randGesture
+        return gesture
     }
 }

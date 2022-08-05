@@ -23,6 +23,7 @@ class GameModeActivity : AppCompatActivity() {
     private lateinit var gesturedDelegate: GestureDelegate
     private lateinit var simpleGestureDelegate: SimpleGestureDelegate
     private lateinit var ttsEngine: TextToSpeechEngine
+    private val gesturePool = GesturePool()
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,7 +72,7 @@ class GameModeActivity : AppCompatActivity() {
 
     private fun playRound(){
         // get next gesture
-        this.currentGesture = GesturePool().takeGesture()
+        this.currentGesture = this.gesturePool.takeGesture()
         this.binding.staticScoreLabel.text = currentGesture.description
         // read out gesture description
         this.ttsEngine.speak(currentGesture.description)
