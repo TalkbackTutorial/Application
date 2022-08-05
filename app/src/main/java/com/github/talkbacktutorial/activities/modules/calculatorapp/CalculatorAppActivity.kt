@@ -10,10 +10,10 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.ActivityCalculatorAppModuleBinding
 
 class CalculatorAppActivity : AppCompatActivity() {
-    private val TUTORIAL_PREFIX = getString(R.string.tbt)
-    private val EXTERNAL_APP_TAG = getString(R.string.sc)
-    private val APP_ACTION_KEY = TUTORIAL_PREFIX + getString(R.string.underscore) + EXTERNAL_APP_TAG + getString(R.string.action)
-    private val FINISH_CALCULATOR_TAG = EXTERNAL_APP_TAG + getString(R.string.task_finish_calculator)
+    private val TUTORIAL_PREFIX = "TBT"
+    private val EXTERNAL_APP_TAG = "SC"
+    private val APP_ACTION_KEY = TUTORIAL_PREFIX + "_" + EXTERNAL_APP_TAG + "_ACTION"
+    private val FINISH_CALCULATOR_TAG = EXTERNAL_APP_TAG + "_TASK_FINISH_CALCULATOR"
 
     lateinit var binding: ActivityCalculatorAppModuleBinding
         private set
