@@ -30,12 +30,7 @@ class GesturePool (
         val randGesture = gestures[randIndex]
 
         // remove gestures with the same actions
-        for ((i, gesture) in gestures.withIndex()){
-            if (gesture.gestureAction() == randGesture.gestureAction()){
-                // TODO: this causes an error as i am trying to remove using removeAt within an iterator
-                // gestures.removeAt(i)
-            }
-        }
+        gestures.removeAll { it.gestureAction() == randGesture.gestureAction() }
 
         // refill if empty
         if (gestures.size == 0){
