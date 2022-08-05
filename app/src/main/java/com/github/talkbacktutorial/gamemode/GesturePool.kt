@@ -1,8 +1,6 @@
-package com.github.talkbacktutorial.activities.gamemode
+package com.github.talkbacktutorial.gamemode
 
-import android.util.Log
 import com.github.talkbacktutorial.gestures.TalkbackGesture
-import kotlin.random.Random
 
 class GesturePool {
 
