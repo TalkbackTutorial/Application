@@ -50,27 +50,27 @@ enum class TalkbackGesture(val description: String) {
     TRIPLE_TAP_2("Read continuously from this point"),
 
     // Travel reading control items
-    DOWN("Travel reading control items"),
-    UP("Travel reading control items"),
+    DOWN("Jump to next reading control item"),
+    UP("Jump to previous reading control item"),
 
     // Elements
-    LEFT("Read previous item"),
-    RIGHT("Read next item"),
-    DOUBLE_TAP("Activate element"), // TODO: use better word than activate
+    LEFT("Move to previous item"),
+    RIGHT("Move to next item"),
+    DOUBLE_TAP("Interact with item"),
 
     // Navigation
     DOWN_LEFT("Go back"),
     UP_LEFT("Go to home screen"),
     LEFT_UP("Show recent apps"),
-    RIGHT_DOWN("Show notifications"),
+    RIGHT_DOWN("Show notification panel"),
 
     // Media
-    DOUBLE_TAP_2("Start or stop media. Or answer or end call"),
+    DOUBLE_TAP_2("Start or stop media. Answer or end a call"),
     RIGHT_LEFT("Increase slider"),
     LEFT_RIGHT("Decrease slider"),
 
     // Other
-    LEFT_DOWN("Search for a word or phrase"),
+    LEFT_DOWN("Screen text search"),
     RIGHT_UP("Open voice commands"),
 
     // None
