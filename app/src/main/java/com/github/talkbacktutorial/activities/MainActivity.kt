@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.gamemode.GameModeAcitivity
 import com.github.talkbacktutorial.activities.sandboxmode.SandboxModeActivity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
 import com.github.talkbacktutorial.database.InstanceSingleton
@@ -224,7 +225,10 @@ class MainActivity : AppCompatActivity() {
      * @author Antony Loose
      */
     private fun loadGameModeCard(){
-        val openGameMode: () -> Unit = {}
+        val openGameMode: () -> Unit = {
+            val intent = Intent(this, GameModeAcitivity::class.java)
+            this.startActivity(intent)
+        }
         // TODO: come up with name and subtitle for game
         loadCard("Game mode", "Try beat your high score!", openGameMode)
     }

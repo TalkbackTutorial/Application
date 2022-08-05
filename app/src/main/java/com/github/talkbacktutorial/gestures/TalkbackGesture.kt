@@ -128,4 +128,24 @@ enum class TalkbackGesture(val description: String) {
         return !this.isFlingGesture()
     }
 
+    /**
+     * returns an int corresponding to what action the gesture causes
+     * @author Antony Loose
+     */
+    fun gestureAction(): Int{
+        return when (this) {
+            DOWN_RIGHT, UP_RIGHT, TAP_3 -> 0
+            TAP_2 -> 1
+            UP_2, DOWN_2, LEFT_2, RIGHT_2 -> 2
+            UP_DOWN, DOWN_UP, UP_3, DOWN_3, LEFT_3, RIGHT_3 -> 3
+            TRIPLE_TAP_2 -> 4
+            DOWN, UP -> 5
+            LEFT, RIGHT, DOUBLE_TAP -> 6
+            DOWN_LEFT, UP_LEFT, LEFT_UP, RIGHT_DOWN -> 7
+            DOUBLE_TAP_2, RIGHT_LEFT, LEFT_RIGHT -> 8
+            LEFT_DOWN, RIGHT_UP -> 9
+            NO_MATCH -> 10
+        }
+    }
+
 }
