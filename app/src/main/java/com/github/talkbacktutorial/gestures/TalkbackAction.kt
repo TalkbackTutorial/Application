@@ -1,5 +1,9 @@
 package com.github.talkbacktutorial.gestures
 
+/**
+ * Actions that can be performed via Talkback gestures.
+ * @author Andre Pham
+ */
 enum class TalkbackAction(val description: String) {
 
     OPEN_TALKBACK_MENU("Open the talkback menu"),

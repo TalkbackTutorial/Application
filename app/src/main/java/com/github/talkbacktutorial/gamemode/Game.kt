@@ -7,6 +7,11 @@ import com.github.talkbacktutorial.gestures.TalkbackAction
 import com.github.talkbacktutorial.gestures.TalkbackGesture
 import com.github.talkbacktutorial.gestures.data.TapData
 
+/**
+ * Represents a game where the user is tasked to perform the gesture that corresponds to a given
+ * action, and gains points if they perform streaks of correct answers.
+ * @author Andre Pham
+ */
 class Game(
     private var onCorrectGesture: (() -> Unit),
     private var onWrongGesture: (() -> Unit),

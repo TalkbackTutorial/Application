@@ -3,6 +3,12 @@ package com.github.talkbacktutorial.gamemode
 import com.github.talkbacktutorial.gestures.TalkbackAction
 import com.github.talkbacktutorial.gestures.TalkbackGesture
 
+/**
+ * Represents a "pool" of gestures. You can take a gesture out of the pool.
+ * If the pool becomes empty, it refills itself.
+ * Used to represent a queue of randomised gestures with non-overlapping actions.
+ * @author Andre Pham
+ */
 class GesturePool {
 
     private var gestures = ArrayList<TalkbackGesture>()
@@ -13,7 +19,7 @@ class GesturePool {
 
     /**
      * Refill the pool
-     * @author Antony Loose, Andre Pham
+     * @author Andre Pham
      */
     private fun fillPool() {
         val newPool = TalkbackGesture.values().toMutableList()
