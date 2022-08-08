@@ -64,6 +64,10 @@ class MainActivity : AppCompatActivity() {
         AccessibilityChangeManager.setListener(
             AccessibilityChangeListener(
                 talkbackOnCallback = {
+                    if (DebugSettings.talkbackNotRequired) {
+                        // If talkback isn't required, there is no popup
+                        return@AccessibilityChangeListener
+                    }
                     popupWindow.dismiss()
                 },
                 talkbackOffCallback = {
