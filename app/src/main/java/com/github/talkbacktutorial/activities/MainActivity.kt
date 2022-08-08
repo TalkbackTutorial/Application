@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities
 
+import android.accessibilityservice.AccessibilityServiceInfo
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -41,6 +42,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
 
+    private lateinit var popupWindow: PopupWindow
+    private lateinit var accessibilityManager: AccessibilityManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -54,6 +58,26 @@ class MainActivity : AppCompatActivity() {
         if (DebugSettings.wipeDatabase) {
             moduleProgressionViewModel.clearDatabase()
         }
+
+        accessibilityManager= getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
+        accessibilityManager.addAccessibilityStateChangeListener { accessibilityChanged(accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_SPOKEN)) }
+    }
+
+    /**
+     * Method triggered when accessibility changes, popup or dismiss the window when turn on/off talkback using shortcut
+     * @author Jason Wu
+     */
+    private fun accessibilityChanged(accessibilityServiceInfoList: MutableList<AccessibilityServiceInfo>) {
+
+        for (accessibilityServiceInfo in accessibilityServiceInfoList)
+        {
+            if (accessibilityServiceInfo.resolveInfo.serviceInfo.processName.contains("talkback", ignoreCase = true))       // Check keyword as different device give different processName
+            {
+                popupWindow.dismiss()
+                return
+            }
+        }
+        popup(mainView)
     }
 
     /**
@@ -117,7 +141,7 @@ class MainActivity : AppCompatActivity() {
         val width = LinearLayout.LayoutParams.MATCH_PARENT
         val height = LinearLayout.LayoutParams.MATCH_PARENT
         val focusable = false       // not allow taps outside the popup to dismiss it
-        val popupWindow = PopupWindow(popupView, width, height, focusable)
+        popupWindow = PopupWindow(popupView, width, height, focusable)
 
         // fixed trying to show window too early
         view.post { popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0); }
