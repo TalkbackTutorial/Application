@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var popupWindow: PopupWindow
     private lateinit var accessibilityManager: AccessibilityManager
+    private var isMain = true       // Used to detect if user is at main page
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,10 +82,9 @@ class MainActivity : AppCompatActivity() {
                 return
             }
         }
-        popup(mainView)
-        Handler(Looper.getMainLooper()).postDelayed({
-            this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
-        }, 500)     // Set time delay to avoid tts to be killed by "talkback off"
+        if(isMain){     // Avoid popup tts speak at module page
+            popup(mainView)
+        }
     }
 
     /**
@@ -100,6 +100,15 @@ class MainActivity : AppCompatActivity() {
         }
         super.onStart()
         displayCards()
+    }
+
+    override fun onResume() {
+        isMain = true
+        super.onResume()
+    }
+    override fun onPause() {
+        isMain = false
+        super.onPause()
     }
 
     /**
@@ -162,6 +171,10 @@ class MainActivity : AppCompatActivity() {
             this.ttsEngine.speak(getString(R.string.exit_application), override = true)
             finishAndRemoveTask()
         }
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
+        }, 500)     // Set time delay to avoid tts to be killed by "talkback off"
     }
 
     /**
