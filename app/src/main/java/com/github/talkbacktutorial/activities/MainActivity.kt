@@ -62,11 +62,11 @@ class MainActivity : AppCompatActivity() {
             moduleProgressionViewModel.clearDatabase()
         }
 
-        accessibilityManager= getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
+        accessibilityManager = getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
         accessibilityManager.addAccessibilityStateChangeListener{
             Handler(Looper.getMainLooper()).postDelayed({
                 accessibilityChanged(accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_SPOKEN))
-            }, 100)     // Set time delay to ensure accessibilityServiceInfo is changed after turn on/off talkback
+            }, 200)     // Set time delay to ensure accessibilityServiceInfo is changed after turn on/off talkback
         }
     }
 
@@ -82,6 +82,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
         popup(mainView)
+        Handler(Looper.getMainLooper()).postDelayed({
+            this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
+        }, 500)     // Set time delay to avoid tts to be killed by "talkback off"
     }
 
     /**
