@@ -76,13 +76,13 @@ class MainActivity : AppCompatActivity() {
      * @author Jason Wu
      */
     private fun accessibilityChanged(accessibilityServiceInfoList: MutableList<AccessibilityServiceInfo>) {
-        for (accessibilityServiceInfo in accessibilityServiceInfoList){
-            if (accessibilityServiceInfo.resolveInfo.serviceInfo.processName.contains("talkback", ignoreCase = true)){    // Check keyword as different device give different processName
-                popupWindow.dismiss()
-                return
+        if(isMain){
+            for (accessibilityServiceInfo in accessibilityServiceInfoList){
+                if (accessibilityServiceInfo.resolveInfo.serviceInfo.processName.contains("talkback", ignoreCase = true)){    // Check keyword as different device give different processName
+                    popupWindow.dismiss()
+                    return
+                }
             }
-        }
-        if(isMain){     // Avoid popup tts speak at module page
             popup(mainView)
         }
     }
@@ -100,15 +100,16 @@ class MainActivity : AppCompatActivity() {
         }
         super.onStart()
         displayCards()
+        isMain = true
     }
 
     override fun onResume() {
         isMain = true
         super.onResume()
     }
-    override fun onPause() {
+    override fun onStop() {
         isMain = false
-        super.onPause()
+        super.onStop()
     }
 
     /**
@@ -170,11 +171,12 @@ class MainActivity : AppCompatActivity() {
         popupView.findViewById<Button>(R.id.leave_app).setOnClickListener{
             this.ttsEngine.speak(getString(R.string.exit_application), override = true)
             finishAndRemoveTask()
+            ttsEngine.shutDown()    // Avoid speak popup message after exit
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
             this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
-        }, 500)     // Set time delay to avoid tts to be killed by "talkback off"
+        }, 300)     // Set time delay to avoid tts to be killed by "talkback off"
     }
 
     /**
