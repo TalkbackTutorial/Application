@@ -20,11 +20,14 @@ class Game(
 
     var score = 0
         private set
+    var previousScore = 0
+        private set
     var requiredGesture: TalkbackGesture = TalkbackGesture.NO_MATCH
         private set
     private var performedGesture: TalkbackGesture = TalkbackGesture.NO_MATCH
     private val gesturePool = GesturePool()
     private var timerActive: Boolean = false
+    private var inputDisabled = true
 
     /**
      * Handle a gesture being performed.
@@ -32,6 +35,7 @@ class Game(
      * @author Andre Pham
      */
     fun gesturePerformed(gesture: TalkbackGesture) {
+        if (inputDisabled) { return }
         this.performedGesture = gesture
         // A timer is set up because multi-tap gestures trigger multiple gestures performed.
         // For example, a double tap will first trigger a single tap gesture, then only on the
@@ -56,8 +60,17 @@ class Game(
      * @author Andre Pham
      */
     fun startGame() {
+        this.inputDisabled = false
         this.requiredGesture = this.gesturePool.takeGesture()
         this.onStartRound()
+    }
+
+    /**
+     * Disable input.
+     * @author Andre Pham
+     */
+    fun disableInput() {
+        this.inputDisabled = true
     }
 
     /**
@@ -71,6 +84,7 @@ class Game(
             this.requiredGesture = this.gesturePool.takeGesture()
             this.onStartRound()
         } else {
+            this.previousScore = this.score
             this.score = 0
             this.onWrongGesture()
         }

@@ -1,19 +1,21 @@
 package com.github.talkbacktutorial.activities.gamemode
 
-import android.accessibilityservice.AccessibilityServiceInfo
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.MotionEvent
-import android.view.accessibility.AccessibilityManager
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeListener
+import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeManager
+import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangePage
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.ActivityGameModeBinding
 import com.github.talkbacktutorial.gamemode.Game
@@ -35,35 +37,45 @@ class GameModeActivity : AppCompatActivity() {
     )
     private lateinit var correctSound: MediaPlayer
     private lateinit var incorrectSound: MediaPlayer
-    private var isGame = false      // Used to detect if user is at game page
-    private lateinit var accessibilityManager: AccessibilityManager
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_game_mode)
+        this.toggleInterface(false)
 
         this.correctSound = MediaPlayer.create(this, R.raw.correct)
         this.incorrectSound = MediaPlayer.create(this, R.raw.wrong)
 
-        accessibilityManager = getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
-        accessibilityManager.addAccessibilityStateChangeListener{
-            Handler(Looper.getMainLooper()).postDelayed({
-                accessibilityChanged(accessibilityManager.getEnabledAccessibilityServiceList(
-                    AccessibilityServiceInfo.FEEDBACK_SPOKEN))
-            }, 200)     // Set time delay to ensure accessibilityServiceInfo is changed after turn on/off talkback
-        }
-        isGame = true
+        AccessibilityChangeManager.setListener(
+            AccessibilityChangeListener(
+                talkbackOnCallback = {
+                    this.toggleInterface(false)
+                    this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        this.ttsEngine.speak("Game ended. Your final score was ${this.game.score}. Sending you to the main menu.", override = true)
+                    }, 5000)
+                },
+                talkbackOffCallback = {
+                    this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                        this.toggleInterface(true)
+                        this.game.startGame()
+                    }
+                    this.ttsEngine.speak("Minigame starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To play the game, an action will be spoken for you to perform. Perform the correct gesture to score a point. The minigame will start now.")
+                },
+                associatedPage = AccessibilityChangePage.GAME
+            )
+        )
 
         // initialise tts
         this.ttsEngine = TextToSpeechEngine(this)
-            .onFinishedSpeaking(triggerOnce = true) {
-                // Start the game after the intro is finished
-
-            }
-        this.ttsEngine.speakOnInitialisation(   // TODO: make this better
-            "To play the game perform the gesture that is spoken"
+        this.ttsEngine.speakOnInitialisation(
+            "Welcome. To start or end the minigame, you'll need to disable Talkback by holding down both volume keys on the side of your device simultaneously."
         )
 
         // Setup gesture delegates
@@ -87,6 +99,14 @@ class GameModeActivity : AppCompatActivity() {
     }
 
     /**
+     * Toggle whether or not the interface is shown.
+     * @author Andre Pham
+     */
+    private fun toggleInterface(show: Boolean) {
+        this.binding.touchOverlay.visibility = if (show) View.VISIBLE else View.GONE
+    }
+
+    /**
      * React to the correct gesture performed.
      * @author Andre Pham
      */
@@ -102,6 +122,13 @@ class GameModeActivity : AppCompatActivity() {
     private fun onWrongGesture() {
         this.incorrectSound.start()
         this.binding.scoreLabel.text = this.game.score.toString()
+        this.game.disableInput()
+        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+            this.game.startGame()
+        }
+        // TODO - Add descriptions of each gesture for feedback
+        // TODO - We'll have to account for the fact that many actions can be performed via different gestures
+        this.ttsEngine.speak("Your final score was ${this.game.previousScore}. The correct gesture was ${this.game.requiredGesture.name}. Setting your score back to 0 and starting a new game.", override = true)
     }
 
     /**
@@ -113,43 +140,8 @@ class GameModeActivity : AppCompatActivity() {
         this.ttsEngine.speak(this.game.requiredGesture.actionDescription)
     }
 
-    override fun onStart() {
-        isGame = true
-        super.onStart()
-    }
-
-    override fun onStop() {
-        isGame = false
-        super.onStop()
-    }
-
     override fun onResume() {
-        isGame = true
+        AccessibilityChangeManager.setPage(AccessibilityChangePage.GAME)
         super.onResume()
-    }
-
-    /**
-     * Method triggered when accessibility changes, start game or back to main menu when turn off/on the talkback
-     * @author Jason Wu
-     */
-    private fun accessibilityChanged(accessibilityServiceInfoList: MutableList<AccessibilityServiceInfo>) {
-        if(isGame){
-            for (accessibilityServiceInfo in accessibilityServiceInfoList){
-                if (accessibilityServiceInfo.resolveInfo.serviceInfo.processName.contains("talkback", ignoreCase = true)){    // Check keyword as different device give different processName
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                            val intent = Intent(this, MainActivity::class.java)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                            startActivity(intent)
-                        }
-                        this.ttsEngine.speak("Talkback re-opened, sending you back to main menu", override = true)      //TODO: speak game summary/score
-                    }, 5000)     // Set time delay to ensure accessibilityServiceInfo is changed after turn on/off talkback
-                    return
-                }
-            }
-            Handler(Looper.getMainLooper()).postDelayed({
-                this.game.startGame()
-            }, 2000)     // Set time delay to ensure accessibilityServiceInfo is changed after turn on/off talkback
-        }
     }
 }

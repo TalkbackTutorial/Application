@@ -1,6 +1,5 @@
 package com.github.talkbacktutorial.activities
 
-import android.accessibilityservice.AccessibilityServiceInfo
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -23,6 +22,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeListener
+import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeManager
+import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangePage
 import com.github.talkbacktutorial.activities.gamemode.GameModeActivity
 import com.github.talkbacktutorial.activities.sandboxmode.SandboxModeActivity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
@@ -42,12 +44,8 @@ class MainActivity : AppCompatActivity() {
     private val lessonsModel: LessonsViewModel by viewModels()
     lateinit var mainView: ConstraintLayout
     private lateinit var binding: ActivityMainBinding
-
     private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
-
     private lateinit var popupWindow: PopupWindow
-    private lateinit var accessibilityManager: AccessibilityManager
-    private var isMain = true       // Used to detect if user is at main page
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,28 +61,17 @@ class MainActivity : AppCompatActivity() {
             moduleProgressionViewModel.clearDatabase()
         }
 
-        accessibilityManager = getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
-        accessibilityManager.addAccessibilityStateChangeListener{
-            Handler(Looper.getMainLooper()).postDelayed({
-                accessibilityChanged(accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_SPOKEN))
-            }, 200)     // Set time delay to ensure accessibilityServiceInfo is changed after turn on/off talkback
-        }
-    }
-
-    /**
-     * Method triggered when accessibility changes, popup or dismiss the window when turn on/off talkback using shortcut
-     * @author Jason Wu
-     */
-    private fun accessibilityChanged(accessibilityServiceInfoList: MutableList<AccessibilityServiceInfo>) {
-        if(isMain){
-            for (accessibilityServiceInfo in accessibilityServiceInfoList){
-                if (accessibilityServiceInfo.resolveInfo.serviceInfo.processName.contains("talkback", ignoreCase = true)){    // Check keyword as different device give different processName
+        AccessibilityChangeManager.setListener(
+            AccessibilityChangeListener(
+                talkbackOnCallback = {
                     popupWindow.dismiss()
-                    return
-                }
-            }
-            popup(mainView)
-        }
+                },
+                talkbackOffCallback = {
+                    popup(mainView)
+                },
+                associatedPage = AccessibilityChangePage.MAIN
+            )
+        )
     }
 
     /**
@@ -100,16 +87,11 @@ class MainActivity : AppCompatActivity() {
         }
         super.onStart()
         displayCards()
-        isMain = true
     }
 
     override fun onResume() {
-        isMain = true
+        AccessibilityChangeManager.setPage(AccessibilityChangePage.MAIN)
         super.onResume()
-    }
-    override fun onStop() {
-        isMain = false
-        super.onStop()
     }
 
     /**
