@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -31,6 +33,7 @@ import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.LessonContainer
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -60,7 +63,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         accessibilityManager= getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
-        accessibilityManager.addAccessibilityStateChangeListener { accessibilityChanged(accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_SPOKEN)) }
+        accessibilityManager.addAccessibilityStateChangeListener{
+            Handler(Looper.getMainLooper()).postDelayed({
+                accessibilityChanged(accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_SPOKEN))
+            }, 100)     // Set time delay to ensure accessibilityServiceInfo is changed after turn on/off talkback
+        }
     }
 
     /**
@@ -68,11 +75,8 @@ class MainActivity : AppCompatActivity() {
      * @author Jason Wu
      */
     private fun accessibilityChanged(accessibilityServiceInfoList: MutableList<AccessibilityServiceInfo>) {
-
-        for (accessibilityServiceInfo in accessibilityServiceInfoList)
-        {
-            if (accessibilityServiceInfo.resolveInfo.serviceInfo.processName.contains("talkback", ignoreCase = true))       // Check keyword as different device give different processName
-            {
+        for (accessibilityServiceInfo in accessibilityServiceInfoList){
+            if (accessibilityServiceInfo.resolveInfo.serviceInfo.processName.contains("talkback", ignoreCase = true)){    // Check keyword as different device give different processName
                 popupWindow.dismiss()
                 return
             }
