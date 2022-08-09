@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.accessibility.AccessibilityManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.getSystemService
 import com.github.talkbacktutorial.App
 import com.github.talkbacktutorial.activities.MainActivity
@@ -23,11 +24,25 @@ object AccessibilityChangeManager {
 
     /**
      * Set the page that is active. The page determines which listeners are triggered.
+     * Call in AppCompatActivity.onResume()
      * @param page The active page
      * @author Andre Pham
      */
     fun setPage(page: AccessibilityChangePage) {
         this.page = page
+    }
+
+    /**
+     * If a specific page is active, reset it to NONE.
+     * This means if a new activity sets a new page before the reset, no issues occur.
+     * Call in AppCompatActivity.onStop()
+     * @param from The page you're resetting from
+     * @author Andre Pham
+     */
+    fun resetPage(from: AccessibilityChangePage) {
+        if (this.page == from) {
+            this.page = AccessibilityChangePage.NONE
+        }
     }
 
     /**

@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -143,5 +144,10 @@ class GameModeActivity : AppCompatActivity() {
     override fun onResume() {
         AccessibilityChangeManager.setPage(AccessibilityChangePage.GAME)
         super.onResume()
+    }
+
+    override fun onStop() {
+        AccessibilityChangeManager.resetPage(AccessibilityChangePage.GAME)
+        super.onStop()
     }
 }

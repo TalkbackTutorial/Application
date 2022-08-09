@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -61,21 +62,19 @@ class MainActivity : AppCompatActivity() {
             moduleProgressionViewModel.clearDatabase()
         }
 
-        AccessibilityChangeManager.setListener(
-            AccessibilityChangeListener(
-                talkbackOnCallback = {
-                    if (DebugSettings.talkbackNotRequired) {
-                        // If talkback isn't required, there is no popup
-                        return@AccessibilityChangeListener
-                    }
-                    popupWindow.dismiss()
-                },
-                talkbackOffCallback = {
-                    popup(mainView)
-                },
-                associatedPage = AccessibilityChangePage.MAIN
+        if (!DebugSettings.talkbackNotRequired) {
+            AccessibilityChangeManager.setListener(
+                AccessibilityChangeListener(
+                    talkbackOnCallback = {
+                        popupWindow.dismiss()
+                    },
+                    talkbackOffCallback = {
+                        popup(mainView)
+                    },
+                    associatedPage = AccessibilityChangePage.MAIN
+                )
             )
-        )
+        }
     }
 
     /**
@@ -96,6 +95,11 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         AccessibilityChangeManager.setPage(AccessibilityChangePage.MAIN)
         super.onResume()
+    }
+
+    override fun onStop() {
+        AccessibilityChangeManager.resetPage(AccessibilityChangePage.MAIN)
+        super.onStop()
     }
 
     /**

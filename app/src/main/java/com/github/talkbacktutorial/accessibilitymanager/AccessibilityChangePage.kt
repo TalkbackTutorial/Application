@@ -6,6 +6,7 @@ package com.github.talkbacktutorial.accessibilitymanager
  */
 enum class AccessibilityChangePage {
 
+    NONE,
     MAIN,
     GAME,
     SANDBOX
