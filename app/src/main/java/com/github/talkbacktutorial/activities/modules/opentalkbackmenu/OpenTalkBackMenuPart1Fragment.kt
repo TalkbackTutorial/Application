@@ -101,10 +101,7 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent =
-                Intent((activity as OpenTalkbackMenuActivity), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            activity?.finish()
         }
         this.speakOutro()
     }

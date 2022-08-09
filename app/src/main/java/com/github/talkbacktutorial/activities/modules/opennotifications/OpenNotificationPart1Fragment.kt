@@ -135,7 +135,7 @@ class OpenNotificationPart1Fragment : Fragment() {
 
         removeOnWindowFocusChangeListener {}
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            activity?.onBackPressed()
+            activity?.finish()
         }
 
         this.speakOutro()

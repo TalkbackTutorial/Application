@@ -58,7 +58,7 @@ class CalculatorAppPart2Fragment : Fragment() {
         // The button transitions to the next fragment when clicked
         binding.continueCard.setOnClickListener {
             this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                activity?.onBackPressed()
+                activity?.finish()
             }
             this.ttsEngine.speak(getString(R.string.finish_calculator_module), override = true)
         }

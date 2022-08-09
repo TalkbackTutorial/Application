@@ -68,10 +68,7 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
     private fun finishLesson() {
         removeOnWindowFocusChangeListener {}
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent =
-                Intent((activity as OpenVoiceCommandActivity), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            activity?.finish()
         }
         this.speakOutro()
     }

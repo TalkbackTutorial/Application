@@ -133,7 +133,7 @@ class StartStopMediaPart1Fragment : Fragment() {
             mediaController!!.hide()
         }
         // Lesson's complete go back to Main Activity
-        activity?.onBackPressed()
+        activity?.finish()
     }
 
     override fun onDestroyView() {

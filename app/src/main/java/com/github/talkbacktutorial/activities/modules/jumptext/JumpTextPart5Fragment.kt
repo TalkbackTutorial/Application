@@ -61,7 +61,7 @@ class JumpTextPart5Fragment : Fragment() {
     private fun onClickContinueLesson() {
         updateModule()
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            activity?.onBackPressed()
+            activity?.finish()
         }
         this.ttsEngine.speak(getString(R.string.jump_text_paragraphs_conclusion), override = true)
     }

@@ -91,9 +91,7 @@ class Lesson1Part3Fragment : Fragment() {
         }
 
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as Lesson1Activity), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            activity?.finish()
         }
         this.ttsEngine.speak(getString(R.string.lesson1_lesson_complete), override = true)
     }

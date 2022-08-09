@@ -141,7 +141,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
 
     private fun endLesson() {
         // Lesson's complete go back to Main Activity
-        activity?.onBackPressed()
+        activity?.finish()
     }
 
     override fun onDestroyView() {

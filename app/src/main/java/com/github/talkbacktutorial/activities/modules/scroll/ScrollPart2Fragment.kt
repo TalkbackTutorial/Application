@@ -99,11 +99,7 @@ class ScrollPart2Fragment : Fragment() {
         updateModule()
 
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as ScrollActivity), LessonActivity::class.java)
-            val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
-            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            activity?.finish()
         }
         this.ttsEngine.speak(getString(R.string.scroll_part2_outro), override = true)
     }

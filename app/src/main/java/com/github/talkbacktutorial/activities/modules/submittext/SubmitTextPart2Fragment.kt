@@ -95,9 +95,7 @@ class SubmitTextPart2Fragment : Fragment(){
             val outro = getString(R.string.submit_text_part2_outro).trimIndent()
             ttsEngine.speak(outro)
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                val intent = Intent((activity as SubmitTextActivity), MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
+                activity?.finish()
             }
         }
 
