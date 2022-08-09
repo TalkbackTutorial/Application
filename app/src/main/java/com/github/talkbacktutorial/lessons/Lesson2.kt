@@ -21,6 +21,7 @@ class Lesson2 : Lesson() {
             ExploreMenuByTouchModule(),
             ScrollingModule(),
             GoBackModule(),
+            GoBackTVModule(),
             AdjustSliderModule()
         )
     )

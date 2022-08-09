@@ -144,7 +144,7 @@
     <string name="explore_menu_by_touch_part2_outro">You have completed the lesson. Sending you to the main menu.</string>
 
     <!-- GoBack !-->
-    <string name="go_back_part1_intro">Welcome. In this lesson, you will learn how to go back the previous page. Double tap to continue.</string>
+    <string name="go_back_part1_intro">Welcome. In this lesson, you will learn how to go back the previous page. Double tap the button to continue.</string>
     <string name="go_back_part1_conclusion">You have successfully navigated back to the previous page. Double tap to complete lesson.</string>
     <string name="go_back_part1_outro">You have completed the lesson. Sending you to the main menu.</string>
     <string name="go_back_part2_intro">To navigate back to the previous page, swipe down then left.</string>

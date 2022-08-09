@@ -69,6 +69,9 @@
             android:name=".activities.modules.goback.GoBackActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.modules.gobacktextview.GoBackTVActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.modules.jumpcontrols.JumpControlsActivity"
             android:exported="false" />
         <activity
