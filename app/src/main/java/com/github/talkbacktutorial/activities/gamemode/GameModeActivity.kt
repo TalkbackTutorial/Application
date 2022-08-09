@@ -59,7 +59,7 @@ class GameModeActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                     Handler(Looper.getMainLooper()).postDelayed({
-                        this.ttsEngine.speak("Game ended. Your final score was ${this.game.score}. Sending you to the main menu.", override = true)
+                        this.ttsEngine.speak(getString(R.string.game_end, this.game.score),override = true)
                     }, 4500)    // Avoid conflicts with reading "talkback off"
                 },
                 talkbackOffCallback = {
@@ -68,7 +68,7 @@ class GameModeActivity : AppCompatActivity() {
                             this.toggleInterface(true)
                             this.game.startGame()
                         }
-                        this.ttsEngine.speak("Minigame starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To play the game, an action will be spoken for you to perform. Perform the correct gesture to score a point. The minigame will start now.")
+                        this.ttsEngine.speak(getString(R.string.game_start))
                     }, 3000)    // Avoid conflicts with reading "talkback on, talkback tutorial"
                 },
                 associatedPage = AccessibilityChangePage.GAME
@@ -78,7 +78,7 @@ class GameModeActivity : AppCompatActivity() {
         // initialise tts
         this.ttsEngine = TextToSpeechEngine(this)
         this.ttsEngine.speakOnInitialisation(
-            "Welcome. To start or end the minigame, you'll need to disable Talkback by holding down both volume keys on the side of your device simultaneously."
+            getString(R.string.game_intro)
         )
 
         // Setup gesture delegates
@@ -130,7 +130,7 @@ class GameModeActivity : AppCompatActivity() {
             this.game.startGame()
         }
         // TODO - We'll have to account for the fact that many actions can be performed via different gestures
-        this.ttsEngine.speak("Your final score was ${this.game.previousScore}. The correct gesture was to ${this.game.requiredGesture.description}. Setting your score back to 0 and starting a new game.", override = true)
+        this.ttsEngine.speak(getString(R.string.game_wrong_gesture, this.game.previousScore, this.game.requiredGesture.description), override = true)
     }
 
     /**

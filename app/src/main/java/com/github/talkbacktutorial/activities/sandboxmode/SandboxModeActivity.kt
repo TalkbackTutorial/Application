@@ -45,7 +45,7 @@ class SandboxModeActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                     Handler(Looper.getMainLooper()).postDelayed({
-                        this.ttsEngine.speak("Sandbox ended. Sending you to the main menu.", override = true)
+                        this.ttsEngine.speak(getString(R.string.sandbox_end), override = true)
                     }, 4500)    // Avoid conflicts with reading "talkback off"
                 },
                 talkbackOffCallback = {
@@ -53,7 +53,7 @@ class SandboxModeActivity : AppCompatActivity() {
                         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                             this.toggleInterface(true)
                         }
-                        this.ttsEngine.speak("Sandbox starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To use the sandbox, perform any gesture and the corresponding action will be spoken. The sandbox will start now.")
+                        this.ttsEngine.speak(getString(R.string.sandbox_start))
                     }, 3000)    // Avoid conflicts with reading "talkback on, talkback tutorial"
                 },
                 associatedPage = AccessibilityChangePage.SANDBOX
@@ -63,7 +63,7 @@ class SandboxModeActivity : AppCompatActivity() {
         // initialise tts
         this.ttsEngine = TextToSpeechEngine(this)
         this.ttsEngine.speakOnInitialisation(
-            "Welcome. To start or end the sandbox, you'll need to disable Talkback by holding down both volume keys on the side of your device simultaneously."
+            getString(R.string.sandbox_intro)
         )
 
         // Setup delegates to feed data to gestureIdentifier
