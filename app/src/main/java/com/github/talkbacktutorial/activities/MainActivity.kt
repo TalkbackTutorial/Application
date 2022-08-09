@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mainView: ConstraintLayout
     private lateinit var binding: ActivityMainBinding
     private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
-    private lateinit var popupWindow: PopupWindow
+    private var popupWindow: PopupWindow = PopupWindow()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,6 +98,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         AccessibilityChangeManager.resetPage(AccessibilityChangePage.MAIN)
+        this.popupWindow.dismiss()
         super.onStop()
     }
 
@@ -142,6 +143,10 @@ class MainActivity : AppCompatActivity() {
      * @author Jason Wu
      */
     private fun popup(view: View) {
+        if (this.popupWindow.isShowing) {
+            // We never want a situation where popup windows overlay each other
+            this.popupWindow.dismiss()
+        }
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView: View = inflater.inflate(R.layout.popup_window, null)
         val width = LinearLayout.LayoutParams.MATCH_PARENT
