@@ -5,7 +5,7 @@ package com.github.talkbacktutorial.gestures
  * Source of gestures: https://media.dequeuniversity.com/en/courses/generic/testing-screen-readers/2.0/docs/talkback-images-guide.pdf
  * @author Andre Pham
  */
-enum class TalkbackGesture(val action: TalkbackAction) {
+enum class TalkbackGesture(val action: TalkbackAction, val description: String) {
 
     /**
      * An overview on how to interpret these names.
@@ -25,56 +25,56 @@ enum class TalkbackGesture(val action: TalkbackAction) {
      */
 
     // Open the TalkBack menu
-    DOWN_RIGHT(TalkbackAction.OPEN_TALKBACK_MENU),
-    UP_RIGHT(TalkbackAction.OPEN_TALKBACK_MENU),
-    TAP_3(TalkbackAction.OPEN_TALKBACK_MENU),
+    DOWN_RIGHT(TalkbackAction.OPEN_TALKBACK_MENU, "Swipe down then right in one motion"),
+    UP_RIGHT(TalkbackAction.OPEN_TALKBACK_MENU, "Swipe up then right in one motion"),
+    TAP_3(TalkbackAction.OPEN_TALKBACK_MENU, "Tap with three fingers"),
 
     // Pause or resume reading
-    TAP_2(TalkbackAction.PAUSE_RESUME_READING),
+    TAP_2(TalkbackAction.PAUSE_RESUME_READING, "Tap with two fingers"),
 
     // Scroll
-    UP_2(TalkbackAction.SCROLL_DOWN),
-    DOWN_2(TalkbackAction.SCROLL_UP),
-    LEFT_2(TalkbackAction.SCROLL_RIGHT),
-    RIGHT_2(TalkbackAction.SCROLL_LEFT),
+    UP_2(TalkbackAction.SCROLL_DOWN, "Swipe up with two fingers"),
+    DOWN_2(TalkbackAction.SCROLL_UP, "Swipe down with two fingers"),
+    LEFT_2(TalkbackAction.SCROLL_RIGHT, "Swipe left with two fingers"),
+    RIGHT_2(TalkbackAction.SCROLL_LEFT, "Swipe right with two fingers"),
 
     // Reading controls
-    UP_DOWN(TalkbackAction.NEXT_READING_CONTROL),
-    DOWN_UP(TalkbackAction.PREVIOUS_READING_CONTROL),
-    UP_3(TalkbackAction.NEXT_READING_CONTROL),
-    DOWN_3(TalkbackAction.PREVIOUS_READING_CONTROL),
-    LEFT_3(TalkbackAction.NEXT_READING_CONTROL),
-    RIGHT_3(TalkbackAction.PREVIOUS_READING_CONTROL),
+    UP_DOWN(TalkbackAction.NEXT_READING_CONTROL, "Swipe up then down in one motion"),
+    DOWN_UP(TalkbackAction.PREVIOUS_READING_CONTROL, "Swipe down then up in one motion"),
+    UP_3(TalkbackAction.NEXT_READING_CONTROL, "Swipe up with three fingers"),
+    DOWN_3(TalkbackAction.PREVIOUS_READING_CONTROL, "Swipe down with three fingers"),
+    LEFT_3(TalkbackAction.NEXT_READING_CONTROL, "Swipe left with three fingers"),
+    RIGHT_3(TalkbackAction.PREVIOUS_READING_CONTROL, "Swipe right with three fingers"),
 
     // Start reading continuously
-    TRIPLE_TAP_2(TalkbackAction.READ_CONTINUOUSLY),
+    TRIPLE_TAP_2(TalkbackAction.READ_CONTINUOUSLY, "Triple tap with two fingers"),
 
     // Travel reading control items
-    DOWN(TalkbackAction.PREVIOUS_READING_CONTROL_ITEM),
-    UP(TalkbackAction.NEXT_READING_CONTROL_ITEM),
+    DOWN(TalkbackAction.PREVIOUS_READING_CONTROL_ITEM, "Swipe down"),
+    UP(TalkbackAction.NEXT_READING_CONTROL_ITEM, "Swipe up"),
 
     // Elements
-    LEFT(TalkbackAction.PREVIOUS_ITEM),
-    RIGHT(TalkbackAction.NEXT_ITEM),
-    DOUBLE_TAP(TalkbackAction.INTERACT_ITEM),
+    LEFT(TalkbackAction.PREVIOUS_ITEM, "Swipe left"),
+    RIGHT(TalkbackAction.NEXT_ITEM, "Swipe right"),
+    DOUBLE_TAP(TalkbackAction.INTERACT_ITEM, "Double tap"),
 
     // Navigation
-    DOWN_LEFT(TalkbackAction.BACK),
-    UP_LEFT(TalkbackAction.HOME_SCREEN),
-    LEFT_UP(TalkbackAction.RECENT_APPS),
-    RIGHT_DOWN(TalkbackAction.NOTIFICATION_PANEL),
+    DOWN_LEFT(TalkbackAction.BACK, "Swipe down then left in one motion"),
+    UP_LEFT(TalkbackAction.HOME_SCREEN, "Swipe up then left in one motion"),
+    LEFT_UP(TalkbackAction.RECENT_APPS, "Swipe left then up in one motion"),
+    RIGHT_DOWN(TalkbackAction.NOTIFICATION_PANEL, "Swipe right then down in one motion"),
 
     // Media
-    DOUBLE_TAP_2(TalkbackAction.MEDIA_OR_CALL),
-    RIGHT_LEFT(TalkbackAction.SLIDER_INCREASE),
-    LEFT_RIGHT(TalkbackAction.SLIDER_DECREASE),
+    DOUBLE_TAP_2(TalkbackAction.MEDIA_OR_CALL, "Double tap with two fingers"),
+    RIGHT_LEFT(TalkbackAction.SLIDER_INCREASE, "Swipe right then left in one motion"),
+    LEFT_RIGHT(TalkbackAction.SLIDER_DECREASE, "Swipe left then right in one motion"),
 
     // Other
-    LEFT_DOWN(TalkbackAction.TEXT_SEARCH),
-    RIGHT_UP(TalkbackAction.VOICE_COMMANDS),
+    LEFT_DOWN(TalkbackAction.TEXT_SEARCH, "Swipe left then down in one motion"),
+    RIGHT_UP(TalkbackAction.VOICE_COMMANDS, "Swipe right then up in one motion"),
 
     // None
-    NO_MATCH(TalkbackAction.NONE);
+    NO_MATCH(TalkbackAction.NONE, "");
 
     val actionDescription: String
         get() { return this.action.description }

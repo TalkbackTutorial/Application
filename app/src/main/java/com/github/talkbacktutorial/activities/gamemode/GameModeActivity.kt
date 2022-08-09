@@ -129,9 +129,8 @@ class GameModeActivity : AppCompatActivity() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             this.game.startGame()
         }
-        // TODO - Add descriptions of each gesture for feedback
         // TODO - We'll have to account for the fact that many actions can be performed via different gestures
-        this.ttsEngine.speak("Your final score was ${this.game.previousScore}. The correct gesture was ${this.game.requiredGesture.name}. Setting your score back to 0 and starting a new game.", override = true)
+        this.ttsEngine.speak("Your final score was ${this.game.previousScore}. The correct gesture was to ${this.game.requiredGesture.description}. Setting your score back to 0 and starting a new game.", override = true)
     }
 
     /**

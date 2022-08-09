@@ -83,7 +83,7 @@ class SandboxModeActivity : AppCompatActivity() {
                 val output = this.gestureIdentifier.onGestureConclusion()
                 // speak
                 this.ttsEngine.speak(output.actionDescription, true)
-                this.binding.temporaryDemo.text = output.name
+                this.binding.gestureText.text = output.description
             }
             return@setOnTouchListener true
         }
