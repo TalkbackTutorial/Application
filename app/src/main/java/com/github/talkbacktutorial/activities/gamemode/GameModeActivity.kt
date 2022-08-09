@@ -60,7 +60,7 @@ class GameModeActivity : AppCompatActivity() {
                     }
                     Handler(Looper.getMainLooper()).postDelayed({
                         this.ttsEngine.speak("Game ended. Your final score was ${this.game.score}. Sending you to the main menu.", override = true)
-                    }, 2000)    // Avoid conflicts with reading "talkback off"
+                    }, 4500)    // Avoid conflicts with reading "talkback off"
                 },
                 talkbackOffCallback = {
                     Handler(Looper.getMainLooper()).postDelayed({

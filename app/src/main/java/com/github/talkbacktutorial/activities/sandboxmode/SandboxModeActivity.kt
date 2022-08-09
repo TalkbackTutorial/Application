@@ -46,14 +46,14 @@ class SandboxModeActivity : AppCompatActivity() {
                     }
                     Handler(Looper.getMainLooper()).postDelayed({
                         this.ttsEngine.speak("Sandbox ended. Sending you to the main menu.", override = true)
-                    }, 2000)    // Avoid conflicts with reading "talkback off"
+                    }, 4500)    // Avoid conflicts with reading "talkback off"
                 },
                 talkbackOffCallback = {
                     Handler(Looper.getMainLooper()).postDelayed({
                         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                             this.toggleInterface(true)
                         }
-                        this.ttsEngine.speak("Sandbox starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To use the sandbox, perform the correct gesture and the action of the gesture will be spoken. The sandbox will start now.")
+                        this.ttsEngine.speak("Sandbox starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To use the sandbox, perform any gesture and the corresponding action will be spoken. The sandbox will start now.")
                     }, 3000)    // Avoid conflicts with reading "talkback on, talkback tutorial"
                 },
                 associatedPage = AccessibilityChangePage.SANDBOX
