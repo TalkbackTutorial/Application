@@ -83,7 +83,6 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onStart() {
         if (!isTalkBackActive() && !DebugSettings.talkbackNotRequired) {
-            this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
             popup(mainView)
         } else if (!DebugSettings.skipIntroductoryLesson) {
             lesson1onStart()

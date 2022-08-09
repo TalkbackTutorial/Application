@@ -60,14 +60,16 @@ class GameModeActivity : AppCompatActivity() {
                     }
                     Handler(Looper.getMainLooper()).postDelayed({
                         this.ttsEngine.speak("Game ended. Your final score was ${this.game.score}. Sending you to the main menu.", override = true)
-                    }, 5000)
+                    }, 2000)    // Avoid conflicts with reading "talkback off"
                 },
                 talkbackOffCallback = {
-                    this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                        this.toggleInterface(true)
-                        this.game.startGame()
-                    }
-                    this.ttsEngine.speak("Minigame starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To play the game, an action will be spoken for you to perform. Perform the correct gesture to score a point. The minigame will start now.")
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                            this.toggleInterface(true)
+                            this.game.startGame()
+                        }
+                        this.ttsEngine.speak("Minigame starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To play the game, an action will be spoken for you to perform. Perform the correct gesture to score a point. The minigame will start now.")
+                    }, 3000)    // Avoid conflicts with reading "talkback on, talkback tutorial"
                 },
                 associatedPage = AccessibilityChangePage.GAME
             )
