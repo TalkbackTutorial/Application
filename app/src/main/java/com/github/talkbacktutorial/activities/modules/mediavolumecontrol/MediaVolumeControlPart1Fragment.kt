@@ -5,6 +5,8 @@ import android.content.Intent
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -40,8 +42,8 @@ class MediaVolumeControlPart1Fragment : Fragment() {
     private var totalSongDuration: Int = 0
     private var seekbarVolume: SeekBar? = null
     private var currentVolume: Int = 0
-    private var maxStreamVolume: Int = 150
     private var swipeUp: Boolean = false
+    private var initialVolume: Int = 50
     private lateinit var accessibilityManager: AccessibilityManager
 
     override fun onCreateView(
@@ -78,20 +80,21 @@ class MediaVolumeControlPart1Fragment : Fragment() {
      */
     private fun mediaControls() {
         this.binding.playButton.setOnClickListener {
+            val info = getString(R.string.media_volume_control_part1_increase_volume).trimIndent()
+            ttsEngine.speak(info)
+
             // when users click on the fab button
             if (mediaPlayer == null) {
                 mediaPlayer = MediaPlayer.create(context, R.raw.media_sound)
             }
 
+            // changing the volume of the phone's audio
             mediaPlayer?.start()
             mediaPlayer?.isLooping = true
-            val defaultStreamVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
             totalSongDuration = mediaPlayer!!.duration
-            maxStreamVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
-            val vol: Float = defaultStreamVolume.toFloat() / maxStreamVolume
+            val vol: Float = initialVolume.toFloat() / 100.0F
             mediaPlayer?.setVolume(vol, vol)
-            currentVolume = (vol * 100).roundToInt()
-            seekbarVolume?.progress = currentVolume
+            seekbarVolume?.progress = initialVolume
         }
 
         this.binding.stopButton.setOnClickListener {
@@ -102,10 +105,8 @@ class MediaVolumeControlPart1Fragment : Fragment() {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 if (p2) {
                     currentVolume = p1
-                    val vol: Float = p1.toFloat() / maxStreamVolume
+                    val vol: Float = p1.toFloat() / 100.0F
                     mediaPlayer?.setVolume(vol, vol)
-                    var volumeNum = p1 / 100.0f
-                    mediaPlayer?.setVolume(volumeNum, volumeNum)
                     // If talkback is turned on
                     if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled || DebugSettings.talkbackNotRequired) {
                         if (mediaPlayer == null) {
@@ -113,6 +114,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
                             speakDuringLesson(info)
                         } else lessonLogic()
                     } else speakDuringLesson(getString(R.string.media_volume_control_part1_talkback_prompt))
+                    Log.i("Testing", "p1 " + p1.toString())
                 }
             }
 
@@ -131,8 +133,6 @@ class MediaVolumeControlPart1Fragment : Fragment() {
      * @author Natalie Law
      */
     private fun lessonLogic() {
-        val startInfo = getString(R.string.media_volume_control_part1_increase_volume).trimIndent()
-        ttsEngine.speak(startInfo)
         if (currentVolume >= 75) {
             if (mediaPlayer?.isPlaying == true) mediaPlayer?.pause()
             binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
@@ -145,11 +145,12 @@ class MediaVolumeControlPart1Fragment : Fragment() {
             swipeUp = true
         } else if (currentVolume <= 25 && swipeUp) {
             stopMedia()
+            binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
             ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 endLesson()
             }
             val info = getString(R.string.media_volume_control_part1_outro).trimIndent()
-            speakDuringLesson(info)
+            ttsEngine.speak(info)
         }
     }
 
