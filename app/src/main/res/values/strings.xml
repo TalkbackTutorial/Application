@@ -75,6 +75,11 @@
     <string name="lesson5_challenge_part2_notification_name">Talkback tutorial</string>
     <string name="lesson5_challenge_part2_notification_desc">Notification description</string>
 
+    <!-- Lesson 6 Challenge !-->
+    <!-- TODO: CHANGE STRINGS -->
+    <string name="lesson6_challenge_intro">HALO PLEASE CHANGE LATER</string>
+    <string name="lesson6_challenge_fragment1_intro">PLEASEEE CHANGE LATER DON'T FORGET</string>
+
     <!-- Lesson 1 !-->
     <string name="lesson1_part1_intro">Welcome. In your first lesson, you will learn to move forwards and backwards between menu items, as well as interact with them. Double tap to continue.</string>
     <string name="lesson1_part2_backstack">lesson1part2</string>
