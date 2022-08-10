@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -20,11 +21,6 @@ class JumpTextPart5Fragment : Fragment() {
 
     private lateinit var binding: FragmentJumpTextModulePart5Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = JumpTextPart5Fragment()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

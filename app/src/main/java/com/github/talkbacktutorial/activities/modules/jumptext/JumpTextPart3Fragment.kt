@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -19,11 +20,6 @@ class JumpTextPart3Fragment : Fragment() {
 
     private lateinit var binding: FragmentJumpTextModulePart3Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = JumpTextPart3Fragment()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +38,8 @@ class JumpTextPart3Fragment : Fragment() {
         binding.continueText.setOnClickListener {
             this.onClickContinueLesson()
         }
+        // fix TalkBack putting focus at end of fragment
+        binding.textView.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
     }
 
     /**
@@ -60,7 +58,7 @@ class JumpTextPart3Fragment : Fragment() {
     private fun onClickContinueLesson() {
         updateModule()
         parentFragmentManager.commit {
-            replace(this@JumpTextPart3Fragment.id, JumpTextPart4Fragment.newInstance())
+            replace(this@JumpTextPart3Fragment.id, JumpTextPart4Fragment())
         }
     }
 

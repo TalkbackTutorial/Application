@@ -20,11 +20,6 @@ class JumpTextPart2Fragment : Fragment() {
     private lateinit var binding: FragmentJumpTextModulePart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = JumpTextPart2Fragment()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,7 +55,7 @@ class JumpTextPart2Fragment : Fragment() {
     private fun onClickContinueLesson() {
         updateModule()
         parentFragmentManager.commit {
-            replace(this@JumpTextPart2Fragment.id, JumpTextPart3Fragment.newInstance())
+            replace(R.id.frame, JumpTextPart3Fragment())
         }
     }
 
