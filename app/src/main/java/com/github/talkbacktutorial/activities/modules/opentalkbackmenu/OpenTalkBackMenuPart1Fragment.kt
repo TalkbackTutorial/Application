@@ -45,10 +45,11 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
         this.ttsEngine = TextToSpeechEngine((activity as OpenTalkbackMenuActivity))
         this.speakIntro()
         var viewChangeCounter = 0
+        var expectedViewChange = 1
         //adds a window focus change listener. Basically, this listener will call the callback func everytime
         //we do something that alternate the view (window focus change) e.g., open the notification shade
         view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
-            if (viewChangeCounter > 1) {
+            if (viewChangeCounter > expectedViewChange) {
                 finishLesson()
             }
             Timer().schedule(4000) {
