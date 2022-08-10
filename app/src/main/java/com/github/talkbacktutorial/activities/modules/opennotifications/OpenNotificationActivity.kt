@@ -17,7 +17,7 @@ class OpenNotificationActivity : AppCompatActivity() {
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_open_notification_module)
         supportFragmentManager.commit {
-            replace(R.id.frame, OpenNotificationPart1Fragment.newInstance())
+            replace(R.id.frame, OpenNotificationPart1Fragment())
         }
     }
 }
