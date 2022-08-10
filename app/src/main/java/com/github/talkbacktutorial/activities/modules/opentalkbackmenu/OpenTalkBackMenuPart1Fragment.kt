@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.opentalkbackmenu
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,23 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.activities.LessonActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentOpenTalkbackMenuModulePart1Binding
+import com.github.talkbacktutorial.lessons.Lesson
+import com.github.talkbacktutorial.lessons.LessonContainer
 import java.util.*
 import kotlin.concurrent.schedule
 
 class OpenTalkBackMenuPart1Fragment : Fragment() {
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = OpenTalkBackMenuPart1Fragment()
-    }
-
     private lateinit var binding: FragmentOpenTalkbackMenuModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private var viewChangeCounter = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,24 +42,16 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine =
-            TextToSpeechEngine((activity as OpenTalkbackMenuActivity)).onFinishedSpeaking(
-                triggerOnce = true
-            ) {
-                // Trigger this function once the intro is done speaking
-                this.observeUser()
-            }
+        this.ttsEngine = TextToSpeechEngine((activity as OpenTalkbackMenuActivity))
         this.speakIntro()
-    }
-
-    /**
-     * This function observe and count the view changes
-     * @author Vinh Tuan Huynh
-     */
-    private fun observeUser() {
-        // Simple listener detecting a change in window focus
-        view?.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
-            Timer().schedule(3500) {
+        var viewChangeCounter = 0
+        //adds a window focus change listener. Basically, this listener will call the callback func everytime
+        //we do something that alternate the view (window focus change) e.g., open the notification shade
+        view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
+            if (viewChangeCounter > 1) {
+                finishLesson()
+            }
+            Timer().schedule(4000) {
                 speakFeedback(viewChangeCounter)
                 viewChangeCounter++
             }
@@ -70,10 +62,8 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
      * This function give feedback to guide the user what to do next
      */
     private fun speakFeedback(counter: Int) {
-        if (counter == 0) {
-            this.ttsEngine.speak(getString(R.string.open_talkback_menu_feedback))
-        } else {
-            finishLesson()
+        if (counter == 1) {
+            ttsEngine.speak(getString(R.string.open_talkback_menu_feedback))
         }
     }
 
@@ -100,17 +90,33 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
      * @author Vinh Tuan Huynh
      */
     private fun finishLesson() {
+        updateModule()
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent =
-                Intent((activity as OpenTalkbackMenuActivity), MainActivity::class.java)
+            val intent = Intent((activity as OpenTalkbackMenuActivity), LessonActivity::class.java)
+            val currentLesson: Lesson = LessonContainer.getAllLessons()[4]
+            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-        this.speakOutro()
+        Timer().schedule(2000) {
+            speakOutro()
+        }
     }
 
     override fun onDestroyView() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
+    }
+
+    /**
+     * Updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule() {
+        val moduleProgressionViewModel =
+            ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }
