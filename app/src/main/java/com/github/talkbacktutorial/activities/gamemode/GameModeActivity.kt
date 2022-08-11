@@ -34,7 +34,8 @@ class GameModeActivity : AppCompatActivity() {
     private val game = Game(
         onCorrectGesture = ::onCorrectGesture,
         onWrongGesture = ::onWrongGesture,
-        onStartRound = ::onStartRound
+        onStartRound = ::onStartRound,
+        readScore = ::readScore
     )
     private lateinit var correctSound: MediaPlayer
     private lateinit var incorrectSound: MediaPlayer
@@ -131,6 +132,10 @@ class GameModeActivity : AppCompatActivity() {
         }
         // TODO - We'll have to account for the fact that many actions can be performed via different gestures
         this.ttsEngine.speak(getString(R.string.game_wrong_gesture, this.game.previousScore, this.game.requiredGesture.description), override = true)
+    }
+
+    private fun readScore(score: Int){
+        this.ttsEngine.speak(getString(R.string.game_read_score) + score, true)
     }
 
     /**

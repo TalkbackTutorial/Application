@@ -15,7 +15,8 @@ import com.github.talkbacktutorial.gestures.data.TapData
 class Game(
     private var onCorrectGesture: (() -> Unit),
     private var onWrongGesture: (() -> Unit),
-    private var onStartRound: (() -> Unit)
+    private var onStartRound: (() -> Unit),
+    private var readScore: ((score: Int) -> Unit)
 ) {
 
     var score = 0
@@ -46,7 +47,7 @@ class Game(
             if (!this.timerActive) {
                 this.timerActive = true
                 Handler(Looper.getMainLooper()).postDelayed({
-                    this.reactToGesture()
+                    this.reactToGesture(true)
                     this.timerActive = false
                 }, TapData.TAP_GESTURE_DURATION)
             }
@@ -75,10 +76,13 @@ class Game(
 
     /**
      * React to the currently set performedGesture being performed.
-     * @author Andre Pham
+     * @author Andre Pham + Antony Loose
      */
-    private fun reactToGesture() {
-        if (this.gestureMatches()) {
+    private fun reactToGesture(isTapGesture: Boolean = false) {
+        // if the user does a single tap read out the score
+        if (this.performedGesture == TalkbackGesture.NO_MATCH && isTapGesture){
+            readScore(this.score)
+        }else if (this.gestureMatches()) {
             this.score += 1
             this.onCorrectGesture()
             this.requiredGesture = this.gesturePool.takeGesture()
