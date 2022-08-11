@@ -131,6 +131,8 @@ class GameModeActivity : AppCompatActivity() {
             this.game.startGame()
         }
         // TODO - We'll have to account for the fact that many actions can be performed via different gestures
+        // TODO - For scoring, we should announce "New High score" when the user reaches a new high score
+        // TODO - When the user taps, we should announce both their current score and their high score "Current score is 10. High score is 15"
         this.ttsEngine.speak(getString(R.string.game_wrong_gesture, this.game.previousScore, this.game.requiredGesture.description), override = true)
     }
 
