@@ -78,7 +78,7 @@
     <!-- Lesson 6 Challenge !-->
     <!-- TODO: CHANGE STRINGS -->
     <string name="lesson6_challenge_intro">HALO PLEASE CHANGE LATER</string>
-    <string name="lesson6_challenge_fragment1_intro">PLEASEEE CHANGE LATER DON'T FORGET</string>
+    <string name="lesson6_challenge_fragment1_intro">PLEASEEE CHANGE LATER DONT FORGET</string>
 
     <!-- Lesson 1 !-->
     <string name="lesson1_part1_intro">Welcome. In your first lesson, you will learn to move forwards and backwards between menu items, as well as interact with them. Double tap to continue.</string>
@@ -209,8 +209,8 @@
     <string name="media_volume_control_part1_increase_volume">Great job! Now, increase the volume of the media above 75 by swiping up.</string>
     <string name="media_volume_control_part1_play_prompt">The song is not played. Please press the play button to play the music.</string>
     <string name="media_volume_control_part1_talkback_prompt">Talkback is currently not turned on. Please turn Talkback on to continue this lesson</string>
-    <string name="media_volume_control_part1_decrease_volume">current Volume is set above 75. Now that you learned how to increase the volume, we will try decreasing the volume below 25. To decrease the volume, swipe down.</string>
-    <string name="media_volume_control_part1_outro">Current volume is set below 25. Congratulations on completing this lesson. In this lesson you have successfully learn how to control the media volume of your phone. To exit this lesson, select the finish button on the top right corner of the screen.</string>
+    <string name="media_volume_control_part1_decrease_volume">current volume is set above 75. Now that you learned how to increase the volume, we will try decreasing the volume below 25. To decrease the volume, swipe down.</string>
+    <string name="media_volume_control_part1_outro">Current volume is set below 25. Congratulations on completing this lesson. Sending you back to the main menu.</string>
 
     <!-- OpenBrailleKeyboardSettings !-->
     <string name="braille_settings_intro">Welcome to the open braille keyboard settings tutorial, you can access the braille keyboard settings page by swiping up with three fingers when the braille keyboard is active. Use all your knowledge, change the braille language to Arabic and enter any Arabic character in the following text box, then close the keyboard by using 2 fingers to swipe down, you would have to select arabic as one of the language options by entering the settings page from the braille keyboard options. After completing this, return to this text box.</string>
