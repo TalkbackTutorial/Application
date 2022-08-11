@@ -146,7 +146,7 @@ class GameModeActivity : AppCompatActivity() {
         var alreadyRead = false
         getHighScore().observe(this) { highScore ->
             if (!alreadyRead){
-                this.ttsEngine.speak(getString(R.string.game_read_score) + score + getString(R.string.game_read_high_score) + highScore, false)
+                this.ttsEngine.speak(getString(R.string.game_read_scores, score, highScore), false)
                 alreadyRead = true
             }
         }

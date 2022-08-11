@@ -344,8 +344,7 @@
     <string name="game_start">Minigame starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To play the game, an action will be spoken for you to perform. Perform the correct gesture to score a point. The minigame will start now.</string>
     <string name="game_end">Game ended. Your final score was %1$d. Sending you to the main menu.</string>
     <string name="game_wrong_gesture">Your final score was %1$d. The correct gesture was to %2$s. Setting your score back to 0 and starting a new game.</string>
-    <string name="game_read_score">Current score is</string>
-    <string name="game_read_high_score">High score is</string>
+    <string name="game_read_scores">Current score is %1$d. High score is %2$d</string>
     <string name="game_new_high_score">New high score!</string>
 
     <!-- SandboxMode !-->
