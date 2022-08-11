@@ -4,12 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.challenges.lesson5.Lesson5ChallengeActivity
-import com.github.talkbacktutorial.databinding.FragmentLesson5ChallengePart1Binding
+import com.github.talkbacktutorial.activities.challenges.lesson6.adapter.ChatAdapter
+import com.github.talkbacktutorial.activities.challenges.lesson6.model.ChatModel
+
 
 class Lesson6ChallengePart1Fragment : Fragment(){
     companion object {
@@ -17,27 +22,50 @@ class Lesson6ChallengePart1Fragment : Fragment(){
         fun newInstance() = Lesson6ChallengePart1Fragment()
     }
 
-    //TODO: create XML
-    private lateinit var binding: FragmentLesson5ChallengePart1Binding
+    //TODO: Binding Issue
+    private lateinit var binding: FragmentLesson6ChallengePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private var count: Int = 0
+
+    private var recyclerView: RecyclerView? = null
+    private var messageBox: EditText? = null
+    private var sendButton: Button? = null
+    val chatModels: ArrayList<ChatModel> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //TODO: change fragment layout
-        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lesson5_challenge_part1, container, false)
+        this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lesson6_challenge_part1, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //initialise view
+        recyclerView = this.binding.chatList
+        messageBox = this.binding.et_chat_box
+        sendButton = this.binding.btn_chat_send
+
         this.ttsEngine = TextToSpeechEngine((activity as Lesson6ChallengeActivity))
             .onFinishedSpeaking(triggerOnce = true) {
             }
         this.speakIntro()
+
+        sendButton!!.setOnClickListener {
+            var i = 1
+            i++
+            val chatModel = ChatModel()
+            chatModel.setId(i)
+            chatModel.setMe(true)
+            chatModel.setMessage(messageBox!!.text.toString().trim { it <= ' ' })
+            chatModels.add(chatModel)
+            val chatAdapter = ChatAdapter(chatModels, this.context)
+            recyclerView!!.setHasFixedSize(true)
+            recyclerView!!.layoutManager = LinearLayoutManager(this.context)
+            recyclerView!!.adapter = chatAdapter
+            messageBox!!.setText("")
+        }
     }
 
 
