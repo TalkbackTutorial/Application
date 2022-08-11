@@ -115,12 +115,8 @@ class GoBackPart1Fragment : Fragment() {
         updateModule()
 
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as GoBackActivity), LessonActivity::class.java)
-            val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
-            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
             returning = false
+            activity?.finish()
         }
         this.ttsEngine.speak(getString(R.string.go_back_part1_outro), override = true)
     }
