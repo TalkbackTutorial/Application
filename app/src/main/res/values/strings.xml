@@ -266,7 +266,7 @@
 
     <!-- Virtual Keyboard !-->
     <string name="virtual_keyboard_hello">hello</string>
-    <string name="virtual_keyboard_part1_on_finish_typing">Great job! You have typed the word hello with the on screen keyboard. Congratulations on completing this lesson. In this lesson you have successfully learnt how to type with the on screen keyboard. To exit this lesson, select the finish button on the screen.</string>
+    <string name="virtual_keyboard_part1_on_finish_typing">Great job! You have typed the word hello with the on screen keyboard. Congratulations on completing this lesson. In this lesson you have successfully learnt how to type with the on screen keyboard.</string>
     <string name="virtual_keyboard_part1_on_finish_typing_fail">Looks like you have not typed the word hello. Double tap on the screen to bring up the keyboard. Tap on the backspace button to delete the previously typed word and try typing the word hello again.</string>
     <string name="virtual_keyboard_part1_intro">In this tutorial, you will be learning how to open the on-screen virtual keyboard and type using it. To start, double tap on the screen to open the virtual keyboard. </string>
     <string name="virtual_keyboard_navigation_bar_height">navigation_bar_height</string>

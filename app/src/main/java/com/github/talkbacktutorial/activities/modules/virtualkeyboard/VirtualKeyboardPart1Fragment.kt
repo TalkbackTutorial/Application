@@ -1,17 +1,15 @@
 package com.github.talkbacktutorial.activities.modules.virtualkeyboard
 
-import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.TypedValue
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.view.accessibility.AccessibilityEvent
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
 import android.widget.EditText
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
@@ -23,8 +21,6 @@ class VirtualKeyboardPart1Fragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = VirtualKeyboardPart1Fragment()
-
-        const val TYPED_STRING = "hello"
     }
 
     private lateinit var binding: FragmentVirtualKeyboardModulePart1Binding
@@ -73,10 +69,13 @@ class VirtualKeyboardPart1Fragment : Fragment() {
      * @author Sandy Du
      */
     private fun onFinishTyping() {
-        if (editText.text.toString().lowercase() == TYPED_STRING){
+        if (editText.text.toString().lowercase() == getString(R.string.virtual_keyboard_hello)){
             val info = getString(R.string.virtual_keyboard_part1_on_finish_typing).trimIndent()
             speakDuringLesson(info)
-            insertFinishButton()
+            ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                endLesson()
+            }
+
         } else {
             val info = getString(R.string.virtual_keyboard_part1_on_finish_typing_fail).trimIndent()
             speakDuringLesson(info)
@@ -133,44 +132,11 @@ class VirtualKeyboardPart1Fragment : Fragment() {
     private fun onShowKeyboard() {
         if (firstTime) {
             val info = getString(R.string.virtual_keyboard_part1_on_show_keyboard).trimIndent()
-            speakDuringLesson(info)
+            this.binding.virtualKeyboardConstraintLayout.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
+            speakDuringLessonKeyboard(info)
             firstTime = false
         }
     }
-
-    /**
-     * Function that inserts the finish button on screen for the user to exit the module.
-     * @author Team4
-     */
-    private fun insertFinishButton() {
-        val constraintLayout = this.binding.virtualKeyboardConstraintLayout
-        val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
-        layoutParams.horizontalBias = 0.95f
-        layoutParams.endToEnd = constraintLayout.id
-        layoutParams.startToStart = constraintLayout.id
-        layoutParams.topToTop = constraintLayout.id
-        layoutParams.topMargin = 10.dpToPixels(requireContext())
-        val finishButton = Button(requireContext())
-        val text = getString(R.string.finish)
-        finishButton.contentDescription = text
-        finishButton.text = text
-        finishButton.layoutParams = layoutParams
-        finishButton.setBackgroundResource(R.color.primary40)
-        finishButton.setOnClickListener {
-            endLesson()
-        }
-
-        constraintLayout.addView(finishButton)
-    }
-
-    /**
-     * Function that converts pixels to integer values
-     * @author Sandy Du
-     */
-    private fun Int.dpToPixels(context: Context): Int = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
-    ).toInt()
-
 
     /**
      * Function that exits the module.
@@ -186,7 +152,6 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         super.onDestroyView()
     }
 
-
     /**
      * Function that hides the screen when the tts engine is speaking
      * @author Team4
@@ -196,6 +161,22 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             this.binding.virtualKeyboardConstraintLayout.visibility = View.VISIBLE
         }
-        ttsEngine.speak(info)
+        Handler().postDelayed(Runnable {
+            ttsEngine.speak(info)
+        },3000)
+    }
+
+    /**
+     * Function that hides the screen when the tts engine is speaking and the keyboard is shown
+     * @author Team4
+     */
+    private fun speakDuringLessonKeyboard(info: String) {
+        this.binding.virtualKeyboardConstraintLayout.visibility = View.GONE
+        Handler().postDelayed( Runnable {
+            ttsEngine.speak(info)
+        }, 4000)
+        ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+            this.binding.virtualKeyboardConstraintLayout.visibility = View.VISIBLE
+        }
     }
 }
