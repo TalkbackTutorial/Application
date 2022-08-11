@@ -1,9 +1,12 @@
 package com.github.talkbacktutorial.activities.modules.voicerecorderapp
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
@@ -39,5 +42,10 @@ class VoiceRecorderPlayRecordingFragment : Fragment() {
         binding.voiceRecorderPlayOpenButton.setOnClickListener {
             startActivity(VoiceRecorderAppActivity.getAppIntent())
         }
+
+        // hack to fix focus being forced onto button instead of first TextView
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.voiceRecorderPlaySuccess.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+        }, 1000)
     }
 }
