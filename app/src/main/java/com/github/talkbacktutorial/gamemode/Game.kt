@@ -16,7 +16,8 @@ class Game(
     private var onCorrectGesture: (() -> Unit),
     private var onWrongGesture: (() -> Unit),
     private var onStartRound: (() -> Unit),
-    private var readScore: ((score: Int) -> Unit)
+    private var readScore: ((score: Int) -> Unit),
+    private var onNewHighScore: ((score: Int) -> Unit)
 ) {
 
     var score = 0
@@ -84,10 +85,12 @@ class Game(
             this.readScore(this.score)
         } else if (this.gestureMatches()) {
             this.score += 1
+            this.onNewHighScore(score)
             this.onCorrectGesture()
             this.requiredGesture = this.gesturePool.takeGesture()
             this.onStartRound()
         } else {
+            this.onNewHighScore(score)
             this.previousScore = this.score
             this.score = 0
             this.onWrongGesture()

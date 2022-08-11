@@ -32,6 +32,7 @@ import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgression
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
+import com.github.talkbacktutorial.database.gamemode.GameModeViewModel
 import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
@@ -58,6 +59,8 @@ class MainActivity : AppCompatActivity() {
         this.ttsEngine = TextToSpeechEngine(this)
         this.mainView = binding.constraintLayout
 
+        // fill the game mode data base if empty
+        fillGameModeDb()
         if (DebugSettings.wipeDatabase) {
             moduleProgressionViewModel.clearDatabase()
         }
@@ -294,5 +297,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.lessonLinearLayout.addView(cardBinding.lessonCard)
+    }
+
+    private fun fillGameModeDb(){
+        val gameModeDbController = ViewModelProvider(this).get(GameModeViewModel::class.java)
+        gameModeDbController.getAllHighScores.observe(this) { highScores ->
+            if (highScores == null){
+                gameModeDbController.fillDatabase()
+            }
+            else if (highScores.isEmpty()){
+                gameModeDbController.fillDatabase()
+            }
+        }
     }
 }

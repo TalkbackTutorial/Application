@@ -11,6 +11,8 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
@@ -18,6 +20,8 @@ import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeListe
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeManager
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangePage
 import com.github.talkbacktutorial.activities.MainActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.gamemode.GameModeViewModel
 import com.github.talkbacktutorial.databinding.ActivityGameModeBinding
 import com.github.talkbacktutorial.gamemode.Game
 import com.github.talkbacktutorial.gestures.GestureIdentifier
@@ -35,7 +39,8 @@ class GameModeActivity : AppCompatActivity() {
         onCorrectGesture = ::onCorrectGesture,
         onWrongGesture = ::onWrongGesture,
         onStartRound = ::onStartRound,
-        readScore = ::readScore
+        readScore = ::readScore,
+        onNewHighScore = ::newHighScore
     )
     private lateinit var correctSound: MediaPlayer
     private lateinit var incorrectSound: MediaPlayer
@@ -130,9 +135,6 @@ class GameModeActivity : AppCompatActivity() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             this.game.startGame()
         }
-        // TODO - We'll have to account for the fact that many actions can be performed via different gestures
-        // TODO - For scoring, we should announce "New High score" when the user reaches a new high score
-        // TODO - When the user taps, we should announce both their current score and their high score "Current score is 10. High score is 15"
         this.ttsEngine.speak(getString(R.string.game_wrong_gesture, this.game.previousScore, this.game.requiredGesture.description), override = true)
     }
 
@@ -141,7 +143,13 @@ class GameModeActivity : AppCompatActivity() {
      * @author Antony Loose
      */
     private fun readScore(score: Int){
-        this.ttsEngine.speak(getString(R.string.game_read_score) + score, false)
+        var alreadyRead = false
+        getHighScore().observe(this) { highScore ->
+            if (!alreadyRead){
+                this.ttsEngine.speak(getString(R.string.game_read_score) + score + getString(R.string.game_read_high_score) + highScore, false)
+                alreadyRead = true
+            }
+        }
     }
 
     /**
@@ -151,6 +159,29 @@ class GameModeActivity : AppCompatActivity() {
     private fun onStartRound() {
         this.binding.staticScoreLabel.text = this.game.requiredGesture.actionDescription
         this.ttsEngine.speak(this.game.requiredGesture.actionDescription)
+    }
+
+    /**
+     * Get the current high score
+     * @author Antony Loose
+     */
+    private fun getHighScore(): LiveData<Int>{
+        val gameModeDbController = ViewModelProvider(this).get(GameModeViewModel::class.java)
+        return gameModeDbController.getHighScore()
+    }
+
+    /**
+     * A function for checking if a new high score is set and if so updating the high score and informing the player
+     * @author Antony Loose
+     */
+    private fun newHighScore(score: Int){
+        val gameModeDbController = ViewModelProvider(this).get(GameModeViewModel::class.java)
+        gameModeDbController.getHighScore().observe(this) { highScore ->
+            if (highScore < score){
+                gameModeDbController.addHighScore(score)
+                this.ttsEngine.speak(getString(R.string.game_new_high_score) + score)
+            }
+        }
     }
 
     override fun onResume() {
