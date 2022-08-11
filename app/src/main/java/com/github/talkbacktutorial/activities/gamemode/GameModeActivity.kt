@@ -60,7 +60,7 @@ class GameModeActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                     Handler(Looper.getMainLooper()).postDelayed({
-                        this.ttsEngine.speak(getString(R.string.game_end, this.game.score),override = true)
+                        this.ttsEngine.speak(getString(R.string.game_end, this.game.score), override = true)
                     }, 4500)    // Avoid conflicts with reading "talkback off"
                 },
                 talkbackOffCallback = {
@@ -139,7 +139,7 @@ class GameModeActivity : AppCompatActivity() {
      * @author Antony Loose
      */
     private fun readScore(score: Int){
-        this.ttsEngine.speak(getString(R.string.game_read_score) + score, true)
+        this.ttsEngine.speak(getString(R.string.game_read_score) + score, false)
     }
 
     /**
