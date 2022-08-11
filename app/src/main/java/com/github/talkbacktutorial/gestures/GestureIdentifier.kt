@@ -73,6 +73,7 @@ class GestureIdentifier {
 
         if (this.tapData.tapCount == 1) {
             when (this.tapData.pointerCount) {
+                1 -> if (flingMotionData.yVelocity(true) + flingMotionData.xVelocity(true) == 0F) return TalkbackGesture.TAP
                 2 -> return TalkbackGesture.TAP_2
                 3 -> return TalkbackGesture.TAP_3
             }

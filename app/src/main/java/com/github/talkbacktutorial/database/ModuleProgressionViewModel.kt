@@ -19,7 +19,7 @@ class ModuleProgressionViewModel(application: Application): AndroidViewModel(app
     private val repository: ModuleProgressionRepository
 
     init {
-        val lessonProgressionDao = ModuleDatabase.getDatabase(application).moduleProgressionDao()
+        val lessonProgressionDao = TMTDatabase.getDatabase(application).moduleProgressionDao()
         repository = ModuleProgressionRepository(lessonProgressionDao)
         getAllModuleProgressions = repository.getAllModuleProgressions
     }

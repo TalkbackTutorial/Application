@@ -25,6 +25,9 @@
             android:name=".activities.sandboxmode.SandboxModeActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.gamemode.GameModeActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.challenges.lesson4.Lesson4ChallengeActivity"
             android:exported="false" />
         <activity

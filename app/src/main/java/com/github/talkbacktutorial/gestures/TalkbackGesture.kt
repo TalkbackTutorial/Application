@@ -5,7 +5,7 @@ package com.github.talkbacktutorial.gestures
  * Source of gestures: https://media.dequeuniversity.com/en/courses/generic/testing-screen-readers/2.0/docs/talkback-images-guide.pdf
  * @author Andre Pham
  */
-enum class TalkbackGesture(val description: String) {
+enum class TalkbackGesture(val action: TalkbackAction, val description: String) {
 
     /**
      * An overview on how to interpret these names.
@@ -25,56 +25,60 @@ enum class TalkbackGesture(val description: String) {
      */
 
     // Open the TalkBack menu
-    DOWN_RIGHT("Open the talkback menu"),
-    UP_RIGHT("Open the talkback menu"),
-    TAP_3("Open the talkback menu"),
+    DOWN_RIGHT(TalkbackAction.OPEN_TALKBACK_MENU, "Swipe down then right in one motion"),
+    UP_RIGHT(TalkbackAction.OPEN_TALKBACK_MENU, "Swipe up then right in one motion"),
+    TAP_3(TalkbackAction.OPEN_TALKBACK_MENU, "Tap with three fingers"),
 
     // Pause or resume reading
-    TAP_2("Pause or resume reading"),
+    TAP_2(TalkbackAction.PAUSE_RESUME_READING, "Tap with two fingers"),
 
     // Scroll
-    UP_2("Scroll down"),
-    DOWN_2("Scroll up"),
-    LEFT_2("Scroll right"),
-    RIGHT_2("Scroll left"),
+    UP_2(TalkbackAction.SCROLL_DOWN, "Swipe up with two fingers"),
+    DOWN_2(TalkbackAction.SCROLL_UP, "Swipe down with two fingers"),
+    LEFT_2(TalkbackAction.SCROLL_RIGHT, "Swipe left with two fingers"),
+    RIGHT_2(TalkbackAction.SCROLL_LEFT, "Swipe right with two fingers"),
 
     // Reading controls
-    UP_DOWN("Change to next reading control"),
-    DOWN_UP("Change to previous reading control"),
-    UP_3("Change to next reading control"),
-    DOWN_3("Change to previous reading control"),
-    LEFT_3("Change to next reading control"),
-    RIGHT_3("Change to previous reading control"),
+    UP_DOWN(TalkbackAction.NEXT_READING_CONTROL, "Swipe up then down in one motion"),
+    DOWN_UP(TalkbackAction.PREVIOUS_READING_CONTROL, "Swipe down then up in one motion"),
+    UP_3(TalkbackAction.NEXT_READING_CONTROL, "Swipe up with three fingers"),
+    DOWN_3(TalkbackAction.PREVIOUS_READING_CONTROL, "Swipe down with three fingers"),
+    LEFT_3(TalkbackAction.NEXT_READING_CONTROL, "Swipe left with three fingers"),
+    RIGHT_3(TalkbackAction.PREVIOUS_READING_CONTROL, "Swipe right with three fingers"),
 
     // Start reading continuously
-    TRIPLE_TAP_2("Read continuously from this point"),
+    TRIPLE_TAP_2(TalkbackAction.READ_CONTINUOUSLY, "Triple tap with two fingers"),
 
     // Travel reading control items
-    DOWN("Travel reading control items"),
-    UP("Travel reading control items"),
+    DOWN(TalkbackAction.PREVIOUS_READING_CONTROL_ITEM, "Swipe down"),
+    UP(TalkbackAction.NEXT_READING_CONTROL_ITEM, "Swipe up"),
 
     // Elements
-    LEFT("Read previous item"),
-    RIGHT("Read next item"),
-    DOUBLE_TAP("Activate element"), // TODO: use better word than activate
+    LEFT(TalkbackAction.PREVIOUS_ITEM, "Swipe left"),
+    RIGHT(TalkbackAction.NEXT_ITEM, "Swipe right"),
+    DOUBLE_TAP(TalkbackAction.INTERACT_ITEM, "Double tap"),
 
     // Navigation
-    DOWN_LEFT("Go back"),
-    UP_LEFT("Go to home screen"),
-    LEFT_UP("Show recent apps"),
-    RIGHT_DOWN("Show notifications"),
+    DOWN_LEFT(TalkbackAction.BACK, "Swipe down then left in one motion"),
+    UP_LEFT(TalkbackAction.HOME_SCREEN, "Swipe up then left in one motion"),
+    LEFT_UP(TalkbackAction.RECENT_APPS, "Swipe left then up in one motion"),
+    RIGHT_DOWN(TalkbackAction.NOTIFICATION_PANEL, "Swipe right then down in one motion"),
 
     // Media
-    DOUBLE_TAP_2("Start or stop media. Or answer or end call"),
-    RIGHT_LEFT("Increase slider"),
-    LEFT_RIGHT("Decrease slider"),
+    DOUBLE_TAP_2(TalkbackAction.MEDIA_OR_CALL, "Double tap with two fingers"),
+    RIGHT_LEFT(TalkbackAction.SLIDER_INCREASE, "Swipe right then left in one motion"),
+    LEFT_RIGHT(TalkbackAction.SLIDER_DECREASE, "Swipe left then right in one motion"),
 
     // Other
-    LEFT_DOWN("Search for a word or phrase"),
-    RIGHT_UP("Open voice commands"),
+    LEFT_DOWN(TalkbackAction.TEXT_SEARCH, "Swipe left then down in one motion"),
+    RIGHT_UP(TalkbackAction.VOICE_COMMANDS, "Swipe right then up in one motion"),
 
     // None
-    NO_MATCH("");
+    NO_MATCH(TalkbackAction.NONE, ""),
+    TAP(TalkbackAction.NONE, "");
+
+    val actionDescription: String
+        get() { return this.action.description }
 
     /**
      * If this gesture represents a fling.
@@ -113,6 +117,7 @@ enum class TalkbackGesture(val description: String) {
             LEFT_DOWN -> true
             RIGHT_UP -> true
             NO_MATCH -> false
+            TAP -> false
         }
     }
 
@@ -126,6 +131,16 @@ enum class TalkbackGesture(val description: String) {
             return false
         }
         return !this.isFlingGesture()
+    }
+
+    /**
+     * Checks if two gestures perform the same action.
+     * @param gesture the gesture to check against
+     * @return True if the gesture action descriptions match
+     * @author Andre Pham
+     */
+    fun gestureActionMatches(gesture: TalkbackGesture): Boolean {
+        return this.action == gesture.action
     }
 
 }

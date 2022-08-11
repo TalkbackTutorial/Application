@@ -4,7 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -20,15 +23,21 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeListener
+import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeManager
+import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangePage
+import com.github.talkbacktutorial.activities.gamemode.GameModeActivity
 import com.github.talkbacktutorial.activities.sandboxmode.SandboxModeActivity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgression
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
+import com.github.talkbacktutorial.database.gamemode.GameModeViewModel
 import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.LessonContainer
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -37,8 +46,8 @@ class MainActivity : AppCompatActivity() {
     private val lessonsModel: LessonsViewModel by viewModels()
     lateinit var mainView: ConstraintLayout
     private lateinit var binding: ActivityMainBinding
-
     private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
+    private var popupWindow: PopupWindow = PopupWindow()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,8 +59,24 @@ class MainActivity : AppCompatActivity() {
         this.ttsEngine = TextToSpeechEngine(this)
         this.mainView = binding.constraintLayout
 
+        // fill the game mode data base if empty
+        fillGameModeDb()
         if (DebugSettings.wipeDatabase) {
             moduleProgressionViewModel.clearDatabase()
+        }
+
+        if (!DebugSettings.talkbackNotRequired) {
+            AccessibilityChangeManager.setListener(
+                AccessibilityChangeListener(
+                    talkbackOnCallback = {
+                        popupWindow.dismiss()
+                    },
+                    talkbackOffCallback = {
+                        popup(mainView)
+                    },
+                    associatedPage = AccessibilityChangePage.MAIN
+                )
+            )
         }
     }
 
@@ -61,13 +86,23 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onStart() {
         if (!isTalkBackActive() && !DebugSettings.talkbackNotRequired) {
-            this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
             popup(mainView)
         } else if (!DebugSettings.skipIntroductoryLesson) {
             lesson1onStart()
         }
         super.onStart()
         displayCards()
+    }
+
+    override fun onResume() {
+        AccessibilityChangeManager.setPage(AccessibilityChangePage.MAIN)
+        super.onResume()
+    }
+
+    override fun onStop() {
+        AccessibilityChangeManager.resetPage(AccessibilityChangePage.MAIN)
+        this.popupWindow.dismiss()
+        super.onStop()
     }
 
     /**
@@ -111,12 +146,16 @@ class MainActivity : AppCompatActivity() {
      * @author Jason Wu
      */
     private fun popup(view: View) {
+        if (this.popupWindow.isShowing) {
+            // We never want a situation where popup windows overlay each other
+            this.popupWindow.dismiss()
+        }
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView: View = inflater.inflate(R.layout.popup_window, null)
         val width = LinearLayout.LayoutParams.MATCH_PARENT
         val height = LinearLayout.LayoutParams.MATCH_PARENT
         val focusable = false       // not allow taps outside the popup to dismiss it
-        val popupWindow = PopupWindow(popupView, width, height, focusable)
+        popupWindow = PopupWindow(popupView, width, height, focusable)
 
         // fixed trying to show window too early
         view.post { popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0); }
@@ -129,7 +168,12 @@ class MainActivity : AppCompatActivity() {
         popupView.findViewById<Button>(R.id.leave_app).setOnClickListener{
             this.ttsEngine.speak(getString(R.string.exit_application), override = true)
             finishAndRemoveTask()
+            ttsEngine.shutDown()    // Avoid speak popup message after exit
         }
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            this.ttsEngine.speakOnInitialisation(getString(R.string.popup_text))
+        }, 300)     // Set time delay to avoid tts to be killed by "talkback off"
     }
 
     /**
@@ -216,7 +260,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SandboxModeActivity::class.java)
             this.startActivity(intent)
         }
-        loadCard("Sandbox mode", "Practice your gestures in a sandbox enviroment", openSandbox)
+        loadCard(getString(R.string.sandbox_mode_subtitle), getString(R.string.sandbox_mode_title), openSandbox)
     }
 
     /**
@@ -224,9 +268,11 @@ class MainActivity : AppCompatActivity() {
      * @author Antony Loose
      */
     private fun loadGameModeCard(){
-        val openGameMode: () -> Unit = {}
-        // TODO: come up with name and subtitle for game
-        loadCard("Game mode", "Try beat your high score!", openGameMode)
+        val openGameMode: () -> Unit = {
+            val intent = Intent(this, GameModeActivity::class.java)
+            this.startActivity(intent)
+        }
+        loadCard(getString(R.string.game_mode_subtitle), getString(R.string.game_mode_title), openGameMode)
     }
 
     /**
@@ -251,5 +297,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.lessonLinearLayout.addView(cardBinding.lessonCard)
+    }
+
+    private fun fillGameModeDb(){
+        val gameModeDbController = ViewModelProvider(this).get(GameModeViewModel::class.java)
+        gameModeDbController.getAllHighScores.observe(this) { highScores ->
+            if (highScores == null){
+                gameModeDbController.fillDatabase()
+            }
+            else if (highScores.isEmpty()){
+                gameModeDbController.fillDatabase()
+            }
+        }
     }
 }

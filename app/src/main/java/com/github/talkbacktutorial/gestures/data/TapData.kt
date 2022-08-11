@@ -10,6 +10,10 @@ import android.util.Log
  */
 class TapData {
 
+    companion object {
+        const val TAP_GESTURE_DURATION: Long = 500L
+    }
+
     var tapCount: Int = 0
     var pointerCount: Int = 1
     private var timerActive: Boolean = false
@@ -25,7 +29,7 @@ class TapData {
             Handler(Looper.getMainLooper()).postDelayed({
                 this.reset()
                 this.timerActive = false
-            }, 500)
+            }, TAP_GESTURE_DURATION)
         }
     }
 
