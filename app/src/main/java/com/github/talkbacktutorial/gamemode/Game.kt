@@ -47,7 +47,7 @@ class Game(
             if (!this.timerActive) {
                 this.timerActive = true
                 Handler(Looper.getMainLooper()).postDelayed({
-                    this.reactToGesture(true)
+                    this.reactToGesture()
                     this.timerActive = false
                 }, TapData.TAP_GESTURE_DURATION)
             }
@@ -76,13 +76,13 @@ class Game(
 
     /**
      * React to the currently set performedGesture being performed.
-     * @author Andre Pham + Antony Loose
+     * @author Andre Pham, Antony Loose
      */
-    private fun reactToGesture(isTapGesture: Boolean = false) {
+    private fun reactToGesture() {
         // if the user does a single tap read out the score
-        if (this.performedGesture == TalkbackGesture.NO_MATCH && isTapGesture){
-            readScore(this.score)
-        }else if (this.gestureMatches()) {
+        if (this.performedGesture == TalkbackGesture.TAP){
+            this.readScore(this.score)
+        } else if (this.gestureMatches()) {
             this.score += 1
             this.onCorrectGesture()
             this.requiredGesture = this.gesturePool.takeGesture()

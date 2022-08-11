@@ -74,7 +74,8 @@ enum class TalkbackGesture(val action: TalkbackAction, val description: String) 
     RIGHT_UP(TalkbackAction.VOICE_COMMANDS, "Swipe right then up in one motion"),
 
     // None
-    NO_MATCH(TalkbackAction.NONE, "");
+    NO_MATCH(TalkbackAction.NONE, ""),
+    TAP(TalkbackAction.NONE, "");
 
     val actionDescription: String
         get() { return this.action.description }
@@ -116,6 +117,7 @@ enum class TalkbackGesture(val action: TalkbackAction, val description: String) 
             LEFT_DOWN -> true
             RIGHT_UP -> true
             NO_MATCH -> false
+            TAP -> false
         }
     }
 

@@ -134,6 +134,10 @@ class GameModeActivity : AppCompatActivity() {
         this.ttsEngine.speak(getString(R.string.game_wrong_gesture, this.game.previousScore, this.game.requiredGesture.description), override = true)
     }
 
+    /**
+     * Read the current score.
+     * @author Antony Loose
+     */
     private fun readScore(score: Int){
         this.ttsEngine.speak(getString(R.string.game_read_score) + score, true)
     }
