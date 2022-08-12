@@ -51,4 +51,14 @@ class GameModeViewModel(application: Application): AndroidViewModel(application)
             repository.addHighScore(0)
         }
     }
+
+    /**
+     * Wipe the database
+     * @author Antony Loose
+     */
+    fun clearDatabase(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.wipeTable()
+        }
+    }
 }

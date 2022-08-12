@@ -19,10 +19,14 @@ class GameModeRepository(private val gameModeDao: GameModeDao) {
     }
 
     /**
-     * Gets all the high scores (past high scores)
+     * Adding a high score
      * @author Antony Loose
      */
     suspend fun addHighScore(highScore: Int){
         gameModeDao.addHighScore(GameMode(highScore))
+    }
+
+    suspend fun wipeTable(){
+        gameModeDao.wipeTable()
     }
 }

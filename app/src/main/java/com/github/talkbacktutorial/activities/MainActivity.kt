@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mainView: ConstraintLayout
     private lateinit var binding: ActivityMainBinding
     private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
+    private lateinit var gameModeDbController: GameModeViewModel
     private var popupWindow: PopupWindow = PopupWindow()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lessonsModel = this.lessonsModel
         this.moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        this.gameModeDbController = ViewModelProvider(this).get(GameModeViewModel::class.java)
         this.ttsEngine = TextToSpeechEngine(this)
         this.mainView = binding.constraintLayout
 
@@ -63,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         fillGameModeDb()
         if (DebugSettings.wipeDatabase) {
             moduleProgressionViewModel.clearDatabase()
+            gameModeDbController.clearDatabase()
         }
 
         if (!DebugSettings.talkbackNotRequired) {
@@ -300,12 +303,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fillGameModeDb(){
-        val gameModeDbController = ViewModelProvider(this).get(GameModeViewModel::class.java)
         gameModeDbController.getAllHighScores.observe(this) { highScores ->
-            if (highScores == null){
-                gameModeDbController.fillDatabase()
-            }
-            else if (highScores.isEmpty()){
+            if (highScores == null || highScores.isEmpty()){
                 gameModeDbController.fillDatabase()
             }
         }

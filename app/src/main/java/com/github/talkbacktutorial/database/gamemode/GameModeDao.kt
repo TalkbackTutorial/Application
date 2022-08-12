@@ -20,4 +20,7 @@ interface GameModeDao {
 
     @Insert()
     suspend fun addHighScore(gameMode: GameMode)
+
+    @Query("DELETE FROM gameMode_table")
+    suspend fun wipeTable()
 }
