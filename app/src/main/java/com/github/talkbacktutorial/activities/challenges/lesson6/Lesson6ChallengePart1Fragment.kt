@@ -14,6 +14,8 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.challenges.lesson6.adapter.ChatAdapter
 import com.github.talkbacktutorial.activities.challenges.lesson6.model.ChatModel
+import com.github.talkbacktutorial.databinding.FragmentLesson6ChallengePart1Binding
+
 
 
 class Lesson6ChallengePart1Fragment : Fragment(){
