@@ -45,11 +45,11 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
         this.ttsEngine = TextToSpeechEngine((activity as OpenTalkbackMenuActivity))
         this.speakIntro()
         var viewChangeCounter = 0
-        var expectedViewChange = 1
+        var expectedViewChange = 2
         //adds a window focus change listener. Basically, this listener will call the callback func everytime
         //we do something that alternate the view (window focus change) e.g., open the notification shade
         view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
-            if (viewChangeCounter > expectedViewChange) {
+            if (viewChangeCounter == expectedViewChange) {
                 finishLesson()
             }
             Timer().schedule(4000) {
@@ -78,29 +78,16 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
     }
 
     /**
-     * Speaks an outro for the fragment.
-     * @author Vinh Tuan Huynh
-     */
-    private fun speakOutro() {
-        val outro = getString(R.string.open_talkback_menu_outro).trimIndent()
-        this.ttsEngine.speak(outro)
-    }
-
-    /**
      * To do when finish the lesson
      * @author Vinh Tuan Huynh
      */
     private fun finishLesson() {
         updateModule()
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as OpenTalkbackMenuActivity), LessonActivity::class.java)
-            val currentLesson: Lesson = LessonContainer.getAllLessons()[4]
-            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            activity?.onBackPressed()
         }
         Timer().schedule(2000) {
-            speakOutro()
+            ttsEngine.speak(getString(R.string.open_talkback_menu_outro), override = true)
         }
     }
 
