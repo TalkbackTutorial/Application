@@ -24,7 +24,6 @@ class Lesson6ChallengePart1Fragment : Fragment(){
         fun newInstance() = Lesson6ChallengePart1Fragment()
     }
 
-    //TODO: Binding Issue
     private lateinit var binding: FragmentLesson6ChallengePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 

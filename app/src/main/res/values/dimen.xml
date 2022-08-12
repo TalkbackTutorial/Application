@@ -5,7 +5,6 @@
     <dimen name="horizontal_card_spacing">12dp</dimen>
     <dimen name="header_top_spacing">96px</dimen>
     <dimen name="header_bottom_spacing">12dp</dimen>
-    <!-- TODO: remove header_size and subheader_size and follow M3 -->
     <dimen name="header_size">38sp</dimen>
     <dimen name="subheader_size">16sp</dimen>
     <dimen name="content_padding">16dp</dimen>
