@@ -27,6 +27,7 @@
     <string name="menu_item">Menu Item</string>
     <string name="android_resource">android.resource://</string>
     <string name="empty_string">" "</string>
+    <string name="back_button">Back</string>
 
     <!-- Lessons !-->
     <string name="lesson1_title">Getting Started</string>
@@ -46,7 +47,7 @@
     <string name="lesson8_desc">These provide real world experience by having you jump to other applications</string>
 
     <!-- Challenges !-->
-    <string name="challenge_outro">You have completed the challenge. Sending you to the main menu.</string>
+    <string name="challenge_outro">You have completed the challenge. Find and select the back button to return to the main menu.</string>
 
     <!-- Lesson 2 Challenge !-->
     <string name="aud">AUD</string>
