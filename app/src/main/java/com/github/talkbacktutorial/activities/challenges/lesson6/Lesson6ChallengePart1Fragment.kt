@@ -1,6 +1,7 @@
 package com.github.talkbacktutorial.activities.challenges.lesson6
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class Lesson6ChallengePart1Fragment : Fragment(){
 
     private lateinit var binding: FragmentLesson6ChallengePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
+    private lateinit var context: Lesson6ChallengeActivity
 
     private var recyclerView: RecyclerView? = null
     private var messageBox: EditText? = null
@@ -43,6 +45,7 @@ class Lesson6ChallengePart1Fragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        this.context = activity as Lesson6ChallengeActivity
         //initialise view
         recyclerView = this.binding.chatList
         messageBox = this.binding.etChatBox
@@ -67,10 +70,34 @@ class Lesson6ChallengePart1Fragment : Fragment(){
             recyclerView!!.setHasFixedSize(true)
             recyclerView!!.layoutManager = LinearLayoutManager(this.context)
             recyclerView!!.adapter = chatAdapter
+            validateText(messageBox!!.text.toString())
+            Log.i("TESTING",messageBox!!.text.toString())
             messageBox!!.setText("")
         }
     }
 
+    /**
+     * Function that checks if the text sent by the user is correct
+     * @author Team4
+     */
+    private fun validateText(textBoxString: String) {
+        if (textBoxString.lowercase().contains(getString(R.string.lesson6_challenge_text_message))){
+            val textCheckBool = textBoxString.lowercase().contains(getString(R.string.lesson6_challenge_text_message))
+            Log.i("TESTING CHECK: ", textCheckBool.toString())
+            //this@Lesson6ChallengePart1Fragment.context.completeChallenge()
+            endLesson()
+            this.ttsEngine.speak(getString(R.string.challenge_outro))
+        }
+    }
+
+    /**
+     * Function that exits the module.
+     * @author Sandy Du
+     */
+    private fun endLesson() {
+        // Lesson's complete go back to Main Activity
+        activity?.onBackPressed()
+    }
 
     /**
      * Speaks an intro for the fragment.
