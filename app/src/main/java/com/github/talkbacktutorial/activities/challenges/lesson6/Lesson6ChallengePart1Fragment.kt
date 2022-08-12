@@ -1,6 +1,7 @@
 package com.github.talkbacktutorial.activities.challenges.lesson6
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -71,7 +72,7 @@ class Lesson6ChallengePart1Fragment : Fragment(){
             recyclerView!!.layoutManager = LinearLayoutManager(this.context)
             recyclerView!!.adapter = chatAdapter
             validateText(messageBox!!.text.toString())
-            Log.i("TESTING",messageBox!!.text.toString())
+            Log.i("testing",messageBox!!.text.toString())
             messageBox!!.setText("")
         }
     }
@@ -82,11 +83,12 @@ class Lesson6ChallengePart1Fragment : Fragment(){
      */
     private fun validateText(textBoxString: String) {
         if (textBoxString.lowercase().contains(getString(R.string.lesson6_challenge_text_message))){
-            val textCheckBool = textBoxString.lowercase().contains(getString(R.string.lesson6_challenge_text_message))
-            Log.i("TESTING CHECK: ", textCheckBool.toString())
-            //this@Lesson6ChallengePart1Fragment.context.completeChallenge()
-            endLesson()
-            this.ttsEngine.speak(getString(R.string.challenge_outro))
+            this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                endLesson()
+            }
+            Handler().postDelayed(Runnable {
+                this.ttsEngine.speak(getString(R.string.challenge_outro))
+            },3000)
         }
     }
 

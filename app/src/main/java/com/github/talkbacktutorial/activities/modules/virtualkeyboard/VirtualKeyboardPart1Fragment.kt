@@ -163,7 +163,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         }
         Handler().postDelayed(Runnable {
             ttsEngine.speak(info)
-        },3000)
+        },4000)
     }
 
     /**
@@ -174,7 +174,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         this.binding.virtualKeyboardConstraintLayout.visibility = View.GONE
         Handler().postDelayed( Runnable {
             ttsEngine.speak(info)
-        }, 4000)
+        }, 10000)
         ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             this.binding.virtualKeyboardConstraintLayout.visibility = View.VISIBLE
         }

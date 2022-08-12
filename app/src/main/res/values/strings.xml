@@ -77,9 +77,9 @@
 
     <!-- Lesson 6 Challenge !-->
     <!-- TODO: CHANGE STRINGS -->
-    <string name="lesson6_challenge_intro">Welcome to Lesson 6\'s challenge. In this challenge, you\'ll be asked to send a message. Now let\'s get started</string>
-    <string name="lesson6_challenge_fragment1_intro">To finish this challenge send a message saying hello. Then find the back button to exit the challenge</string>
-    <string name="lesson6_challenge_text_message">hello</string>
+    <string name="lesson6_challenge_intro">Welcome to Lesson 6\'s challenge. In this challenge, you\'ll be asked to send a message to your friend, Bob,  in a chat room. Now let\'s get started</string>
+    <string name="lesson6_challenge_fragment1_intro">To finish this challenge send a message to Bob and include his name. Then find the back button to exit the challenge</string>
+    <string name="lesson6_challenge_text_message">bob</string>
 
     <!-- Lesson 1 !-->
     <string name="lesson1_part1_intro">Welcome. In your first lesson, you will learn to move forwards and backwards between menu items, as well as interact with them. Double tap to continue.</string>
