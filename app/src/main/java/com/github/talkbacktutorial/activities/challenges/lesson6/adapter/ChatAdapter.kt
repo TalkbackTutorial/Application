@@ -15,7 +15,7 @@ class ChatAdapter(chatModels: ArrayList<ChatModel>, context: Context?) : Recycle
     private var chatModels: ArrayList<ChatModel>? = null
     private var context: Context? = null
 
-    fun ChatAdapter(chatModels: ArrayList<ChatModel>?, context: Context?) {
+    init {
         this.chatModels = chatModels
         this.context = context
     }
