@@ -9,7 +9,7 @@ package com.github.talkbacktutorial
 object DebugSettings {
 
     // Unlocks all lessons, modules and challenges if true
-    const val bypassProgressionLocks = false
+    const val bypassProgressionLocks = true
 
     // Talkback isn't required if true
     const val talkbackNotRequired = false

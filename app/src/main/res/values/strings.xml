@@ -126,6 +126,9 @@
     <string name="finish_calculator_module">Sending you back to the main module page</string>
     <string name="equation_calculator_app">In this task, please provide the correct calculation for 9 × 5 to get the result 45. As a quick hint for this task, please use the knowledge, in "explore menu by scroll" lesson that you have already learned previously, to find the correct buttons.</string>
     <string name="calculator_not_installed_message">Calculator is not installed. Please install it and reopen this module.</string>
+    <string name="calculator_install_intro">In this module, you\'ll be doing a few task in a modified version of the Simple Calculator app. You can retrieve this modified app from the link below:</string>
+    <string name="calculator_link">"Link to the modified Simple Calculator "</string>
+    <string name="calculator_install_prompt">Once you have  installed the app, activate the button below to continue.</string>
 
     <!-- DlnBrailleKeyboard !-->
     <string name="dnl_braille_part1_intro">In this module, you will learn how to delete letters and words using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly. Finally, there is just one letter in the text field below L. Delete that using the keyboard</string>
@@ -195,16 +198,16 @@
     <string name="jump_text_paragraph_1">Paragraph 1. All Art that is not mere story-telling, or mere portraiture, is symbolic, and has the purpose of those symbolic talismans which medieval magicians made with complex colours and forms, and bade their patients ponder over daily, and guard with holy secrecy; for it entangles, in complex colours and forms, a part of the Divine Essence. A person or a landscape that is a part of a story or a portrait, evokes but so much emotion as the story or the portrait can permit without loosening the bonds that make it a story or a portrait; but if you liberate a person or a landscape from the bonds of motives and their actions, causes and their effects, and from all bonds but the bonds of your love, it will change under your eyes, and become a symbol of an infinite emotion, a perfected emotion, a part of the Divine Essence; for we love nothing but the perfect, and our dreams make all things perfect, that we may love them. Religious and visionary people, monks and nuns, and medicine-men, and opium-eaters, see symbols in their trances; for religious and visionary thought is thought about perfection and the way to perfection; and symbols are the only things free enough from all bonds to speak of perfection.</string>
     <string name="jump_text_request_paragraph_mode">We will now learn to use each text reading modes. As you have learned previously, please switch to the reading mode that says \"Paragraph\"</string>
     <string name="jump_text_paragraphs_intro">Firstly, we will learn to use paragraph reading mode. If you have already changed to paragraph mode, A single swipe up or down will transition between different paragraphs that are on the screen. Please try it until you reach a button that says continue module, then double tap to continue the module.</string>
-    <string name="jump_text_paragraphs_intro2"> Moving forward, we will learn to use lines reading mode. If you have already changed to lines mode, A single swipe up or down will transition between different lines that are on the screen similar to paragraph mode. Please try it until you reach a button that says continue module, then double tap to continue the module.</string>
+    <string name="jump_text_paragraphs_intro2"> Moving forward, we will learn to use lines reading mode. Please switch to lines reading mode. A single swipe up or down will transition between different lines that are on the screen similar to paragraph mode. Please try it until you reach a button that says continue module, then double tap to continue the module.</string>
     <string name="jump_text_paragraphs_intro3"> We will continue to learn to use the word reading mode. As you have familiarized yourself with the reading modes learnt previously, please try this yourself and navigate to the continue word, then double tap to proceed </string>
-    <string name="jump_text_paragraphs_intro4"> Finally in this module, use the character reading mode to navigate to the hidden alphabet that comes after the alphabet "S". For example, the alphabet "B" comes before alphabet "C". navigate to the hidden alphabet that comes after the alphabet "S". After you have found the hidden alphabet, double tap to finish this module</string>
+    <string name="jump_text_paragraphs_intro4"> Finally in this module, use the character reading mode to navigate to the letter "T", then double tap to continue. After you have found the hidden alphabet, double tap to finish this module</string>
     <string name="jump_text_paragraphs_conclusion">You have completed this module. To summarise, in this module you have learnt to use all text reading modes to navigate through a page. Sending you back to the Lesson modules.</string>
     <string name="jump_text_continue_fragment_message">If you have changed reading mode to Paragraph mode, Please double tap to continue</string>
-    <string name="jump_text_line_1">Line 1. Be not afraid of greatness.
-        Some are born great, some achieve greatness,
+    <string name="jump_text_line_1">Line 1. Be not afraid of greatness.\n
+        Some are born great,\n some achieve greatness,\n
         and others have greatness thrust upon them.</string>
-    <string name="jump_text_line_2">Line 2. Wisely, and slow. They stumble that run fast.</string>
-    <string name="jump_text_line_3">Line 3. Better three hours too soon,
+    <string name="jump_text_line_2">Line 2. Wisely, and slow.\n They stumble that run fast.</string>
+    <string name="jump_text_line_3">Line 3. Better three hours too soon,\n
         than a minute too late.</string>
     <string name="jump_text_word_1">Something about her voice gave me enough confidence to</string>
     <string name="jump_text_word_2">continue</string>
