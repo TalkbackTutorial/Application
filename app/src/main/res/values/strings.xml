@@ -41,8 +41,11 @@
     <string name="lesson5_desc">These cover the gestures and actions to perform navigation in an advance menu</string>
     <string name="lesson6_title">Typing Lesson</string>
     <string name="lesson6_desc">These cover the gestures and actions to use a virtual keyboard on your phone</string>
+
+    <!--TODO: Delete Lesson7 title and desc-->
     <string name="lesson7_title">Typing Using Braille Keyboard</string>
     <string name="lesson7_desc">These cover the gestures and actions to use the braille keyboard on your phone</string>
+
     <string name="lesson8_title">External Apps</string>
     <string name="lesson8_desc">These provide real world experience by having you jump to other applications</string>
 
@@ -77,7 +80,6 @@
     <string name="lesson5_challenge_part2_notification_desc">Notification description</string>
 
     <!-- Lesson 6 Challenge !-->
-    <!-- TODO: CHANGE STRINGS -->
     <string name="lesson6_challenge_intro">Welcome to Lesson 6\'s challenge. In this challenge, you\'ll be asked to send a message to your friend, Bob,  in a chat room. Now let\'s get started</string>
     <string name="lesson6_challenge_fragment1_intro">To finish this challenge send a message to Bob and include his name. Then find the back button to exit the challenge</string>
     <string name="lesson6_challenge_text_message">bob</string>
@@ -163,11 +165,6 @@
     <string name="go_to_home_screen_mid">Good, you are back, this gesture is useful as it allows you to return to the home screen at anytime no matter where you are. Now do it again, remember the gesture is swipe up then left, return to this app after by swiping left then up to open the recent apps page, then double tapping to return to this app.</string>
     <string name="go_to_home_screen_outro">Nice, you have navigated back to this screen, you have now learnt how to use the go to home screen gesture. Returning you to the lesson screen now.</string>
 
-    <!-- HideBrailleKeyboard !-->
-    <string name="hide_braille_intro">In this module you will learn how to close the braille keyboard when it is on the screen, this can be done by using 2 finger to swipe down while the braille keyboard is active, input the character \'a\' in the following text box and use the gesture to hide the keyboard. then return here.</string>
-    <string name="hide_braille_outro">Congrats, you have learnt to close the text box, use the continue button on this page to return to the lesson screen.</string>
-    <string name="hide_braille_fail">That was not the correct gesture, that was for submitting text, try it again using the correct gesture, which is two finger swipe down.</string>
-
     <!-- JumpControls !-->
     <string name="jump_controls_intro_initial_text">The \"Controls\" reading mode allows jumping between buttons, sliders, switches, and other interactive things.</string>
     <string name="jump_controls_entity">control</string>
@@ -214,10 +211,6 @@
     <string name="media_volume_control_part1_decrease_volume">current volume is set above 75. Now that you learned how to increase the volume, we will try decreasing the volume below 25. To decrease the volume, swipe down.</string>
     <string name="media_volume_control_part1_outro">Current volume is set below 25. Congratulations on completing this lesson. Sending you back to the main menu.</string>
 
-    <!-- OpenBrailleKeyboardSettings !-->
-    <string name="braille_settings_intro">Welcome to the open braille keyboard settings tutorial, you can access the braille keyboard settings page by swiping up with three fingers when the braille keyboard is active. Use all your knowledge, change the braille language to Arabic and enter any Arabic character in the following text box, then close the keyboard by using 2 fingers to swipe down, you would have to select arabic as one of the language options by entering the settings page from the braille keyboard options. After completing this, return to this text box.</string>
-    <string name="braille_settings_outro">Congrats, you have managed to open the braille settings page and enter an Arabic character in the text box. Click the continue button when you are ready.</string>
-
     <!-- OpeningVoiceCommand !-->
     <string name="open_voice_commands_intro">Welcome. In this module, you will learn how to enable voice commands. To enable voice commands you need to swipe right and then up.</string>
     <string name="open_voice_commands_outro">You have completed this module</string>
@@ -252,19 +245,9 @@
     <string name="scroll_part2_outro">You have completed the lesson. Sending you to the main menu.</string>
 
     <!-- StartStopMedia !-->
-
     <string name="start_stop_media_part1_outro">Great job! You have paused the video. Congratulations on completing this lesson. In this lesson you have successfully learn how to play and pause a video. To exit this lesson, select the finish button on the screen.</string>
     <string name="start_stop_media_part1_play">Great job! You have played the video. Now that you learned how to play the video, we will try pause the video. To pause the video, explore by touch to find the pause button and double tap on the button to pause the video.</string>
     <string name="start_stop_media_part1_intro">In this tutorial, you will be learning how to start and stop a video. To start, double tap your screen by touch to bring up the media controller. Next swipe right until you find the play button. Double tap to start playing the video. If nothing happens when you swipe, double tap again to bring up the media controller.</string>
-
-    <!-- SubmitText !-->
-    <string name="submit_text_part1_intro">In this module, you will learn how to submit text using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly.</string>
-    <string name="submit_text_part1_error">Incorrect letter submitted. Try again.</string>
-    <string name="submit_text_part1_outro">Great job. You correctly typed in the letter A.</string>
-    <string name="submit_text_part2_intro">Now, try to type the word hello and submit using the same two finger swipe up gesture.</string>
-    <string name="submit_text_part2_outro">Great job. You correctly typed in the word hello. You have completed this module. Sending you back to the lesson screen.</string>
-    <string name="submit_text_part2_error">Incorrect word submitted. Try again.</string>
-    <string name="submit_text_part1_backstack">submittextpart1</string>
 
     <!-- Virtual Keyboard !-->
     <string name="virtual_keyboard_hello">hello</string>
