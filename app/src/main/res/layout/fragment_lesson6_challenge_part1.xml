@@ -14,6 +14,7 @@
             android:id="@+id/chat_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="Chat Box"
             app:layout_constrainedHeight="true"
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintTop_toTopOf="parent" />
