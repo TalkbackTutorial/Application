@@ -33,6 +33,9 @@
             android:name=".activities.challenges.lesson5.Lesson5ChallengeActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.challenges.lesson6.Lesson6ChallengeActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.modules.hidebraillekeyboard.HideBrailleKeyboardActivity"
             android:exported="false" />
         <activity

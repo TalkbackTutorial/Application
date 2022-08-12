@@ -46,8 +46,8 @@ class Lesson6ChallengePart1Fragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         //initialise view
         recyclerView = this.binding.chatList
-        messageBox = this.binding.et_chat_box
-        sendButton = this.binding.btn_chat_send
+        messageBox = this.binding.etChatBox
+        sendButton = this.binding.btnChatSend
 
         this.ttsEngine = TextToSpeechEngine((activity as Lesson6ChallengeActivity))
             .onFinishedSpeaking(triggerOnce = true) {
