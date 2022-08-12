@@ -59,7 +59,7 @@
                 android:layout_height="48dp"
                 android:layout_alignParentEnd="true"
                 android:background="@color/primary10"
-                android:contentDescription="send button"
+                android:contentDescription="send"
                 android:text=">" />
 
         </RelativeLayout>
