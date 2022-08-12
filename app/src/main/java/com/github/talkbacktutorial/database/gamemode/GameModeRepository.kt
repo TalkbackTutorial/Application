@@ -19,13 +19,16 @@ class GameModeRepository(private val gameModeDao: GameModeDao) {
     }
 
     /**
-     * Adding a high score
+     * Adding a high score to the db
      * @author Antony Loose
      */
     suspend fun addHighScore(highScore: Int){
         gameModeDao.addHighScore(GameMode(highScore))
     }
 
+    /**
+     * Removes all high scores from the db
+     */
     suspend fun wipeTable(){
         gameModeDao.wipeTable()
     }

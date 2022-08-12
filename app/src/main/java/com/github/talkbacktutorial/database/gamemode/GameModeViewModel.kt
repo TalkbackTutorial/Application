@@ -53,7 +53,7 @@ class GameModeViewModel(application: Application): AndroidViewModel(application)
     }
 
     /**
-     * Wipe the database
+     * Wipe all high scores from the db
      * @author Antony Loose
      */
     fun clearDatabase(){

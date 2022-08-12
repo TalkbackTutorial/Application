@@ -163,7 +163,8 @@ class GameModeActivity : AppCompatActivity() {
     }
 
     /**
-     * Checks if a new high score is set and if so updates the high score and informs the player
+     * Checks if a new high score is set and if so updates the high score and informs the player.
+     * The high score is only read out once per game
      * @author Antony Loose
      */
     private fun checkHighScore() {
