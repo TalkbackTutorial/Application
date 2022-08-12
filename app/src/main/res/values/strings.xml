@@ -58,6 +58,11 @@
 
     <!-- Lesson 3 Challenge !-->
     <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a number of different page elements which you will need to navigate through. To complete the challenge, you must navigate through all page elements using the specified reading controls until you reach the complete challenge button.</string>
+    <string name="recipe_book_title">Easy Baking Recipes</string>
+    <string name="cookie_header">Cookies</string>
+    <string name="cookie_description">This scrumptious and chewy chocolate-chip cookie recipe is guaranteed to satisfy your sweet tooth!</string>
+    <string name="cookie_link"><a href="http://www.google.com">Get cookie recipe</a></string>
+
 
     <!-- Lesson 4 Challenge !-->
     <string name="lesson4_challenge_intro">In this challenge, you\'ll be presented an article with an embedded video already playing. To complete the challenge, pause the video, and return its slider to the beginning of the video, then replay it. You may now start.</string>
@@ -178,9 +183,6 @@
     <string name="jump_navigation_easy_last_element">This is the last %s. Activate it to continue.</string>
     <string name="jump_navigation_easy_last_element_active">To continue, swipe up to the previous %s</string>
     <string name="jump_navigation_easy_first_element_active">That\'s the basics of jumping between %s. Activate to %s.</string>
-    <string name="jump_navigation_hard_first_element">You have successfully reached the first element… %s. Switch back to paragraph reading mode and swipe down to jump to the next part.</string>
-    <string name="jump_navigation_hard_second_element">You have successfully reached the second element… %s. Switch back to paragraph reading mode and swipe down to jump to the next part.</string>
-    <string name="jump_navigation_hard_last_element">You have successfully reached the last element… %s. Activate it to complete the challenge.</string>
     <string name="jump_navigation_easy_prompt">Switch to the %s reading mode and swipe down to jump to the next %s.</string>
     <string name="jump_navigation_target_link_template"><![CDATA[<a href="http://google.com">%s</a>]]></string>
     <string name="percent_s">%s</string>
