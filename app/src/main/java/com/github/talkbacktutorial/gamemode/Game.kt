@@ -16,8 +16,7 @@ class Game(
     private var onCorrectGesture: (() -> Unit),
     private var onWrongGesture: (() -> Unit),
     private var onStartRound: (() -> Unit),
-    private var readScore: ((score: Int) -> Unit),
-    private var onNewHighScore: ((score: Int) -> Unit)
+    private var readScore: (() -> Unit),
 ) {
 
     var score = 0
@@ -82,15 +81,13 @@ class Game(
     private fun reactToGesture() {
         // if the user does a single tap read out the score
         if (this.performedGesture == TalkbackGesture.TAP){
-            this.readScore(this.score)
+            this.readScore()
         } else if (this.gestureMatches()) {
             this.score += 1
-            this.onNewHighScore(score)
             this.onCorrectGesture()
             this.requiredGesture = this.gesturePool.takeGesture()
             this.onStartRound()
         } else {
-            this.onNewHighScore(score)
             this.previousScore = this.score
             this.score = 0
             this.onWrongGesture()

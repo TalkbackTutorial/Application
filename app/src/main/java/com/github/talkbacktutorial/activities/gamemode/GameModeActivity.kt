@@ -3,6 +3,7 @@ package com.github.talkbacktutorial.activities.gamemode
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.MediaPlayer
+import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,16 +12,13 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
-import com.github.talkbacktutorial.DebugSettings
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeListener
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeManager
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangePage
 import com.github.talkbacktutorial.activities.MainActivity
-import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.gamemode.GameModeViewModel
 import com.github.talkbacktutorial.databinding.ActivityGameModeBinding
 import com.github.talkbacktutorial.gamemode.Game
@@ -40,10 +38,12 @@ class GameModeActivity : AppCompatActivity() {
         onWrongGesture = ::onWrongGesture,
         onStartRound = ::onStartRound,
         readScore = ::readScore,
-        onNewHighScore = ::newHighScore
     )
     private lateinit var correctSound: MediaPlayer
     private lateinit var incorrectSound: MediaPlayer
+    private lateinit var gameModeDbController: GameModeViewModel
+    private var highScore: Int = 0 // Set in onCreate
+    private var highScoreBeaten = false
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +51,11 @@ class GameModeActivity : AppCompatActivity() {
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_game_mode)
         this.toggleInterface(false)
+
+        this.gameModeDbController = ViewModelProvider(this).get(GameModeViewModel::class.java)
+        this.gameModeDbController.getHighScore().observe(this) { highScore ->
+            this.highScore = highScore
+        }
 
         this.correctSound = MediaPlayer.create(this, R.raw.correct)
         this.incorrectSound = MediaPlayer.create(this, R.raw.wrong)
@@ -122,6 +127,7 @@ class GameModeActivity : AppCompatActivity() {
     private fun onCorrectGesture() {
         this.correctSound.start()
         this.binding.scoreLabel.text = this.game.score.toString()
+        this.checkHighScore()
     }
 
     /**
@@ -131,6 +137,7 @@ class GameModeActivity : AppCompatActivity() {
     private fun onWrongGesture() {
         this.incorrectSound.start()
         this.binding.scoreLabel.text = this.game.score.toString()
+        this.highScoreBeaten = false
         this.game.disableInput()
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             this.game.startGame()
@@ -142,14 +149,8 @@ class GameModeActivity : AppCompatActivity() {
      * Read the current score.
      * @author Antony Loose
      */
-    private fun readScore(score: Int){
-        var alreadyRead = false
-        getHighScore().observe(this) { highScore ->
-            if (!alreadyRead){
-                this.ttsEngine.speak(getString(R.string.game_read_scores, score, highScore), false)
-                alreadyRead = true
-            }
-        }
+    private fun readScore() {
+        this.ttsEngine.speak(getString(R.string.game_read_scores, this.game.score, this.highScore), false)
     }
 
     /**
@@ -162,24 +163,15 @@ class GameModeActivity : AppCompatActivity() {
     }
 
     /**
-     * Get the current high score
+     * Checks if a new high score is set and if so updates the high score and informs the player
      * @author Antony Loose
      */
-    private fun getHighScore(): LiveData<Int>{
-        val gameModeDbController = ViewModelProvider(this).get(GameModeViewModel::class.java)
-        return gameModeDbController.getHighScore()
-    }
-
-    /**
-     * A function for checking if a new high score is set and if so updating the high score and informing the player
-     * @author Antony Loose
-     */
-    private fun newHighScore(score: Int){
-        val gameModeDbController = ViewModelProvider(this).get(GameModeViewModel::class.java)
-        gameModeDbController.getHighScore().observe(this) { highScore ->
-            if (highScore < score){
-                gameModeDbController.addHighScore(score)
-                this.ttsEngine.speak(getString(R.string.game_new_high_score) + score)
+    private fun checkHighScore() {
+        if (this.highScore < this.game.score) {
+            this.gameModeDbController.addHighScore(this.game.score)
+            if (!this.highScoreBeaten) {
+                this.ttsEngine.speak(getString(R.string.game_new_high_score))
+                this.highScoreBeaten = true
             }
         }
     }

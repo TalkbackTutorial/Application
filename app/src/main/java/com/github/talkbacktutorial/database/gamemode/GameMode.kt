@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.database.gamemode
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -11,7 +12,11 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "gameMode_table")
 data class GameMode (
-    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "highScore")
     val highScore: Int
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "gameModeId")
+    var id: Int = 0
+}
