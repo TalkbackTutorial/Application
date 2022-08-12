@@ -46,9 +46,9 @@ class OpenRecentAppsPart2Fragment : Fragment() {
         // Simple listener detecting a change in window focus
         view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
             count++
-            // If the count is greater than 1, the app must have lost focus and re-gained focus
+            // If the count is equal to 1, the app must have lost focus and re-gained focus
             // Count changed to one here as changing fragments does not count as a focus change
-            if (count > 1) {
+            if (count == 1) {
                 finishLesson()
             }
         }
