@@ -50,9 +50,11 @@ class Lesson6ChallengePart1Fragment : Fragment(){
         sendButton = this.binding.btnChatSend
 
         this.ttsEngine = TextToSpeechEngine((activity as Lesson6ChallengeActivity))
-            .onFinishedSpeaking(triggerOnce = true) {
-            }
-        this.speakIntro()
+        binding.lesson6ChallengeConstraintLayout.visibility = View.GONE
+        ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+            binding.lesson6ChallengeConstraintLayout.visibility = View.VISIBLE
+        }
+        speakIntro()
 
         sendButton!!.setOnClickListener {
             var i = 1
