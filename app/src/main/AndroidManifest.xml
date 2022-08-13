@@ -40,10 +40,7 @@
             android:name=".activities.challenges.lesson5.Lesson5ChallengeActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.modules.hidebraillekeyboard.HideBrailleKeyboardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.openbraillekeyboardsettings.OpenBrailleKeyboardSettingsActivity"
+            android:name=".activities.challenges.lesson6.Lesson6ChallengeActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
@@ -111,11 +108,7 @@
         <activity
             android:name=".activities.modules.virtualkeyboard.VirtualKeyboardActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.modules.submittext.SubmitTextActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.modules.calculatorapp.CalculatorAppActivity"
+        <activity android:name=".activities.modules.calculatorapp.CalculatorAppActivity"
             android:exported="true"
             android:launchMode="singleTask" />
         <activity
