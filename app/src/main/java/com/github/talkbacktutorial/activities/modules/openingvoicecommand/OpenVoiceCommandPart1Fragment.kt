@@ -1,16 +1,17 @@
 package com.github.talkbacktutorial.activities.modules.openingvoicecommand
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.FragmentOpenVoiceCommandModulePart1Binding
+import java.util.*
+import kotlin.concurrent.schedule
 
 class OpenVoiceCommandPart1Fragment : Fragment() {
 
@@ -21,6 +22,7 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentOpenVoiceCommandModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
+    private var count = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,42 +37,39 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as OpenVoiceCommandActivity))
-            .onFinishedSpeaking(triggerOnce = true) {
-                this.speakOutro()
-            }
         this.speakIntro()
+
+        view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
+            count++
+            // If the count is greater than 2, the app must have lost focus and re-gained focus
+            if (count > 2) {
+                finishLesson()
+            }
+        }
     }
+
 
     /**
      * Speaks an intro for the fragment.
-     * @author Mohak Malhotra
+     * @author Mohak Malhotra & Jai Clapp
      */
     private fun speakIntro() {
-        val intro = getString(R.string.open_voice_commands_intro).trimIndent()
+        val intro = getString(R.string.open_voice_commands_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
-    /** Speaks an outro for the fragment
-     * @author Mohak Malhotra
-     *  */
-    private fun speakOutro() {
-        val outro = getString(R.string.open_voice_commands_outro).trimIndent()
-        this.ttsEngine.speak(outro)
-    }
-
-    private fun Fragment.removeOnWindowFocusChangeListener(callback: (hasFocus: Boolean) -> Unit) =
-        view?.viewTreeObserver?.removeOnWindowFocusChangeListener(callback)
-
     /**
      * To do when finish the lesson
-     * @author Mohak Malhotra
+     * @author Mohak Malhotra & Jai Clapp
      */
     private fun finishLesson() {
-        removeOnWindowFocusChangeListener {}
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             activity?.finish()
         }
-        this.speakOutro()
+        Timer().schedule(2000) {
+            val outro = getString(R.string.open_voice_commands_part1_outro).trimIndent()
+            ttsEngine.speak(outro)
+        }
     }
 
     override fun onDestroyView() {

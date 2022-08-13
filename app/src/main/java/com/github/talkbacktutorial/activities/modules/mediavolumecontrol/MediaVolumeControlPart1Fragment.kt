@@ -5,6 +5,8 @@ import android.content.Intent
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -40,8 +42,8 @@ class MediaVolumeControlPart1Fragment : Fragment() {
     private var totalSongDuration: Int = 0
     private var seekbarVolume: SeekBar? = null
     private var currentVolume: Int = 0
-    private var maxStreamVolume: Int = 150
     private var swipeUp: Boolean = false
+    private var initialVolume: Int = 50
     private lateinit var accessibilityManager: AccessibilityManager
 
     override fun onCreateView(
@@ -72,22 +74,27 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         this.speakIntro()
     }
 
+    /**
+     * Set up the media control components: play button, stop button and volume slider
+     * @author Natalie Law
+     */
     private fun mediaControls() {
         this.binding.playButton.setOnClickListener {
+            val info = getString(R.string.media_volume_control_part1_increase_volume).trimIndent()
+            ttsEngine.speak(info)
+
             // when users click on the fab button
             if (mediaPlayer == null) {
                 mediaPlayer = MediaPlayer.create(context, R.raw.media_sound)
             }
 
+            // changing the volume of the phone's audio
             mediaPlayer?.start()
             mediaPlayer?.isLooping = true
-            val defaultStreamVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
             totalSongDuration = mediaPlayer!!.duration
-            maxStreamVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
-            val vol: Float = defaultStreamVolume.toFloat() / maxStreamVolume
+            val vol: Float = initialVolume.toFloat() / 100.0F
             mediaPlayer?.setVolume(vol, vol)
-            currentVolume = (vol * 100).roundToInt()
-            seekbarVolume?.progress = currentVolume
+            seekbarVolume?.progress = initialVolume
         }
 
         this.binding.stopButton.setOnClickListener {
@@ -98,10 +105,8 @@ class MediaVolumeControlPart1Fragment : Fragment() {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 if (p2) {
                     currentVolume = p1
-                    val vol: Float = p1.toFloat() / maxStreamVolume
+                    val vol: Float = p1.toFloat() / 100.0F
                     mediaPlayer?.setVolume(vol, vol)
-                    var volumeNum = p1 / 100.0f
-                    mediaPlayer?.setVolume(volumeNum, volumeNum)
                     // If talkback is turned on
                     if (accessibilityManager.isEnabled && accessibilityManager.isTouchExplorationEnabled || DebugSettings.talkbackNotRequired) {
                         if (mediaPlayer == null) {
@@ -109,6 +114,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
                             speakDuringLesson(info)
                         } else lessonLogic()
                     } else speakDuringLesson(getString(R.string.media_volume_control_part1_talkback_prompt))
+                    Log.i("Testing", "p1 " + p1.toString())
                 }
             }
 
@@ -120,6 +126,12 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         })
     }
 
+    /**
+     * Determines the logic of the lesson. It first prompts the user to increase the volume to 75 by swiping up.
+     * Then it checks whether the volume is above 75; or below 25 (and has previously
+     * completed the swipe up gesture). Based on the conditions, the method determines the next steps for the lesson.
+     * @author Natalie Law
+     */
     private fun lessonLogic() {
         if (currentVolume >= 75) {
             if (mediaPlayer?.isPlaying == true) mediaPlayer?.pause()
@@ -133,12 +145,19 @@ class MediaVolumeControlPart1Fragment : Fragment() {
             swipeUp = true
         } else if (currentVolume <= 25 && swipeUp) {
             stopMedia()
+            binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
+            ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                endLesson()
+            }
             val info = getString(R.string.media_volume_control_part1_outro).trimIndent()
-            speakDuringLesson(info)
-            insertFinishButton()
+            ttsEngine.speak(info)
         }
     }
 
+    /**
+     * Stop the media player from playing the music
+     * @author Natalie Law
+     */
     private fun stopMedia() {
         if (mediaPlayer !== null) {
             mediaPlayer?.stop()
@@ -148,25 +167,19 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         }
     }
 
-    private fun insertFinishButton() {
-        val constraintLayout = this.binding.mediaVolumeControlConstraintLayout
-        val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, constraintLayout,false)
-        primaryButtonBinding.text = ""
-        primaryButtonBinding.button.setOnClickListener{ endLesson() }
-        val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
-        layoutParams.horizontalBias = 0.95f
-        layoutParams.endToEnd = constraintLayout.id
-        layoutParams.startToStart = constraintLayout.id
-        layoutParams.topToTop = constraintLayout.id
-        layoutParams.topMargin = 10.dpToPixels(requireContext())
-        constraintLayout.addView(primaryButtonBinding.button, layoutParams)
-    }
-
+    /**
+     * Introduction of the lesson module using TTS
+     * @author Natalie Law
+     */
     private fun speakIntro() {
         val intro = getString(R.string.media_volume_control_part1_intro).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
+    /**
+     * End the lesson and bring user back to the Main Activity
+     * @author Natalie Law
+     */
     private fun endLesson() {
         updateModule()
 
@@ -184,10 +197,11 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         super.onDestroyView()
     }
 
-    private fun Int.dpToPixels(context: Context): Int = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
-    ).toInt()
-
+    /**
+     * This method is used to ensure that the TTS will not be interrupted when speaking during the lesson. This is
+     * done by hiding the view when TTS is speaking and when finished, set the view back the visible.
+     * @author Natalie Law
+     */
     private fun speakDuringLesson(info: String) {
         binding.mediaVolumeControlConstraintLayout.visibility = View.GONE
         ttsEngine.onFinishedSpeaking(triggerOnce = true) {

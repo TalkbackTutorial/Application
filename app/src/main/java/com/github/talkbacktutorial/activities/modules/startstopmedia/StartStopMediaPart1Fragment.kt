@@ -52,6 +52,10 @@ class StartStopMediaPart1Fragment : Fragment() {
         this.speakIntro()
     }
 
+    /**
+     * Function that sets up the video to be used in the CustomVideoView.
+     * @author Sandy Du
+     */
     private fun setUpVideo() {
         // Get videoView by id
         this.videoView = this.binding.customVideoview
@@ -69,6 +73,12 @@ class StartStopMediaPart1Fragment : Fragment() {
         videoView.setMediaController(mediaController)
     }
 
+    /**
+     * Function that sets up the class as a listener for CustomVideoView. It implements and overrides
+     * the onPause and onPlay functions from CustomVideoView to use the TTSEngine to give audio
+     * feedback.
+     * @author Sandy Du & Nabeeb Yusuf
+     */
     private fun setUpPlayPauseListener() {
         videoView.setPlayPauseListener(object : CustomVideoView.PlayPauseListener {
             override fun onPause() {
@@ -113,6 +123,10 @@ class StartStopMediaPart1Fragment : Fragment() {
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
+    /**
+     * Function that inserts the finish button after the lesson has ended.
+     * @author Sandy Du
+     */
     private fun insertFinishButton() {
         val constraintLayout = this.binding.startStopMediaControlConstraintLayout
         val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, constraintLayout,false)
@@ -127,6 +141,10 @@ class StartStopMediaPart1Fragment : Fragment() {
         constraintLayout.addView(primaryButtonBinding.button, layoutParams)
     }
 
+    /**
+     * Function that is called when the finish button is pressed.
+     * @author Sandy Du
+     */
     private fun endLesson() {
         updateModule()
         if (mediaController != null && mediaController!!.isShowing()) {
@@ -141,6 +159,10 @@ class StartStopMediaPart1Fragment : Fragment() {
         super.onDestroyView()
     }
 
+    /**
+     * Function that converts DPI/Pixel values to integer
+     * @author Sandy Du
+     */
     private fun Int.dpToPixels(context: Context): Int = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
     ).toInt()

@@ -19,7 +19,7 @@ import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentLesson1Part3Binding
 import com.github.talkbacktutorial.databinding.WidePillButtonBinding
 
-class Lesson1Part3Fragment : Fragment() {
+class   Lesson1Part3Fragment : Fragment() {
 
     companion object {
         @JvmStatic
