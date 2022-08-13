@@ -17,7 +17,7 @@ class OpenTalkbackMenuActivity : AppCompatActivity() {
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_open_talkback_menu_module)
         supportFragmentManager.commit {
-            replace(R.id.frame, OpenTalkBackMenuPart1Fragment.newInstance())
+            replace(R.id.frame, OpenTalkBackMenuPart1Fragment())
         }
     }
 }

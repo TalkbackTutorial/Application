@@ -4,6 +4,10 @@ import android.content.Context
 import android.content.Intent
 import com.github.talkbacktutorial.activities.modules.openingvoicecommand.OpenVoiceCommandActivity
 
+/**
+ * A module that teaches the user how to open voice command and speak some basic voice commands
+ * @author Jai Clapp
+ */
 
 class OpenVoiceCommandModule : Module() {
 
