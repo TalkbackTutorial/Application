@@ -41,13 +41,8 @@
     <string name="lesson5_desc">These cover the gestures and actions to perform navigation in an advance menu</string>
     <string name="lesson6_title">Typing Lesson</string>
     <string name="lesson6_desc">These cover the gestures and actions to use a virtual keyboard on your phone</string>
-
-    <!--TODO: Delete Lesson7 title and desc-->
-    <string name="lesson7_title">Typing Using Braille Keyboard</string>
-    <string name="lesson7_desc">These cover the gestures and actions to use the braille keyboard on your phone</string>
-
-    <string name="lesson8_title">External Apps</string>
-    <string name="lesson8_desc">These provide real world experience by having you jump to other applications</string>
+    <string name="lesson7_title">External Apps</string>
+    <string name="lesson7_desc">These provide real world experience by having you jump to other applications</string>
 
     <!-- Challenges !-->
     <string name="challenge_outro">You have completed the challenge. Find and select the back button to return to the main menu.</string>

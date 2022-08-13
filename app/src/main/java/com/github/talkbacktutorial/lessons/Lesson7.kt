@@ -15,11 +15,11 @@ import com.github.talkbacktutorial.lessons.modules.VoiceRecorderAppModule
  *
  * @author Team 3
  */
-class Lesson8 : Lesson() {
+class Lesson7 : Lesson() {
 
-    override val title: String = App.resources.getString(R.string.lesson8_title)
-    override val sequenceNumeral: Int = 8
-    override val description = App.resources.getString(R.string.lesson8_desc)
+    override val title: String = App.resources.getString(R.string.lesson7_title)
+    override val sequenceNumeral: Int = 7
+    override val description = App.resources.getString(R.string.lesson7_desc)
     override val modules: ArrayList<Module> = ArrayList(
         listOf(
             CalculatorAppModule(),
