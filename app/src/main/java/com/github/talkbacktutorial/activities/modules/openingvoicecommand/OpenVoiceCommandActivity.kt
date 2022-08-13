@@ -12,6 +12,7 @@ import com.github.talkbacktutorial.databinding.ActivityOpenVoiceCommandModuleBin
 
 // This constant is needed to verify the audio permission result
 private const val ASR_PERMISSION_REQUEST_CODE = 0
+
 class OpenVoiceCommandActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityOpenVoiceCommandModuleBinding

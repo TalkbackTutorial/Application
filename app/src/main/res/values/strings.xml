@@ -62,20 +62,22 @@
 
     <!-- Lesson 3 Challenge !-->
     <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a number of different page elements which you will need to navigate through. To complete the challenge, you must navigate through all page elements using the specified reading controls until you reach the complete challenge button.</string>
+    <string name="recipe_book_title">Easy Baking Recipes</string>
+    <string name="cookie_header">Cookies</string>
+    <string name="cookie_description">This scrumptious and chewy chocolate-chip cookie recipe is guaranteed to satisfy your sweet tooth!</string>
+    <string name="cookie_link"><a href="http://www.google.com">Get cookie recipe</a></string>
+
 
     <!-- Lesson 4 Challenge !-->
     <string name="lesson4_challenge_intro">In this challenge, you\'ll be presented an article with an embedded video already playing. To complete the challenge, pause the video, and return its slider to the beginning of the video, then replay it. You may now start.</string>
 
     <!-- Lesson 5 Challenge !-->
     <string name="lesson5_challenge_intro">Welcome to Lesson 5\'s challenge. In this challenges, you\'ll be ask to perform a sequence of tasks.</string>
-    <string name="lesson5_challenge_fragment1_intro">Now, let\'s get start. Billy wants to know what the time is it. Go back to home screen and check the current time on your phone. Then back here to select the correct time.</string>
-    <string name="lesson5_challenge_wrong_selected_time">The selected time is not correct. Check the time again, and then select the closet time.</string>
-    <string name="lesson5_challenge_fragment2_intro">You selected the correct time. Now a new message is sent from Billy, open the notification to find it.</string>
+    <string name="lesson5_challenge_fragment1_intro">Now, go to your home screen and back to this app to find the next task.</string>
+    <string name="lesson5_challenge_fragment2_intro">Welcome back. Now a new message is sent from Billy, open the notification to find it.</string>
     <string name="lesson5_challenge_notification_title">Billy\'s message</string>
     <string name="lesson5_challenge_outro">Hello I am Billy, you can complete this challenge by double tap this message from the notification. Then you will be sent to the main menu.</string>
-    <string name="date_format">HH:mm</string>
     <string name="lesson5_challenge_part2_backstack">lesson5ChallengePart2</string>
-    <string name="lesson5_challenge_part2_channel_id">TBT1</string>
     <string name="lesson5_challenge_part2_notification_name">Talkback tutorial</string>
     <string name="lesson5_challenge_part2_notification_desc">Notification description</string>
 
@@ -108,7 +110,6 @@
     <string name="adjust_reading_controls_part1_backwards_prompt">You can go backwards through the list. Swipe down then up in one motion to go through the list in the opposite direction.</string>
     <string name="adjust_reading_controls_part1_multi_finger">Modes can also be switched by swiping with three fingers horizontally either to the left or to the right. Try going through the list with three finger swipes in both directions before moving on.</string>
     <string name="adjust_reading_controls_part1_finished_text">That\'s all there is to changing modes. The rest of this lesson covers how to use these modes. Activate the button below to finish this module.</string>
-
 
     <!-- Adjust Slider !-->
     <string name="percentage">%</string> <!--not complete!-->
@@ -153,9 +154,8 @@
     <string name="explore_menu_by_touch_part2_outro">You have completed the lesson. Sending you to the main menu.</string>
 
     <!-- GoBack !-->
-    <string name="go_back_part1_intro">Welcome. In this lesson, you will learn how to go back the previous page. Double tap to continue.</string>
-    <string name="go_back_part1_conclusion">You have successfully navigated back to the previous page. Double tap to complete lesson.</string>
-    <string name="go_back_part1_outro">You have completed the lesson. Sending you to the main menu.</string>
+    <string name="go_back_part1_intro">Welcome. In this lesson, you will learn how to go back to the previous page. To open the next page, double tap to click the continue button.</string>
+    <string name="go_back_part1_outro">You have successfully navigated back to the previous page. Lesson complete. Sending you to the main menu.</string>
     <string name="go_back_part2_intro">To navigate back to the previous page, swipe down then left.</string>
     <string name="go_back_part2_backstack">gobackModulePart2</string>
 
@@ -186,9 +186,6 @@
     <string name="jump_navigation_easy_last_element">This is the last %s. Activate it to continue.</string>
     <string name="jump_navigation_easy_last_element_active">To continue, swipe up to the previous %s</string>
     <string name="jump_navigation_easy_first_element_active">That\'s the basics of jumping between %s. Activate to %s.</string>
-    <string name="jump_navigation_hard_first_element">You have successfully reached the first element… %s. Switch back to paragraph reading mode and swipe down to jump to the next part.</string>
-    <string name="jump_navigation_hard_second_element">You have successfully reached the second element… %s. Switch back to paragraph reading mode and swipe down to jump to the next part.</string>
-    <string name="jump_navigation_hard_last_element">You have successfully reached the last element… %s. Activate it to complete the challenge.</string>
     <string name="jump_navigation_easy_prompt">Switch to the %s reading mode and swipe down to jump to the next %s.</string>
     <string name="jump_navigation_target_link_template"><![CDATA[<a href="http://google.com">%s</a>]]></string>
     <string name="percent_s">%s</string>
@@ -212,14 +209,19 @@
     <string name="media_volume_control_part1_outro">Current volume is set below 25. Congratulations on completing this lesson. Sending you back to the main menu.</string>
 
     <!-- OpeningVoiceCommand !-->
-    <string name="open_voice_commands_intro">Welcome. In this module, you will learn how to enable voice commands. To enable voice commands you need to swipe right and then up.</string>
-    <string name="open_voice_commands_outro">You have completed this module</string>
-
+    <string name="open_voice_commands_part1_intro">Welcome. In this module, you will learn how to enable voice commands. To enable voice commands you need to swipe right and then up with one finger. Please perform the gestures and when prompted for a voice command, say help. Listen to the voice command help section and return to the tutorial. You may return to the tutorial by going back.</string>
+    <string name="open_voice_commands_part1_outro">Well done. Next we will put some voice commands into action.</string>
+    <string name="open_voice_commands_part2_intro">Now that you know some voice commands, swipe right with one finger to move to the block of text and say, speak faster. This voice command will make talkback speak the text faster.</string>
+    <string name="open_voice_commands_part2_outro">You have completed this module. Sending you back to the lesson screen.</string>
+    <string name="open_voice_commands_part2_text">To make me speak faster swipe right and up with one finger, then say speak faster in a clear voice. Do this gesture and say speak faster three times, then move to the next block of text.</string>
+    <string name="open_voice_command_part2_text_end">I am now speaking faster. When you have completed listening to this text, swipe right and select the button to finish the module. </string>
+    <string name="open_voice_command_part2_control_text">Swipe right.</string>
+    <string name="open_voice_command_part1_backstack">openVoiceCommandPart1</string>
 
     <!-- OpenNotifications !-->
-    <string name="open_notifications_intro">Welcome. In this module, you will learn how to open your notification panel. Notifications are a way to let you know that something new has happened so you do not miss anything that might be worth your attention and appears whether you are using the application or not. There are two way to do this. First, let us open the notification panel by putting 2 finger on top of the screen then swipe down. Once you opened the notification panel, Talkback will start taking over for a few second. Please wait until Talkback is done then follow the next instruction. Good luck.</string>
+    <string name="open_notifications_intro">Welcome. In this module, you will learn how to open your notification panel. Notifications are a way to let you know that something new has happened so you do not miss anything that might be worth your attention and appears whether you are using the application or not. There are two way to do this. First, let us open the notification panel by using 2 finger to swipe from top to the bottom of the screen. Once you opened the notification panel, Talkback will start taking over for a few second. Please wait until Talkback is done then follow the next instruction. Good luck.</string>
     <string name="open_notifications_feedback_1">Good job. You have opened the notification panel. Now try to close it by doing the same gesture but this time start from the bottom to top"</string>
-    <string name="open_notifications_feedback_2">Well done. The notification panel has been closed. Let\'s try to open it one more time but this time, open it by swiping right, then down immediately.</string>
+    <string name="open_notifications_feedback_2">Well done. The notification panel has been closed. Let\'s try to open it one more time but this time, open it by swiping right, then down immediately. Once again, please wait until Talkback is done then follow the next instruction.</string>
     <string name="open_notifications_feedback_3">Excellent. Now close it again by swiping from the bottom with 2 fingers</string>
     <string name="open_notifications_outro">Well done! You now know how to open and check and close your notification panel. Notification panel can also be used to perform many kind of shortcut. For example, connect or disconnect wifi or bluetooth. You have completed the lesson. We will send you back.</string>
 
@@ -231,7 +233,7 @@
     <string name="open_recent_apps_part1_backstack">"openrecentappspart1"</string>
 
     <!-- OpenTalkbackMenu !-->
-    <string name="open_talkback_menu_intro">Welcome. In this module, you will learn how to open Talkback Menu. Talkback menu let you use commands to read, edit text, control speech output, change Talkback setting, and so on. To do this, use one finger to swipe up, or down then swipe right immediately. </string>
+    <string name="open_talkback_menu_intro">Welcome. In this module, you will learn how to open Talkback Menu. Talkback menu let you use commands to read, edit text, control speech output, change Talkback setting, and so on. To do this, perform a swipe up, or, swipe down, and then, a swipe right gesture. </string>
     <string name="open_talkback_menu_outro">Well done! You now know how to open and close Talkback Menu. Once again, to do this you have to swipe up, or down then swipe right. You have completed the lesson.</string>
     <string name="open_talkback_menu_feedback">Great job. You have opened the Talkback menu. Feel free to navigate around to see what you can do. Once you are done, go to the bottom of the menu and exit.</string>
 
@@ -331,5 +333,23 @@
     <string name="article_paragraph3">The amygdala (in temporal lobe) is involved in emotional memory, and links emotions and emotional responses (such as fear and aggression) to declarative memories. This helps us remember experiences by the emotion we felt during its formation. Also involved in the formation of procedural memories.</string>
     <string name="article_paragraph4">The cerebellum is involved in motor learning and the memory of conditioned reflexes. It\'s involved in implicit memory such as procedural memories that require movement. Also has a role in spatial navigation.</string>
     <string name="article_paragraph5">Finally, language is stored in Broca\'s area in the left frontal lobe, and memory for pictures are stored in the occipital lobe.</string>
+    <string name="textview">TextView</string>
+    <string name="button">Button</string>
 
+    <!-- GameMode !-->
+    <string name="game_mode_title">Minigame</string>
+    <string name="game_mode_subtitle">Consolidate Learnt Gestures</string>
+    <string name="game_intro">Welcome. To start or end the minigame, you\'ll need to disable Talkback by holding down both volume keys on the side of your device simultaneously.</string>
+    <string name="game_start">Minigame starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To play the game, an action will be spoken for you to perform. Perform the correct gesture to score a point. The minigame will start now.</string>
+    <string name="game_end">Game ended. Your final score was %1$d. Sending you to the main menu.</string>
+    <string name="game_wrong_gesture">Your final score was %1$d. The correct gesture was to %2$s. Setting your score back to 0 and starting a new game.</string>
+    <string name="game_read_scores">Current score is %1$d. High score is %2$d</string>
+    <string name="game_new_high_score">New high score!</string>
+
+    <!-- SandboxMode !-->
+    <string name="sandbox_mode_title">Sandbox Mode</string>
+    <string name="sandbox_mode_subtitle">Experiment With Gestures</string>
+    <string name="sandbox_intro">Welcome. To start or end the sandbox, you\'ll need to disable Talkback by holding down both volume keys on the side of your device simultaneously.</string>
+    <string name="sandbox_start">Sandbox starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To use the sandbox, perform any gesture and the corresponding action will be spoken. The sandbox will start now.</string>
+    <string name="sandbox_end">Sandbox ended. Sending you to the main menu.</string>
 </resources>

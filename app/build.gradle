@@ -41,6 +41,35 @@ android {
             }
         }
     }
+    flavorDimensions 'progress', 'intro', 'tbReq'
+    productFlavors {
+        progressLockDisable {
+            dimension "progress"
+            buildConfigField ('boolean', 'PROGRESS_LOCK', 'false')
+        }
+
+        progressLockEnable {
+            dimension "progress"
+            buildConfigField ('boolean', 'PROGRESS_LOCK', 'true')
+        }
+        skipIntro {
+            dimension 'intro'
+            buildConfigField ('boolean', 'SKIP_INTRO', 'true')
+        }
+
+        NoSkipIntro {
+            dimension 'intro'
+            buildConfigField ('boolean', 'SKIP_INTRO', 'false')
+        }
+        talkBackRequired {
+            dimension 'tbReq'
+            buildConfigField ('boolean', 'TB_REQ', 'true')
+        }
+        talkBackNotRequired {
+            dimension 'tbReq'
+            buildConfigField ('boolean', 'TB_REQ', 'false')
+        }
+    }
 }
 
 task wrapper(type: Wrapper){

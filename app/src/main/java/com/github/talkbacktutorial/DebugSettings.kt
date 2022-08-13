@@ -1,5 +1,7 @@
 package com.github.talkbacktutorial
 
+
+
 /**
  * Used to enable or disable certain parts of the application during development.
  * Change these how you please on your local machine.
@@ -9,17 +11,20 @@ package com.github.talkbacktutorial
 object DebugSettings {
 
     // Unlocks all lessons, modules and challenges if true
-    const val bypassProgressionLocks = false
+    val bypassProgressionLocks
+        get() = !BuildConfig.PROGRESS_LOCK
 
     // Talkback isn't required if true
-    const val talkbackNotRequired = false
+    val talkbackNotRequired
+        get() = !BuildConfig.TB_REQ
 
     // Skip introductory lesson
-    var skipIntroductoryLesson = false
+    val skipIntroductoryLesson
+        get() = BuildConfig.SKIP_INTRO
 
     // Skip Text to Speech
-    const val skipTTS = false
+    val skipTTS = false
 
     // Wipes database and closes app if true
-    const val wipeDatabase = false
+    val wipeDatabase = false
 }
