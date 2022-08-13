@@ -6,12 +6,13 @@
         <intent>
             <action android:name="android.intent.action.TTS_SERVICE" />
         </intent>
+
         <package android:name="com.simplemobiletools.voicerecorder.tbtutorialfork.debug" />
         <package android:name="com.simplemobiletools.calculator.debug" />
     </queries>
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-  
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -20,6 +21,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
+        <activity
+            android:name=".activities.sandboxmode.SandboxModeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.gamemode.GameModeActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.challenges.lesson4.Lesson4ChallengeActivity"
             android:exported="false" />
@@ -101,18 +108,20 @@
         <activity
             android:name=".activities.modules.startstopmedia.StartStopMediaActivity"
             android:exported="false" />
-        <activity 
+        <activity
             android:name=".activities.modules.virtualkeyboard.VirtualKeyboardActivity"
             android:exported="false" />
         <activity
             android:name=".activities.modules.submittext.SubmitTextActivity"
             android:exported="false" />
-        <activity android:name=".activities.modules.calculatorapp.CalculatorAppActivity"
+        <activity
+            android:name=".activities.modules.calculatorapp.CalculatorAppActivity"
             android:exported="true"
-            android:launchMode="singleTask"/>
-        <activity android:name=".activities.modules.voicerecorderapp.VoiceRecorderAppActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.modules.voicerecorderapp.VoiceRecorderAppActivity"
             android:exported="true"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

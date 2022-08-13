@@ -54,11 +54,8 @@ class GoBackPart1Fragment : Fragment() {
             this.speakIntro()
         } else if (returning) {
             this.ttsEngine = TextToSpeechEngine((activity as GoBackActivity))
-                .onFinishedSpeaking(triggerOnce = true) {
-                    binding.finishLessonButton.button.visibility = View.VISIBLE
-                }
-            this.setupFinishLessonButton()
             this.speakConclusion()
+            this.finishLesson()
         }
     }
 
@@ -76,17 +73,6 @@ class GoBackPart1Fragment : Fragment() {
         }
     }
 
-    /**
-     * Inserts a button to finish the lesson.
-     * @author Emmanuel Chu
-     */
-    private fun setupFinishLessonButton() {
-        val primaryButtonBinding: PillButtonBinding = binding.finishLessonButton
-        primaryButtonBinding.text = getString(R.string.finish_lesson)
-        primaryButtonBinding.button.setOnClickListener {
-            this.finishLesson()
-        }
-    }
 
     /**
      * Speaks an intro for the fragment.
@@ -102,7 +88,7 @@ class GoBackPart1Fragment : Fragment() {
      * @author Emmanuel Chu
      */
     private fun speakConclusion() {
-        val conclusion = getString(R.string.go_back_part1_conclusion).trimIndent()
+        val conclusion = getString(R.string.go_back_part1_outro).trimIndent()
         this.ttsEngine.speakOnInitialisation(conclusion)
     }
 
@@ -113,7 +99,6 @@ class GoBackPart1Fragment : Fragment() {
     private fun finishLesson() {
 
         updateModule()
-
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             val intent = Intent((activity as GoBackActivity), LessonActivity::class.java)
             val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
@@ -122,7 +107,6 @@ class GoBackPart1Fragment : Fragment() {
             startActivity(intent)
             returning = false
         }
-        this.ttsEngine.speak(getString(R.string.go_back_part1_outro), override = true)
     }
 
     override fun onDestroyView() {

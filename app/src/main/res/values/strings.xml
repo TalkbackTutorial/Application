@@ -58,20 +58,22 @@
 
     <!-- Lesson 3 Challenge !-->
     <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a number of different page elements which you will need to navigate through. To complete the challenge, you must navigate through all page elements using the specified reading controls until you reach the complete challenge button.</string>
+    <string name="recipe_book_title">Easy Baking Recipes</string>
+    <string name="cookie_header">Cookies</string>
+    <string name="cookie_description">This scrumptious and chewy chocolate-chip cookie recipe is guaranteed to satisfy your sweet tooth!</string>
+    <string name="cookie_link"><a href="http://www.google.com">Get cookie recipe</a></string>
+
 
     <!-- Lesson 4 Challenge !-->
     <string name="lesson4_challenge_intro">In this challenge, you\'ll be presented an article with an embedded video already playing. To complete the challenge, pause the video, and return its slider to the beginning of the video, then replay it. You may now start.</string>
 
     <!-- Lesson 5 Challenge !-->
     <string name="lesson5_challenge_intro">Welcome to Lesson 5\'s challenge. In this challenges, you\'ll be ask to perform a sequence of tasks.</string>
-    <string name="lesson5_challenge_fragment1_intro">Now, let\'s get start. Billy wants to know what the time is it. Go back to home screen and check the current time on your phone. Then back here to select the correct time.</string>
-    <string name="lesson5_challenge_wrong_selected_time">The selected time is not correct. Check the time again, and then select the closet time.</string>
-    <string name="lesson5_challenge_fragment2_intro">You selected the correct time. Now a new message is sent from Billy, open the notification to find it.</string>
+    <string name="lesson5_challenge_fragment1_intro">Now, go to your home screen and back to this app to find the next task.</string>
+    <string name="lesson5_challenge_fragment2_intro">Welcome back. Now a new message is sent from Billy, open the notification to find it.</string>
     <string name="lesson5_challenge_notification_title">Billy\'s message</string>
     <string name="lesson5_challenge_outro">Hello I am Billy, you can complete this challenge by double tap this message from the notification. Then you will be sent to the main menu.</string>
-    <string name="date_format">HH:mm</string>
     <string name="lesson5_challenge_part2_backstack">lesson5ChallengePart2</string>
-    <string name="lesson5_challenge_part2_channel_id">TBT1</string>
     <string name="lesson5_challenge_part2_notification_name">Talkback tutorial</string>
     <string name="lesson5_challenge_part2_notification_desc">Notification description</string>
 
@@ -143,9 +145,8 @@
     <string name="explore_menu_by_touch_part2_outro">You have completed the lesson. Sending you to the main menu.</string>
 
     <!-- GoBack !-->
-    <string name="go_back_part1_intro">Welcome. In this lesson, you will learn how to go back the previous page. Double tap to continue.</string>
-    <string name="go_back_part1_conclusion">You have successfully navigated back to the previous page. Double tap to complete lesson.</string>
-    <string name="go_back_part1_outro">You have completed the lesson. Sending you to the main menu.</string>
+    <string name="go_back_part1_intro">Welcome. In this lesson, you will learn how to go back to the previous page. To open the next page, double tap to click the continue button.</string>
+    <string name="go_back_part1_outro">You have successfully navigated back to the previous page. Lesson complete. Sending you to the main menu.</string>
     <string name="go_back_part2_intro">To navigate back to the previous page, swipe down then left.</string>
     <string name="go_back_part2_backstack">gobackModulePart2</string>
 
@@ -181,9 +182,6 @@
     <string name="jump_navigation_easy_last_element">This is the last %s. Activate it to continue.</string>
     <string name="jump_navigation_easy_last_element_active">To continue, swipe up to the previous %s</string>
     <string name="jump_navigation_easy_first_element_active">That\'s the basics of jumping between %s. Activate to %s.</string>
-    <string name="jump_navigation_hard_first_element">You have successfully reached the first element… %s. Switch back to paragraph reading mode and swipe down to jump to the next part.</string>
-    <string name="jump_navigation_hard_second_element">You have successfully reached the second element… %s. Switch back to paragraph reading mode and swipe down to jump to the next part.</string>
-    <string name="jump_navigation_hard_last_element">You have successfully reached the last element… %s. Activate it to complete the challenge.</string>
     <string name="jump_navigation_easy_prompt">Switch to the %s reading mode and swipe down to jump to the next %s.</string>
     <string name="jump_navigation_target_link_template"><![CDATA[<a href="http://google.com">%s</a>]]></string>
     <string name="percent_s">%s</string>
@@ -347,4 +345,20 @@
     <string name="textview">TextView</string>
     <string name="button">Button</string>
 
+    <!-- GameMode !-->
+    <string name="game_mode_title">Minigame</string>
+    <string name="game_mode_subtitle">Consolidate Learnt Gestures</string>
+    <string name="game_intro">Welcome. To start or end the minigame, you\'ll need to disable Talkback by holding down both volume keys on the side of your device simultaneously.</string>
+    <string name="game_start">Minigame starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To play the game, an action will be spoken for you to perform. Perform the correct gesture to score a point. The minigame will start now.</string>
+    <string name="game_end">Game ended. Your final score was %1$d. Sending you to the main menu.</string>
+    <string name="game_wrong_gesture">Your final score was %1$d. The correct gesture was to %2$s. Setting your score back to 0 and starting a new game.</string>
+    <string name="game_read_scores">Current score is %1$d. High score is %2$d</string>
+    <string name="game_new_high_score">New high score!</string>
+
+    <!-- SandboxMode !-->
+    <string name="sandbox_mode_title">Sandbox Mode</string>
+    <string name="sandbox_mode_subtitle">Experiment With Gestures</string>
+    <string name="sandbox_intro">Welcome. To start or end the sandbox, you\'ll need to disable Talkback by holding down both volume keys on the side of your device simultaneously.</string>
+    <string name="sandbox_start">Sandbox starting. Remember, to exit, hold down both volume keys on the side of your device simultaneously. To use the sandbox, perform any gesture and the corresponding action will be spoken. The sandbox will start now.</string>
+    <string name="sandbox_end">Sandbox ended. Sending you to the main menu.</string>
 </resources>
