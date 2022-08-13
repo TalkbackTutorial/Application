@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/content_padding">
+
+            <TextView
+                android:id="@+id/calculator_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/paragraph_spacing"
+                android:text="@string/calculator_install_intro" />
+
+            <TextView
+                android:id="@+id/calculator_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/paragraph_spacing"
+                android:text="@string/calculator_link" />
+
+            <TextView
+                android:id="@+id/calculator_install_prompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/paragraph_spacing"
+                android:text="@string/calculator_install_prompt" />
+
+            <Button
+                android:id="@+id/calculator_intro_continue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/paragraph_spacing"
+                android:text="@string/continue_button" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

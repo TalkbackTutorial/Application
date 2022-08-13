@@ -59,7 +59,7 @@ class JumpTextPart1Fragment : Fragment() {
         // The button transitions to the next fragment when clicked
         binding.continueCard.setOnClickListener {
             parentFragmentManager.commit {
-                replace(this@JumpTextPart1Fragment.id, JumpTextPart2Fragment.newInstance())
+                replace(this@JumpTextPart1Fragment.id, JumpTextPart2Fragment())
             }
         }
     }

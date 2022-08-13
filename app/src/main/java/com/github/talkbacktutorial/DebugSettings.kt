@@ -1,7 +1,5 @@
 package com.github.talkbacktutorial
 
-
-
 /**
  * Used to enable or disable certain parts of the application during development.
  * Change these how you please on your local machine.

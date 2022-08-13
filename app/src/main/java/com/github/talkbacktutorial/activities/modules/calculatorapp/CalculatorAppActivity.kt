@@ -7,40 +7,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
+import com.github.talkbacktutorial.activities.modules.voicerecorderapp.CalculatorAppIntroFragment
 import com.github.talkbacktutorial.databinding.ActivityCalculatorAppModuleBinding
 
 class CalculatorAppActivity : AppCompatActivity() {
-    private val TUTORIAL_PREFIX = getString(R.string.tbt)
-    private val EXTERNAL_APP_TAG = getString(R.string.sc)
-    private val APP_ACTION_KEY = TUTORIAL_PREFIX + getString(R.string.underscore) + EXTERNAL_APP_TAG + getString(R.string.action)
-    private val FINISH_CALCULATOR_TAG = EXTERNAL_APP_TAG + getString(R.string.task_finish_calculator)
+    private val TUTORIAL_PREFIX = "TBT"
+    private val EXTERNAL_APP_TAG = "SC"
+    private val APP_ACTION_KEY = TUTORIAL_PREFIX + "_" + EXTERNAL_APP_TAG + "_ACTION"
+    private val FINISH_CALCULATOR_TAG = EXTERNAL_APP_TAG + "_TASK_FINISH_CALCULATOR"
 
     lateinit var binding: ActivityCalculatorAppModuleBinding
         private set
-
-    companion object {
-        private val appIntent = Intent()
-
-        /**
-         * Gets the intent to open the external app needed by this activity and its fragments.
-         * @return an intent that can be used with startActivity
-         */
-        fun getAppIntent(): Intent {
-            appIntent.component = ComponentName(
-                "com.simplemobiletools.calculatorapp.debug",
-                "com.simplemobiletools.calculator.activities.SplashActivity.Orange"
-            )
-
-            return appIntent
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_calculator_app_module)
         supportFragmentManager.commit {
-            replace(R.id.frame, CalculatorAppPart1Fragment.newInstance())
+            replace(R.id.frame, CalculatorAppIntroFragment())
         }
     }
 

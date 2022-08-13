@@ -128,11 +128,7 @@ class AdjustSliderPart2Fragment : Fragment() {
     private fun finishLesson() {
         updateModule()
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as AdjustSliderActivity), LessonActivity::class.java)
-            val currentLesson : Lesson = LessonContainer.getAllLessons()[1]
-            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            activity?.finish()
         }
         speakOutro()
     }

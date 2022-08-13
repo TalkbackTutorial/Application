@@ -42,7 +42,7 @@ class AdjustReadingControlsPart1Fragment : Fragment() {
         // makes button leave the fragment
         binding.finishModule.setOnClickListener {
             updateModule()
-            activity?.onBackPressed()
+            activity?.finish()
         }
     }
 

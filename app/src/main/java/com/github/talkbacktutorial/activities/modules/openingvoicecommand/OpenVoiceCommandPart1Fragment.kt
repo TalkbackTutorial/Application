@@ -64,10 +64,7 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            parentFragmentManager.commit {
-                replace(this@OpenVoiceCommandPart1Fragment.id, OpenVoiceCommandPart2Fragment.newInstance())
-                addToBackStack(getString(R.string.open_recent_apps_part1_backstack))
-            }
+            activity?.finish()
         }
         Timer().schedule(2000) {
             val outro = getString(R.string.open_voice_commands_part1_outro).trimIndent()

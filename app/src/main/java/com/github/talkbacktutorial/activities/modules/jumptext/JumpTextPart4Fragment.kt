@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -13,11 +14,12 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
-import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart2Binding
+import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart3Binding
+import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart4Binding
 
-class JumpTextPart2Fragment : Fragment() {
+class JumpTextPart4Fragment : Fragment() {
 
-    private lateinit var binding: FragmentJumpTextModulePart2Binding
+    private lateinit var binding: FragmentJumpTextModulePart4Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
@@ -26,7 +28,7 @@ class JumpTextPart2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part2, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part4, container, false)
         return binding.root
     }
 
@@ -34,7 +36,7 @@ class JumpTextPart2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
         this.speakIntro()
-        binding.continueText.setOnClickListener {
+        binding.textView2.setOnClickListener {
             this.onClickContinueLesson()
         }
     }
@@ -44,7 +46,7 @@ class JumpTextPart2Fragment : Fragment() {
      * @author Joel Yang
      */
     private fun speakIntro() {
-        val intro = getString(R.string.jump_text_paragraphs_intro).trimIndent()
+        val intro = getString(R.string.jump_text_paragraphs_intro3).trimIndent()
         this.ttsEngine.speakOnInitialisation(intro)
     }
 
@@ -55,7 +57,7 @@ class JumpTextPart2Fragment : Fragment() {
     private fun onClickContinueLesson() {
         updateModule()
         parentFragmentManager.commit {
-            replace(R.id.frame, JumpTextPart3Fragment())
+            replace(this@JumpTextPart4Fragment.id, JumpTextPart5Fragment())
         }
     }
 

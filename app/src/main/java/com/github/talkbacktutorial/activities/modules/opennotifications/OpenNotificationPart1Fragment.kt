@@ -99,7 +99,7 @@ class OpenNotificationPart1Fragment : Fragment() {
     private fun finishLesson() {
         updateModule()
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            activity?.onBackPressed()
+            activity?.finish()
         }
         Timer().schedule(2000) {
             ttsEngine.speak(getString(R.string.open_notifications_outro), override = true)

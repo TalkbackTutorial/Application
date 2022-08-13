@@ -9,7 +9,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/content_padding">
 
             <FrameLayout
                 android:id="@+id/intro_text"

@@ -75,11 +75,7 @@ class OpenRecentAppsPart2Fragment : Fragment() {
     private fun finishLesson() {
         updateModule()
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent = Intent((activity as OpenRecentAppsActivity), LessonActivity::class.java)
-            val currentLesson : Lesson = LessonContainer.getAllLessons()[4]
-            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            activity?.finish()
         }
         // Delay to prevent bug where the ttsEngine is repeated.
         Timer().schedule(2000) {

@@ -84,7 +84,7 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
     private fun finishLesson() {
         updateModule()
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            activity?.onBackPressed()
+            activity?.finish()
         }
         Timer().schedule(2000) {
             ttsEngine.speak(getString(R.string.open_talkback_menu_outro), override = true)
