@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"
-                android:text="@string/calculator_link" />
+                android:text="@string/simple_calculator_link" />
 
             <TextView
                 android:id="@+id/calculator_install_prompt"

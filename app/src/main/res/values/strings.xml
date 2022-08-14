@@ -134,6 +134,7 @@
     <string name="calculator_install_intro">In this module, you\'ll be doing a few task in a modified version of the Simple Calculator app. You can retrieve this modified app from the link below:</string>
     <string name="calculator_link">"Link to the modified Simple Calculator "</string>
     <string name="calculator_install_prompt">Once you have  installed the app, activate the button below to continue.</string>
+    <string name="simple_calculator_link"><a href="https://github.com/TalkbackTutorial/calculator-fork/releases/download/5.10.0-tbfork/tbt-simple-calculator-fork.apk">Link to the modified Simple Calculator</a></string>
 
     <!-- DlnBrailleKeyboard !-->
     <string name="dnl_braille_part1_intro">In this module, you will learn how to delete letters and words using the braille keyboard. Ensure the braille keyboard is active and set to default. If you are unsure how to do this, refer to a previous module. To begin, type the letter a in braille and then submit the text. To submit, use a two finger swipe up gesture. Note, the braille keyboard must be in the correct orientation for this gesture to work correctly. Finally, there is just one letter in the text field below L. Delete that using the keyboard</string>
