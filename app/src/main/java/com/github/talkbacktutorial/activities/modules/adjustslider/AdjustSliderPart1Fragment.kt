@@ -23,8 +23,8 @@ class AdjustSliderPart1Fragment : Fragment() {
     private lateinit var binding: FragmentAdjustSliderModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
 
-    lateinit var mainView: ConstraintLayout
-    lateinit var menuSlider: SeekBar
+    private lateinit var mainView: ConstraintLayout
+    private lateinit var menuSlider: SeekBar
     val maxValue: Int = 100
     val minValue: Int = 50
     var hasReachedMax = false

@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -37,14 +36,13 @@ import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.LessonContainer
-import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var ttsEngine: TextToSpeechEngine
     private val lessonsModel: LessonsViewModel by viewModels()
-    lateinit var mainView: ConstraintLayout
+    private lateinit var mainView: ConstraintLayout
     private lateinit var binding: ActivityMainBinding
     private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
     private lateinit var gameModeDbController: GameModeViewModel
@@ -199,7 +197,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Loads all lessons, and sets each as locked or unlocked depending on the
      * user's progression.
-     * @param moduleProgressions All entries in the database, one for each lesson, specifies
+     * @param modules All entries in the database, one for each lesson, specifies
      * whether the lesson is completed or not
      * @author Antony Loose, Jade Davis
      */

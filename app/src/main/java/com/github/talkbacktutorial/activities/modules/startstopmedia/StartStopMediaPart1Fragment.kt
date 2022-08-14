@@ -37,7 +37,7 @@ class StartStopMediaPart1Fragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_start_stop_media_module_part1, container, false)
         this.binding.startStopMediaControlConstraintLayout.visibility = View.INVISIBLE
         return this.binding.root
@@ -101,7 +101,7 @@ class StartStopMediaPart1Fragment : Fragment() {
                     val info = getString(R.string.start_stop_media_part1_play).trimIndent()
 
                     Handler().postDelayed(
-                        Runnable {
+                        {
                             videoView.pause()
                             ttsEngine.speak(info)
                             binding.startStopMediaControlConstraintLayout.visibility = View.GONE

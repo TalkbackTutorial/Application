@@ -1,8 +1,9 @@
 package com.github.talkbacktutorial.gestures
 
-import android.util.Log
-import com.github.talkbacktutorial.gestures.data.*
-import kotlin.math.abs
+import com.github.talkbacktutorial.gestures.data.FlingMotionData
+import com.github.talkbacktutorial.gestures.data.GestureData
+import com.github.talkbacktutorial.gestures.data.ScrollMotionData
+import com.github.talkbacktutorial.gestures.data.TapData
 
 /**
  * Used to identify a Talkback gesture.
@@ -71,20 +72,24 @@ class GestureIdentifier {
             }
         }
 
-        if (this.tapData.tapCount == 1) {
-            when (this.tapData.pointerCount) {
-                1 -> if (flingMotionData.yVelocity(true) + flingMotionData.xVelocity(true) == 0F) return TalkbackGesture.TAP
-                2 -> return TalkbackGesture.TAP_2
-                3 -> return TalkbackGesture.TAP_3
+        when (this.tapData.tapCount) {
+            1 -> {
+                when (this.tapData.pointerCount) {
+                    1 -> if (flingMotionData.yVelocity(true) + flingMotionData.xVelocity(true) == 0F) return TalkbackGesture.TAP
+                    2 -> return TalkbackGesture.TAP_2
+                    3 -> return TalkbackGesture.TAP_3
+                }
             }
-        } else if (this.tapData.tapCount == 2) {
-            when (this.tapData.pointerCount) {
-                1 -> return TalkbackGesture.DOUBLE_TAP
-                2 -> return TalkbackGesture.DOUBLE_TAP_2
+            2 -> {
+                when (this.tapData.pointerCount) {
+                    1 -> return TalkbackGesture.DOUBLE_TAP
+                    2 -> return TalkbackGesture.DOUBLE_TAP_2
+                }
             }
-        } else if (this.tapData.tapCount == 3) {
-            when (this.tapData.pointerCount) {
-                2 -> return TalkbackGesture.TRIPLE_TAP_2
+            3 -> {
+                when (this.tapData.pointerCount) {
+                    2 -> return TalkbackGesture.TRIPLE_TAP_2
+                }
             }
         }
 

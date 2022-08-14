@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -14,7 +13,6 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
-import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart3Binding
 import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart4Binding
 
 class JumpTextPart4Fragment : Fragment() {

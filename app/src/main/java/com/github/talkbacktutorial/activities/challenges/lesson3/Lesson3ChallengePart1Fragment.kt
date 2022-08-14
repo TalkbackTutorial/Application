@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.accessibility.AccessibilityEvent
-import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
@@ -16,7 +14,6 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentLesson3ChallengePart1Binding
-import org.w3c.dom.Text
 import java.util.*
 
 class Lesson3ChallengePart1Fragment : Fragment() {

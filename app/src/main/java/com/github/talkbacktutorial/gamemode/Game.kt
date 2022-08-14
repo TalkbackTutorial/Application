@@ -2,7 +2,6 @@ package com.github.talkbacktutorial.gamemode
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import com.github.talkbacktutorial.gestures.TalkbackAction
 import com.github.talkbacktutorial.gestures.TalkbackGesture
 import com.github.talkbacktutorial.gestures.data.TapData

@@ -1,13 +1,11 @@
 package com.github.talkbacktutorial.gestures.delegates
 
 import android.content.Context
-import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import com.github.talkbacktutorial.gestures.data.FlingMotionData
 import com.github.talkbacktutorial.gestures.data.ScrollMotionData
 import com.github.talkbacktutorial.gestures.data.TapData
-import kotlin.math.abs
 
 /**
  * A class to delegate simple gesture callbacks.

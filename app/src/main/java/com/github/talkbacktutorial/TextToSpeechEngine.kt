@@ -81,7 +81,7 @@ class TextToSpeechEngine(context: AppCompatActivity) {
             return
         }
         this.ttsEngine.speak(text, if (override) TextToSpeech.QUEUE_FLUSH else TextToSpeech.QUEUE_ADD, null, "tts1")
-        TextToSpeechEngine.history.add(text)
+        history.add(text)
     }
 
     /**
@@ -91,8 +91,8 @@ class TextToSpeechEngine(context: AppCompatActivity) {
      */
     fun repeatLast(amount: Int = 1) {
         for (index in 1..amount) {
-            if (TextToSpeechEngine.history.size < index) continue
-            this.ttsEngine.speak(TextToSpeechEngine.history[index - 1], TextToSpeech.QUEUE_ADD, null, "tts1")
+            if (history.size < index) continue
+            this.ttsEngine.speak(history[index - 1], TextToSpeech.QUEUE_ADD, null, "tts1")
         }
     }
 

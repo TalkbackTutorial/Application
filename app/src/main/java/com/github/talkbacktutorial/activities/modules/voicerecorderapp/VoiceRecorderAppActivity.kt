@@ -16,11 +16,11 @@ import com.github.talkbacktutorial.databinding.ActivityBasicFrameBinding
  * @author Matthew Crossman
  */
 class VoiceRecorderAppActivity : AppCompatActivity() {
-    private val TUTORIAL_PREFIX = "TBT"
-    private val EXTERNAL_APP_TAG = "SVR"
-    private val APP_ACTION_KEY = "${TUTORIAL_PREFIX}_${EXTERNAL_APP_TAG}_ACTION"
-    private val FINISH_RECORDING_TAG = "${EXTERNAL_APP_TAG}_TASK_FINISH_RECORDING"
-    private val PLAY_RECORDING_TAG = "${EXTERNAL_APP_TAG}_TASK_PLAY_RECORDING"
+    private val tutorialPrefix = "TBT"
+    private val externalAppTag = "SVR"
+    private val appActionKey = "${tutorialPrefix}_${externalAppTag}_ACTION"
+    private val finishRecordingTag = "${externalAppTag}_TASK_FINISH_RECORDING"
+    private val playRecordingTag = "${externalAppTag}_TASK_PLAY_RECORDING"
 
     private lateinit var stage: VoiceRecorderStage
 
@@ -31,7 +31,7 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
         private val appIntent = Intent()
 
         const val packageName = "com.simplemobiletools.voicerecorder.tbtutorialfork.debug"
-        const val targetClassName = "com.simplemobiletools.voicerecorder.activities.MainActivity"
+        private const val targetClassName = "com.simplemobiletools.voicerecorder.activities.MainActivity"
 
         /**
          * Gets the intent to open the external app needed by this activity and its fragments.
@@ -72,18 +72,18 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
 
         intent?.let {
             // get extras
-            val actionCompleted = intent.getStringExtra(APP_ACTION_KEY)
+            val actionCompleted = intent.getStringExtra(appActionKey)
 
             actionCompleted?.let {
                 // move on with module based on tag IF intro is the current fragment
-                if (actionCompleted == FINISH_RECORDING_TAG && stage == VoiceRecorderStage.MAKE_RECORDING) {
+                if (actionCompleted == finishRecordingTag && stage == VoiceRecorderStage.MAKE_RECORDING) {
                     // update stage
                     stage = VoiceRecorderStage.PLAY_RECORDING
 
                     supportFragmentManager.commit {
                         replace(R.id.frame, VoiceRecorderPlayRecordingFragment())
                     }
-                } else if (actionCompleted == PLAY_RECORDING_TAG && stage == VoiceRecorderStage.PLAY_RECORDING) {
+                } else if (actionCompleted == playRecordingTag && stage == VoiceRecorderStage.PLAY_RECORDING) {
                     stage = VoiceRecorderStage.FINISHED
 
                     supportFragmentManager.commit {

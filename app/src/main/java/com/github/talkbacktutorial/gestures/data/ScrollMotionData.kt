@@ -1,7 +1,6 @@
 package com.github.talkbacktutorial.gestures.data
 
 import android.graphics.PointF
-import android.util.Log
 import android.view.MotionEvent
 import kotlin.math.abs
 

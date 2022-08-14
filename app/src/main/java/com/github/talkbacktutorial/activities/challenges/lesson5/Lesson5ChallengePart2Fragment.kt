@@ -27,7 +27,7 @@ class Lesson5ChallengePart2Fragment : Fragment() {
     }
     private lateinit var binding: FragmentLesson5ChallengePart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
-    private val CHANNEL_ID = "T1B1"     // It will crash the app if put this into string resource
+    private val channelId = "T1B1"     // It will crash the app if put this into string resource
     private val notificationId = 1
 
     override fun onCreateView(
@@ -57,7 +57,7 @@ class Lesson5ChallengePart2Fragment : Fragment() {
         val name = getString(R.string.lesson5_challenge_part2_notification_name)
         val descriptionText = getString(R.string.lesson5_challenge_part2_notification_desc)
         val importance = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+        val channel = NotificationChannel(channelId, name, importance).apply {
             description = descriptionText
         }
         val notificationManager: NotificationManager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -76,7 +76,7 @@ class Lesson5ChallengePart2Fragment : Fragment() {
         // Return to main activity by double tap the notification
         val pendingIntent: PendingIntent = PendingIntent.getActivity(requireContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
-        val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+        val builder = NotificationCompat.Builder(requireContext(), channelId)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle(getString(R.string.lesson5_challenge_notification_title))
             .setContentText(getString(R.string.lesson5_challenge_outro))

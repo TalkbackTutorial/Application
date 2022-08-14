@@ -4,7 +4,6 @@ import android.gesture.Gesture
 import android.gesture.GestureLibraries
 import android.gesture.GestureLibrary
 import android.gesture.Prediction
-import android.util.Log
 import com.github.talkbacktutorial.App
 import com.github.talkbacktutorial.R
 import kotlin.math.abs

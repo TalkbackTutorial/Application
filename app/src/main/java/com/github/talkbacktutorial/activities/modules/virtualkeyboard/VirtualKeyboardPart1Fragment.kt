@@ -32,7 +32,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_virtual_keyboard_module_part1, container, false)
         this.binding.virtualKeyboardConstraintLayout.visibility = View.INVISIBLE
         return this.binding.root
@@ -161,7 +161,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
         ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             this.binding.virtualKeyboardConstraintLayout.visibility = View.VISIBLE
         }
-        Handler().postDelayed(Runnable {
+        Handler().postDelayed({
             ttsEngine.speak(info)
         },4000)
     }
@@ -172,7 +172,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
      */
     private fun speakDuringLessonKeyboard(info: String) {
         this.binding.virtualKeyboardConstraintLayout.visibility = View.GONE
-        Handler().postDelayed( Runnable {
+        Handler().postDelayed({
             ttsEngine.speak(info)
         }, 10000)
         ttsEngine.onFinishedSpeaking(triggerOnce = true) {
