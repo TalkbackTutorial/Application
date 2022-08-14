@@ -5,19 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.ActivityVirtualKeyboardModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityBasicFrameBinding
 
 class VirtualKeyboardActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityVirtualKeyboardModuleBinding
+    lateinit var binding: ActivityBasicFrameBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_virtual_keyboard_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_basic_frame)
         supportFragmentManager.commit {
-            replace(R.id.frame1, VirtualKeyboardPart1Fragment.newInstance())
+            replace(binding.frame.id, VirtualKeyboardPart1Fragment.newInstance())
         }
     }
 }

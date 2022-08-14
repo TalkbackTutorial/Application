@@ -57,7 +57,7 @@ class VoiceRecorderAppActivity : AppCompatActivity() {
         stage = VoiceRecorderStage.MAKE_RECORDING
 
         supportFragmentManager.commit {
-            replace(R.id.frame, VoiceRecorderIntroFragment())
+            replace(binding.frame.id, VoiceRecorderIntroFragment())
         }
     }
 

@@ -5,19 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.ActivityScrollingModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityBasicFrameBinding
 
 class ScrollActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityScrollingModuleBinding
+    lateinit var binding: ActivityBasicFrameBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_scrolling_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_basic_frame)
         supportFragmentManager.commit {
-            replace(R.id.frame, ScrollPart1Fragment.newInstance())
+            replace(binding.frame.id, ScrollPart1Fragment.newInstance())
         }
     }
 }

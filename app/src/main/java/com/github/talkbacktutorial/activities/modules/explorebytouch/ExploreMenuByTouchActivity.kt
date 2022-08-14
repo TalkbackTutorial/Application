@@ -5,19 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.ActivityExploreMenuByTouchModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityBasicFrameBinding
 
 class ExploreMenuByTouchActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityExploreMenuByTouchModuleBinding
+    lateinit var binding: ActivityBasicFrameBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_explore_menu_by_touch_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_basic_frame)
         supportFragmentManager.commit {
-            replace(R.id.frame, ExploreMenuByTouchPart1Fragment.newInstance())
+            replace(binding.frame.id, ExploreMenuByTouchPart1Fragment.newInstance())
         }
     }
 }

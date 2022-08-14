@@ -27,7 +27,7 @@ class JumpHeadersActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_basic_frame)
 
         supportFragmentManager.commit {
-            replace(R.id.frame, JumpNavigationPart1Fragment(NavigationMode.HEADERS))
+            replace(binding.frame.id, JumpNavigationPart1Fragment(NavigationMode.HEADERS))
         }
     }
 }

@@ -5,19 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.ActivityAdjustSliderModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityBasicFrameBinding
 
 class AdjustSliderActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityAdjustSliderModuleBinding
+    lateinit var binding: ActivityBasicFrameBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_adjust_slider_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_basic_frame)
         supportFragmentManager.commit {
-            replace(R.id.frame, AdjustSliderPart1Fragment.newInstance())
+            replace(binding.frame.id, AdjustSliderPart1Fragment.newInstance())
         }
     }
 }

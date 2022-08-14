@@ -17,7 +17,7 @@ class Lesson1Activity : AppCompatActivity() {
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_lesson1)
         supportFragmentManager.commit {
-            replace(R.id.frame, Lesson1Part1Fragment.newInstance())
+            replace(binding.frame.id, Lesson1Part1Fragment.newInstance())
         }
     }
 }

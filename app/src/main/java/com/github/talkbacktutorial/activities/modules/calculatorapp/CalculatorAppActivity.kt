@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.ActivityCalculatorAppModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityBasicFrameBinding
 
 class CalculatorAppActivity : AppCompatActivity() {
     private val tutorialPrefix = "TBT"
@@ -14,13 +14,13 @@ class CalculatorAppActivity : AppCompatActivity() {
     private val appActionKey = tutorialPrefix + "_" + externalAppTag + "_ACTION"
     private val finishCalculatorTag = externalAppTag + "_TASK_FINISH_CALCULATOR"
 
-    lateinit var binding: ActivityCalculatorAppModuleBinding
+    lateinit var binding: ActivityBasicFrameBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_calculator_app_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_basic_frame)
         supportFragmentManager.commit {
             replace(R.id.frame, CalculatorAppIntroFragment())
         }
