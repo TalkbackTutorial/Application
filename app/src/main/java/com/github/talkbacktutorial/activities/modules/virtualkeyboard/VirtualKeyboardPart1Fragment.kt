@@ -132,7 +132,7 @@ class VirtualKeyboardPart1Fragment : Fragment() {
     private fun onShowKeyboard() {
         if (firstTime) {
             val info = getString(R.string.virtual_keyboard_part1_on_show_keyboard).trimIndent()
-            this.binding.virtualKeyboardConstraintLayout.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
+            this.binding.virtualKeyboardConstraintLayout.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
             speakDuringLessonKeyboard(info)
             firstTime = false
         }

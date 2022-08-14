@@ -106,9 +106,9 @@ class CalculatorAppPart1Fragment : Fragment() {
             } catch (_: PackageManager.NameNotFoundException) {
                 false
             }
-            return appAvailable;
+            return appAvailable
         }
-        return false;
+        return false
     }
 
     override fun onDestroyView() {

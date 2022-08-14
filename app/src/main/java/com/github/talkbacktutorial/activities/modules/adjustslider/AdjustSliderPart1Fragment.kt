@@ -13,7 +13,7 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentAdjustSliderModulePart1Binding
 
-class AdjustSliderPart1Fragment() : Fragment() {
+class AdjustSliderPart1Fragment : Fragment() {
 
     companion object {
         @JvmStatic

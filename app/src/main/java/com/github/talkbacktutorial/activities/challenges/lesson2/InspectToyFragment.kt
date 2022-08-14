@@ -35,7 +35,7 @@ class InspectToyFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            this.toy = ToyContainer.getToy(UUID.fromString(it.getString(TOY_PARAM)!!)) ?: return
+            this.toy = ToyContainer.getToy(UUID.fromString(it.getString(TOY_PARAM)!!))
         }
     }
 

@@ -68,7 +68,7 @@ class StartStopMediaPart1Fragment : Fragment() {
 
         // Set play pause listener
         setUpPlayPauseListener()
-        mediaController?.setEnabled(true)
+        mediaController?.isEnabled = true
         mediaController?.setAnchorView(videoView)
         videoView.setMediaController(mediaController)
     }
@@ -147,7 +147,7 @@ class StartStopMediaPart1Fragment : Fragment() {
      */
     private fun endLesson() {
         updateModule()
-        if (mediaController != null && mediaController!!.isShowing()) {
+        if (mediaController != null && mediaController!!.isShowing) {
             mediaController!!.hide()
         }
         // Lesson's complete go back to Main Activity

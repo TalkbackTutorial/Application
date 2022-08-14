@@ -86,7 +86,7 @@ class ModuleProgressionViewModel(application: Application): AndroidViewModel(app
     fun clearDatabase(){
         viewModelScope.launch(Dispatchers.IO){
             repository.wipeAllModuleProgressions()
-            exitProcess(0);
+            exitProcess(0)
         }
     }
 

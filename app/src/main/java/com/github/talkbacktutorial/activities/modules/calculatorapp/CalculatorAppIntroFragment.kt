@@ -69,9 +69,9 @@ class CalculatorAppIntroFragment : Fragment() {
             } catch (_: PackageManager.NameNotFoundException) {
                 false
             }
-            return appAvailable;
+            return appAvailable
         }
-        return false;
+        return false
     }
 
 }
