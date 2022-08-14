@@ -42,7 +42,7 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
         view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
             count++
             // If the count is greater than 2, the app must have lost focus and re-gained focus
-            if (count == 2) {
+            if (count == 3) {
                 finishLesson()
             }
         }
@@ -69,7 +69,7 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
                 addToBackStack(getString(R.string.open_recent_apps_part1_backstack))
             }
         }
-        Timer().schedule(2000) {
+        Timer().schedule(3000) {
             val outro = getString(R.string.open_voice_commands_part1_outro).trimIndent()
             ttsEngine.speak(outro)
         }

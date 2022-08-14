@@ -1,5 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.openingvoicecommand
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +9,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.activities.LessonActivity
+import com.github.talkbacktutorial.database.InstanceSingleton
+import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentOpenVoiceCommandModulePart2Binding
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.LessonContainer
@@ -81,17 +85,14 @@ class OpenVoiceCommandPart2Fragment : Fragment() {
     }
 
     /**
-     * To do when finish the lesson
+     * Announces lesson completion when the lesson is finished and sends back to lesson screen
      * @author Jai Clapp
      */
     private fun finishLesson() {
+        updateModule()
+
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            val intent =
-                Intent((activity as OpenVoiceCommandActivity), LessonActivity::class.java)
-            val currentLesson : Lesson = LessonContainer.getAllLessons()[4]
-            intent.putExtra(Lesson.INTENT_KEY, currentLesson.id.toString())
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            activity?.finish()
         }
         val outro = getString(R.string.open_voice_commands_part2_outro).trimIndent()
         ttsEngine.speak(outro)
@@ -100,5 +101,16 @@ class OpenVoiceCommandPart2Fragment : Fragment() {
     override fun onDestroyView() {
         this.ttsEngine.shutDown()
         super.onDestroyView()
+    }
+
+    /**
+     * Updates the database when a module is completed
+     * @author Antony Loose
+     */
+    private fun updateModule(){
+        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+        InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
+            moduleProgressionViewModel.markModuleCompleted(it, context as Context)
+        }
     }
 }
