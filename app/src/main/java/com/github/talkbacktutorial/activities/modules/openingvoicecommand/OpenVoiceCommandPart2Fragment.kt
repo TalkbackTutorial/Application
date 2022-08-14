@@ -41,7 +41,7 @@ class OpenVoiceCommandPart2Fragment : Fragment() {
         binding.controlText.text = getString(R.string.open_voice_command_part2_control_text)
         binding.controlText.visibility = View.GONE
 
-        binding.openVoiceCommandButton.text = getString(R.string.finish_module)
+        binding.openVoiceCommandButton.text = getString(R.string.finish_module_button)
         binding.openVoiceCommandButton.visibility = View.GONE
         return binding.root
     }
