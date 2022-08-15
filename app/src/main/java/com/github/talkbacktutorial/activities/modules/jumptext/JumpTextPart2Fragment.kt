@@ -33,19 +33,9 @@ class JumpTextPart2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
-        this.speakIntro()
         binding.continueText.setOnClickListener {
             this.onClickContinueLesson()
         }
-    }
-
-    /**
-     * Speaks an intro for the fragment.
-     * @author Joel Yang
-     */
-    private fun speakIntro() {
-        val intro = getString(R.string.jump_text_paragraphs_intro).trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
     }
 
     /**
@@ -55,7 +45,7 @@ class JumpTextPart2Fragment : Fragment() {
     private fun onClickContinueLesson() {
         updateModule()
         parentFragmentManager.commit {
-            replace(R.id.frame, JumpTextPart3Fragment())
+            replace(this@JumpTextPart2Fragment.id, JumpTextPart3Fragment())
         }
     }
 

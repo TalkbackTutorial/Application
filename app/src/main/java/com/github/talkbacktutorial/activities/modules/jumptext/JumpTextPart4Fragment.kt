@@ -33,19 +33,9 @@ class JumpTextPart4Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
-        this.speakIntro()
-        binding.textView2.setOnClickListener {
+        binding.targetWord.setOnClickListener {
             this.onClickContinueLesson()
         }
-    }
-
-    /**
-     * Speaks an intro for the fragment.
-     * @author Joel Yang
-     */
-    private fun speakIntro() {
-        val intro = getString(R.string.jump_text_paragraphs_intro3).trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
     }
 
     /**
