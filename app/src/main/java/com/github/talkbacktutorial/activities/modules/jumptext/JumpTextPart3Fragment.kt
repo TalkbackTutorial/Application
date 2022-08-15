@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.accessibility.AccessibilityEvent
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -28,7 +26,12 @@ class JumpTextPart3Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part3, container, false)
+            DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_jump_text_module_part3,
+                container,
+                false
+            )
         return binding.root
     }
 
@@ -38,8 +41,6 @@ class JumpTextPart3Fragment : Fragment() {
         binding.continueText.setOnClickListener {
             this.onClickContinueLesson()
         }
-        // fix TalkBack putting focus at end of fragment
-        binding.layout[0].sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
     }
 
     /**
@@ -62,8 +63,9 @@ class JumpTextPart3Fragment : Fragment() {
      * Updates the database when a module is completed
      * @author Antony Loose
      */
-    private fun updateModule(){
-        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+    private fun updateModule() {
+        val moduleProgressionViewModel =
+            ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
         InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
             moduleProgressionViewModel.markModuleCompleted(it, context as Context)
         }

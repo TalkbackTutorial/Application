@@ -26,7 +26,12 @@ class JumpTextPart2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part2, container, false)
+            DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_jump_text_module_part2,
+                container,
+                false
+            )
         return binding.root
     }
 
@@ -58,8 +63,9 @@ class JumpTextPart2Fragment : Fragment() {
      * Updates the database when a module is completed
      * @author Antony Loose
      */
-    private fun updateModule(){
-        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+    private fun updateModule() {
+        val moduleProgressionViewModel =
+            ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
         InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
             moduleProgressionViewModel.markModuleCompleted(it, context as Context)
         }

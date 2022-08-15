@@ -27,7 +27,12 @@ class JumpTextPart5Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part5, container, false)
+            DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_jump_text_module_part5,
+                container,
+                false
+            )
         return binding.root
     }
 
@@ -35,7 +40,7 @@ class JumpTextPart5Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
         this.speakIntro()
-        binding.textView2.setOnClickListener {
+        binding.jumpCharsBlock2.setOnClickListener {
             this.onClickContinueLesson()
         }
         // fix TalkBack putting focus at end of fragment
@@ -72,8 +77,9 @@ class JumpTextPart5Fragment : Fragment() {
      * Updates the database when a module is completed
      * @author Antony Loose
      */
-    private fun updateModule(){
-        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+    private fun updateModule() {
+        val moduleProgressionViewModel =
+            ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
         InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
             moduleProgressionViewModel.markModuleCompleted(it, context as Context)
         }

@@ -26,7 +26,12 @@ class JumpTextPart1Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part1, container, false)
+            DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_jump_text_module_part1,
+                container,
+                false
+            )
         return binding.root
     }
 
