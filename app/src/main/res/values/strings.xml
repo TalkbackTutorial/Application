@@ -197,16 +197,17 @@
     <string name="jump_text_paragraph_element_3">Activate this with a double tap to continue.</string>
     <string name="jump_text_request_paragraph_mode">We will now learn to use each text reading modes. As you have learned previously, please switch to the reading mode that says \"Paragraph\"</string>
     <string name="jump_text_paragraphs_intro3"> We will continue to learn to use the word reading mode. As you have familiarized yourself with the reading modes learnt previously, please try this yourself and navigate to the continue word, then double tap to proceed </string>
-    <string name="jump_text_paragraphs_intro4"> Finally in this module, use the character reading mode to navigate to the letter "T", then double tap to continue. When you find it, double tap to finish this module</string>
+    <string name="jump_text_paragraphs_intro4"> Finally in this module, use the character reading mode to navigate to the letter "T". When you find it, double tap to finish this module</string>
     <string name="jump_text_paragraphs_conclusion">You have completed this module. To summarise, in this module you have learnt to use all text reading modes to navigate through a page. Sending you back to the Lesson modules.</string>
     <string name="jump_text_continue_fragment_message">If you have changed reading mode to Paragraph mode, Please double tap to continue</string>
-    <string name="jump_text_line_intro">Please switch to the lines reading mode and swipe horizontally to go to the next item.</string>
-    <string name="jump_text_line_1">Lines refer to lines of text, such as a paragraph wrapping into another row of text or lines of poetry. When you start navigating lines, you\'ll hear only parts of this paragraph at a time. Swipe down now and go through the 4 numbered lines.\nLine 1 of 4. This mode behaves similarly to paragraphs mode.\nLine 2 of 4. The next line is in another item.</string>
+    <string name="jump_text_line_intro">Please switch to the lines reading mode \nand swipe horizontally to go to the next item.</string>
+    <string name="jump_text_line_1">Lines refer to lines of text,\n such as a paragraph wrapping into another row of text\n or lines of poetry.\n When you start navigating lines,\n you\'ll hear only parts of this paragraph at a time.\n Swipe down now and go through the 4 numbered lines.\nLine 1 of 4. This mode is similar to paragraphs mode.\nLine 2 of 4. The next line is in another item.</string>
     <string name="jump_text_line_2">Line 3 of 4. The item jump behaviour is the same.\nLine 4 of 4. Activate the button below to continue.</string>
     <string name="jump_text_word_intro">The words reading mode lets you jump from word to word. This can be quite slow. Please switch to the words reading mode and go to the next item with a horizontal swipe.</string>
     <string name="jump_text_word_1">Start swiping down. This can be slow.</string>
     <string name="jump_text_word_2">It\'s like the previous modes. Double tap to continue now.</string>
-    <string name="jump_text_char_1">CON</string>
+    <string name="jump_text_char_0">C</string>
+    <string name="jump_text_char_1">ON</string>
     <string name="jump_text_char_2">T</string>
     <string name="jump_text_char_3">INUE</string>
 

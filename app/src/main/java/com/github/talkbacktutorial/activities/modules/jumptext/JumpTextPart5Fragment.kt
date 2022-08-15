@@ -51,6 +51,7 @@ class JumpTextPart5Fragment : Fragment() {
 
     private fun setupTextViewTransition() {
         // The views starts off invisible
+        binding.jumpCharsBlock0.visibility = View.GONE
         binding.jumpCharsBlock1.visibility = View.GONE
         binding.jumpCharsBlock2.visibility = View.GONE
         binding.jumpCharsBlock3.visibility = View.GONE
@@ -58,6 +59,7 @@ class JumpTextPart5Fragment : Fragment() {
         // enable views after tts engine intro
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
             .onFinishedSpeaking(triggerOnce = true) {
+                binding.jumpCharsBlock0.visibility = View.VISIBLE
                 binding.jumpCharsBlock1.visibility = View.VISIBLE
                 binding.jumpCharsBlock2.visibility = View.VISIBLE
                 binding.jumpCharsBlock3.visibility = View.VISIBLE

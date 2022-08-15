@@ -19,6 +19,13 @@
             android:padding="@dimen/content_padding">
 
                 <TextView
+                    android:id="@+id/jump_chars_block_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jump_text_char_0"
+                />
+
+                <TextView
                     android:id="@+id/jump_chars_block_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
