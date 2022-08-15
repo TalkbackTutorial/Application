@@ -21,7 +21,7 @@ object DebugSettings {
         get() = BuildConfig.SKIP_INTRO
 
     // Skip Text to Speech
-    val skipTTS = true
+    val skipTTS = false
 
     // Wipes database and closes app if true
     val wipeDatabase = false
