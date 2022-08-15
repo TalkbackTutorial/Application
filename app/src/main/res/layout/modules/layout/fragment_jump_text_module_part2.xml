@@ -40,7 +40,7 @@
 
             <Button
                 android:id="@+id/continue_text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/paragraph_spacing"
                 android:text="@string/jump_text_paragraph_element_3" />
