@@ -35,13 +35,13 @@ class CalculatorAppPart2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as CalculatorAppActivity))
             .onFinishedSpeaking(triggerOnce = true) {
-                binding.continueCard.visibility = View.VISIBLE
+                binding.finishModule.visibility = View.VISIBLE
             }
         this.setupFinishCard()
 
         Handler(Looper.getMainLooper()).postDelayed({
             this.speakIntro()
-        }, 3000)
+        }, 1000)
     }
 
     /**
@@ -58,10 +58,9 @@ class CalculatorAppPart2Fragment : Fragment() {
      * @author Joel Yang
      */
     private fun setupFinishCard() {
-        // The card starts off invisible
-        binding.continueCard.visibility = View.GONE
+        binding.finishModule.visibility = View.GONE
         // The button transitions to the next fragment when clicked
-        binding.continueCard.setOnClickListener {
+        binding.finishModule.setOnClickListener {
             this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 activity?.finish()
             }

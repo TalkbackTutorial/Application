@@ -2,6 +2,7 @@ package com.github.talkbacktutorial.activities.modules.calculatorapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
@@ -40,10 +41,8 @@ class CalculatorAppActivity : AppCompatActivity() {
                 // move on with module based on tag IF intro is the current fragment
                  if (actionCompleted == finishCalculatorTag) {
                     supportFragmentManager.commit {
-                        replace(R.id.frame, CalculatorAppPart2Fragment())
+                        replace(R.id.frame, CalculatorAppPart2Fragment.newInstance())
                     }
-                } else {
-                    // wrong move
                 }
             }
         }

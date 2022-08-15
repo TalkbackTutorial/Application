@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -7,7 +8,7 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/continue_card"
+        android:id="@+id/finish_module"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -19,16 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/horizontal_card_spacing">
+            android:padding="20dp">
 
             <TextView
-                android:id="@+id/continue_calculator_app"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Finish Module"
-                android:textColor="?android:attr/textColorPrimary"
+                android:text="@string/finish_module_button"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 

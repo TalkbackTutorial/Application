@@ -128,8 +128,9 @@
     <string name="calculator_app_part1_cls">com.simplemobiletools.calculator.activities.SplashActivity.Orange</string>
     <string name="calculator_app_debug">"com.simplemobiletools.calculator.debug"</string>
     <string name="calculator_app_part1_intro">In this module, you will apply what you have learnt from the previous lessons to use the simple calculator app. You will be given a simple calculation task to work on. Unless you complete this task successfully, we will let you retry as many times.</string>
-    <string name="calculator_app_part2_intro">You have successfully completed this module. We have sent you back to the talkback module. please proceed to finish module.</string>
+    <string name="calculator_app_part2_intro">Congrats, You have successfully completed this module. We have sent you back to the talkback module. please proceed to finish module.</string>
     <string name="finish_calculator_module">Sending you back to the main module page</string>
+    <string name="finish_module">Finish Module</string>
     <string name="equation_calculator_app">In this task, please provide the correct calculation for 9 × 5 to get the result 45. As a quick hint for this task, please use the knowledge, in "explore menu by scroll" lesson that you have already learned previously, to find the correct buttons.</string>
     <string name="calculator_not_installed_message">Calculator is not installed. Please install it and reopen this module.</string>
     <string name="calculator_install_intro">In this module, you\'ll be doing a few task in a modified version of the Simple Calculator app. You can retrieve this modified app from the link below:</string>
