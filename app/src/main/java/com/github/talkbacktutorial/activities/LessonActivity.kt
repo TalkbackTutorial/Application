@@ -73,11 +73,13 @@ class LessonActivity : AppCompatActivity() {
         var moduleCount = -1
         do {
             moduleCount++
-            loadModuleCard(modules[moduleCount], locked = false)
+            loadModuleCard(modules[moduleCount], locked = false, null)
         } while (complete[moduleCount] && moduleCount < modules.size - 1)
 
+        val lastAvailableModule = modules[moduleCount]
+
         for (i in moduleCount+1 until modules.size) {
-            loadModuleCard(modules[i], locked = true)
+            loadModuleCard(modules[i], locked = true, lastAvailableModule)
         }
 
         if (complete[modules.size-1]) {
@@ -91,9 +93,10 @@ class LessonActivity : AppCompatActivity() {
      * Loads a card for each module in the lesson, both unlocked and locked.
      * @param module Module which is to be loaded into a new card
      * @param locked Boolean which determines whether the module is locked or not
-     * @author Jade Davis
+     * @param lastAvailableModule last available module for the user, used for accessibility hinting purposes
+     * @author Jade Davis, Mingxuan Fu
      */
-    private fun loadModuleCard(module: Module, locked: Boolean) {
+    private fun loadModuleCard(module: Module, locked: Boolean, lastAvailableModule: Module?) {
         val moduleCardBinding: ModuleCardBinding = DataBindingUtil.inflate(
             layoutInflater,
             R.layout.module_card, binding.modulesLinearLayout, false
@@ -110,6 +113,9 @@ class LessonActivity : AppCompatActivity() {
                 module.startActivity(this)
             }
         } else {
+            moduleCardBinding.moduleCard.isClickable = false
+            moduleCardBinding.moduleCard.contentDescription =
+                "Module ${this.lesson.getModuleSequenceNumeral(module)} is currently locked${if (lastAvailableModule != null) ", please swipe left and complete Module ${this.lesson.getModuleSequenceNumeral(lastAvailableModule)} first." else "."}"
             moduleCardBinding.title = "Locked - " + module.title
             moduleCardBinding.moduleTitle.alpha = 0.5f
         }
@@ -139,6 +145,9 @@ class LessonActivity : AppCompatActivity() {
                     challenge.startActivity(this)
                 }
             } else {
+                challengeCardBinding.card.isClickable = false
+                challengeCardBinding.card.contentDescription =
+                    "The challenge ${R.string.module_subtitle} is currently locked, please complete all other modules first."
                 challengeCardBinding.locked = true
                 challengeCardBinding.moduleTitle.alpha = 0.5f
             }

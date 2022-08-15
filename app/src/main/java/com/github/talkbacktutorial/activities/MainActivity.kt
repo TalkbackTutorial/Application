@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -207,6 +206,7 @@ class MainActivity : AppCompatActivity() {
         binding.lessonLinearLayout.removeAllViews()
 
         var firstIncompleteLesson = true
+        var lastavailableLesson : Lesson? = null
         for (lesson in LessonContainer.getAllLessons()){
             var lessonCompleted = false
             var modulesCompleted = 0
@@ -218,7 +218,12 @@ class MainActivity : AppCompatActivity() {
             if (modulesCompleted == lesson.modules.size){
                 lessonCompleted = true
             }
-            loadLessonCard(lesson, !(lessonCompleted || firstIncompleteLesson))
+
+            if (lessonCompleted || firstIncompleteLesson) {
+                lastavailableLesson = lesson
+            }
+
+            loadLessonCard(lesson, !(lessonCompleted || firstIncompleteLesson), lastavailableLesson)
             if (!lessonCompleted && firstIncompleteLesson){
                 firstIncompleteLesson = false
             }
@@ -229,9 +234,10 @@ class MainActivity : AppCompatActivity() {
      * Loads a card for each lesson, both unlocked and locked.
      * @param lesson Lesson which is to be loaded into a new card
      * @param locked Boolean which determines whether the lesson is locked or not
-     * @author Jade Davis
+     * @param lastAvailableLesson last available lesson for the user, used for accessibility hinting purposes
+     * @author Jade Davis, Mingxuan Fu
      */
-    private fun loadLessonCard(lesson: Lesson, locked: Boolean) {
+    private fun loadLessonCard(lesson: Lesson, locked: Boolean, lastAvailableLesson: Lesson? = null) {
         val lessonCardBinding: LessonCardBinding = DataBindingUtil.inflate(
             layoutInflater,
             R.layout.lesson_card, binding.lessonLinearLayout, false
@@ -241,11 +247,15 @@ class MainActivity : AppCompatActivity() {
         lessonCardBinding.locked = lesson.isLocked
 
         if (!locked || DebugSettings.bypassProgressionLocks) {
+            lessonCardBinding.lessonCard.isClickable = true
             lessonCardBinding.lessonCard.setOnClickListener {
                 InstanceSingleton.getInstanceSingleton().selectedLessonNumber = lesson.sequenceNumeral
                 lesson.startActivity(this)
             }
         } else {
+            lessonCardBinding.lessonCard.isClickable = false
+            lessonCardBinding.lessonCard.contentDescription =
+                "Lesson ${lesson.sequenceNumeral} is currently locked${if (lastAvailableLesson != null) ", please swipe left and complete Lesson ${lastAvailableLesson.sequenceNumeral} first." else "."}"
             lessonCardBinding.title = "Locked - " + lesson.title
             lessonCardBinding.lessonTitle.alpha = 0.5f
             lessonCardBinding.lessonSubtitle.alpha = 0.5f
