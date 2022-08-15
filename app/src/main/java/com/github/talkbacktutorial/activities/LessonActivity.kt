@@ -147,7 +147,7 @@ class LessonActivity : AppCompatActivity() {
             } else {
                 challengeCardBinding.card.isClickable = false
                 challengeCardBinding.card.contentDescription =
-                    "The challenge ${R.string.module_subtitle} is currently locked, please complete all other modules first."
+                    "The challenge of Lesson ${lesson.sequenceNumeral} is currently locked, please complete all other modules first."
                 challengeCardBinding.locked = true
                 challengeCardBinding.moduleTitle.alpha = 0.5f
             }
