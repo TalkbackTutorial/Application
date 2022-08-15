@@ -1,6 +1,8 @@
 package com.github.talkbacktutorial.activities.modules.calculatorapp
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +38,10 @@ class CalculatorAppPart2Fragment : Fragment() {
                 binding.continueCard.visibility = View.VISIBLE
             }
         this.setupFinishCard()
-        this.speakIntro()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            this.speakIntro()
+        }, 3000)
     }
 
     /**
