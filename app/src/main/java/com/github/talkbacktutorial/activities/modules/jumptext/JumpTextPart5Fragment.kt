@@ -9,6 +9,7 @@ import android.view.accessibility.AccessibilityEvent
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
@@ -39,12 +40,28 @@ class JumpTextPart5Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
+        setupTextViewTransition()
         this.speakIntro()
         binding.jumpCharsBlock2.setOnClickListener {
             this.onClickContinueLesson()
         }
         // fix TalkBack putting focus at end of fragment
         binding.layout[0].sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+    }
+
+    private fun setupTextViewTransition() {
+        // The views starts off invisible
+        binding.jumpCharsBlock1.visibility = View.GONE
+        binding.jumpCharsBlock2.visibility = View.GONE
+        binding.jumpCharsBlock3.visibility = View.GONE
+
+        // enable views after tts engine intro
+        this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
+            .onFinishedSpeaking(triggerOnce = true) {
+                binding.jumpCharsBlock1.visibility = View.VISIBLE
+                binding.jumpCharsBlock2.visibility = View.VISIBLE
+                binding.jumpCharsBlock3.visibility = View.VISIBLE
+            }
     }
 
     /**

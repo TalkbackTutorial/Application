@@ -19,23 +19,25 @@
             android:padding="@dimen/content_padding">
 
                 <TextView
+                    android:id="@+id/jump_chars_block_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/jump_text_char_1"
-                    android:visibility="visible" />
+                    />
 
                 <TextView
                     android:id="@+id/jump_chars_block_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/jump_text_char_2"
-                    android:visibility="visible"/>
+                    />
 
                 <TextView
+                    android:id="@+id/jump_chars_block_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/jump_text_char_3"
-                    android:visibility="visible" />
+                    />
 
         </LinearLayout>
     </ScrollView>
