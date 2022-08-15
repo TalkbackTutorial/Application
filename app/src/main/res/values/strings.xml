@@ -75,6 +75,8 @@
     <string name="lesson5_challenge_part2_backstack">lesson5ChallengePart2</string>
     <string name="lesson5_challenge_part2_notification_name">Talkback tutorial</string>
     <string name="lesson5_challenge_part2_notification_desc">Notification description</string>
+    <string name="lesson5_challenge_complete">You\'ve completed Lesson 5\'s challenge, you are now on the main menu.</string>
+
 
     <!-- Lesson 6 Challenge !-->
     <string name="lesson6_challenge_intro">Welcome to Lesson 6\'s challenge. In this challenge, you\'ll be asked to send a message to your friend, Bob,  in a chat room. Now let\'s get started</string>

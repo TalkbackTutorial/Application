@@ -97,6 +97,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         AccessibilityChangeManager.setPage(AccessibilityChangePage.MAIN)
+        // Check if user back from notification - for lesson5 challenge
+        if(intent.hasExtra("fromNotification")){
+            Handler(Looper.getMainLooper()).postDelayed({
+                this.ttsEngine.speak(getString(R.string.lesson5_challenge_complete))
+            }, 4000)    // Avoid conflicts with tts
+            intent.removeExtra("fromNotification")
+        }
         super.onResume()
     }
 
