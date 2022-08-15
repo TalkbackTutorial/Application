@@ -12,13 +12,11 @@ class Lesson5ChallengeActivity : AppCompatActivity() {
 
     lateinit var binding: ChallengeLayoutBinding
         private set
-    private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.challenge_layout)
-        this.ttsEngine = TextToSpeechEngine(this)
         supportFragmentManager.commit {
             replace(R.id.frame, Lesson5ChallengePart1Fragment.newInstance())
         }
