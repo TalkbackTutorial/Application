@@ -67,16 +67,15 @@
     <string name="lesson4_challenge_intro">In this challenge, you\'ll be presented an article with an embedded video already playing. To complete the challenge, pause the video, and return its slider to the beginning of the video, then replay it. You may now start.</string>
 
     <!-- Lesson 5 Challenge !-->
-    <string name="lesson5_challenge_intro">Welcome to Lesson 5\'s challenge. In this challenges, you\'ll be ask to perform a sequence of tasks.</string>
-    <string name="lesson5_challenge_fragment1_intro">Now, go to your home screen and back to this app to find the next task.</string>
-    <string name="lesson5_challenge_fragment2_intro">Welcome back. Now a new message is sent from Billy, open the notification to find it.</string>
+    <string name="lesson5_challenge_intro">Welcome to Lesson 5\'s challenge. In this challenge, you\'ll perform a sequence of tasks.</string>
+    <string name="lesson5_challenge_fragment1_intro">First, go to the home screen and back to this app to receive your next task.</string>
+    <string name="lesson5_challenge_fragment2_intro">Welcome back. Now a new message will be sent from Billy, open the notification to hear your next task.</string>
     <string name="lesson5_challenge_notification_title">Billy\'s message</string>
-    <string name="lesson5_challenge_outro">Hello I am Billy, you can complete this challenge by double tap this message from the notification. Then you will be sent to the main menu.</string>
+    <string name="lesson5_challenge_outro">Hello, It\'s Billy. Complete this challenge by interacting with this message in the notification panel.</string>
     <string name="lesson5_challenge_part2_backstack">lesson5ChallengePart2</string>
     <string name="lesson5_challenge_part2_notification_name">Talkback tutorial</string>
     <string name="lesson5_challenge_part2_notification_desc">Notification description</string>
-    <string name="lesson5_challenge_complete">You\'ve completed Lesson 5\'s challenge, you are now on the main menu.</string>
-
+    <string name="lesson5_challenge_complete">You\'ve completed Lesson 5\'s challenge, and have been sent to the main menu.</string>
 
     <!-- Lesson 6 Challenge !-->
     <string name="lesson6_challenge_intro">Welcome to Lesson 6\'s challenge. In this challenge, you\'ll be asked to send a message to your friend, Bob,  in a chat room. Now let\'s get started</string>

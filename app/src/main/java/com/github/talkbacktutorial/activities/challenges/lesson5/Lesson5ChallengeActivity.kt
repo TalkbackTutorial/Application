@@ -19,19 +19,8 @@ class Lesson5ChallengeActivity : AppCompatActivity() {
         supportActionBar?.hide()
         this.binding = DataBindingUtil.setContentView(this, R.layout.challenge_layout)
         this.ttsEngine = TextToSpeechEngine(this)
-        this.startChallenge()
-    }
-
-    /**
-     * Introduces the challenge then pushes the first fragment.
-     * @author Jason Wu
-     */
-    private fun startChallenge() {
-        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            supportFragmentManager.commit {
-                replace(R.id.frame, Lesson5ChallengePart1Fragment.newInstance())
-            }
+        supportFragmentManager.commit {
+            replace(R.id.frame, Lesson5ChallengePart1Fragment.newInstance())
         }
-        this.ttsEngine.speakOnInitialisation(getString(R.string.lesson5_challenge_intro))
     }
 }

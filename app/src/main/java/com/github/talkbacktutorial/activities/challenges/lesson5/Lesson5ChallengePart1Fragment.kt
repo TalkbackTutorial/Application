@@ -33,8 +33,6 @@ class Lesson5ChallengePart1Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as Lesson5ChallengeActivity))
-            .onFinishedSpeaking(triggerOnce = true) {
-            }
         this.speakIntro()
     }
 
@@ -59,7 +57,7 @@ class Lesson5ChallengePart1Fragment : Fragment() {
      * @author Jason Wu
      */
     private fun speakIntro() {
-        val intro = getString(R.string.lesson5_challenge_fragment1_intro)
+        val intro = getString(R.string.lesson5_challenge_intro) + getString(R.string.lesson5_challenge_fragment1_intro)
         this.ttsEngine.speakOnInitialisation(intro)
     }
 }

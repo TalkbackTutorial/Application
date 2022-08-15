@@ -25,6 +25,7 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeListener
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeManager
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangePage
+import com.github.talkbacktutorial.activities.challenges.lesson5.Lesson5ChallengePart2Fragment
 import com.github.talkbacktutorial.activities.gamemode.GameModeActivity
 import com.github.talkbacktutorial.activities.sandboxmode.SandboxModeActivity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
@@ -98,11 +99,11 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         AccessibilityChangeManager.setPage(AccessibilityChangePage.MAIN)
         // Check if user back from notification - for lesson5 challenge
-        if(intent.hasExtra("fromNotification")){
+        if (intent.hasExtra(Lesson5ChallengePart2Fragment.LESSON5_COMPLETED)) {
             Handler(Looper.getMainLooper()).postDelayed({
                 this.ttsEngine.speak(getString(R.string.lesson5_challenge_complete))
             }, 4000)    // Avoid conflicts with tts
-            intent.removeExtra("fromNotification")
+            intent.removeExtra(Lesson5ChallengePart2Fragment.LESSON5_COMPLETED)
         }
         super.onResume()
     }

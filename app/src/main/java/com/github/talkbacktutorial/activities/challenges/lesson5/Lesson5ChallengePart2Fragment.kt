@@ -24,6 +24,8 @@ class Lesson5ChallengePart2Fragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = Lesson5ChallengePart2Fragment()
+
+        const val LESSON5_COMPLETED = "2DF1277E-B70D-4E97-A832-023B09A21D0D"
     }
     private lateinit var binding: FragmentLesson5ChallengePart2Binding
     private lateinit var ttsEngine: TextToSpeechEngine
@@ -73,7 +75,7 @@ class Lesson5ChallengePart2Fragment : Fragment() {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
 
-        intent.putExtra("fromNotification", true)
+        intent.putExtra(LESSON5_COMPLETED, true)
 
         // Return to main activity by double tap the notification
         val pendingIntent: PendingIntent = PendingIntent.getActivity(requireContext(), 0, intent, PendingIntent.FLAG_MUTABLE)
