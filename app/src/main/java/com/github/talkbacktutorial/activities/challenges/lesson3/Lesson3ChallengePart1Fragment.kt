@@ -60,6 +60,8 @@ class Lesson3ChallengePart1Fragment : Fragment() {
         val cookieLinkText = HtmlCompat.fromHtml(getString(R.string.cookie_link), HtmlCompat.FROM_HTML_MODE_COMPACT)
         cookieLink.text = cookieLinkText
 
+
+//  ************* IMPORTANT!!! - NEED TO CALL UPDATEMODULE() ***********
 //        completeChallengeControl.text = getString(R.string.complete_lesson3_challenge)
 //        completeChallengeControl.setOnClickListener {
 //                updateModule()
