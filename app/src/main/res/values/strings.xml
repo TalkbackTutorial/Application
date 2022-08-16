@@ -61,6 +61,7 @@
     <string name="cookie_header">Cookies</string>
     <string name="cookie_description">This scrumptious and chewy chocolate-chip cookie recipe is guaranteed to satisfy your sweet tooth!</string>
     <string name="cookie_link"><a href="http://www.google.com">Get cookie recipe</a></string>
+    <string name="cookie_recipe_ingredient_1">0.5 cups of granulated sugar</string>
 
 
     <!-- Lesson 4 Challenge !-->
