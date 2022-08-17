@@ -28,6 +28,7 @@
     <string name="android_resource">android.resource://</string>
     <string name="empty_string">" "</string>
     <string name="back_button">Back</string>
+    <string name="lesson_page_back_button">Go back to the main menu</string>
 
     <!-- Lessons !-->
     <string name="lesson1_title">Getting Started</string>
