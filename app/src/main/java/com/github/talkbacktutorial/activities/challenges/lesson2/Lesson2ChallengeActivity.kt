@@ -60,4 +60,15 @@ class Lesson2ChallengeActivity : AppCompatActivity() {
             this.ttsEngine.speak(getString(R.string.challenge_outro))
         }
     }
+
+    /**
+     * TTS needs to be cleaned up with the activity or else it stays alive. If it's speaking when
+     * pressing back, it will crash the app when it's done.
+     *
+     * @author Matthew Crossman
+     */
+    override fun onDestroy() {
+        ttsEngine.shutDown()
+        super.onDestroy()
+    }
 }

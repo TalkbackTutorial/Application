@@ -139,8 +139,14 @@ class Lesson6ChallengePart1Fragment : Fragment(){
         TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
     ).toInt()
 
-
-
-
+    /**
+     * Clean up TTS when fragment is destroyed
+     *
+     * @author Matthew Crossman
+     */
+    override fun onDestroyView() {
+        ttsEngine.shutDown()
+        super.onDestroy()
+    }
 
 }

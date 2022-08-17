@@ -49,4 +49,12 @@ class Lesson4ChallengeActivity : AppCompatActivity() {
         }
         this.ttsEngine.speak(getString(R.string.challenge_outro))
     }
+
+    /**
+     * Clean up TTS when activity is destroyed
+     */
+    override fun onDestroy() {
+        ttsEngine.shutDown()
+        super.onDestroy()
+    }
 }

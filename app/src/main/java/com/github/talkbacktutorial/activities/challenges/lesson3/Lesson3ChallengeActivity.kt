@@ -62,4 +62,14 @@ class Lesson3ChallengeActivity : AppCompatActivity() {
             moduleProgressionViewModel.markModuleCompleted(it, context as Context)
         }
     }
+
+    /**
+     * Clean up the TTS engine when activity is destroyed
+     *
+     * @author Matthew Crossman
+     */
+    override fun onDestroy() {
+        ttsEngine.shutDown()
+        super.onDestroy()
+    }
 }
