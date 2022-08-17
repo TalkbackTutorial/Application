@@ -66,7 +66,33 @@
     <string name="brownie_img_desc">Picture of a brownie</string>
     <string name="brownie_description">This gooey brownie recipe is a crowd pleaser and is so quick and easy to make!</string>
     <string name="brownie_link"><a href="http://www.google.com">Get brownie recipe</a></string>
-    <string name="cookie_recipe_ingredient_1">0.5 cups of granulated sugar</string>
+    <string name="ingredients_heading">Ingredients</string>
+    <string name="method_heading">Method</string>
+    <!-- Cookie Recipe !-->
+    <string name="cookie_recipe_title">Cookie Recipe</string>
+    <string name="cookie_recipe_ingredient_1">½ cup of white sugar</string>
+    <string name="cookie_recipe_ingredient_2">½ cup of brown sugar</string>
+    <string name="cookie_recipe_ingredient_3">150 grams of softened butter</string>
+    <string name="cookie_recipe_ingredient_4">1 teaspoon of vanilla extract</string>
+    <string name="cookie_recipe_ingredient_5">1 and ¾ cups of plain flour</string>
+    <string name="cookie_recipe_ingredient_6">1 egg</string>
+    <string name="cookie_recipe_ingredient_7">1 cup of chocolate chips</string>
+    <string name="cookie_recipe_method_1">Step 1: Preheat oven to 180C or 160C fan–forced. Line 2 baking trays with baking paper. Using an electric mixer or whisking by hand, beat butter and sugars, and 1–2 minutes or until smooth and well combined. Beat in egg and vanilla until combined.</string>
+    <string name="cookie_recipe_method_2">Step 2: Stir in flour. Stir in chocolate chips. Roll 2 level tablespoonfuls of mixture into balls and place on prepared trays, 3cm apart. Press down slightly. Decorate with extra chocolate chips.</string>
+    <string name="cookie_recipe_method_3">Step 3: Bake for 15–18 minutes or until light golden and cooked. Transfer to a wire rack to cool. Store in an airtight container for up to 1 week.</string>
+    <!-- Brownie Recipe !-->
+    <string name="brownie_recipe_title">Brownie Recipe</string>
+    <string name="brownie_recipe_ingredient_1">125 grams of unsalted butter</string>
+    <string name="brownie_recipe_ingredient_2">125 grams of dark baking chocolate</string>
+    <string name="brownie_recipe_ingredient_3">3 eggs, lightly whisked</string>
+    <string name="brownie_recipe_ingredient_4">1 and ½ cups of white sugar</string>
+    <string name="brownie_recipe_ingredient_5">¾ cups of plain flour</string>
+    <string name="brownie_recipe_ingredient_6">¼ cup of Dutch cocoa powder</string>
+    <string name="brownie_recipe_ingredient_7">1 teaspoon of vanilla extract</string>
+    <string name="brownie_recipe_ingredient_8">Pinch of salt</string>
+    <string name="brownie_recipe_method_1">Step 1: Preheat oven to 180C or 160C fan forced. Grease a 20cm square cake pan and line with baking paper. </string>
+    <string name="brownie_recipe_method_2">Step 2: Place butter and chocolate in a heatproof bowl over a saucepan of simmering water (don\'t let the bowl touch the water). Stir with a metal spoon until melted. Remove from heat. Quickly stir in egg, sugar, flour, cocoa powder, vanilla and salt until just combined. Pour into prepared pan.</string>
+    <string name="brownie_recipe_method_3">Step 3: Bake for 30 minutes or until a skewer inserted in the centre comes out with moist crumbs clinging. Set aside to cool completely.</string>
 
 
     <!-- Lesson 4 Challenge !-->

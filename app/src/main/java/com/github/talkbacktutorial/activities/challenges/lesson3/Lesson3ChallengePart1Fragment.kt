@@ -13,7 +13,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.challenges.lesson2.InspectToyFragment
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentLesson3ChallengePart1Binding
