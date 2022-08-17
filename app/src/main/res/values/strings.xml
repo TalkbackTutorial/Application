@@ -134,7 +134,7 @@
     <string name="calculator_install_intro">In this module, you\'ll be doing a few task in a modified version of the Simple Calculator app. You can retrieve this modified app from the link below:</string>
     <string name="calculator_link">"Link to the modified Simple Calculator "</string>
     <string name="calculator_install_prompt">Once you have  installed the app, activate the button below to continue.</string>
-    <string name="simple_calculator_link"><a href="https://github.com/TalkbackTutorial/calculator-fork/releases/download/5.10.0-tbfork/tbt-simple-calculator-fork.apk">Link to the modified Simple Calculator</a></string>
+    <string name="simple_calculator_link"><a href="https://github.com/TalkbackTutorial/calculator-fork/releases/download/5.10.0-tbfork-2/tbt-simple-calculator-fork.apk">Link to the modified Simple Calculator</a></string>
 
     <!-- ExploreByTouch !-->
     <string name="explore_menu_by_touch_menu_item_prompt">You have interacted with a menu item. Find the button, then double tap to finish the lesson.</string>
