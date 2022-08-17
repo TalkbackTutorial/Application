@@ -278,9 +278,9 @@
     <string name="scroll_part2_outro">You have completed the lesson. Sending you to the main menu.</string>
 
     <!-- StartStopMedia !-->
-    <string name="start_stop_media_part1_outro">Great job! You have paused the video. Congratulations on completing this lesson. In this lesson you have successfully learnt how to play and pause a video. To exit this lesson, select the finish button on the screen.</string>
-    <string name="start_stop_media_part1_play">Great job! You have played the video. Now that you learnt how to play the video, we will try pause the video. To pause the video, explore by touch to find the pause button and double tap on the button to pause the video.</string>
-    <string name="start_stop_media_part1_intro">In this tutorial, you will be learning how to start and stop a video. To start, double tap your screen by touch to bring up the media controller. Next swipe right until you find the play button. Double tap to start playing the video. If nothing happens when you swipe, double tap again to bring up the media controller.</string>
+    <string name="start_stop_media_part1_outro">Great job! You have paused the video. Congratulations on completing this lesson on how to start and stop a video. Sending you to the main menu.</string>
+    <string name="start_stop_media_part1_play">Great job! You have played the video. Now, we will try to pause the video. To pause the video, bring up the media controller and explore by touch to find the pause button. Double tap on the button to pause the video.</string>
+    <string name="start_stop_media_part1_intro">In this tutorial, you will be learning how to start and stop a video. To start, double tap your screen to bring up the media controller and find the play button. Double tap to start playing the video.</string>
 
     <!-- Virtual Keyboard !-->
     <string name="virtual_keyboard_hello">hello</string>
