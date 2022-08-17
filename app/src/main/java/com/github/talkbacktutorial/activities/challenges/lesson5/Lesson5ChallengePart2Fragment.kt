@@ -102,4 +102,14 @@ class Lesson5ChallengePart2Fragment : Fragment() {
         val intro = getString(R.string.lesson5_challenge_fragment2_intro)
         this.ttsEngine.speakOnInitialisation(intro)
     }
+
+    /**
+     * Clean up TTS when fragment is destroyed
+     *
+     * @author Matthew Crossman
+     */
+    override fun onDestroyView() {
+        ttsEngine.shutDown()
+        super.onDestroy()
+    }
 }
