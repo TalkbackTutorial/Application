@@ -56,7 +56,7 @@
     <string name="rating_content_description">Rating: %1$d stars</string>
 
     <!-- Lesson 3 Challenge !-->
-    <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a page containing baking recipes. To complete the challenge, navigate to the cookie recipe and check the checkbox for the ingredient '1 egg'</string>
+    <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a page containing baking recipes. To complete the challenge, navigate to the cookie recipe and check the checkbox for the ingredient: 1 egg</string>
     <string name="recipe_book_title">Baking Recipes</string>
     <string name="cookie_header">Cookies</string>
     <string name="cookie_img_desc">Picture of a cookie</string>
