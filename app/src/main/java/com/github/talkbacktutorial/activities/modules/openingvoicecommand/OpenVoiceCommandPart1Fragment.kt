@@ -3,7 +3,6 @@ package com.github.talkbacktutorial.activities.modules.openingvoicecommand
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +26,7 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
     private lateinit var binding: FragmentOpenVoiceCommandModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
     private var count = 0
-    private var stopCount = 3;
+    private var activityStopCount = 0
     private var voiceRecorderPermission = Manifest.permission.RECORD_AUDIO
 
     override fun onCreateView(
@@ -42,21 +41,32 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         this.ttsEngine = TextToSpeechEngine((activity as OpenVoiceCommandActivity))
-        this.speakIntro()
+
+        if (savedInstanceState != null) {
+            activityStopCount = savedInstanceState.getInt(getString(R.string.stopped_count))
+        }
 
         view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
             count++
             val permissionGranted = ActivityCompat.checkSelfPermission((activity as OpenVoiceCommandActivity), voiceRecorderPermission)
-            if (count == 1 && (permissionGranted == PackageManager.PERMISSION_DENIED)) {
-                stopCount = 5;
+            if ((count == 1) && (permissionGranted == PackageManager.PERMISSION_GRANTED)) {
+                this.speakIntro()
             }
-            // If the count is greater than 2, the app must have lost focus and re-gained focus
-            if (count == stopCount) {
+            if (activityStopCount == 1) {
                 finishLesson()
             }
         }
+    }
+
+    override fun onStop() {
+        activityStopCount += 1
+        super.onStop()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(getString(R.string.stop_count), activityStopCount)
+        super.onSaveInstanceState(outState)
     }
 
 
