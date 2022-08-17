@@ -38,6 +38,8 @@ class JumpTextPart4Fragment : Fragment() {
         binding.targetWord.setOnClickListener {
             this.onClickContinueLesson()
         }
+        // fix TalkBack putting focus at end of fragment
+        binding.layout[0].sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
     }
 
     /**
