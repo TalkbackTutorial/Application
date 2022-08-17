@@ -28,13 +28,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/paragraph_spacing"
-                android:text="@string/jump_text_line_intro" />
+                android:text="@string/jump_text_line_intro"
+                android:textSize="12" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"
                 android:text="@string/jump_text_line_1"
+                android:textSize="12"
                 android:visibility="visible" />
 
             <TextView
@@ -42,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"
                 android:text="@string/jump_text_line_2"
+                android:textSize="12sp"
                 android:visibility="visible" />
 
             <TextView
@@ -49,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"
                 android:text="@string/jump_text_line_3"
+                android:textSize="12"
                 android:visibility="visible" />
 
             <Button
