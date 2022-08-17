@@ -48,7 +48,7 @@ class Lesson3ChallengeActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-        this.ttsEngine.speak(getString(R.string.challenge_outro))
+        this.ttsEngine.speak(getString(R.string.lesson3_challenge_outro))
         updateModule()
     }
 
