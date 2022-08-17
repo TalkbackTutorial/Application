@@ -179,8 +179,8 @@
 
     <!-- GoToHomeScreen !-->
     <string name="stopped_count">stoppedCount</string>
-    <string name="go_to_home_screen_intro">Welcome. In this module, you will learn how to return to the home screen from inside an application, to perform this task, swipe up then left. Try it now. Then return to the tutorial after you have reached the home screen by swiping left then up to open the recent apps page, then double tap to return to this app.</string>
-    <string name="go_to_home_screen_mid">Good, you are back. This gesture is useful as it allows you to return to the home screen at anytime no matter where you are. Now do it again, remember: the gesture is swipe up then left. Return to this app after by opening the recent apps page just like before.</string>
+    <string name="go_to_home_screen_intro">Welcome. In this module, you will learn how to return to the home screen from inside an application, to perform this task, swipe up then left. Try it now. Then return to the tutorial after you have reached the home screen by swiping left then up to open the recent apps. Then double tap to return to this app.</string>
+    <string name="go_to_home_screen_mid">Good, you are back. This gesture is useful as it allows you to return to the home screen at anytime no matter where you are. Now do it again, remember: the gesture is swipe up then left. Return to this app by opening the recent apps page just like before.</string>
     <string name="go_to_home_screen_outro">Nice, you have navigated back to this screen. You have now learnt how to use the go to home screen gesture. Sending you to the main menu.</string>
 
     <!-- JumpControls !-->
@@ -239,32 +239,32 @@
     <string name="media_volume_control_part1_outro">Current volume is set below 25. Congratulations on completing this lesson. Sending you back to the main menu.</string>
 
     <!-- OpeningVoiceCommand !-->
-    <string name="open_voice_commands_part1_intro">Welcome. In this module, you will learn how to enable voice commands. To enable voice commands you need to swipe right and then up with one finger. Please perform the gestures and when prompted for a voice command, say help. Listen to the voice command help section and return to the tutorial. You may return to the tutorial by going back.</string>
+    <string name="open_voice_commands_part1_intro">Welcome. In this module, you will learn how to enable voice commands. To do this, you need to perform a swipe right, then up gesture in one motion. When prompted for a voice command, say help. This will take you to the voice command help section. Return to the tutorial whenever you want by going back. Good luck!</string>
     <string name="open_voice_commands_part1_outro">Well done. Next we will put some voice commands into action.</string>
-    <string name="open_voice_commands_part2_intro">Now that you know some voice commands, swipe right with one finger to move to the block of text and say, speak faster. This voice command will increase talkback\'s reading speed.</string>
+    <string name="open_voice_commands_part2_intro">Now that you know some voice commands, We will show you how to increase talkback\'s reading speed by using voice command.</string>
     <string name="open_voice_commands_part2_outro">You have completed this module. Sending you back to the lesson screen.</string>
-    <string name="open_voice_commands_part2_text">To make me speak faster swipe right and up with one finger, then say speak faster in a clear voice. Do this gesture and say speak faster three times, then move to the next block of text.</string>
-    <string name="open_voice_command_part2_text_end">I am now speaking faster. When you have completed listening to this text, swipe right and select the button to finish the module. </string>
+    <string name="open_voice_commands_part2_text">To make me speak faster swipe right, then up with one finger to open voice command gain. Do this gesture, then say speak faster. And move to the next element when you are done. Good luck!.</string>
+    <string name="open_voice_command_part2_text_end">I am now speaking faster. When you have completed listening to this text, go to the next element and select the button to finish the module. </string>
     <string name="open_voice_command_part2_control_text">Swipe right.</string>
     <string name="open_voice_command_part1_backstack">openVoiceCommandPart1</string>
 
     <!-- OpenNotifications !-->
-    <string name="open_notifications_intro">Welcome. In this module, you will learn how to open your notification panel. Notifications are a way to let you know that something new has happened so you do not miss anything that might be worth your attention and will appear on your device whether you are using an application or not. There are two way to do this. First, let us open the notification panel by using 2 finger to swipe from top to the bottom of the screen. Once you opened the notification panel, Talkback will start talking for a few seconds. Please wait until Talkback is done then follow the next instruction. Good luck.</string>
-    <string name="open_notifications_feedback_1">Good job. You have opened the notification panel. Now try to close it by doing the same gesture but this time start from the bottom to top"</string>
-    <string name="open_notifications_feedback_2">Well done. The notification panel has been closed. Let\'s try to open it one more time but this time, open it by swiping right, then down immediately. Once again, please wait until Talkback is done, then follow the next instruction.</string>
-    <string name="open_notifications_feedback_3">Excellent. Now close it again by swiping from the bottom with 2 fingers</string>
-    <string name="open_notifications_outro">Well done! You now know how to open, check and close your notification panel. Notification panel can also be used to perform many kind of shortcut. For example, connecting to wifi and bluetooth. You have completed the lesson. We will send you back.</string>
+    <string name="open_notifications_intro">Welcome. In this module, you will learn how to open your notification panel. Notifications are a way to let you know that something new has happened so you do not miss anything that might be worth your attention and will appear on your device whether you are using an application or not. There are two ways to do this. First, let us open the notification panel by swiping down with two fingers from the top of the screen. Once you opened the notification panel, Talkback will start talking for a few seconds. Please wait until Talkback is done then follow the next instruction. Good luck.</string>
+    <string name="open_notifications_feedback_1">Good job. You have opened the notification panel. Now try to close it by doing the same gesture but this time start from the bottom and swipe up with two fingers."</string>
+    <string name="open_notifications_feedback_2">Well done. The notification panel has been closed. Let\'s try to open it one more time but this time, open it by swiping right, then down in a single motion. Once again, please wait until Talkback is done, then follow the next instruction.</string>
+    <string name="open_notifications_feedback_3">Excellent. Now close it again by swiping up from the bottom with 2 fingers</string>
+    <string name="open_notifications_outro">Well done! You now know how to open, check and close your notification panel. Notification panel can also be used to perform many kind of shortcut. For example, connecting to wifi and bluetooth. You have completed the lesson. We will send you back to the lesson page.</string>
 
     <!-- OpenRecentApps !-->
-    <string name="open_recent_apps_part1_intro">Welcome. In this module, you will learn how to open recent apps. Recent apps are a handy way to quickly switch between frequently used apps. This can be done in two different ways. Firstly, perform a swipe left and then, a swipe up gesture. Please try to perform these gestures one after another, and enter the recent apps menu. Once completed, return to the tutorial.</string>
+    <string name="open_recent_apps_part1_intro">Welcome. In this module, you will learn how to open recent apps. Recent apps are a handy way to quickly switch between frequently used apps. This can be done in two different ways. Firstly, perform a swipe left, then up gesture in one motion. Once completed, return to the tutorial.</string>
     <string name="open_recent_apps_part1_outro">Great job. You have correctly opened the recent app menu and returned to the tutorial. Now to try with a different method.</string>
-    <string name="open_recent_apps_part2_intro">Try to open the recent apps menu using the recents button in the bottom right or bottom left corner of your phone. You can double tap this button to open the recent apps menu. If your device does not support a recents button, or you are unsure, perform a swipe left and then, a swipe up gesture again to open the recent apps menu. Then return to the tutorial.</string>
+    <string name="open_recent_apps_part2_intro">Try to open the recent apps menu using the recents button in the bottom right or bottom left corner of your phone. You can double tap this button to open the recent apps menu. If your device does not support a recent button, or you are unsure, perform a swipe left, then up gesture again to open the recent apps menu. Then return to the tutorial.</string>
     <string name="open_recent_apps_part2_outro">You have completed the open recent apps module. Sending you to the lesson screen.</string>
     <string name="open_recent_apps_part1_backstack">"openrecentappspart1"</string>
 
     <!-- OpenTalkbackMenu !-->
-    <string name="open_talkback_menu_intro">Welcome. In this module, you will learn how to open the Talkback Menu. The Talkback menu allows you use commands to read, edit text, control speech output, change Talkback settings, and so on. To do this, perform a swipe up, or, swipe down, and then, a swipe right gesture. </string>
-    <string name="open_talkback_menu_outro">Well done! You now know how to open and close the Talkback Menu. Once again, to do this you have to swipe up, or down then swipe right. You have completed the lesson.</string>
+    <string name="open_talkback_menu_intro">Welcome. In this module, you will learn how to open the Talkback Menu. The Talkback menu allows you use commands to read, edit text, control speech output, change Talkback settings, and so on. To do this, perform a swipe up, then right gesture in one motion. Or a swipe down, then right gesture. Good luck! </string>
+    <string name="open_talkback_menu_outro">Well done! You now know how to open and close the Talkback Menu. Once again, to do this you have to swipe up, or a swipe down gesture then swipe right immediately. You have completed the lesson. Sending you back to the lesson page.</string>
     <string name="open_talkback_menu_feedback">Great job. You have opened the Talkback menu. Feel free to navigate around to see what you can do. Once you are done, go to the bottom of the menu and exit.</string>
 
     <!-- Scroll !-->
