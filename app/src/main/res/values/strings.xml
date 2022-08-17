@@ -56,7 +56,7 @@
     <string name="rating_content_description">Rating: %1$d stars</string>
 
     <!-- Lesson 3 Challenge !-->
-    <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a page containing baking recipes. To complete the challenge, navigate to the cookie recipe and check the checkbox for the ingredient: 1 egg</string>
+    <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a page containing baking recipes. To complete the challenge, navigate to the cookie recipe and check the checkbox for the ingredient … 1 egg</string>
     <string name="recipe_book_title">Baking Recipes</string>
     <string name="cookie_header">Cookies</string>
     <string name="cookie_img_desc">Picture of a cookie</string>
@@ -68,7 +68,7 @@
     <string name="brownie_link"><a href="http://www.google.com">Get brownie recipe</a></string>
     <string name="ingredients_heading">Ingredients</string>
     <string name="method_heading">Method</string>
-    <string name="lesson3_challenge_outro">You have successfully Lesson 3\'s challenge. Sending you to the main menu.</string>
+    <string name="lesson3_challenge_outro">You have successfully completed Lesson 3\'s challenge. Sending you to the main menu.</string>
     <!-- Cookie Recipe !-->
     <string name="cookie_recipe_title">Cookie Recipe</string>
     <string name="cookie_recipe_ingredient_1">½ cup of white sugar</string>
