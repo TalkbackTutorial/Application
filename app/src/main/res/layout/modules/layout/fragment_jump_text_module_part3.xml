@@ -44,9 +44,16 @@
                 android:text="@string/jump_text_line_2"
                 android:visibility="visible" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/paragraph_spacing"
+                android:text="@string/jump_text_line_3"
+                android:visibility="visible" />
+
             <Button
                 android:id="@+id/continue_text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"
                 android:text="@string/continue_jump_text" />
