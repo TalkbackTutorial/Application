@@ -3,6 +3,8 @@ package com.github.talkbacktutorial.activities.challenges.lesson3
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
@@ -48,7 +50,9 @@ class Lesson3ChallengeActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
-        this.ttsEngine.speak(getString(R.string.lesson3_challenge_outro))
+        Handler(Looper.getMainLooper()).postDelayed({
+            this.ttsEngine.speak(getString(R.string.lesson3_challenge_outro))
+        }, 500)    // Avoid conflict with checkbox
         updateModule()
     }
 
@@ -72,4 +76,6 @@ class Lesson3ChallengeActivity : AppCompatActivity() {
         ttsEngine.shutDown()
         super.onDestroy()
     }
+
+
 }

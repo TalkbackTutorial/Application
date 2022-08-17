@@ -55,7 +55,7 @@
             android:padding="8dp"
             android:textAlignment="center"
             android:visibility="visible"
-            tools:text="Target"
+            android:text="@string/brownie_link"
             tools:visibility="visible" />
 
         <TextView
@@ -94,7 +94,7 @@
             android:padding="8dp"
             android:textAlignment="center"
             android:visibility="visible"
-            tools:text="Target"
+            android:text="@string/cookie_link"
             tools:visibility="visible" />
 
 

@@ -46,10 +46,9 @@ class Lesson3ChallengePart1Fragment : Fragment() {
         val brownieDescription: View
         val brownieLink: View
 
+        super.onViewCreated(view, savedInstanceState)
 
         // strings and labels
-        val promptTemplate = getString(R.string.jump_navigation_easy_prompt)
-
         title = binding.challenge.titleHeader
         cookieHeader = binding.challenge.cookieHeader
         cookieDescription = binding.challenge.cookieDescription
@@ -58,39 +57,19 @@ class Lesson3ChallengePart1Fragment : Fragment() {
         brownieDescription = binding.challenge.brownieDescription
         brownieLink = binding.challenge.brownieLink
 
-
-
-        val targetTemplate = getString(R.string.jump_navigation_target_link_template)
-
         // set up text
         title.text = getString(R.string.recipe_book_title)
         cookieHeader.text = getString(R.string.cookie_header)
         cookieDescription.text = getString(R.string.cookie_description)
-        val cookieLinkText = HtmlCompat.fromHtml(getString(R.string.cookie_link), HtmlCompat.FROM_HTML_MODE_COMPACT)
-        cookieLink.text = cookieLinkText
         brownieHeader.text = getString(R.string.brownie_header)
         brownieDescription.text = getString(R.string.brownie_description)
-        brownieLink.text = getString(R.string.brownie_link)
 
 
-//  ************* IMPORTANT!!! - NEED TO CALL UPDATEMODULE() ***********
-//        completeChallengeControl.text = getString(R.string.complete_lesson3_challenge)
-//        completeChallengeControl.setOnClickListener {
-//                updateModule()
-//                activity?.finish()
-//        }
-
-        super.onViewCreated(view, savedInstanceState)
 
         // set headers
         ViewCompat.setAccessibilityHeading(title, true)
         ViewCompat.setAccessibilityHeading(brownieHeader, true)
         ViewCompat.setAccessibilityHeading(cookieHeader, true)
-
-
-        // set up links
-        //cookie = getView(R.string.cookie_link)
-        //ViewCompat.set
 
         cookieLink.setOnClickListener{
             parentFragmentManager.beginTransaction().setCustomAnimations(
@@ -110,6 +89,4 @@ class Lesson3ChallengePart1Fragment : Fragment() {
                 .commit()
         }
     }
-
-
 }
