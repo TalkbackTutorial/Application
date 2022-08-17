@@ -157,7 +157,7 @@
     <string name="calculator_app_part2_intro">Well done! You have successfully completed this module. We have sent you back to the talkback tutorial. You may now move on to the next part.</string>
     <string name="finish_calculator_module">Sending you back to the main module page</string>
     <string name="finish_module">Finish Module</string>
-    <string name="equation_calculator_app">In this task, please provide the correct calculation for 9 × 5 to get the result 45. Hint: You may need to "Explore the menu by scrolling" to find the correct buttons.</string>
+    <string name="equation_calculator_app">In this task, please provide the correct calculation for 9 × 5 to get the result 45. Hint: You may need to explore by touch to find the correct buttons.</string>
     <string name="calculator_not_installed_message">Calculator is not installed. Please install it and reopen this module.</string>
     <string name="calculator_install_intro">In this module, you\'ll be doing a few task in a modified version of the Simple Calculator app. You can retrieve this modified app from the link below:</string>
     <string name="calculator_link">"Link to the modified Simple Calculator "</string>
