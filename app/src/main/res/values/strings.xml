@@ -192,7 +192,7 @@
     <!-- JumpHeaders !-->
     <string name="jump_headers_entity">header</string>
     <string name="jump_headers_entity_plural">headers</string>
-    <string name="jump_headers_intro_1">The headers reading mode allows you to jump between headers, such those found before blocks of text or groups of form fields.</string>
+    <string name="jump_headers_intro_1">The headers reading mode allows you to jump between headers, such as those found before blocks of text or groups of form fields.</string>
 
     <!-- JumpLinks !-->
     <string name="jump_links_entity">link</string>
