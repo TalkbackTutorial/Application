@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.Toast
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.github.talkbacktutorial.R
@@ -37,6 +38,19 @@ class CookieRecipeFragment : Fragment() {
 
     @SuppressLint("PrivateResource", "ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val cookieHeader: View
+        val ingredientsHeader: View
+        val methodHeader: View
+
+        cookieHeader = binding.cookieRecipeTitle
+        ingredientsHeader = binding.ingredientsHeading
+        methodHeader = binding.methodHeading
+
+        // set headers
+        ViewCompat.setAccessibilityHeading(cookieHeader, true)
+        ViewCompat.setAccessibilityHeading(ingredientsHeader, true)
+        ViewCompat.setAccessibilityHeading(methodHeader, true)
 
         val checkbox = binding.checkboxCookieIngredient6
         checkbox.setOnCheckedChangeListener { _, isChecked ->

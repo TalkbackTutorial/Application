@@ -82,8 +82,11 @@ class Lesson3ChallengePart1Fragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        // set headings
+        // set headers
+        ViewCompat.setAccessibilityHeading(title, true)
+        ViewCompat.setAccessibilityHeading(brownieHeader, true)
         ViewCompat.setAccessibilityHeading(cookieHeader, true)
+
 
         // set up links
         //cookie = getView(R.string.cookie_link)
