@@ -29,14 +29,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/paragraph_spacing"
                 android:text="@string/jump_text_line_intro"
-                android:textSize="12" />
+                android:textSize="12dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"
                 android:text="@string/jump_text_line_1"
-                android:textSize="12"
+                android:textSize="12dp"
                 android:visibility="visible" />
 
             <TextView
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/paragraph_spacing"
                 android:text="@string/jump_text_line_3"
-                android:textSize="12"
+                android:textSize="12dp"
                 android:visibility="visible" />
 
             <Button
