@@ -39,26 +39,39 @@ class Lesson3ChallengePart1Fragment : Fragment() {
 
     @SuppressLint("PrivateResource")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val title: View
         val cookieHeader: View
         val cookieDescription: View
         val cookieLink: View
+        val brownieHeader: View
+        val brownieDescription: View
+        val brownieLink: View
 
 
         // strings and labels
         val promptTemplate = getString(R.string.jump_navigation_easy_prompt)
 
+        title = binding.challenge.titleHeader
         cookieHeader = binding.challenge.cookieHeader
         cookieDescription = binding.challenge.cookieDescription
         cookieLink = binding.challenge.cookieLink
+        brownieHeader = binding.challenge.brownieHeader
+        brownieDescription = binding.challenge.brownieDescription
+        brownieLink = binding.challenge.brownieLink
+
 
 
         val targetTemplate = getString(R.string.jump_navigation_target_link_template)
 
         // set up text
+        title.text = getString(R.string.recipe_book_title)
         cookieHeader.text = getString(R.string.cookie_header)
         cookieDescription.text = getString(R.string.cookie_description)
         val cookieLinkText = HtmlCompat.fromHtml(getString(R.string.cookie_link), HtmlCompat.FROM_HTML_MODE_COMPACT)
         cookieLink.text = cookieLinkText
+        brownieHeader.text = getString(R.string.brownie_header)
+        brownieDescription.text = getString(R.string.brownie_description)
+        brownieLink.text = getString(R.string.brownie_link)
 
 
 //  ************* IMPORTANT!!! - NEED TO CALL UPDATEMODULE() ***********
@@ -83,6 +96,15 @@ class Lesson3ChallengePart1Fragment : Fragment() {
                 com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                 .replace(this@Lesson3ChallengePart1Fragment.id, CookieRecipeFragment.newInstance())
                 .addToBackStack("cookieRecipe")
+                .commit()
+        }
+
+        brownieLink.setOnClickListener{
+            parentFragmentManager.beginTransaction().setCustomAnimations(
+                com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
+                .replace(this@Lesson3ChallengePart1Fragment.id, BrownieRecipeFragment.newInstance())
+                .addToBackStack("brownieRecipe")
                 .commit()
         }
     }

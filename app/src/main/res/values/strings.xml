@@ -57,11 +57,17 @@
 
     <!-- Lesson 3 Challenge !-->
     <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a number of different page elements which you will need to navigate through. To complete the challenge, you must navigate through all page elements using the specified reading controls until you reach the complete challenge button.</string>
-    <string name="recipe_book_title">Easy Baking Recipes</string>
+    <string name="recipe_book_title">Baking Recipes</string>
     <string name="cookie_header">Cookies</string>
+    <string name="cookie_img_desc">Picture of a cookie</string>
     <string name="cookie_description">This scrumptious and chewy chocolate-chip cookie recipe is guaranteed to satisfy your sweet tooth!</string>
     <string name="cookie_link"><a href="http://www.google.com">Get cookie recipe</a></string>
+    <string name="brownie_header">Brownies</string>
+    <string name="brownie_img_desc">Picture of a brownie</string>
+    <string name="brownie_description">This gooey brownie recipe is a crowd pleaser and is so quick and easy to make!</string>
+    <string name="brownie_link"><a href="http://www.google.com">Get brownie recipe</a></string>
     <string name="cookie_recipe_ingredient_1">0.5 cups of granulated sugar</string>
+
 
     <!-- Lesson 4 Challenge !-->
     <string name="lesson4_challenge_intro">In this challenge, you\'ll be presented an article with an embedded video already playing. To complete the challenge, pause the video, and return its slider to the beginning of the video, then replay it. You may now start.</string>
