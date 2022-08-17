@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -36,6 +38,8 @@ class JumpTextPart4Fragment : Fragment() {
         binding.targetWord.setOnClickListener {
             this.onClickContinueLesson()
         }
+        // fix TalkBack putting focus at end of fragment
+        binding.layout[0].sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
     }
 
     /**

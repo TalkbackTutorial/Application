@@ -1,9 +1,13 @@
 package com.github.talkbacktutorial.activities.modules.openingvoicecommand
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -23,6 +27,8 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
     private lateinit var binding: FragmentOpenVoiceCommandModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
     private var count = 0
+    private var stopCount = 3;
+    private var voiceRecorderPermission = Manifest.permission.RECORD_AUDIO
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,13 +42,18 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         this.ttsEngine = TextToSpeechEngine((activity as OpenVoiceCommandActivity))
         this.speakIntro()
 
         view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
             count++
+            val permissionGranted = ActivityCompat.checkSelfPermission((activity as OpenVoiceCommandActivity), voiceRecorderPermission)
+            if (count == 1 && (permissionGranted == PackageManager.PERMISSION_DENIED)) {
+                stopCount = 5;
+            }
             // If the count is greater than 2, the app must have lost focus and re-gained focus
-            if (count == 3) {
+            if (count == stopCount) {
                 finishLesson()
             }
         }

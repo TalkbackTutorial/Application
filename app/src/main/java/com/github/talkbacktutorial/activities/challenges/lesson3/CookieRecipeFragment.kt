@@ -38,7 +38,7 @@ class CookieRecipeFragment : Fragment() {
     @SuppressLint("PrivateResource", "ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val checkbox = binding.checkboxIngredient1
+        val checkbox = binding.checkboxCookieIngredient6
         checkbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 this@CookieRecipeFragment.context.completeChallenge()

@@ -56,12 +56,45 @@
     <string name="rating_content_description">Rating: %1$d stars</string>
 
     <!-- Lesson 3 Challenge !-->
-    <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a number of different page elements which you will need to navigate through. To complete the challenge, you must navigate through all page elements using the specified reading controls until you reach the complete challenge button.</string>
-    <string name="recipe_book_title">Easy Baking Recipes</string>
+    <string name="lesson3_challenge_intro">Welcome to Lesson 3\'s challenge. In this challenge you will be presented with a page containing baking recipes. To complete the challenge, navigate to the cookie recipe and check the checkbox for the ingredient … 1 egg</string>
+    <string name="recipe_book_title">Baking Recipes</string>
     <string name="cookie_header">Cookies</string>
+    <string name="cookie_img_desc">Picture of a cookie</string>
     <string name="cookie_description">This scrumptious and chewy chocolate-chip cookie recipe is guaranteed to satisfy your sweet tooth!</string>
     <string name="cookie_link"><a href="http://www.google.com">Get cookie recipe</a></string>
-    <string name="cookie_recipe_ingredient_1">0.5 cups of granulated sugar</string>
+    <string name="brownie_header">Brownies</string>
+    <string name="brownie_img_desc">Picture of a brownie</string>
+    <string name="brownie_description">This gooey brownie recipe is a crowd pleaser and is so quick and easy to make!</string>
+    <string name="brownie_link"><a href="http://www.google.com">Get brownie recipe</a></string>
+    <string name="ingredients_heading">Ingredients</string>
+    <string name="method_heading">Method</string>
+    <string name="lesson3_challenge_outro">You have successfully completed Lesson 3\'s challenge. Sending you to the main menu.</string>
+    <!-- Cookie Recipe !-->
+    <string name="cookie_recipe_title">Cookie Recipe</string>
+    <string name="cookie_recipe_ingredient_1">½ cup of white sugar</string>
+    <string name="cookie_recipe_ingredient_2">½ cup of brown sugar</string>
+    <string name="cookie_recipe_ingredient_3">150 grams of softened butter</string>
+    <string name="cookie_recipe_ingredient_4">1 teaspoon of vanilla extract</string>
+    <string name="cookie_recipe_ingredient_5">1 and ¾ cups of plain flour</string>
+    <string name="cookie_recipe_ingredient_6">1 egg</string>
+    <string name="cookie_recipe_ingredient_7">1 cup of chocolate chips</string>
+    <string name="cookie_recipe_method_1">Step 1: Preheat oven to 180C or 160C fan–forced. Line 2 baking trays with baking paper. Using an electric mixer or whisking by hand, beat butter and sugars, and 1–2 minutes or until smooth and well combined. Beat in egg and vanilla until combined.</string>
+    <string name="cookie_recipe_method_2">Step 2: Stir in flour. Stir in chocolate chips. Roll 2 level tablespoonfuls of mixture into balls and place on prepared trays, 3cm apart. Press down slightly. Decorate with extra chocolate chips.</string>
+    <string name="cookie_recipe_method_3">Step 3: Bake for 15–18 minutes or until light golden and cooked. Transfer to a wire rack to cool. Store in an airtight container for up to 1 week.</string>
+    <!-- Brownie Recipe !-->
+    <string name="brownie_recipe_title">Brownie Recipe</string>
+    <string name="brownie_recipe_ingredient_1">125 grams of unsalted butter</string>
+    <string name="brownie_recipe_ingredient_2">125 grams of dark baking chocolate</string>
+    <string name="brownie_recipe_ingredient_3">3 eggs, lightly whisked</string>
+    <string name="brownie_recipe_ingredient_4">1 and ½ cups of white sugar</string>
+    <string name="brownie_recipe_ingredient_5">¾ cups of plain flour</string>
+    <string name="brownie_recipe_ingredient_6">¼ cup of Dutch cocoa powder</string>
+    <string name="brownie_recipe_ingredient_7">1 teaspoon of vanilla extract</string>
+    <string name="brownie_recipe_ingredient_8">Pinch of salt</string>
+    <string name="brownie_recipe_method_1">Step 1: Preheat oven to 180C or 160C fan forced. Grease a 20cm square cake pan and line with baking paper. </string>
+    <string name="brownie_recipe_method_2">Step 2: Place butter and chocolate in a heatproof bowl over a saucepan of simmering water (don\'t let the bowl touch the water). Stir with a metal spoon until melted. Remove from heat. Quickly stir in egg, sugar, flour, cocoa powder, vanilla and salt until just combined. Pour into prepared pan.</string>
+    <string name="brownie_recipe_method_3">Step 3: Bake for 30 minutes or until a skewer inserted in the centre comes out with moist crumbs clinging. Set aside to cool completely.</string>
+
 
     <!-- Lesson 4 Challenge !-->
     <string name="lesson4_challenge_intro">In this challenge, you\'ll be presented an article with an embedded video already playing. To complete the challenge, pause the video, and return its slider to the beginning of the video, then replay it. You may now start.</string>
@@ -128,7 +161,7 @@
     <string name="calculator_install_intro">In this module, you\'ll be doing a few task in a modified version of the Simple Calculator app. You can retrieve this modified app from the link below:</string>
     <string name="calculator_link">"Link to the modified Simple Calculator "</string>
     <string name="calculator_install_prompt">Once you have  installed the app, activate the button below to continue.</string>
-    <string name="simple_calculator_link"><a href="https://github.com/TalkbackTutorial/calculator-fork/releases/download/5.10.0-tbfork/tbt-simple-calculator-fork.apk">Link to the modified Simple Calculator</a></string>
+    <string name="simple_calculator_link"><a href="https://github.com/TalkbackTutorial/calculator-fork/releases/download/5.10.0-tbfork-2/tbt-simple-calculator-fork.apk">Link to the modified Simple Calculator</a></string>
 
     <!-- ExploreByTouch !-->
     <string name="explore_menu_by_touch_menu_item_prompt">You have interacted with a menu item. Find the button, then double tap to finish the lesson.</string>
@@ -175,20 +208,23 @@
     <string name="percent_s">%s</string>
 
     <!-- JumpText !-->
-    <string name="jump_text_paragraph_element_1">This is paragraph 1 of 3. When in paragraph mode, TalkBack will read one paragraph at a time, as opposed to reading all of them in an item. Swipe down until you reach paragraph 2. If you go too far, you can swipe up to move backwards. Please swipe down now.\n\nThis is paragraph 2. If you jump again, you will hear a sound that indicates that you will not move to the next paragraph. To continue, you will need to swipe down again after that sound.</string>
-    <string name="jump_text_paragraph_element_2">This is paragraph 3. What you encountered just now was you reaching another item. Items are what you were navigating earlier using horizontal swipes. When these jumps take you to a new item, you need to swipe again to actually move. To continue this module, go to the next item.</string>
-    <string name="jump_text_paragraph_element_3">Activate this with a double tap to continue.</string>
-    <string name="jump_text_request_paragraph_mode">We will now learn to use each text reading modes. As you have learned previously, please switch to the reading mode that says \"Paragraph\"</string>
+    <string name="jump_text_paragraph_element_1">This is paragraph 1 of 4. When you swipe once up or down in paragraph mode, TalkBack will switch to reading one paragraph at a time, as opposed to reading every paragraph in a block such as the next paragraph. Swipe down until you can reach paragraph 2. If you go too far, you can swipe up to go to the previous paragraph. Please swipe down now.\n\nThis is paragraph 2. If you jump again, you will hear what sounds like a thud and you will not move to the next paragraph. To continue, you will need to swipe down again after that sound.</string>
+    <string name="jump_text_paragraph_element_2">This is paragraph 3. What you encountered just now was you reaching another item. Items are what you were navigating earlier using horizontal swipes. When these jumps take you to a new item, you need to swipe again to actually move. Please swipe down to go to the next item.</string>
+    <string name="jump_text_paragraph_element_3">This is paragraph 4. Every time you reach a new item, TalkBack will read that particular item from start to end before you continue with vertical swipes. You will also encounter this scenario in the other reading modes that you will learn later. To continue to the next module, please go to the next item and double tap to continue</string>
+    <string name="jump_text_paragraph_element_4">Activate this with a double tap to continue.</string>
+    <string name="jump_text_request_paragraph_mode">We will now learn to use each text reading mode. As you have learned previously, please switch to the reading mode that says \"Paragraph\"</string>
     <string name="jump_text_paragraphs_intro3"> We will continue to learn to use the word reading mode. As you have familiarized yourself with the reading modes previously, please try this yourself and navigate to the continue word, then double tap to proceed </string>
     <string name="jump_text_paragraphs_intro4"> Finally in this module, use the character reading mode to navigate to the letter "T". When you find it, double tap to finish this module</string>
     <string name="jump_text_paragraphs_conclusion">You have completed this module. To summarise, in this module you have learnt to use all text reading modes to navigate through a page. Sending you back to the Lesson modules.</string>
     <string name="jump_text_continue_fragment_message">If you have changed reading mode to Paragraph mode, Please double tap to continue</string>
-    <string name="jump_text_line_intro">Please switch to the lines reading mode \nand swipe horizontally to go to the next item.</string>
-    <string name="jump_text_line_1">Lines refer to lines of text,\n such as a paragraph wrapping into another row of text\n or lines of poetry.\n When you start navigating lines,\n you\'ll hear only parts of this paragraph at a time.\n Swipe down now and go through the 4 numbered lines.\nLine 1 of 4. This mode is similar to paragraphs mode.\nLine 2 of 4. The next line is in another item.</string>
-    <string name="jump_text_line_2">Line 3 of 4. The item jump behaviour is the same.\nLine 4 of 4. Activate the button below to continue.</string>
+    <string name="jump_text_line_intro">Please switch to the lines reading mode and swipe horizontally to go to the next item.</string>
+    <string name="jump_text_line_1">Lines mode moves between lines of text, such as this paragraph which wraps into several rows. When you start navigating lines, you\'ll hear only parts of this paragraph at a time. Swipe down now and go through the 5 numbered lines.\nLine 1 of 5. This mode is similar to paragraphs mode.\nLine 2 of 5. The next line is in another item.</string>
+    <string name="jump_text_line_2">Line 3 of 5. When first entering an item, all lines may be read.\nLine 4 of 5. If so, you\'ll hear the first line twice.</string>
+    <string name="jump_text_line_3">Line 5 of 5. Activate the button below to continue.</string>
     <string name="jump_text_word_intro">The words reading mode lets you jump from word to word. This can be quite slow. Please switch to the words reading mode and go to the next item with a horizontal swipe.</string>
-    <string name="jump_text_word_1">Start swiping down. This can be slow.</string>
-    <string name="jump_text_word_2">It\'s like the previous modes. Double tap to continue now.</string>
+    <string name="jump_text_word_1">Start swiping down.</string>
+    <string name="jump_text_word_2">Even when swiping down, you\'ll hear the whole item once.</string>
+    <string name="jump_text_word_3">Double tap to continue.</string>
     <string name="jump_text_char_0">C</string>
     <string name="jump_text_char_1">ON</string>
     <string name="jump_text_char_2">T</string>
@@ -269,6 +305,7 @@
     <string name="voice_recorder_make_recording_prompt">When you open the app, you should grant it microphone permission. To start recording, press the recording button at the bottom of the main page. The button below will take you to the app.</string>
 
     <!-- Unsorted !-->
+
     <string name="wrong_action_message">You performed the wrong action. Please try again.</string>
     <string name="pushback_text">This element will push you back</string>
     <string name="final_button_mid_module_prompt">continue</string>

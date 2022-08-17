@@ -13,8 +13,8 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/cookie_recipe_title"
-                android:text="@string/cookie_recipe_title"
+                android:id="@+id/brownie_recipe_title"
+                android:text="@string/brownie_recipe_title"
                 android:textSize="24sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -23,12 +23,12 @@
                 android:visibility="visible" />
 
             <ImageView
-                android:id="@+id/cookie_image"
-                android:layout_width="match_parent"
-                android:layout_height="206dp"
+                android:id="@+id/brownie_image"
+                android:layout_width="301dp"
+                android:layout_height="207dp"
                 android:layout_gravity="center"
-                android:contentDescription="@string/cookie_img_desc"
-                app:srcCompat="@drawable/cookie" />
+                android:contentDescription="@string/brownie_img_desc"
+                app:srcCompat="@drawable/brownie" />
 
             <TextView
                 android:id="@+id/ingredients_heading"
@@ -39,40 +39,45 @@
                 android:padding="12dp"
                 android:visibility="visible" />
 
-            <CheckBox android:id="@+id/checkbox_cookie_ingredient_1"
+            <CheckBox android:id="@+id/checkbox_brownie_ingredient_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cookie_recipe_ingredient_1" />
+                android:text="@string/brownie_recipe_ingredient_1" />
 
-            <CheckBox android:id="@+id/checkbox_cookie_ingredient_2"
+            <CheckBox android:id="@+id/checkbox_brownie_ingredient_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cookie_recipe_ingredient_2" />
+                android:text="@string/brownie_recipe_ingredient_2" />
 
-            <CheckBox android:id="@+id/checkbox_cookie_ingredient_3"
+            <CheckBox android:id="@+id/checkbox_brownie_ingredient_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cookie_recipe_ingredient_3" />
+                android:text="@string/brownie_recipe_ingredient_3" />
 
-            <CheckBox android:id="@+id/checkbox_cookie_ingredient_4"
+            <CheckBox android:id="@+id/checkbox_brownie_ingredient_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cookie_recipe_ingredient_4" />
+                android:text="@string/brownie_recipe_ingredient_4" />
 
-            <CheckBox android:id="@+id/checkbox_cookie_ingredient_5"
+            <CheckBox android:id="@+id/checkbox_brownie_ingredient_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cookie_recipe_ingredient_5" />
+                android:text="@string/brownie_recipe_ingredient_5" />
 
-            <CheckBox android:id="@+id/checkbox_cookie_ingredient_6"
+            <CheckBox android:id="@+id/checkbox_brownie_ingredient_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cookie_recipe_ingredient_6" />
+                android:text="@string/brownie_recipe_ingredient_6" />
 
-            <CheckBox android:id="@+id/checkbox_cookie_ingredient_7"
+            <CheckBox android:id="@+id/checkbox_brownie_ingredient_7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cookie_recipe_ingredient_7" />
+                android:text="@string/brownie_recipe_ingredient_7" />
+
+            <CheckBox android:id="@+id/checkbox_brownie_ingredient_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/brownie_recipe_ingredient_8" />
 
             <TextView
                 android:id="@+id/method_heading"
@@ -84,8 +89,8 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/cookie_method_1"
-                android:text="@string/cookie_recipe_method_1"
+                android:id="@+id/brownie_method_1"
+                android:text="@string/brownie_recipe_method_1"
                 android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -93,8 +98,8 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/cookie_method_2"
-                android:text="@string/cookie_recipe_method_2"
+                android:id="@+id/brownie_method_2"
+                android:text="@string/brownie_recipe_method_2"
                 android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,8 +107,8 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/cookie_method_3"
-                android:text="@string/cookie_recipe_method_3"
+                android:id="@+id/brownie_method_3"
+                android:text="@string/brownie_recipe_method_3"
                 android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
