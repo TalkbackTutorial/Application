@@ -1,16 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TalkbackTutorial" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_A400</item>
-        <item name="colorPrimaryVariant">@color/green_A100</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green_A400</item>
-        <item name="colorSecondaryVariant">@color/green_A100</item>
-        <item name="colorOnSecondary">@color/black</item>
+    <style name="Theme.TalkbackTutorial" parent="Theme.Material3.DayNight">
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
+        <item name="android:colorBackground">@color/background_fill</item>
     </style>
 </resources>

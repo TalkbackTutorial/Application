@@ -1,0 +1,93 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="name"
+            type="String" />
+        <variable
+            name="price"
+            type="Double" />
+        <variable
+            name="description"
+            type="String" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/header_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="@dimen/horizontal_spacing"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/header_top_spacing"
+                    android:layout_marginBottom="@dimen/header_bottom_spacing"
+                    android:text="@{name}"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="@dimen/header_size"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/rating_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rating_label"
+                        android:textSize="12sp"
+                        android:textColor="?android:attr/textColorSecondary"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:text="@{@string/price_label + price}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="?android:attr/textColorSecondary" />
+
+                <TextView
+                    android:text="@{description}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="?android:attr/textColorSecondary" />
+
+                <include
+                    android:id="@+id/buy_button"
+                    layout="@layout/pill_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="24dp"
+                    app:text="@{@string/purchase}" />
+
+                <include
+                    android:id="@+id/add_to_watchlist_button"
+                    layout="@layout/pill_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:text="@{@string/add_to_watchlist}" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

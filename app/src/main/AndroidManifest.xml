@@ -2,7 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.github.talkbacktutorial">
 
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+
+        <package android:name="com.simplemobiletools.voicerecorder.tbtutorialfork.debug" />
+        <package android:name="com.simplemobiletools.calculator.debug" />
+    </queries>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,16 +22,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkbackTutorial">
         <activity
-            android:name=".activities.lesson0.Lesson0Activity"
+            android:name=".activities.sandboxmode.SandboxModeActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.modules.TodoModuleYModuleActivity"
+            android:name=".activities.gamemode.GameModeActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.modules.TodoModuleXModuleActivity"
+            android:name=".activities.challenges.lesson4.Lesson4ChallengeActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.LessonActivity"
+            android:name=".activities.challenges.lesson2.Lesson2ChallengeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.challenges.lesson3.Lesson3ChallengeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.challenges.lesson5.Lesson5ChallengeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.challenges.lesson6.Lesson6ChallengeActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
@@ -30,6 +51,70 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.LessonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.lesson1.Lesson1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.adjustreadingcontrols.AdjustReadingControlsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.adjustslider.AdjustSliderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.explorebytouch.ExploreMenuByTouchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.gotohomescreen.GoToHomeScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.goback.GoBackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.jumpcontrols.JumpControlsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.jumpheaders.JumpHeadersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.jumplinks.JumpLinksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.jumptext.JumpTextActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.mediavolumecontrol.MediaVolumeControlActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.openingvoicecommand.OpenVoiceCommandActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.opennotifications.OpenNotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.opentalkbackmenu.OpenTalkbackMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.openrecentapps.OpenRecentAppsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.scroll.ScrollActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.startstopmedia.StartStopMediaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.modules.virtualkeyboard.VirtualKeyboardActivity"
+            android:exported="false" />
+        <activity android:name=".activities.modules.calculatorapp.CalculatorAppActivity"
+            android:exported="true"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.modules.voicerecorderapp.VoiceRecorderAppActivity"
+            android:exported="true"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

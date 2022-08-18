@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id "org.jlleitschuh.gradle.ktlint" version "10.3.0"
+    id 'kotlin-kapt' // needed for Room to work
 }
 
 android {
@@ -32,6 +34,46 @@ android {
     buildFeatures {
         dataBinding true
     }
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res\\layout\\modules', 'src\\main\\res\\layout\\lessons', 'src\\main\\res\\layout\\components', 'src\\main\\res\\layout\\lesson1', 'src\\main\\res\\layout\\challenges'
+            }
+        }
+    }
+    flavorDimensions 'progress', 'intro', 'tbReq'
+    productFlavors {
+        progressLockDisable {
+            dimension "progress"
+            buildConfigField ('boolean', 'PROGRESS_LOCK', 'false')
+        }
+
+        progressLockEnable {
+            dimension "progress"
+            buildConfigField ('boolean', 'PROGRESS_LOCK', 'true')
+        }
+        skipIntro {
+            dimension 'intro'
+            buildConfigField ('boolean', 'SKIP_INTRO', 'true')
+        }
+
+        NoSkipIntro {
+            dimension 'intro'
+            buildConfigField ('boolean', 'SKIP_INTRO', 'false')
+        }
+        talkBackRequired {
+            dimension 'tbReq'
+            buildConfigField ('boolean', 'TB_REQ', 'true')
+        }
+        talkBackNotRequired {
+            dimension 'tbReq'
+            buildConfigField ('boolean', 'TB_REQ', 'false')
+        }
+    }
+}
+
+task wrapper(type: Wrapper){
+    gradleVersion = '7.2'
 }
 
 dependencies {
@@ -46,4 +88,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'com.google.android.material:material:1.5.0'
+
+    // Room
+    def room_version = "2.4.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
 }

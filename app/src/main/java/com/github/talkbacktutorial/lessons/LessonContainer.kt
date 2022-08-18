@@ -8,11 +8,17 @@ package com.github.talkbacktutorial.lessons
  */
 object LessonContainer {
 
-    private val lessons = ArrayList<Lesson>(listOf(
-        Lesson0(),
-        Lesson1(),
-        Lesson2()
-    ))
+    private val lessons = ArrayList<Lesson>(
+        listOf(
+            Lesson1(),
+            Lesson2(),
+            Lesson3(),
+            Lesson4(),
+            Lesson5(),
+            Lesson6(),
+            Lesson7()
+        )
+    )
 
     /**
      * Retrieves all lessons in a new ArrayList.
@@ -20,6 +26,14 @@ object LessonContainer {
      */
     fun getAllLessons(): ArrayList<Lesson> {
         return ArrayList(lessons)
+    }
+
+    /**
+     * Retrieves a lesson by its sequence numeral.
+     * @author Andre Pham
+     */
+    fun getLesson(sequenceNumeral: Int): Lesson {
+        return this.lessons.first { it.sequenceNumeral == sequenceNumeral }
     }
 
     /**
@@ -31,5 +45,4 @@ object LessonContainer {
             lesson.id.toString() == id
         }
     }
-
 }

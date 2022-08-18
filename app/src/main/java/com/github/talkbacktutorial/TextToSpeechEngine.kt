@@ -5,10 +5,8 @@ import android.os.Looper
 import android.provider.Settings
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * TextToSpeechEngine will be used whenever the application needs to provide context, feedback or
@@ -45,8 +43,8 @@ class TextToSpeechEngine(context: AppCompatActivity) {
             // Attempt to copy user's setting's TTS pitch and rate settings
             val systemPitch = Settings.Secure.getInt(context.contentResolver, Settings.Secure.TTS_DEFAULT_PITCH)
             val systemRate = Settings.Secure.getInt(context.contentResolver, Settings.Secure.TTS_DEFAULT_RATE)
-            ttsEngine.setPitch(systemPitch/100F)
-            ttsEngine.setSpeechRate(systemRate/100F)
+            ttsEngine.setPitch(systemPitch / 100F)
+            ttsEngine.setSpeechRate(systemRate / 100F)
         } catch (e: Settings.SettingNotFoundException) { /* Default values are set instead */ }
 
         this.ttsEngine.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
@@ -78,8 +76,12 @@ class TextToSpeechEngine(context: AppCompatActivity) {
      * @param override If true, clears the queue of text to be spoken before speaking
      */
     fun speak(text: String, override: Boolean = false) {
+        if (DebugSettings.skipTTS) {
+            this.ttsEngine.speak("skip", TextToSpeech.QUEUE_FLUSH, null, "tts1")
+            return
+        }
         this.ttsEngine.speak(text, if (override) TextToSpeech.QUEUE_FLUSH else TextToSpeech.QUEUE_ADD, null, "tts1")
-        TextToSpeechEngine.history.add(text)
+        history.add(text)
     }
 
     /**
@@ -89,8 +91,8 @@ class TextToSpeechEngine(context: AppCompatActivity) {
      */
     fun repeatLast(amount: Int = 1) {
         for (index in 1..amount) {
-            if (TextToSpeechEngine.history.size < index) continue
-            this.ttsEngine.speak(TextToSpeechEngine.history[index-1], TextToSpeech.QUEUE_ADD, null, "tts1")
+            if (history.size < index) continue
+            this.ttsEngine.speak(history[index - 1], TextToSpeech.QUEUE_ADD, null, "tts1")
         }
     }
 
@@ -148,5 +150,4 @@ class TextToSpeechEngine(context: AppCompatActivity) {
         this.onFinishedSpeaking = call
         return this
     }
-
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_header"
+            android:textSize="32sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="24sp"
+            android:textAlignment="center"
+            android:visibility="visible"
+            tools:text="Target"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/brownie_header"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:visibility="visible"
+            tools:text="Target"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/brownie_image"
+            android:layout_width="224dp"
+            android:layout_height="139dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/brownie_img_desc"
+            app:srcCompat="@drawable/brownie" />
+
+        <TextView
+            android:id="@+id/brownie_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:visibility="visible"
+            tools:text="Target"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/brownie_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:visibility="visible"
+            android:text="@string/brownie_link"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/cookie_header"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:padding="8dp"
+            android:visibility="visible"
+            tools:text="Target"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/cookie_image"
+            android:layout_width="168dp"
+            android:layout_height="165dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/cookie_img_desc"
+            app:srcCompat="@drawable/cookie" />
+
+        <TextView
+            android:id="@+id/cookie_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:visibility="visible"
+            tools:text="Target"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/cookie_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:visibility="visible"
+            android:text="@string/cookie_link"
+            tools:visibility="visible" />
+
+
+    </LinearLayout>
+</layout>

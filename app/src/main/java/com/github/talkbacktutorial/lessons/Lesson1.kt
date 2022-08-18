@@ -1,20 +1,34 @@
 package com.github.talkbacktutorial.lessons
 
+import android.content.Context
+import android.content.Intent
+import com.github.talkbacktutorial.App
+import com.github.talkbacktutorial.R
+import com.github.talkbacktutorial.activities.lesson1.Lesson1Activity
+import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.modules.Module
-import com.github.talkbacktutorial.lessons.modules.TodoModuleX
-import com.github.talkbacktutorial.lessons.modules.TodoModuleY
 
 /**
- * TODO
+ * Lesson1 is a special case because it will be what runs when the application first opens.
+ * It has no modules, just a sequence of fragments for the user to get used to navigation.
+ * @author Andre Pham
  */
 class Lesson1 : Lesson() {
 
-    override val title: String = "TODO LESSON 1" // E.g. "Media Interaction"
+    override val title: String = App.resources.getString(R.string.lesson1_title)
     override val sequenceNumeral: Int = 1
-    override val modules: ArrayList<Module> = ArrayList(listOf(
-        TodoModuleX(),
-        TodoModuleY()
-        // Add more ...
-    ))
+    override val modules: ArrayList<Module> = ArrayList()
+    override val description: String = App.resources.getString(R.string.empty_string)
+    override val challenge: Challenge? = null
 
+    /**
+     * Starts the activity responsible for lesson 0.
+     * Unlike all the other activities that share LessonActivity, this has its own activity
+     * (refer to class header for more information on why).
+     * @author Andre Pham
+     * @param context The context that starts Lesson0's Activity.
+     */
+    override fun startActivity(context: Context) {
+        context.startActivity(Intent(context, Lesson1Activity::class.java))
+    }
 }

@@ -2,7 +2,10 @@ package com.github.talkbacktutorial.lessons
 
 import android.content.Context
 import android.content.Intent
+import com.github.talkbacktutorial.App
+import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.LessonActivity
+import com.github.talkbacktutorial.lessons.challenges.Challenge
 import com.github.talkbacktutorial.lessons.modules.Module
 import java.util.*
 
@@ -24,19 +27,21 @@ import java.util.*
 abstract class Lesson {
 
     companion object { // Static
-        const val INTENT_KEY = "C57D2EB9-C8D0-4315-916D-C05159E8EE23"
+        val INTENT_KEY = App.resources.getString(R.string.intent_key)
     }
 
     abstract val title: String
     abstract val sequenceNumeral: Int
+    abstract val description: String
     val id: UUID = UUID.randomUUID()
     abstract val modules: ArrayList<Module>
+    abstract val challenge: Challenge?
 
     var isLocked: Boolean = false
         private set
 
     val sequenceName: String
-        get() = "Lesson " + this.sequenceNumeral
+        get() = App.resources.getString(R.string.lesson_space) + this.sequenceNumeral
 
     /**
      * Starts the activity responsible for this lesson.
@@ -59,5 +64,4 @@ abstract class Lesson {
     fun getModuleSequenceNumeral(module: Module): Int {
         return this.modules.indexOfFirst { it.id == module.id } + 1
     }
-
 }
