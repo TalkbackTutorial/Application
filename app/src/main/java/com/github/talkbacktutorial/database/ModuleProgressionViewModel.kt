@@ -35,7 +35,7 @@ class ModuleProgressionViewModel(application: Application): AndroidViewModel(app
 
     /**
      * Gets module progression in the module database based on lesson number
-     * @param moduleProgression the module progression you want to update
+     * @param lessonNum number of the lesson you want to check module progression for
      * @author Antony Loose
      */
     fun getModuleProgressionByLessonNum(lessonNum: Int): LiveData<List<ModuleProgression>>{
@@ -86,7 +86,7 @@ class ModuleProgressionViewModel(application: Application): AndroidViewModel(app
     fun clearDatabase(){
         viewModelScope.launch(Dispatchers.IO){
             repository.wipeAllModuleProgressions()
-            exitProcess(0);
+            exitProcess(0)
         }
     }
 

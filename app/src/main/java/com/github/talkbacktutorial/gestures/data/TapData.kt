@@ -2,7 +2,6 @@ package com.github.talkbacktutorial.gestures.data
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 
 /**
  * Stores and manipulates data relating to a tap gesture.

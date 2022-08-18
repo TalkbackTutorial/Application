@@ -19,7 +19,7 @@ class AdjustReadingControlsActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_basic_frame)
 
         supportFragmentManager.commit {
-            replace(R.id.frame, AdjustReadingControlsPart1Fragment())
+            replace(binding.frame.id, AdjustReadingControlsPart1Fragment())
         }
     }
 }

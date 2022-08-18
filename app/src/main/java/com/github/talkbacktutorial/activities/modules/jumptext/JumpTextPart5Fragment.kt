@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -14,7 +15,6 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
-import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart3Binding
 import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart5Binding
 
 class JumpTextPart5Fragment : Fragment() {
@@ -28,17 +28,42 @@ class JumpTextPart5Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part5, container, false)
+            DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_jump_text_module_part5,
+                container,
+                false
+            )
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
+        setupTextViewTransition()
         this.speakIntro()
-        binding.textView2.setOnClickListener {
+        binding.jumpCharsBlock2.setOnClickListener {
             this.onClickContinueLesson()
         }
+        // fix TalkBack putting focus at end of fragment
+        binding.layout[0].sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+    }
+
+    private fun setupTextViewTransition() {
+        // The views starts off invisible
+        binding.jumpCharsBlock0.visibility = View.GONE
+        binding.jumpCharsBlock1.visibility = View.GONE
+        binding.jumpCharsBlock2.visibility = View.GONE
+        binding.jumpCharsBlock3.visibility = View.GONE
+
+        // enable views after tts engine intro
+        this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
+            .onFinishedSpeaking(triggerOnce = true) {
+                binding.jumpCharsBlock0.visibility = View.VISIBLE
+                binding.jumpCharsBlock1.visibility = View.VISIBLE
+                binding.jumpCharsBlock2.visibility = View.VISIBLE
+                binding.jumpCharsBlock3.visibility = View.VISIBLE
+            }
     }
 
     /**
@@ -71,8 +96,9 @@ class JumpTextPart5Fragment : Fragment() {
      * Updates the database when a module is completed
      * @author Antony Loose
      */
-    private fun updateModule(){
-        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+    private fun updateModule() {
+        val moduleProgressionViewModel =
+            ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
         InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
             moduleProgressionViewModel.markModuleCompleted(it, context as Context)
         }

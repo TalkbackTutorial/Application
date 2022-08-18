@@ -1,9 +1,12 @@
 package com.github.talkbacktutorial.activities.modules.openingvoicecommand
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -23,6 +26,8 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
     private lateinit var binding: FragmentOpenVoiceCommandModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
     private var count = 0
+    private var activityStopCount = 0
+    private var voiceRecorderPermission = Manifest.permission.RECORD_AUDIO
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,15 +42,31 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as OpenVoiceCommandActivity))
-        this.speakIntro()
+
+        if (savedInstanceState != null) {
+            activityStopCount = savedInstanceState.getInt(getString(R.string.stopped_count))
+        }
 
         view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
             count++
-            // If the count is greater than 2, the app must have lost focus and re-gained focus
-            if (count > 2) {
+            val permissionGranted = ActivityCompat.checkSelfPermission((activity as OpenVoiceCommandActivity), voiceRecorderPermission)
+            if ((count == 1) && (permissionGranted == PackageManager.PERMISSION_GRANTED)) {
+                this.speakIntro()
+            }
+            if (activityStopCount == 1) {
                 finishLesson()
             }
         }
+    }
+
+    override fun onStop() {
+        activityStopCount += 1
+        super.onStop()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(getString(R.string.stop_count), activityStopCount)
+        super.onSaveInstanceState(outState)
     }
 
 
@@ -64,9 +85,12 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
      */
     private fun finishLesson() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            activity?.finish()
+            parentFragmentManager.commit {
+                replace(this@OpenVoiceCommandPart1Fragment.id, OpenVoiceCommandPart2Fragment.newInstance())
+                addToBackStack(getString(R.string.open_recent_apps_part1_backstack))
+            }
         }
-        Timer().schedule(2000) {
+        Timer().schedule(3000) {
             val outro = getString(R.string.open_voice_commands_part1_outro).trimIndent()
             ttsEngine.speak(outro)
         }

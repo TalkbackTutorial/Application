@@ -2,12 +2,12 @@ package com.github.talkbacktutorial.activities.sandboxmode
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.MotionEvent
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
@@ -16,8 +16,8 @@ import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeManag
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangePage
 import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.databinding.ActivitySandboxModeBinding
-import com.github.talkbacktutorial.gestures.delegates.GestureDelegate
 import com.github.talkbacktutorial.gestures.GestureIdentifier
+import com.github.talkbacktutorial.gestures.delegates.GestureDelegate
 import com.github.talkbacktutorial.gestures.delegates.SimpleGestureDelegate
 
 class SandboxModeActivity : AppCompatActivity() {

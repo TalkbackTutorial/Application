@@ -12,13 +12,7 @@
             android:padding="@dimen/content_padding">
 
             <TextView
-                android:id="@+id/voice_recorder_play_success"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/paragraph_spacing"
-                android:text="@string/voice_recorder_successful_recording" />
-
-            <TextView
+                android:id="@+id/prompt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/voice_recorder_play_recording_prompt" />

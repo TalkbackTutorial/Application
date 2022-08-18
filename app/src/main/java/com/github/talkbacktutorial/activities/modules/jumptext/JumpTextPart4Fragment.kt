@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -14,7 +15,6 @@ import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
-import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart3Binding
 import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart4Binding
 
 class JumpTextPart4Fragment : Fragment() {
@@ -35,19 +35,11 @@ class JumpTextPart4Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
-        this.speakIntro()
-        binding.textView2.setOnClickListener {
+        binding.targetWord.setOnClickListener {
             this.onClickContinueLesson()
         }
-    }
-
-    /**
-     * Speaks an intro for the fragment.
-     * @author Joel Yang
-     */
-    private fun speakIntro() {
-        val intro = getString(R.string.jump_text_paragraphs_intro3).trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
+        // fix TalkBack putting focus at end of fragment
+        binding.layout[0].sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
     }
 
     /**

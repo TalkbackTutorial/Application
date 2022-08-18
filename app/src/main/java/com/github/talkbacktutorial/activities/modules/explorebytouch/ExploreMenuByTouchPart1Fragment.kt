@@ -1,7 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.explorebytouch
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +8,13 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.BasicCardBinding
 import com.github.talkbacktutorial.databinding.FragmentExploreMenuByTouchModulePart1Binding
-import com.github.talkbacktutorial.lessons.Lesson
-import com.github.talkbacktutorial.lessons.LessonContainer
 
 class ExploreMenuByTouchPart1Fragment : Fragment() {
     companion object {
@@ -119,7 +114,7 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             activity?.finish()
         }
-        this.ttsEngine.speak(getString(R.string.explore_menu_by_touch_part2_outro), override = true)
+        this.ttsEngine.speak(getString(R.string.explore_menu_by_touch_part1_outro), override = true)
     }
 
     override fun onDestroyView() {

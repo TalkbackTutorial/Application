@@ -1,4 +1,4 @@
-package com.github.talkbacktutorial.activities.modules.voicerecorderapp
+package com.github.talkbacktutorial.activities.modules.calculatorapp
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -10,9 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.activities.modules.calculatorapp.CalculatorAppPart1Fragment
 import com.github.talkbacktutorial.databinding.FragmentCalculatorAppModuleIntroBinding
-import com.github.talkbacktutorial.databinding.FragmentVoiceRecorderModuleIntroBinding
 
 /**
  * Introductory fragment asking user to install the forked app.
@@ -69,9 +67,9 @@ class CalculatorAppIntroFragment : Fragment() {
             } catch (_: PackageManager.NameNotFoundException) {
                 false
             }
-            return appAvailable;
+            return appAvailable
         }
-        return false;
+        return false
     }
 
 }

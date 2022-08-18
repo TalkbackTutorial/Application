@@ -1,6 +1,8 @@
 package com.github.talkbacktutorial.activities.modules.calculatorapp
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,10 +35,13 @@ class CalculatorAppPart2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as CalculatorAppActivity))
             .onFinishedSpeaking(triggerOnce = true) {
-                binding.continueCard.visibility = View.VISIBLE
+                binding.finishModule.visibility = View.VISIBLE
             }
         this.setupFinishCard()
-        this.speakIntro()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            this.speakIntro()
+        }, 1000)
     }
 
     /**
@@ -53,10 +58,9 @@ class CalculatorAppPart2Fragment : Fragment() {
      * @author Joel Yang
      */
     private fun setupFinishCard() {
-        // The card starts off invisible
-        binding.continueCard.visibility = View.GONE
+        binding.finishModule.visibility = View.GONE
         // The button transitions to the next fragment when clicked
-        binding.continueCard.setOnClickListener {
+        binding.finishModule.setOnClickListener {
             this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 activity?.finish()
             }

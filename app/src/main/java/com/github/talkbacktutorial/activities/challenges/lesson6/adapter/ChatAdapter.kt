@@ -1,13 +1,13 @@
 package com.github.talkbacktutorial.activities.challenges.lesson6.adapter
 
 import android.content.Context
-import com.github.talkbacktutorial.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.activities.challenges.lesson6.model.ChatModel
 
 

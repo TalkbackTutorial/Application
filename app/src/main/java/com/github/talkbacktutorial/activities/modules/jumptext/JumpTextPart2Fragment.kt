@@ -26,26 +26,21 @@ class JumpTextPart2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         this.binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_jump_text_module_part2, container, false)
+            DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_jump_text_module_part2,
+                container,
+                false
+            )
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
-        this.speakIntro()
         binding.continueText.setOnClickListener {
             this.onClickContinueLesson()
         }
-    }
-
-    /**
-     * Speaks an intro for the fragment.
-     * @author Joel Yang
-     */
-    private fun speakIntro() {
-        val intro = getString(R.string.jump_text_paragraphs_intro).trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
     }
 
     /**
@@ -55,7 +50,7 @@ class JumpTextPart2Fragment : Fragment() {
     private fun onClickContinueLesson() {
         updateModule()
         parentFragmentManager.commit {
-            replace(R.id.frame, JumpTextPart3Fragment())
+            replace(this@JumpTextPart2Fragment.id, JumpTextPart3Fragment())
         }
     }
 
@@ -68,8 +63,9 @@ class JumpTextPart2Fragment : Fragment() {
      * Updates the database when a module is completed
      * @author Antony Loose
      */
-    private fun updateModule(){
-        val moduleProgressionViewModel = ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
+    private fun updateModule() {
+        val moduleProgressionViewModel =
+            ViewModelProvider(this).get(ModuleProgressionViewModel::class.java)
         InstanceSingleton.getInstanceSingleton().selectedModuleName?.let {
             moduleProgressionViewModel.markModuleCompleted(it, context as Context)
         }

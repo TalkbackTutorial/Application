@@ -3,11 +3,9 @@ package com.github.talkbacktutorial.activities.gamemode
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.MediaPlayer
-import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity

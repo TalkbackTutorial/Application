@@ -10,7 +10,7 @@ import java.util.*
  */
 object ToyContainer {
 
-    private val toys = ArrayList<Toy>(
+    private val toys = ArrayList(
         listOf(
             Toy(App.resources.getString(R.string.tennis_ball), 5.0, App.resources.getString(R.string.tennis_ball_description)),
             Toy(App.resources.getString(R.string.tennis_racquet), 180.0, App.resources.getString(R.string.tennis_racquet_description)),

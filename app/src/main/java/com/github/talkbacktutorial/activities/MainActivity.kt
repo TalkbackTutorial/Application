@@ -25,6 +25,7 @@ import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeListener
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangeManager
 import com.github.talkbacktutorial.accessibilitymanager.AccessibilityChangePage
+import com.github.talkbacktutorial.activities.challenges.lesson5.Lesson5ChallengePart2Fragment
 import com.github.talkbacktutorial.activities.gamemode.GameModeActivity
 import com.github.talkbacktutorial.activities.sandboxmode.SandboxModeActivity
 import com.github.talkbacktutorial.activities.viewmodels.LessonsViewModel
@@ -36,14 +37,13 @@ import com.github.talkbacktutorial.databinding.ActivityMainBinding
 import com.github.talkbacktutorial.databinding.LessonCardBinding
 import com.github.talkbacktutorial.lessons.Lesson
 import com.github.talkbacktutorial.lessons.LessonContainer
-import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var ttsEngine: TextToSpeechEngine
     private val lessonsModel: LessonsViewModel by viewModels()
-    lateinit var mainView: ConstraintLayout
+    private lateinit var mainView: ConstraintLayout
     private lateinit var binding: ActivityMainBinding
     private lateinit var moduleProgressionViewModel: ModuleProgressionViewModel
     private lateinit var gameModeDbController: GameModeViewModel
@@ -98,6 +98,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         AccessibilityChangeManager.setPage(AccessibilityChangePage.MAIN)
+        // Check if user back from notification - for lesson5 challenge
+        if (intent.hasExtra(Lesson5ChallengePart2Fragment.LESSON5_COMPLETED)) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                this.ttsEngine.speak(getString(R.string.lesson5_challenge_complete))
+            }, 4000)    // Avoid conflicts with tts
+            intent.removeExtra(Lesson5ChallengePart2Fragment.LESSON5_COMPLETED)
+        }
         super.onResume()
     }
 
@@ -198,7 +205,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Loads all lessons, and sets each as locked or unlocked depending on the
      * user's progression.
-     * @param moduleProgressions All entries in the database, one for each lesson, specifies
+     * @param modules All entries in the database, one for each lesson, specifies
      * whether the lesson is completed or not
      * @author Antony Loose, Jade Davis
      */

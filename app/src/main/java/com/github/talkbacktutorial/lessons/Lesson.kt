@@ -24,7 +24,7 @@ import java.util.*
  *
  * @author Andre Pham
  */
-abstract class Lesson() {
+abstract class Lesson {
 
     companion object { // Static
         val INTENT_KEY = App.resources.getString(R.string.intent_key)

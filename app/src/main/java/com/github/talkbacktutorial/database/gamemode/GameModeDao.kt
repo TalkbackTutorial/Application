@@ -18,7 +18,7 @@ interface GameModeDao {
     @Query("SELECT highScore FROM gameMode_table ORDER BY highScore ASC")
     fun getAllHighScores(): LiveData<List<Int>>
 
-    @Insert()
+    @Insert
     suspend fun addHighScore(gameMode: GameMode)
 
     @Query("DELETE FROM gameMode_table")

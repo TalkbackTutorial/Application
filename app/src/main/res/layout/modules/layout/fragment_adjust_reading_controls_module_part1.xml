@@ -26,9 +26,17 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/paragraph_spacing"
+                    android:text="@string/adjust_reading_controls_part1_change_to_manual_mode" />
+
+                <TextView
                     android:id="@+id/intro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/paragraph_spacing"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/adjust_reading_controls_part1_intro" />
@@ -37,6 +45,7 @@
                     android:id="@+id/intro2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/paragraph_spacing"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/adjust_reading_controls_part1_justification" />
@@ -45,35 +54,35 @@
                     android:id="@+id/up_down_prompt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="8dp"
+                    android:layout_marginVertical="@dimen/paragraph_spacing"
                     android:text="@string/adjust_reading_controls_part1_prompt" />
 
                 <TextView
                     android:id="@+id/down_up_prompt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="8dp"
+                    android:layout_marginVertical="@dimen/paragraph_spacing"
                     android:text="@string/adjust_reading_controls_part1_backwards_prompt" />
 
                 <TextView
                     android:id="@+id/multi_finger_prompt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="8dp"
+                    android:layout_marginVertical="@dimen/paragraph_spacing"
                     android:text="@string/adjust_reading_controls_part1_multi_finger" />
 
                 <TextView
                     android:id="@+id/conclusion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="8dp"
+                    android:layout_marginVertical="@dimen/paragraph_spacing"
                     android:text="@string/adjust_reading_controls_part1_finished_text" />
 
                 <Button
                     android:id="@+id/finish_module"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_marginVertical="@dimen/paragraph_spacing"
                     android:text="@string/finish_module_button" />
 
             </LinearLayout>

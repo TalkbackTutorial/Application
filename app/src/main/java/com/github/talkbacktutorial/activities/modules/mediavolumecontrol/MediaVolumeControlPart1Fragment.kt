@@ -5,15 +5,12 @@ import android.content.Intent
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityManager
 import android.widget.SeekBar
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,8 +21,6 @@ import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentMediaVolumeControlModulePart1Binding
-import com.github.talkbacktutorial.databinding.WidePillButtonBinding
-import kotlin.math.roundToInt
 
 class MediaVolumeControlPart1Fragment : Fragment() {
 
@@ -50,7 +45,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_media_volume_control_module_part1, container, false)
         this.binding.mediaVolumeControlConstraintLayout.visibility = View.INVISIBLE
         return this.binding.root
@@ -114,7 +109,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
                             speakDuringLesson(info)
                         } else lessonLogic()
                     } else speakDuringLesson(getString(R.string.media_volume_control_part1_talkback_prompt))
-                    Log.i("Testing", "p1 " + p1.toString())
+                    Log.i("Testing", "p1 $p1")
                 }
             }
 

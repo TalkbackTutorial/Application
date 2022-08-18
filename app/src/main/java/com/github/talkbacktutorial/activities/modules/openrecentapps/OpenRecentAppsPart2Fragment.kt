@@ -1,7 +1,6 @@
 package com.github.talkbacktutorial.activities.modules.openrecentapps
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
-import com.github.talkbacktutorial.activities.LessonActivity
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
-import com.github.talkbacktutorial.lessons.Lesson
-import com.github.talkbacktutorial.lessons.LessonContainer
 import java.util.*
 import kotlin.concurrent.schedule
 

@@ -8,23 +8,23 @@ import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.databinding.ActivityOpenVoiceCommandModuleBinding
+import com.github.talkbacktutorial.databinding.ActivityBasicFrameBinding
 
 // This constant is needed to verify the audio permission result
 private const val ASR_PERMISSION_REQUEST_CODE = 0
 
 class OpenVoiceCommandActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityOpenVoiceCommandModuleBinding
+    lateinit var binding: ActivityBasicFrameBinding
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_open_voice_command_module)
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_basic_frame)
         verifyAudioPermissions()
         supportFragmentManager.commit {
-            replace(R.id.frame, OpenVoiceCommandPart1Fragment.newInstance())
+            replace(binding.frame.id, OpenVoiceCommandPart1Fragment.newInstance())
         }
     }
 

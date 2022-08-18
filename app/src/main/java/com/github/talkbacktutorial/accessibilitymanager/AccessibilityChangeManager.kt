@@ -2,15 +2,10 @@ package com.github.talkbacktutorial.accessibilitymanager
 
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.content.Context
-import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.accessibility.AccessibilityManager
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
 import com.github.talkbacktutorial.App
-import com.github.talkbacktutorial.activities.MainActivity
 
 /**
  * Manages listeners that trigger when Talkback changes to being either enabled or disabled.

@@ -35,14 +35,14 @@ class InspectToyFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            this.toy = ToyContainer.getToy(UUID.fromString(it.getString(TOY_PARAM)!!)) ?: return
+            this.toy = ToyContainer.getToy(UUID.fromString(it.getString(TOY_PARAM)!!))
         }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_inspect_toy, container, false)
         return binding.root
     }

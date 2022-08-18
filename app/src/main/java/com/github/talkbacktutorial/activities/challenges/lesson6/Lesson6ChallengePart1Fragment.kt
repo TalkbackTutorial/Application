@@ -36,7 +36,7 @@ class Lesson6ChallengePart1Fragment : Fragment(){
     private var recyclerView: RecyclerView? = null
     private var messageBox: EditText? = null
     private var sendButton: Button? = null
-    val chatModels: ArrayList<ChatModel> = ArrayList()
+    private val chatModels: ArrayList<ChatModel> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -89,7 +89,7 @@ class Lesson6ChallengePart1Fragment : Fragment(){
             this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
                 insertFinishButton()
             }
-            Handler().postDelayed(Runnable {
+            Handler().postDelayed({
                 this.ttsEngine.speak(getString(R.string.challenge_outro))
             },3000)
         }
@@ -139,8 +139,14 @@ class Lesson6ChallengePart1Fragment : Fragment(){
         TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
     ).toInt()
 
-
-
-
+    /**
+     * Clean up TTS when fragment is destroyed
+     *
+     * @author Matthew Crossman
+     */
+    override fun onDestroyView() {
+        ttsEngine.shutDown()
+        super.onDestroy()
+    }
 
 }

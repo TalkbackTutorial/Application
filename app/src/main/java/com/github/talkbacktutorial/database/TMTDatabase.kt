@@ -12,7 +12,7 @@ import com.github.talkbacktutorial.database.gamemode.GameModeDao
  * the database throughout the application
  * @author Antony Loose
  */
-@Database(entities = [ModuleProgression::class, GameMode::class], version = 1, exportSchema = false)
+@Database(entities = [ModuleProgression::class, GameMode::class], version = 2, exportSchema = false)
 abstract class TMTDatabase: RoomDatabase() {
 
     abstract fun moduleProgressionDao(): ModuleProgressionDao

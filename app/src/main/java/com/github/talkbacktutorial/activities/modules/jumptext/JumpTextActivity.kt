@@ -18,7 +18,7 @@ class JumpTextActivity : AppCompatActivity() {
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_basic_frame)
 
         supportFragmentManager.commit {
-            replace(R.id.frame, JumpTextPart1Fragment())
+            replace(binding.frame.id, JumpTextPart1Fragment())
         }
     }
 }

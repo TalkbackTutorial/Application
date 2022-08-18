@@ -31,28 +31,34 @@ class GoToHomeScreenActivity : AppCompatActivity() {
 
     override fun onStart() {
         repeatBtn.visibility = View.GONE
-        if (stoppedCount == 0) { // This currently just checks for how many times the activity stopped
-            ttsEngine.onFinishedSpeaking {
-                repeatBtn.visibility = View.VISIBLE
-                repeatBtn.setOnClickListener { speakIntro() }
-            }
-            this.speakIntro()
-        } else if (stoppedCount == 1) {
-            ttsEngine.onFinishedSpeaking {
-                repeatBtn.visibility = View.VISIBLE
-                repeatBtn.setOnClickListener { speakMid() }
-            }
-            this.speakMid()
-        } else if (stoppedCount == 2) {
-            // update db
-            updateModule()
 
-            repeatBtn.visibility = View.GONE // disable button before speaking outro
-            ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                finish()
+        when (stoppedCount) {
+            0 -> { // This currently just checks for how many times the activity stopped
+                ttsEngine.onFinishedSpeaking {
+                    repeatBtn.visibility = View.VISIBLE
+                    repeatBtn.setOnClickListener { speakIntro() }
+                }
+                this.speakIntro()
             }
-            this.speakOutro()
+            1 -> {
+                ttsEngine.onFinishedSpeaking {
+                    repeatBtn.visibility = View.VISIBLE
+                    repeatBtn.setOnClickListener { speakMid() }
+                }
+                this.speakMid()
+            }
+            2 -> {
+                // update db
+                updateModule()
+
+                repeatBtn.visibility = View.GONE // disable button before speaking outro
+                ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                    finish()
+                }
+                this.speakOutro()
+            }
         }
+
         super.onStart()
     }
 
