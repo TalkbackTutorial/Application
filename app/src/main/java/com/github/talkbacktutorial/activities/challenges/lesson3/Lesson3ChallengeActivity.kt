@@ -52,7 +52,7 @@ class Lesson3ChallengeActivity : AppCompatActivity() {
         }
         Handler(Looper.getMainLooper()).postDelayed({
             this.ttsEngine.speak(getString(R.string.lesson3_challenge_outro))
-        }, 500)    // Avoid conflict with checkbox
+        }, 800)    // Avoid conflict with checkbox
         updateModule()
     }
 
