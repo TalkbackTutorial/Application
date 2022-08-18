@@ -114,7 +114,7 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             activity?.finish()
         }
-        this.ttsEngine.speak(getString(R.string.explore_menu_by_touch_part2_outro), override = true)
+        this.ttsEngine.speak(getString(R.string.explore_menu_by_touch_part1_outro), override = true)
     }
 
     override fun onDestroyView() {
