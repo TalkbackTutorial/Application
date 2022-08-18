@@ -38,14 +38,25 @@ class VoiceRecorderPlayRecordingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // activate button
-        binding.voiceRecorderPlayOpenButton.setOnClickListener {
-            startActivity(VoiceRecorderAppActivity.getAppIntent())
-        }
+        // activate button (also prompt due to errant "double tap to activate")
+        binding.voiceRecorderPlayOpenButton.setOnClickListener { openApp() }
+        binding.prompt.setOnClickListener { openApp() }
+
+        binding.prompt.text =
+            getString(R.string.voice_recorder_successful_recording) + "\n\n" + getString(R.string.voice_recorder_play_recording_prompt)
 
         // hack to fix focus being forced onto button instead of first TextView
         Handler(Looper.getMainLooper()).postDelayed({
-            binding.voiceRecorderPlaySuccess.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+            binding.prompt.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
         }, 1000)
+    }
+
+    /**
+     * Opens the voice recorder using the intent provided by the parent activity
+     *
+     * @author Matthew Crossman
+     */
+    private fun openApp() {
+        startActivity(VoiceRecorderAppActivity.getAppIntent())
     }
 }

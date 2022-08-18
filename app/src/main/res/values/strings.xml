@@ -126,8 +126,9 @@
     <string name="lesson1_part3_intro">You will now learn to interact with elements on the screen. To interact with an element, double tap when you have selected it. For this activity, explore the elements on the screen until you reach the button. To activate the button and finish the lesson, double tap.</string>
 
     <!-- AdjustReadingControls !-->
+    <string name="adjust_reading_controls_part1_change_to_manual_mode">For modules in this lesson, you\'ll need to use horizontal swipes to navigate yourself through the module content.</string>
+    <string name="adjust_reading_controls_part1_intro">This module covers how to adjust TalkBack\'s reading controls, which lets us make TalkBack read and navigate in different ways. When you change modes, TalkBack will speak the mode you have switched to and what you\'re able to do with them.</string>
     <string name="adjust_reading_controls_part1_justification">There are reading and navigation modes. Reading modes help you read in a granular way, such as by words, paragraphs, or characters. Navigation modes help you move around more efficiently, such as by jumping from button to button.</string>
-    <string name="adjust_reading_controls_part1_intro">This module covers how to adjust TalkBack\'s reading controls, which lets us make TalkBack read and navigate in different ways. When you change modes, TalkBack will speak the mode you have switched to.</string>
     <string name="adjust_reading_controls_part1_prompt">To change your mode, swipe up and down in one motion. Try to go through all of the options before moving on.</string>
     <string name="adjust_reading_controls_part1_backwards_prompt">You can go backwards through the list. Swipe down then up in one motion to go through the list in the opposite direction.</string>
     <string name="adjust_reading_controls_part1_multi_finger">Modes can also be switched by swiping with three fingers horizontally either to the left or to the right. Try going through the list with three finger swipes in both directions before moving on.</string>

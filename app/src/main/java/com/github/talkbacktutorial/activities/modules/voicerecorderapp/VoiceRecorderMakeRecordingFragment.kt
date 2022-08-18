@@ -35,6 +35,8 @@ class VoiceRecorderMakeRecordingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.prompt.text = getString(R.string.voice_recorder_make_recording_intro) + "\n\n" + getString(R.string.voice_recorder_make_recording_prompt)
+
         binding.voiceRecorderOpenButton.setOnClickListener {
             startActivity(VoiceRecorderAppActivity.getAppIntent())
         }
