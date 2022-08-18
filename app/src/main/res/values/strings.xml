@@ -166,7 +166,7 @@
 
     <!-- ExploreByTouch !-->
     <string name="explore_menu_by_touch_menu_item_prompt">You have interacted with a menu item. Find the button, then double tap to finish the lesson.</string>
-    <string name="explore_menu_by_touch_part1_intro">Welcome! In this lesson we will be focusing on interacting with a menu. In this module, you will learn how to explore the menu. Usually there are many items in a menu, and you may want to browse them more efficiently. Dragging your finger around the screen used can be done to quickly scan the items in a menu. To start, you will explore a three column menu using this method. Touch the screen by your finger and drag it slowly around screen. Make sure your finger is touching the screen at all times. You can drag in any direction. Find the finish button in the menu and double tap it to finish.</string>
+    <string name="explore_menu_by_touch_part1_intro">Welcome! In this module, you will learn how to use explore by touch. You can select different elements by holding your finger on the screen and moving it over another element you\'d like to select. To complete the lesson, use explore by touch to find the Finish Lesson button. Remember to drag your finger in any direction slowly around screen, and make sure your finger is touching the screen at all times. You may now start.</string>
     <string name="explore_menu_by_touch_part1_outro">You have completed the lesson. Sending you to the lesson page.</string>
 
     <!-- GoBack !-->
