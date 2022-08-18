@@ -136,7 +136,7 @@
     <!-- Adjust Slider !-->
     <string name="percentage">%</string> <!--not complete!-->
     <string name="adjust_slider_part2_backstack">adjustSliderModulePart2</string>
-    <string name="adjust_slider_part1_intro">Welcome.In this module, you will learn how to increase and decrease slider values. A slider is a track that contains values between a minimum and a maximum. Sliders are often used to adjust volume and song times or video times. To start you will try increasing a sliders value. To increase a slider, swipe up. To continue, increase the slider value to 100%</string>
+    <string name="adjust_slider_part1_intro">Welcome. In this module, you will learn how to increase and decrease slider values. A slider is a track that contains values between a minimum and a maximum. Sliders are often used to adjust volume and song times or video times. To start you will try increasing a sliders value. To increase a slider, swipe up. To continue, increase the slider value to 100%</string>
     <string name="adjust_slider_part1_go_to_min">Well done! Now you will try decreasing the sliders value. To decrease a slider, swipe down. To continue set the slider value to 50%</string>
     <string name="adjust_slider_part1_outro">Well done! You now know how to adjust a slider by swiping up or down. You will now be taken to the next part of this lesson</string>
     <string name="adjust_slider_part2_intro">Welcome to the next part of the module. Another way of adjusting sliders is to double tap then drag. To start you will try increasing the sliders value. To increase a slider double tap and hold the slider then drag right. To continue increase the slider value to 100%. Note that you will have to explore by touch to find the slider.</string>
@@ -192,7 +192,7 @@
     <!-- JumpHeaders !-->
     <string name="jump_headers_entity">header</string>
     <string name="jump_headers_entity_plural">headers</string>
-    <string name="jump_headers_intro_1">The headers reading mode allows you to jump between headers, such those found before blocks of text or groups of form fields.</string>
+    <string name="jump_headers_intro_1">The headers reading mode allows you to jump between headers, such as those found before blocks of text or groups of form fields.</string>
 
     <!-- JumpLinks !-->
     <string name="jump_links_entity">link</string>
@@ -232,12 +232,12 @@
     <string name="jump_text_char_3">INUE</string>
 
     <!-- MediaVolumeControl !-->
-    <string name="media_volume_control_part1_intro">In this tutorial, you will be learning how to control the media volume sliders and adjust your phone\'s volume. To start, explore your screen by touch and find the play button then double tap to play the music.</string>
-    <string name="media_volume_control_part1_increase_volume">Great job! Now, increase the volume of the media above 75 by swiping up.</string>
+    <string name="media_volume_control_part1_intro">In this tutorial, you will be learning how to control media volume sliders to adjust volume. To start, find the play button then double tap to play the music.</string>
+    <string name="media_volume_control_part1_increase_volume">Great job! Now, go back to the slider and increase the media\'s volume above 75 by swiping up.</string>
     <string name="media_volume_control_part1_play_prompt">The song is not played. Please press the play button to play the music.</string>
     <string name="media_volume_control_part1_talkback_prompt">Talkback is currently not turned on. Please turn Talkback on to continue this lesson</string>
-    <string name="media_volume_control_part1_decrease_volume">current volume is set above 75. Now that you learned how to increase the volume, we will try decreasing the volume below 25. To decrease the volume, swipe down.</string>
-    <string name="media_volume_control_part1_outro">Current volume is set below 25. Congratulations on completing this lesson. Sending you back to the main menu.</string>
+    <string name="media_volume_control_part1_decrease_volume">Current volume is set above 75. Now that you\'ve learned how to increase the volume, we will try decreasing the volume below 25. To decrease the volume, swipe down.</string>
+    <string name="media_volume_control_part1_outro">Current volume is set below 25. Congratulations on completing this lesson. Sending you back to the lesson page.</string>
 
     <!-- OpeningVoiceCommand !-->
     <string name="open_voice_commands_part1_intro">Welcome. In this module, you will learn how to enable voice commands. To do this, you need to perform a swipe right, then up gesture in one motion. When prompted for a voice command, say help. This will take you to the voice command help section. Return to the tutorial whenever you want by going back. Good luck!</string>
@@ -279,8 +279,8 @@
     <string name="scroll_part2_outro">You have completed the lesson. Sending you to the main menu.</string>
 
     <!-- StartStopMedia !-->
-    <string name="start_stop_media_part1_outro">Great job! You have paused the video. Congratulations on completing this lesson on how to start and stop a video. Sending you to the main menu.</string>
-    <string name="start_stop_media_part1_play">Great job! You have played the video. Now, we will try to pause the video. To pause the video, bring up the media controller and explore by touch to find the pause button. Double tap on the button to pause the video.</string>
+    <string name="start_stop_media_part1_outro">Great job! You have paused the video. Congratulations on completing this lesson on how to start and stop a video. Sending you back to the lesson page.</string>
+    <string name="start_stop_media_part1_play">Great job! You have played the video. Now, we will try to pause the video. To pause the video, bring up the media controller and find the pause button. Double tap on the button to pause the video.</string>
     <string name="start_stop_media_part1_intro">In this tutorial, you will be learning how to start and stop a video. To start, double tap your screen to bring up the media controller and find the play button. Double tap to start playing the video.</string>
 
     <!-- Virtual Keyboard !-->
