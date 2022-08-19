@@ -11,6 +11,7 @@ import com.github.talkbacktutorial.lessons.modules.*
  * user to more effectively navigate their device.
  * @author Matthew Crossman
  * @author Team 4
+ * @author Emmanuel Chu (challenge component)
  */
 class Lesson3 : Lesson() {
 
