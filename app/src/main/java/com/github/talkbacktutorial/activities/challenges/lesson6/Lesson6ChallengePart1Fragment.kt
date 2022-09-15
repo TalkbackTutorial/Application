@@ -1,6 +1,7 @@
 package com.github.talkbacktutorial.activities.challenges.lesson6
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine
+import com.github.talkbacktutorial.activities.MainActivity
 import com.github.talkbacktutorial.activities.challenges.lesson6.adapter.ChatAdapter
 import com.github.talkbacktutorial.activities.challenges.lesson6.model.ChatModel
 import com.github.talkbacktutorial.databinding.FragmentLesson6ChallengePart1Binding
@@ -87,7 +89,7 @@ class Lesson6ChallengePart1Fragment : Fragment(){
     private fun validateText(textBoxString: String) {
         if (textBoxString.lowercase().contains(getString(R.string.lesson6_challenge_text_message))){
             this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-                insertFinishButton()
+                this.endLesson()
             }
             Handler().postDelayed({
                 this.ttsEngine.speak(getString(R.string.challenge_outro))
@@ -101,7 +103,9 @@ class Lesson6ChallengePart1Fragment : Fragment(){
      */
     private fun endLesson() {
         // Lesson's complete go back to Main Activity
-        activity?.onBackPressed()
+        val intent = Intent(this.context, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 
     /**
@@ -111,24 +115,6 @@ class Lesson6ChallengePart1Fragment : Fragment(){
     private fun speakIntro() {
         val intro = getString(R.string.lesson6_challenge_fragment1_intro)
         this.ttsEngine.speakOnInitialisation(intro)
-    }
-
-    /**
-     * Function that inserts the finish button after the lesson has ended.
-     * @author Nabeeb Yusuf
-     */
-    private fun insertFinishButton() {
-        val constraintLayout = this.binding.lesson6ChallengeConstraintLayout
-        val primaryButtonBinding: WidePillButtonBinding = DataBindingUtil.inflate(layoutInflater, R.layout.wide_pill_button, constraintLayout,false)
-        primaryButtonBinding.text = getString(R.string.back_button)
-        primaryButtonBinding.button.setOnClickListener{ endLesson() }
-        val layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
-        layoutParams.horizontalBias = 0.05f
-        layoutParams.endToEnd = constraintLayout.id
-        layoutParams.startToStart = constraintLayout.id
-        layoutParams.topToTop = constraintLayout.id
-        layoutParams.topMargin = 10.dpToPixels(requireContext())
-        constraintLayout.addView(primaryButtonBinding.button, layoutParams)
     }
 
     /**
