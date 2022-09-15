@@ -1,20 +1,14 @@
 package com.github.talkbacktutorial.activities.challenges.lesson3
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.database.InstanceSingleton
-import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentLesson3ChallengePart1Binding
 import java.util.*
 

@@ -9,7 +9,6 @@ import android.view.accessibility.AccessibilityEvent
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.TextToSpeechEngine

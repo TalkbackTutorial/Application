@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.ChallengeLayoutBinding
 
 class Lesson5ChallengeActivity : AppCompatActivity() {
