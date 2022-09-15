@@ -12,4 +12,4 @@ The latest recorded demos can be found in the [v2.0.0-prealpha1](https://github.
 
 ## Debug Settings
 
-Debug settings are available to modify in the source file [DebugSettings.kt](/app/src/main/java/com\github/talkbacktutorial/DebugSettings.kt).
+Debug settings are available to modify in the source file [DebugSettings.kt](app/src/main/java/com/github/talkbacktutorial/DebugSettings.kt).
