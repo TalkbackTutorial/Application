@@ -2,6 +2,8 @@ package com.github.talkbacktutorial.activities.gamemode
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.gesture.GestureOverlayView
+import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler

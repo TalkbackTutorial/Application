@@ -9,20 +9,17 @@ package com.github.talkbacktutorial
 object DebugSettings {
 
     // Unlocks all lessons, modules and challenges if true
-    val bypassProgressionLocks
-        get() = !BuildConfig.PROGRESS_LOCK
+    const val bypassProgressionLocks = false
 
     // Talkback isn't required if true
-    val talkbackNotRequired
-        get() = !BuildConfig.TB_REQ
+    const val talkbackNotRequired = false
 
     // Skip introductory lesson
-    val skipIntroductoryLesson
-        get() = BuildConfig.SKIP_INTRO
+    const val skipIntroductoryLesson = false
 
     // Skip Text to Speech
-    val skipTTS = false
+    const val skipTTS = false
 
     // Wipes database and closes app if true
-    val wipeDatabase = false
+    const val wipeDatabase = false
 }

@@ -15,6 +15,7 @@
             android:id="@+id/gestureOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gestureColor="@android:color/transparent"
             android:eventsInterceptionEnabled="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout

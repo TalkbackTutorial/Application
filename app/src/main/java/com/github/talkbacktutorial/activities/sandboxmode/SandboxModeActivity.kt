@@ -2,6 +2,7 @@ package com.github.talkbacktutorial.activities.sandboxmode
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -84,6 +85,7 @@ class SandboxModeActivity : AppCompatActivity() {
                 // speak
                 this.ttsEngine.speak(output.actionDescription, true)
                 this.binding.gestureText.text = output.description
+                this.binding.actionText.text = output.actionDescription
             }
             return@setOnTouchListener true
         }
