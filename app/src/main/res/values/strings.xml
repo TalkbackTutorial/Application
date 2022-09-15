@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- General !-->
     <string name="intent_key">C57D2EB9-C8D0-4315-916D-C05159E8EE23</string>
@@ -46,7 +46,7 @@
     <string name="lesson7_desc">This lesson provides real world experience by having you jump to other applications through Talkback</string>
 
     <!-- Challenges !-->
-    <string name="challenge_outro">You have completed the challenge. Find and select the back button to return to the main menu.</string>
+    <string name="challenge_outro">You have completed the challenge. Sending you back to the main menu.</string>
 
     <!-- Lesson 2 Challenge !-->
     <string name="aud">AUD</string>

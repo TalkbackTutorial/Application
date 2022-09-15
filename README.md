@@ -1,20 +1,15 @@
-# Application
-An Android App as Talkback Tutorial.
+# Teach Me Talkback
 
-## Debug settings
-find here: app/src/main/java/com/github/talkbacktutorial/DebugSettings.kt
+Teaches Google's screen reader Talkback intended for visually impaired users as a native Android Application.
 
-### bypassProgressionLocks
-setting this to true allows you to access all lessons and modules
+## Running
 
-### talkbackNotRequired
-if this is true you can use the app without talkback, otherwise, the app will ask you to turn talkback on
+For information on running the application, and other related documentation please see the [Handover Document](handover.pdf).
 
-### skipIntroductoryLesson
-When false the app will open the first lesson if it has not already been completed. Set this to true to bybass the first lesson
+## Demos and Content
 
-### skipTTS
-When true any TTS is replaced with 'skip', use this if you need to test and don't care what is being read out
+The latest recorded demos can be found in the [v2.0.0-prealpha1](https://github.com/TalkbackTutorial/Application/releases/tag/v2.0.0-prealpha1) release along with a summary of the currently implemented content. These may slightly vary from the latest version of Teach Me Talkback.
 
-### wipeDatabase
-setting this to true will clear the database an close the app. Use this if you want to start fresh or there is an issue with the database
+## Debug Settings
+
+Debug settings are available to modify in the source file [DebugSettings.kt](app/src/main/java/com/github/talkbacktutorial/DebugSettings.kt).
