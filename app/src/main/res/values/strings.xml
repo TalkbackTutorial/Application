@@ -8,7 +8,7 @@
     <string name="underscore">_</string>
     <string name="lesson_space">"Lesson "</string>
     <string name="finish_lesson">Finish Lesson</string>
-    <string name="finish_lesson_button">Finish Lesson</string>
+    <string name="finish_lesson_button">FinishLesson</string>
     <string name="continue_jump_text">Continue module</string>
     <string name="finish_module_button">Finish module</string>
     <string name="finish">Finish</string>

@@ -23,6 +23,7 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
     }
     private lateinit var binding: FragmentExploreMenuByTouchModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
+    private val elementContent = arrayOf("Apple", "Banana", "Cherry", "Dewberry", "Elderberry", "Ant", "Bee", "Cricket", "Dragonfly", "January", "February", "March", "April", "May")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +38,7 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         this.ttsEngine = TextToSpeechEngine((activity as ExploreMenuByTouchActivity))
             .onFinishedSpeaking(triggerOnce = true) {
-                this.showMenuItems(7)
+                this.showMenuItems(4)
             }
         this.speakIntro()
     }
@@ -47,17 +48,17 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
      * @author Jason Wu
      */
     private fun showMenuItems(amount: Int) {
-        for (menuItemNum in 1..amount) {
+        for (menuItemNum in 0..amount) {
             val basicCardBinding: BasicCardBinding = DataBindingUtil.inflate(
                 layoutInflater,
                 R.layout.basic_card, binding.layout1, false
             )
-            basicCardBinding.text = getString(R.string.row) + "$menuItemNum " + getString(R.string.column1)
+            basicCardBinding.text = elementContent[menuItemNum]
             basicCardBinding.card.setOnClickListener {
                 ttsEngine.speak(getString(R.string.explore_menu_by_touch_menu_item_prompt))
             }
             binding.layout1.addView(basicCardBinding.card)
-            if (menuItemNum == 1) basicCardBinding.card.sendAccessibilityEvent(
+            if (menuItemNum == 0) basicCardBinding.card.sendAccessibilityEvent(
                 AccessibilityEvent.TYPE_VIEW_FOCUSED
             )
 
@@ -66,14 +67,14 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
                 layoutInflater,
                 R.layout.basic_card, binding.layout2, false
             )
-            if(menuItemNum == 6){
+            if(menuItemNum == 4){
                 basicCardBinding2.text = getString(R.string.finish_lesson_button)
                 basicCardBinding2.card.setOnClickListener{
                     this.finishLesson()
                 }
             }
             else{
-                basicCardBinding2.text = getString(R.string.row) + "$menuItemNum " + getString(R.string.column2)
+                basicCardBinding2.text = elementContent[menuItemNum + 5]
                 basicCardBinding2.card.setOnClickListener {
                     ttsEngine.speak(getString(R.string.explore_menu_by_touch_menu_item_prompt))
                 }
@@ -85,7 +86,7 @@ class ExploreMenuByTouchPart1Fragment : Fragment() {
                 layoutInflater,
                 R.layout.basic_card, binding.layout3, false
             )
-            basicCardBinding3.text = getString(R.string.row) + "$menuItemNum " + getString(R.string.column3)
+            basicCardBinding3.text = elementContent[menuItemNum + 9]
             basicCardBinding3.card.setOnClickListener {
                 ttsEngine.speak(getString(R.string.explore_menu_by_touch_menu_item_prompt))
             }
