@@ -180,7 +180,7 @@
     <string name="stopped_count">stoppedCount</string>
     <string name="go_to_home_screen_intro">Welcome. In this module, you will learn how to return to the home screen from inside an application, to perform this task, swipe up then left. Try it now. Then return to the tutorial after you have reached the home screen by swiping left then up to open the recent apps. Then double tap to return to this app.</string>
     <string name="go_to_home_screen_mid">Good, you are back. This gesture is useful as it allows you to return to the home screen at anytime no matter where you are. Now do it again, remember: the gesture is swipe up then left. Return to this app by opening the recent apps page just like before.</string>
-    <string name="go_to_home_screen_outro">Nice, you have navigated back to this screen. You have now learnt how to use the go to home screen gesture. Sending you to the main menu.</string>
+    <string name="go_to_home_screen_outro">Nice, you have navigated back to this screen. You have now learnt how to use the go to home screen gesture. Double tap to return to the lesson page.</string>
 
     <!-- JumpControls !-->
     <string name="jump_controls_intro_initial_text">The controls reading mode lets you move from one control to the next. Controls can be buttons or switches that you can click, sliders that you can move around, or anything else that you can press or manipulate.</string>
