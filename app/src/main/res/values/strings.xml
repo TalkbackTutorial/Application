@@ -257,9 +257,9 @@
 
     <!-- OpenRecentApps !-->
     <string name="open_recent_apps_part1_intro">Welcome. In this module, you will learn how to open recent apps. Recent apps are a handy way to quickly switch between frequently used apps. This can be done in two different ways. Firstly, perform a swipe left, then up gesture in one motion. Once completed, return to the tutorial.</string>
-    <string name="open_recent_apps_part1_outro">Great job. You have correctly opened the recent app menu and returned to the tutorial. Now to try with a different method.</string>
+    <string name="open_recent_apps_part1_outro">Great job. You have correctly opened the recent app menu and returned to the tutorial. Now to try with a different method. Double tap to move onto the next step.</string>
     <string name="open_recent_apps_part2_intro">Try to open the recent apps menu using the recents button in the bottom right or bottom left corner of your phone. You can double tap this button to open the recent apps menu. If your device does not support a recent button, or you are unsure, perform a swipe left, then up gesture again to open the recent apps menu. Then return to the tutorial.</string>
-    <string name="open_recent_apps_part2_outro">You have completed the open recent apps module. Sending you to the lesson screen.</string>
+    <string name="open_recent_apps_part2_outro">You have completed the open recent apps module. Double tap to return to the lesson screen.</string>
     <string name="open_recent_apps_part1_backstack">"openrecentappspart1"</string>
 
     <!-- OpenTalkbackMenu !-->
