@@ -264,7 +264,7 @@
 
     <!-- OpenTalkbackMenu !-->
     <string name="open_talkback_menu_intro">Welcome. In this module, you will learn how to open the Talkback Menu. The Talkback menu allows you use commands to read, edit text, control speech output, change Talkback settings, and so on. To do this, perform a swipe up, then right gesture in one motion. Or a swipe down, then right gesture. Good luck! </string>
-    <string name="open_talkback_menu_outro">Well done! You now know how to open and close the Talkback Menu. Once again, to do this you have to swipe up, or a swipe down gesture then swipe right immediately. You have completed the lesson. Sending you back to the lesson page.</string>
+    <string name="open_talkback_menu_outro">Well done! You now know how to open and close the Talkback Menu. Once again, to do this you have to swipe up, or a swipe down gesture then swipe right immediately. You have completed the lesson. Double tap to return to the main menu.</string>
     <string name="open_talkback_menu_feedback">Great job. You have opened the Talkback menu. Feel free to navigate around to see what you can do. Once you are done, go to the bottom of the menu and exit.</string>
 
     <!-- Scroll !-->
