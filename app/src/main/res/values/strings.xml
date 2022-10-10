@@ -239,7 +239,7 @@
 
     <!-- OpeningVoiceCommand !-->
     <string name="open_voice_commands_part1_intro">Welcome. In this module, you will learn how to enable voice commands. To do this, you need to perform a swipe right, then up gesture in one motion. When prompted for a voice command, say help. This will take you to the voice command help section. Return to the tutorial whenever you want by going back. Good luck!</string>
-    <string name="open_voice_commands_part1_outro">Well done. Next we will put some voice commands into action.</string>
+    <string name="open_voice_commands_part1_outro">Well done. Next we will put some voice commands into action. Double tap to move to the next stage.</string>
     <string name="open_voice_commands_part2_intro">Now that you know some voice commands, We will show you how to increase talkback\'s reading speed by using voice command.</string>
     <string name="open_voice_commands_part2_outro">You have completed this module. Sending you back to the lesson screen.</string>
     <string name="open_voice_commands_part2_text">To make me speak faster swipe right, then up with one finger to open voice command again. Do this gesture, then say speak faster. And move to the next element when you are done. Good luck!.</string>
