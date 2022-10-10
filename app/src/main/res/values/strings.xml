@@ -253,7 +253,7 @@
     <string name="open_notifications_feedback_1">Good job. You have opened the notification panel. Now try to close it by doing the same gesture but this time start from the bottom and swipe up with two fingers."</string>
     <string name="open_notifications_feedback_2">Well done. The notification panel has been closed. Let\'s try to open it one more time but this time, open it by swiping right, then down in a single motion. Once again, please wait until Talkback is done, then follow the next instruction.</string>
     <string name="open_notifications_feedback_3">Excellent. Now close it again by swiping up from the bottom with 2 fingers</string>
-    <string name="open_notifications_outro">Well done! You now know how to open, check and close your notification panel. Notification panel can also be used to perform many kind of shortcut. For example, connecting to wifi and bluetooth. You have completed the lesson. We will send you back to the lesson page.</string>
+    <string name="open_notifications_outro">Well done! You now know how to open, check and close your notification panel. Notification panel can also be used to perform many kind of shortcut. For example, connecting to wifi and bluetooth. You have completed the lesson. Double tap to return to the lesson page.</string>
 
     <!-- OpenRecentApps !-->
     <string name="open_recent_apps_part1_intro">Welcome. In this module, you will learn how to open recent apps. Recent apps are a handy way to quickly switch between frequently used apps. This can be done in two different ways. Firstly, perform a swipe left, then up gesture in one motion. Once completed, return to the tutorial.</string>
