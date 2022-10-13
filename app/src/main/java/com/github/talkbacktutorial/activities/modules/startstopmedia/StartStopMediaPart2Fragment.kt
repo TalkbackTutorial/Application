@@ -42,12 +42,10 @@ class StartStopMediaPart2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*
         this.ttsEngine = TextToSpeechEngine((activity as StartStopMediaActivity)).onFinishedSpeaking(triggerOnce = true) {
             this.binding.startStopMediaControlConstraintLayout.visibility = View.VISIBLE
-        }*/
+        }
         setUpVideo()
-        this.speakIntro()
     }
 
     /**
@@ -117,11 +115,7 @@ class StartStopMediaPart2Fragment : Fragment() {
             }
         })
     }
-    private fun speakIntro() {
-        val intro = getString(R.string.start_stop_media_part1_intro).trimIndent()
 
-        this.ttsEngine.speakOnInitialisation(intro)
-    }
 
     /**
      * Function that is called when the finish button is pressed.

@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.github.talkbacktutorial.R
 import com.github.talkbacktutorial.databinding.FragmentStartStopMediaModulePart1Binding
+import java.util.*
+import kotlin.concurrent.schedule
 
 
 class StartStopMediaPart1Fragment: Fragment() {
@@ -34,7 +36,7 @@ class StartStopMediaPart1Fragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         this.textView = view.findViewById(R.id.start_stop_media_intro_textview)
         this.displayIntro()
-        this.textView.setOnClickListener {
+        Timer().schedule(15000) {
             val ft : FragmentTransaction = parentFragmentManager.beginTransaction()
             ft.replace(this@StartStopMediaPart1Fragment.id, StartStopMediaPart2Fragment())
             //ft.addToBackStack(getString(R.string.open_recent_apps_part1_backstack))
