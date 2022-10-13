@@ -31,7 +31,7 @@ class MediaVolumeControlPart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.textView = view.findViewById(R.id.start_stop_media_intro_textview)
+        this.textView = view.findViewById(R.id.media_volume_control_intro_textview)
         this.displayIntro()
         this.textView.setOnClickListener {
             val ft : FragmentTransaction = parentFragmentManager.beginTransaction()
