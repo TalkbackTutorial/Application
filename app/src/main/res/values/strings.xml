@@ -120,7 +120,7 @@
     <string name="lesson1_part1_intro">Welcome. In your first lesson, you will learn to move forwards and backwards between menu items, as well as interact with them. Double tap to continue.</string>
     <string name="lesson1_part2_backstack">lesson1part2</string>
     <string name="lesson1_part3_backstack">lesson1part3</string>
-    <string name="lesson1_part2_intro">To start, you will learn to navigate back and forth between elements on the screen. To go to the next element, swipe right. To go to the previous element, swipe left. Elements will always speak a description of themselves. When you are ready to move on, double tap.</string>
+    <string name="lesson1_part2_intro">To start, you will learn to navigate back and forth between elements on the screen. To go to the next element, swipe right. To go to the previous element, swipe left. Elements will always speak a description of themselves. When you are ready to move on, double tap. You may now begin.</string>
     <string name="lesson1_menu_item_prompt">You have interacted with a menu item. Find the button, then double tap to finish the lesson.</string>
     <string name="lesson1_lesson_complete">You have completed the lesson. Sending you to the main menu.</string>
     <string name="lesson1_part3_intro">You will now learn to interact with elements on the screen. To interact with an element, double tap when you have selected it. For this activity, explore the elements on the screen until you reach the button. To activate the button and finish the lesson, double tap.</string>
