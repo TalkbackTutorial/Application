@@ -20,7 +20,6 @@ import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart3Bindin
 class JumpTextPart3Fragment : Fragment() {
 
     private lateinit var binding: FragmentJumpTextModulePart3Binding
-    private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +38,6 @@ class JumpTextPart3Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
         binding.continueText.setOnClickListener {
             this.onClickContinueLesson()
         }
@@ -59,7 +57,6 @@ class JumpTextPart3Fragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        this.ttsEngine.shutDown()
         super.onDestroyView()
     }
 
