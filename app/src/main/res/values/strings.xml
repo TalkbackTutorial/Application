@@ -213,7 +213,7 @@
     <string name="jump_text_paragraph_element_4">Activate this with a double tap to continue.</string>
     <string name="jump_text_request_paragraph_mode">We will now learn to use each text reading mode. As you have learned previously, please switch to the reading mode that says \"Paragraph\"</string>
     <string name="jump_text_paragraphs_intro3"> We will continue to learn to use the word reading mode. As you have familiarized yourself with the reading modes previously, please try this yourself and navigate to the continue word, then double tap to proceed </string>
-    <string name="jump_text_paragraphs_intro4"> Finally in this module, use the character reading mode to navigate to the letter "T". When you find it, double tap to finish this module. Please change to the character reading mode and swipe down to the next item to start the task.</string>
+    <string name="jump_text_paragraphs_intro4"> Finally in this module, use the character reading mode to navigate to the letter "T". When you find it, double tap to finish this module</string>
     <string name="jump_text_paragraphs_conclusion">You have completed this module. To summarise, in this module you have learnt to use all text reading modes to navigate through a page. Sending you back to the Lesson modules.</string>
     <string name="jump_text_continue_fragment_message">We will now learn to use each text reading mode. As you have learned previously, please switch to the reading mode that says Paragraph. If you have changed reading mode to Paragraph mode, Please double tap to continue</string>
     <string name="jump_text_line_intro">Please switch to the lines reading mode and swipe horizontally to go to the next item.</string>
