@@ -128,6 +128,49 @@ Tier 3 was specific to our initial work on this project - future developers don'
 
 Tier 4 is encouraged if there is a large number of developers or if merge conflicts are expected to occur frequently.
 
+#### When to make a pull request
+
+Pull requests are made to `main` when the team wants to make a release.
+
+Pull requests to `develop` are made when the higher level branches are considered finished or after a time period that the developers have decided.
+
+Other pull request scenarios are optional.
+
+#### PR process
+
+For PRs to `main`, these should come from `develop`. These should use pull requests to make sure that some review goes through before the merge.
+
+For merging from tiers 3 and 4 to `develop`, this process is only needed if developers want reviews or want to communicate to others that their branches are being merged. Future developers can skip this if they feel it might be unnecessary.
+
+The original project team used the following PR process:
+
+##### Original PR process
+
+The original project team required that merges from `team` or `sprint` branches into `develop` go through the following process:
+
+1. The team determines a merging window (usually a day)
+2. Each sub-team goes and makes sure their code is production-ready
+	1. Code cleanup
+	2. Completed and removed and TODOs in the code
+	3. Reverted/stashed any incomplete code
+	4. All code is tested to work
+3. Code freeze engages during the merge window
+4. No approval is required to do the merge
+5. The team nominates someone to perform the merge
+6. After conflicts are resolved post-merge, the freeze is lifted and the merge is done
+
+For merges to `main`:
+
+1. The team decided when to create a release (usually after a few agile sprints)
+2. `develop` enters a feature freeze for a few days (up to team)
+3. A comprehensive test of `develop` is performed:
+	1. A full run-through of the app is performed by each sub-team. They should test their own parts and confirm everything works.
+	2. All found defects must be fixed in `develop`
+	3. Code should pass all tests the team has devised
+4. The developer nominated to perform the merge to main also test the apps themselves
+5. Nominated developer merges the `develop` branch to `main` after tests are complete - no approval is required
+6. Feature freeze is lifted on `develop`
+
 ## Additional notes for future developers
 
 **Emulator TalkBack differences**
