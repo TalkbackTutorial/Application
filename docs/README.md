@@ -1,4 +1,5 @@
 # [Handover Document](https://docs.google.com/document/d/1fO-11XrZs2vklp2A_BVsC-oDzuL4uAquwouz1XLGDrA/edit?usp=sharing)
+
 ## **Overview**
 The vision for our project is to develop an app that makes using Google TalkBack easier and more intuitive for vision-impaired users.
 
@@ -92,6 +93,40 @@ Common bugs include:
   - After pulling from the GitHub repository, the program keeps crashing when it starts running. Steps to fix this include:
     - Go to TMTDatabase.kt file
     - Set the database version to 1
+
+## Repository management
+
+### Versioning
+
+We use a modified semantic versioning. A version consists of
+
+`X.Y.Z-labelA`
+
+Where:
+
+- `X` is for any significant, app-wide changes. Either:
+	- A major code restructuring/refactoring that disrupts existing developers, or
+	- Major visual change that might disrupt existing users.
+- `Y` is raised for any feature change, such as a new module. These should not be _breaking_ changes that disrupt users and/or developers.
+- `Z` is raised for each `X.Y` for any fixes, such as UI tweaks (which don't disrupt users or is fixing some problem) and bug fixes (e.g. fix a crash).
+
+### Pull requests
+
+#### Branching
+
+We used 4 tiers of branches:
+
+1. `main` - the branch for release-ready code (these can be betas, release candidates, and final releases)
+2. `develop` - the branch for collecting new features, fixes, and group contributions, such as sprint or team branches
+3. `sprintX` or `sprintX/teamY` branches - agile sprint branches, which can be broken down into team sprint branches which get merged into `develop`
+4. Ephemeral branches - examples are `feature/some-new-feature` and `fix/crash-on-start`. Valid initial segments are `feature`, `fix` and `improvement`
+	- `feature` is for new features
+	- `fix` is for bug and UI fixes
+	- `improvement` is for refinements on existing code/UI
+
+Tier 3 was specific to our initial work on this project - future developers don't need to continue using this tier.
+
+Tier 4 is encouraged if there is a large number of developers or if merge conflicts are expected to occur frequently.
 
 ## Additional notes for future developers
 
