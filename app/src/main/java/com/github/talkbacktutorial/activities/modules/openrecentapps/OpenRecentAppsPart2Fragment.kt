@@ -5,20 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 import com.github.talkbacktutorial.databinding.FragmentOpenRecentAppsPart2Binding
-import java.util.*
-import kotlin.concurrent.schedule
 
 class OpenRecentAppsPart2Fragment : Fragment() {
     private lateinit var binding: FragmentOpenRecentAppsPart2Binding
-    private lateinit var ttsEngine: TextToSpeechEngine
+    private lateinit var display: TextView
     private var count = 0
 
     override fun onCreateView(
@@ -37,8 +35,8 @@ class OpenRecentAppsPart2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as OpenRecentAppsActivity))
-        this.speakIntro()
+        this.display = view.findViewById(R.id.o_recent_apps_pt2_tv)
+        this.displayIntro()
         // Simple listener detecting a change in window focus
         view.viewTreeObserver?.addOnWindowFocusChangeListener { _ ->
             count++
@@ -54,14 +52,9 @@ class OpenRecentAppsPart2Fragment : Fragment() {
      * Speaks an intro for the fragment.
      * @author Jai Clapp
      */
-    private fun speakIntro() {
+    private fun displayIntro() {
         val intro = getString(R.string.open_recent_apps_part2_intro).trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
-    }
-
-    override fun onDestroyView() {
-        this.ttsEngine.shutDown()
-        super.onDestroyView()
+        this.display.text = intro
     }
 
     /**
@@ -70,13 +63,10 @@ class OpenRecentAppsPart2Fragment : Fragment() {
      */
     private fun finishLesson() {
         updateModule()
-        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+        val outro = getString(R.string.open_recent_apps_part2_outro).trimIndent()
+        display.text = outro
+        display.setOnClickListener {
             activity?.finish()
-        }
-        // Delay to prevent bug where the ttsEngine is repeated.
-        Timer().schedule(2000) {
-            val outro = getString(R.string.open_recent_apps_part2_outro).trimIndent()
-            ttsEngine.speakOnInitialisation(outro)
         }
     }
 

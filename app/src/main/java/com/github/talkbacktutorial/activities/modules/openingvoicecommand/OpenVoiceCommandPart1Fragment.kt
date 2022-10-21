@@ -6,15 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.databinding.FragmentOpenVoiceCommandModulePart1Binding
-import java.util.*
-import kotlin.concurrent.schedule
 
 class OpenVoiceCommandPart1Fragment : Fragment() {
 
@@ -24,7 +22,7 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
     }
 
     private lateinit var binding: FragmentOpenVoiceCommandModulePart1Binding
-    private lateinit var ttsEngine: TextToSpeechEngine
+    private lateinit var display: TextView
     private var count = 0
     private var activityStopCount = 0
     private var voiceRecorderPermission = Manifest.permission.RECORD_AUDIO
@@ -41,7 +39,7 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as OpenVoiceCommandActivity))
+        this.display = view.findViewById(R.id.ovcmpt1Tv)
 
         if (savedInstanceState != null) {
             activityStopCount = savedInstanceState.getInt(getString(R.string.stopped_count))
@@ -76,7 +74,7 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
      */
     private fun speakIntro() {
         val intro = getString(R.string.open_voice_commands_part1_intro).trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
+        display.text = intro
     }
 
     /**
@@ -84,20 +82,17 @@ class OpenVoiceCommandPart1Fragment : Fragment() {
      * @author Mohak Malhotra & Jai Clapp
      */
     private fun finishLesson() {
-        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+
+        val outro = getString(R.string.open_voice_commands_part1_outro).trimIndent()
+        display.text = outro
+        display.setOnClickListener {
             parentFragmentManager.commit {
-                replace(this@OpenVoiceCommandPart1Fragment.id, OpenVoiceCommandPart2Fragment.newInstance())
-                addToBackStack(getString(R.string.open_recent_apps_part1_backstack))
-            }
-        }
-        Timer().schedule(3000) {
-            val outro = getString(R.string.open_voice_commands_part1_outro).trimIndent()
-            ttsEngine.speak(outro)
-        }
+            replace(this@OpenVoiceCommandPart1Fragment.id, OpenVoiceCommandPart2Fragment.newInstance())
+            addToBackStack(getString(R.string.open_recent_apps_part1_backstack))
+        }}
     }
 
     override fun onDestroyView() {
-        this.ttsEngine.shutDown()
         super.onDestroyView()
     }
 }

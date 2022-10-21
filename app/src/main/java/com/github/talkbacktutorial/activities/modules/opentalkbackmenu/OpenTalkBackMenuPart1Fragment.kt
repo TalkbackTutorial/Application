@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +20,7 @@ import kotlin.concurrent.schedule
 class OpenTalkBackMenuPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentOpenTalkbackMenuModulePart1Binding
+    private lateinit var display: TextView
     private lateinit var ttsEngine: TextToSpeechEngine
 
     override fun onCreateView(
@@ -38,8 +40,9 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        this.display = view.findViewById(R.id.otmmpt1Tv)
+        this.displayIntro()
         this.ttsEngine = TextToSpeechEngine((activity as OpenTalkbackMenuActivity))
-        this.speakIntro()
         var viewChangeCounter = 0
         val expectedViewChange = 2
         //adds a window focus change listener. Basically, this listener will call the callback func everytime
@@ -68,9 +71,9 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
      * Speaks an intro for the fragment.
      * @author Vinh Tuan Huynh
      */
-    private fun speakIntro() {
+    private fun displayIntro() {
         val intro = getString(R.string.open_talkback_menu_intro).trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
+        this.display.text = intro
     }
 
     /**
@@ -79,12 +82,10 @@ class OpenTalkBackMenuPart1Fragment : Fragment() {
      */
     private fun finishLesson() {
         updateModule()
-        this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
-            activity?.finish()
-        }
-        Timer().schedule(2000) {
-            ttsEngine.speak(getString(R.string.open_talkback_menu_outro), override = true)
-        }
+
+        display.text = getString(R.string.open_talkback_menu_outro)
+
+        display.setOnClickListener { activity?.finish() }
     }
 
     override fun onDestroyView() {

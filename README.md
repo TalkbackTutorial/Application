@@ -2,6 +2,10 @@
 
 Teaches Google's screen reader Talkback intended for visually impaired users as a native Android Application.
 
+## Contributing
+
+See our handover documentation in `docs/HANDOVER.md`.
+
 ## Running
 
 For information on running the application, and other related documentation please see the [Handover Document](handover.pdf).
