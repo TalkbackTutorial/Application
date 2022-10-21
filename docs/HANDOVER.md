@@ -1,6 +1,6 @@
-# [Handover Document](https://docs.google.com/document/d/1fO-11XrZs2vklp2A_BVsC-oDzuL4uAquwouz1XLGDrA/edit?usp=sharing)
+# Handover Document
 
-## **Overview**
+## Overview
 The vision for our project is to develop an app that makes using Google TalkBack easier and more intuitive for vision-impaired users.
 
 ## High-level view
@@ -13,7 +13,7 @@ Please refer to the Risk Register document.
 Discord is used as the main source of communication for this project. A server has been set up with general chats as well as role/team based text/voice chat. For the discord server link please contact the relevant people in charge.
 
 ## **Getting Start**
-    
+
 ## Hardware Requirements
 
 **Phone**
