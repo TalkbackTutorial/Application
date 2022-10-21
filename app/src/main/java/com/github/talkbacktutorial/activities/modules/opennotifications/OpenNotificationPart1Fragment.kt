@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +21,7 @@ class OpenNotificationPart1Fragment : Fragment() {
 
     private lateinit var binding: FragmentOpenNotificationModulePart1Binding
     private lateinit var ttsEngine: TextToSpeechEngine
+    private lateinit var display: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +40,7 @@ class OpenNotificationPart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        this.display = view.findViewById(R.id.onmpt1Tv)
         this.ttsEngine = TextToSpeechEngine((activity as OpenNotificationActivity))
         this.speakIntro()
         var viewChangeCounter = 0
@@ -48,10 +51,8 @@ class OpenNotificationPart1Fragment : Fragment() {
             if (viewChangeCounter == expectedViewChange) {
                 finishLesson()
             }
-            Timer().schedule(3000) {
-                speakFeedback(viewChangeCounter)
-                viewChangeCounter++
-            }
+            speakFeedback(viewChangeCounter)
+            viewChangeCounter++
         }
     }
 
@@ -67,12 +68,12 @@ class OpenNotificationPart1Fragment : Fragment() {
                 // extend the timer so tts engine can talk after Talkback is done talking.
                 // Note that the delay time does not have to be exact it can be anything as long as it is after Talkback start ranting :)
                 Timer().schedule(15000) {
-                    ttsEngine.speak(getString(R.string.open_notifications_feedback_1))
+                    ttsEngine.speakOnInitialisation(getString(R.string.open_notifications_feedback_1))
                 }
             }
             2 -> {
                 // once the user close the panel . Teach them how to do it by swiping right then down
-                ttsEngine.speak(getString(R.string.open_notifications_feedback_2))
+                display.text = getString(R.string.open_notifications_feedback_2)
             }
             3 -> {
                 // tell the user to close the panel after it is opened again
@@ -89,7 +90,7 @@ class OpenNotificationPart1Fragment : Fragment() {
      */
     private fun speakIntro() {
         val intro = getString(R.string.open_notifications_intro).trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
+        display.text = intro
     }
 
     /**
@@ -101,9 +102,8 @@ class OpenNotificationPart1Fragment : Fragment() {
         this.ttsEngine.onFinishedSpeaking(triggerOnce = true) {
             activity?.finish()
         }
-        Timer().schedule(2000) {
-            ttsEngine.speak(getString(R.string.open_notifications_outro), override = true)
-        }
+        display.text = getString(R.string.open_notifications_outro)
+        display.setOnClickListener { activity?.finish() }
     }
 
     override fun onDestroyView() {

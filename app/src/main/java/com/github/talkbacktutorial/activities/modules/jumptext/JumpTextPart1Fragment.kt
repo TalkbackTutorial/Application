@@ -13,7 +13,6 @@ import com.github.talkbacktutorial.databinding.FragmentJumpTextModulePart1Bindin
 
 class JumpTextPart1Fragment : Fragment() {
     private lateinit var binding: FragmentJumpTextModulePart1Binding
-    private lateinit var ttsEngine: TextToSpeechEngine
 
     companion object {
         @JvmStatic
@@ -37,21 +36,7 @@ class JumpTextPart1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.ttsEngine = TextToSpeechEngine((activity as JumpTextActivity))
-            .onFinishedSpeaking(triggerOnce = true) {
-                binding.continueCard.visibility = View.VISIBLE
-            }
         this.setupContinueCard()
-        this.speakIntro()
-    }
-
-    /**
-     * Speaks an intro for the fragment.
-     * @author Joel Yang
-     */
-    private fun speakIntro() {
-        val intro = getString(R.string.jump_text_request_paragraph_mode).trimIndent()
-        this.ttsEngine.speakOnInitialisation(intro)
     }
 
     /**
@@ -60,7 +45,6 @@ class JumpTextPart1Fragment : Fragment() {
      */
     private fun setupContinueCard() {
         // The card starts off invisible
-        binding.continueCard.visibility = View.GONE
         // The button transitions to the next fragment when clicked
         binding.continueCard.setOnClickListener {
             parentFragmentManager.commit {
@@ -70,7 +54,6 @@ class JumpTextPart1Fragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        this.ttsEngine.shutDown()
         super.onDestroyView()
     }
 }

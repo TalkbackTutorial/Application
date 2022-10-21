@@ -1,28 +1,25 @@
 package com.github.talkbacktutorial.activities.modules.gotohomescreen
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.github.talkbacktutorial.R
-import com.github.talkbacktutorial.TextToSpeechEngine
 import com.github.talkbacktutorial.database.InstanceSingleton
 import com.github.talkbacktutorial.database.ModuleProgressionViewModel
 
 class GoToHomeScreenActivity : AppCompatActivity() {
 
-    private lateinit var ttsEngine: TextToSpeechEngine
     private var stoppedCount: Int = 0
-    private lateinit var repeatBtn: Button
+    private lateinit var display: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_go_to_home_screen_module)
-        this.ttsEngine = TextToSpeechEngine(this)
-        repeatBtn = findViewById(R.id.repeatBtn)
-        repeatBtn.visibility = View.GONE
+
+        display = findViewById(R.id.gths_tv)
 
         if (savedInstanceState != null) {
             stoppedCount = savedInstanceState.getInt(getString(R.string.stopped_count))
@@ -30,29 +27,18 @@ class GoToHomeScreenActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
-        repeatBtn.visibility = View.GONE
 
         when (stoppedCount) {
             0 -> { // This currently just checks for how many times the activity stopped
-                ttsEngine.onFinishedSpeaking {
-                    repeatBtn.visibility = View.VISIBLE
-                    repeatBtn.setOnClickListener { speakIntro() }
-                }
                 this.speakIntro()
             }
             1 -> {
-                ttsEngine.onFinishedSpeaking {
-                    repeatBtn.visibility = View.VISIBLE
-                    repeatBtn.setOnClickListener { speakMid() }
-                }
                 this.speakMid()
             }
             2 -> {
                 // update db
                 updateModule()
-
-                repeatBtn.visibility = View.GONE // disable button before speaking outro
-                ttsEngine.onFinishedSpeaking(triggerOnce = true) {
+                display.setOnClickListener {
                     finish()
                 }
                 this.speakOutro()
@@ -63,7 +49,6 @@ class GoToHomeScreenActivity : AppCompatActivity() {
     }
 
     override fun onStop() {
-        repeatBtn.visibility = View.GONE
         stoppedCount += 1
         super.onStop()
     }
@@ -81,7 +66,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
         val intro = getString(R.string.go_to_home_screen_intro).trimIndent()
         // This is a very basic implementation that just asks the user to return
         // to the application by themselves
-        this.ttsEngine.speakOnInitialisation(intro)
+        display.text = intro
     }
 
     /**
@@ -90,7 +75,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
      */
     private fun speakMid() {
         val outro = getString(R.string.go_to_home_screen_mid).trimIndent()
-        this.ttsEngine.speakOnInitialisation(outro)
+        display.text = outro
     }
 
     /**
@@ -99,7 +84,7 @@ class GoToHomeScreenActivity : AppCompatActivity() {
      */
     private fun speakOutro() {
         val outro = getString(R.string.go_to_home_screen_outro).trimIndent()
-        this.ttsEngine.speakOnInitialisation(outro)
+        display.text = outro
     }
 
     /**
