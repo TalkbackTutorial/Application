@@ -164,16 +164,16 @@ class TextToSpeechEngine(context: AppCompatActivity) {
      * @param text the string you want to speak
      */
     fun announceText(context: Context, text: String){
-        if ((text == null) || (text.length == 0) || (context == null)) return
+        if ((text == null) || (text.isEmpty()) || (context == null)) return
 
         val manager: AccessibilityManager = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
 
-        if (manager != null && manager.isEnabled()) {
+        if (manager != null && manager.isEnabled) {
             val event = AccessibilityEvent.obtain()
             if (event != null) {
-                event.setEventType(AccessibilityEvent.TYPE_ANNOUNCEMENT);
-                event.setClassName(TextToSpeechEngine.javaClass.name);
-                event.setPackageName(context.getPackageName());
+                event.eventType = AccessibilityEvent.TYPE_ANNOUNCEMENT;
+                event.className = TextToSpeechEngine.javaClass.name;
+                event.packageName = context.packageName;
                 event.text.add(text)
                 manager.sendAccessibilityEvent(event);
             } else {
