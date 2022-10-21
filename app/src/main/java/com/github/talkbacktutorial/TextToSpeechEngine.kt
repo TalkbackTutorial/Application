@@ -1,11 +1,16 @@
 package com.github.talkbacktutorial
 
+import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
+import android.view.View
+import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.accessibility.AccessibilityEventCompat
 import java.util.*
 
 /**
@@ -150,4 +155,33 @@ class TextToSpeechEngine(context: AppCompatActivity) {
         this.onFinishedSpeaking = call
         return this
     }
+
+    /**
+     * TTS replacement with no end-of-speech hooks. Use this function to read text to user.
+     * https://github.com/saki4510t/libcommon/blob/d94e51b87beabaa0ac2eaa2a5cc9f3341118a95e/common/src/main/java/com/serenegiant/utils/TalkBackHelper.java
+     * @author Antony Loose
+     * @param context the current context to attach accessibility manager to
+     * @param text the string you want to speak
+     */
+    fun announceText(context: Context, text: String){
+        if ((text == null) || (text.length == 0) || (context == null)) return
+
+        val manager: AccessibilityManager = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
+
+        if (manager != null && manager.isEnabled()) {
+            val event = AccessibilityEvent.obtain()
+            if (event != null) {
+                event.setEventType(AccessibilityEvent.TYPE_ANNOUNCEMENT);
+                event.setClassName(TextToSpeechEngine.javaClass.name);
+                event.setPackageName(context.getPackageName());
+                event.text.add(text)
+                manager.sendAccessibilityEvent(event);
+            } else {
+                throw IllegalStateException("failed to obtain AccessibilityEvent")
+            }
+        } else {
+            throw IllegalStateException("AccessibilityManager is not available/or disabled");
+        }
+    }
+
 }
